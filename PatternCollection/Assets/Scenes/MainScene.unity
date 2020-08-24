@@ -18376,18 +18376,15 @@ MonoBehaviour:
   - {fileID: 21300226, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
   - {fileID: 21300228, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
   - {fileID: 21300230, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
-  enemyLeftMoveSpriteArray:
+  enemyMoveSpriteArray:
   - {fileID: 21300232, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
   - {fileID: 21300234, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
   - {fileID: 21300236, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
   - {fileID: 21300238, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
-  enemyRightMoveSpriteArray:
-  - {fileID: 21300232, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
-  - {fileID: 21300234, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
-  - {fileID: 21300236, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
-  - {fileID: 21300238, guid: 3fea0b27e06e4a64ab4bc71874335227, type: 3}
+  spriteIndexNumber: 0
   isLeftMove: 0
   isRightMove: 0
+  isSpriteReturn: 0
 --- !u!212 &1328080813
 SpriteRenderer:
   m_ObjectHideFlags: 0

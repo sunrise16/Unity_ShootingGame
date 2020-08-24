@@ -12,7 +12,7 @@ public class EnemyFire : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
-                StartCoroutine(Stage1PatternAttack());
+                StartCoroutine(Stage7PatternAttack());
                 break;
             case 2:
                 StartCoroutine(Stage2PatternAttack());
@@ -33,7 +33,8 @@ public class EnemyFire : MonoBehaviour
                 StartCoroutine(Stage7PatternAttack());
                 break;
             case 8:
-                // StartCoroutine(Stage8PatternAttack());
+                // StartCoroutine(Stage8PatternAttack1());
+                // StartCoroutine(Stage8PatternAttack2());
                 break;
             case 9:
                 // StartCoroutine(Stage9PatternAttack());
@@ -543,8 +544,9 @@ public class EnemyFire : MonoBehaviour
             // 랜덤한 지점으로 이동
             Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
             StartCoroutine(MoveToDestination(targetPosition, 1.5f));
-            if (targetPosition.x <= 0.0f)
+            if (targetPosition.x <= transform.position.x)
             {
+                transform.Find("Body").GetComponent<SpriteRenderer>().flipX = true;
                 transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
             }
             else
@@ -617,8 +619,9 @@ public class EnemyFire : MonoBehaviour
             // 랜덤한 지점으로 이동
             Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
             StartCoroutine(MoveToDestination(targetPosition, 1.8f));
-            if (targetPosition.x <= 0.0f)
+            if (targetPosition.x <= transform.position.x)
             {
+                transform.Find("Body").GetComponent<SpriteRenderer>().flipX = true;
                 transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
             }
             else
@@ -752,9 +755,10 @@ public class EnemyFire : MonoBehaviour
 
             // 랜덤한 지점으로 이동
             Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
-            StartCoroutine(MoveToDestination(targetPosition, 1.5f));
-            if (targetPosition.x <= 0.0f)
+            StartCoroutine(MoveToDestination(targetPosition, 1.0f));
+            if (targetPosition.x <= transform.position.x)
             {
+                transform.Find("Body").GetComponent<SpriteRenderer>().flipX = true;
                 transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
             }
             else
@@ -996,9 +1000,10 @@ public class EnemyFire : MonoBehaviour
 
             // 랜덤한 지점으로 이동
             targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
-            StartCoroutine(MoveToDestination(targetPosition, 1.5f));
-            if (targetPosition.x <= 0.0f)
+            StartCoroutine(MoveToDestination(targetPosition, 1.0f));
+            if (targetPosition.x <= transform.position.x)
             {
+                transform.Find("Body").GetComponent<SpriteRenderer>().flipX = true;
                 transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
             }
             else
@@ -1138,16 +1143,16 @@ public class EnemyFire : MonoBehaviour
     {
         Vector3 vector = Vector3.zero;
         float delay = 0.0f;
+        transform.Find("Body").GetComponent<EnemySprite>().spriteIndexNumber = 0;
 
         while (true)
         {
-            delay += 1.0f * Time.deltaTime;
+            delay += Time.deltaTime;
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref vector, 0.5f);
 
             if (delay >= delayLimit)
             {
-                transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = false;
-                transform.Find("Body").GetComponent<EnemySprite>().isRightMove = false;
+                transform.Find("Body").GetComponent<EnemySprite>().isSpriteReturn = true;
                 StopCoroutine(MoveToDestination(targetPosition, delayLimit));
                 break;
             }

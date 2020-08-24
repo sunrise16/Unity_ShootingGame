@@ -7,13 +7,13 @@ public class EnemySprite : MonoBehaviour
 {
     private SpriteRenderer enemySprite;
     [SerializeField] private Sprite[] enemyNormalSpriteArray;
-    [SerializeField] private Sprite[] enemyLeftMoveSpriteArray;
-    [SerializeField] private Sprite[] enemyRightMoveSpriteArray;
+    [SerializeField] private Sprite[] enemyMoveSpriteArray;
 
     private float spriteChangeDelay;
-    private int spriteIndexNumber;
+    public int spriteIndexNumber;
     public bool isLeftMove;
     public bool isRightMove;
+    public bool isSpriteReturn;
 
     void Start()
     {
@@ -23,6 +23,7 @@ public class EnemySprite : MonoBehaviour
         spriteIndexNumber = 0;
         isLeftMove = false;
         isRightMove = false;
+        isSpriteReturn = false;
     }
 
     void Update()
@@ -31,26 +32,50 @@ public class EnemySprite : MonoBehaviour
         if (spriteChangeDelay >= 0.08f)
         {
             spriteChangeDelay = 0.0f;
-            if (spriteIndexNumber == 3)
+            if (spriteIndexNumber >= 3)
             {
                 if (isLeftMove == false && isRightMove == false)
                 {
                     spriteIndexNumber = 0;
                 }
+                else
+                {
+                    if (isSpriteReturn == true)
+                    {
+                        spriteIndexNumber--;
+                    }
+                    else
+                    {
+                        spriteIndexNumber = 3;
+                    }
+                }
             }
             else
             {
-                spriteIndexNumber++;
+                if (isSpriteReturn == true)
+                {
+                    spriteIndexNumber--;
+                    if (spriteIndexNumber <= 0)
+                    {
+                        isSpriteReturn = false;
+                        isLeftMove = false;
+                        isRightMove = false;
+                        if (GetComponent<SpriteRenderer>().flipX == true)
+                        {
+                            GetComponent<SpriteRenderer>().flipX = false;
+                        }
+                    }
+                }
+                else
+                {
+                    spriteIndexNumber++;
+                }
             }
         }
         
-        if (isLeftMove == true)
+        if (isLeftMove == true || isRightMove == true)
         {
-            enemySprite.sprite = enemyLeftMoveSpriteArray[spriteIndexNumber];
-        }
-        else if (isRightMove == true)
-        {
-            enemySprite.sprite = enemyRightMoveSpriteArray[spriteIndexNumber];
+            enemySprite.sprite = enemyMoveSpriteArray[spriteIndexNumber];
         }
         else
         {
