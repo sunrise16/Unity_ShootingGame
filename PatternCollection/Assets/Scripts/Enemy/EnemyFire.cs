@@ -15,7 +15,7 @@ public class EnemyFire : MonoBehaviour
                 StartCoroutine(Stage7PatternAttack());
                 break;
             case 2:
-                StartCoroutine(Stage2PatternAttack());
+                StartCoroutine(Stage8PatternAttack());
                 break;
             case 3:
                 StartCoroutine(Stage3PatternAttack());
@@ -33,11 +33,11 @@ public class EnemyFire : MonoBehaviour
                 StartCoroutine(Stage7PatternAttack());
                 break;
             case 8:
-                // StartCoroutine(Stage8PatternAttack1());
-                // StartCoroutine(Stage8PatternAttack2());
+                StartCoroutine(Stage8PatternAttack());
                 break;
             case 9:
-                // StartCoroutine(Stage9PatternAttack());
+                // StartCoroutine(Stage9PatternAttack1());
+                // StartCoroutine(Stage9PatternAttack2());
                 break;
             case 10:
                 // StartCoroutine(Stage10PatternAttack());
@@ -1132,8 +1132,133 @@ public class EnemyFire : MonoBehaviour
     }
     #endregion
 
-    #region 패턴 8 (동방홍마향 1스테이지 - 루미아 중간보스 1스펠 "문라이트 레이")
-    
+    #region 패턴 8 (동방홍마향 1스테이지 - 루미아 1스펠 "나이트 버드" 리메이크
+    public IEnumerator Stage8PatternAttack()
+    {
+        Vector2 playerPosition;
+
+        while (true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                playerPosition = GameObject.Find("PLAYER").transform.position;
+
+                // 탄막 1 발사 (파란색 테두리원탄) (조준 방사탄)
+                for (int j = 0; j < 16; j++)
+                {
+                    bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet7").transform.Find("Bullet7_7").GetComponent<BulletManager>();
+
+                    for (int k = 0; k < 3; k++)
+                    {
+                        if (bulletManager.bulletPool.Count > 0)
+                        {
+                            GameObject bullet = bulletManager.bulletPool.Dequeue();
+                            bullet.SetActive(true);
+                            bullet.transform.position = transform.position;
+                            bullet.gameObject.tag = "BULLET";
+                            bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE1");
+                            bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet7").transform.Find("Bullet7_7"));
+                            if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                            if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                            if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                            bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+                            bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+                            bullet.GetComponent<InitializeBullet>().isGrazed = false;
+                            bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 9;
+                            bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 6;
+                            bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 2.0f + (0.3f * k);
+                            bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                            bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                            bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+                            float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+                            bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f - 33.75f + (7.5f * j));
+                        }
+                        else
+                        {
+                            for (int l = 0; l < 10; l++)
+                            {
+                                GameObject bullet = Instantiate(bulletManager.bulletObject);
+                                bullet.SetActive(false);
+                                bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                                bulletManager.bulletPool.Enqueue(bullet);
+                            }
+                        }
+                    }
+
+                    yield return new WaitForSeconds(0.02f);
+                }
+
+                yield return new WaitForSeconds(0.05f);
+
+                playerPosition = GameObject.Find("PLAYER").transform.position;
+
+                // 탄막 2 발사 (하늘색 테두리원탄) (조준 방사탄)
+                for (int j = 0; j < 16; j++)
+                {
+                    bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet7").transform.Find("Bullet7_8").GetComponent<BulletManager>();
+
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (bulletManager.bulletPool.Count > 0)
+                        {
+                            GameObject bullet = bulletManager.bulletPool.Dequeue();
+                            bullet.SetActive(true);
+                            bullet.transform.position = transform.position;
+                            bullet.gameObject.tag = "BULLET";
+                            bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE1");
+                            bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet7").transform.Find("Bullet7_8"));
+                            if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                            if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                            if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                            bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+                            bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+                            bullet.GetComponent<InitializeBullet>().isGrazed = false;
+                            bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 9;
+                            bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 7;
+                            bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 2.4f + (0.3f * k);
+                            bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                            bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                            bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+                            float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+                            bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f + 30.0f - (7.5f * j));
+                        }
+                        else
+                        {
+                            for (int l = 0; l < 10; l++)
+                            {
+                                GameObject bullet = Instantiate(bulletManager.bulletObject);
+                                bullet.SetActive(false);
+                                bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                                bulletManager.bulletPool.Enqueue(bullet);
+                            }
+                        }
+                    }
+
+                    yield return new WaitForSeconds(0.02f);
+                }
+
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            // 랜덤한 지점으로 이동
+            Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
+            StartCoroutine(MoveToDestination(targetPosition, 1.0f));
+            if (targetPosition.x <= 0.0f)
+            {
+                transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
+            }
+            else
+            {
+                transform.Find("Body").GetComponent<EnemySprite>().isRightMove = true;
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+    #endregion
+
+    #region 패턴 9 (동방홍마향 1스테이지 - 루미아 중간보스 1스펠 "문라이트 레이")
+
     #endregion
 
     #region 기타 함수
