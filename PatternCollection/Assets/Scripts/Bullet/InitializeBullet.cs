@@ -3,10 +3,18 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+public enum BulletType
+{
+    BULLETTYPE_NORMAL,
+    BULLETTYPE_LASER_HOLD,
+    BULLETTYPE_LASER_MOVE,
+}
+
 public class InitializeBullet : MonoBehaviour
 {
     public GameObject bulletObject;
     public GameObject targetObject;
+    public BulletType bulletType;
     public Vector2 bulletPosition;
     public Vector2 targetPosition;
     public Vector2 bulletDestination;

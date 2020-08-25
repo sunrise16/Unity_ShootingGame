@@ -12,10 +12,10 @@ public class EnemyFire : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
-                StartCoroutine(Stage7PatternAttack());
+                StartCoroutine(Stage9PatternAttack1());
                 break;
             case 2:
-                StartCoroutine(Stage8PatternAttack());
+                StartCoroutine(Stage2PatternAttack());
                 break;
             case 3:
                 StartCoroutine(Stage3PatternAttack());
@@ -69,6 +69,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
                     if (!bullet.GetComponent<Stage1BulletFragmentation>()) bullet.AddComponent<Stage1BulletFragmentation>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -125,6 +126,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -162,6 +164,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -199,6 +202,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -236,6 +240,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -286,6 +291,7 @@ public class EnemyFire : MonoBehaviour
                     if (!emptyBullet.GetComponent<InitializeBullet>()) emptyBullet.AddComponent<InitializeBullet>();
                     if (!emptyBullet.GetComponent<MovingBullet>()) emptyBullet.AddComponent<MovingBullet>();
                     if (!emptyBullet.GetComponent<EraseBullet>()) emptyBullet.AddComponent<EraseBullet>();
+                    emptyBullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     emptyBullet.GetComponent<InitializeBullet>().bulletObject = emptyBullet.gameObject;
                     emptyBullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     emptyBullet.GetComponent<InitializeBullet>().isGrazed = true;
@@ -322,6 +328,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = emptyBullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -376,6 +383,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -496,6 +504,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
                     if (!bullet.GetComponent<Stage5BulletCreate>()) bullet.AddComponent<Stage5BulletCreate>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -592,6 +601,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -656,6 +666,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -692,6 +703,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -729,6 +741,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -785,6 +798,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -821,6 +835,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -858,6 +873,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -901,6 +917,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -937,6 +954,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -974,6 +992,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -1030,6 +1049,7 @@ public class EnemyFire : MonoBehaviour
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                     if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                     if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                    bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                     bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                     bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                     bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -1066,6 +1086,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -1103,6 +1124,7 @@ public class EnemyFire : MonoBehaviour
                         if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                         if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                         if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                         bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                         bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                         bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -1161,6 +1183,7 @@ public class EnemyFire : MonoBehaviour
                             if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                             if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                             if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                            bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                             bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                             bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                             bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -1175,13 +1198,10 @@ public class EnemyFire : MonoBehaviour
                         }
                         else
                         {
-                            for (int l = 0; l < 10; l++)
-                            {
-                                GameObject bullet = Instantiate(bulletManager.bulletObject);
-                                bullet.SetActive(false);
-                                bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                                bulletManager.bulletPool.Enqueue(bullet);
-                            }
+                            GameObject bullet = Instantiate(bulletManager.bulletObject);
+                            bullet.SetActive(false);
+                            bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                            bulletManager.bulletPool.Enqueue(bullet);
                         }
                     }
 
@@ -1210,6 +1230,7 @@ public class EnemyFire : MonoBehaviour
                             if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                             if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                             if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                            bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                             bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                             bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                             bullet.GetComponent<InitializeBullet>().isGrazed = false;
@@ -1224,13 +1245,10 @@ public class EnemyFire : MonoBehaviour
                         }
                         else
                         {
-                            for (int l = 0; l < 10; l++)
-                            {
-                                GameObject bullet = Instantiate(bulletManager.bulletObject);
-                                bullet.SetActive(false);
-                                bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                                bulletManager.bulletPool.Enqueue(bullet);
-                            }
+                            GameObject bullet = Instantiate(bulletManager.bulletObject);
+                            bullet.SetActive(false);
+                            bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                            bulletManager.bulletPool.Enqueue(bullet);
                         }
                     }
 
@@ -1257,7 +1275,114 @@ public class EnemyFire : MonoBehaviour
     }
     #endregion
 
-    #region 패턴 9 (동방홍마향 1스테이지 - 루미아 중간보스 1스펠 "문라이트 레이")
+    #region 패턴 9 (레이저 탄막 테스트중)
+
+    public IEnumerator Stage9PatternAttack1()
+    {
+        Vector2 playerPosition;
+
+        while (true)
+        {
+            playerPosition = GameObject.Find("PLAYER").transform.position;
+
+            // 탄막 발사 (파란색 고정 레이저탄) (조준탄)
+            bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet28").transform.Find("Bullet28_1").GetComponent<BulletManager>();
+
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                bullet.transform.position = transform.position;
+                bullet.gameObject.tag = "BULLET";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
+                bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet28").transform.Find("Bullet28_1"));
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
+                bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_HOLD;
+                bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+                bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+                bullet.GetComponent<InitializeBullet>().isGrazed = false;
+                bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 30;
+                bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 0;
+                bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
+                bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+                float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+                bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
+                bullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
+                bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.25f;
+                bullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
+                bullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.25f;
+            }
+            else
+            {
+                GameObject bullet = Instantiate(bulletManager.bulletObject);
+                bullet.SetActive(false);
+                bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                bulletManager.bulletPool.Enqueue(bullet);
+            }
+
+            yield return new WaitForSeconds(5.0f);
+
+            // 랜덤한 지점으로 이동
+            Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
+            StartCoroutine(MoveToDestination(targetPosition, 1.0f));
+            if (targetPosition.x <= 0.0f)
+            {
+                transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
+            }
+            else
+            {
+                transform.Find("Body").GetComponent<EnemySprite>().isRightMove = true;
+            }
+
+            yield return new WaitForSeconds(1.5f);
+
+            playerPosition = GameObject.Find("PLAYER").transform.position;
+
+            // 탄막 발사 (파란색 무빙 레이저탄) (조준탄)
+            bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet28").transform.Find("Bullet28_1").GetComponent<BulletManager>();
+
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                bullet.transform.position = transform.position;
+                bullet.gameObject.tag = "BULLET";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
+                bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet28").transform.Find("Bullet28_1"));
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
+                bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_MOVE;
+                bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+                bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+                bullet.GetComponent<InitializeBullet>().isGrazed = false;
+                bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 30;
+                bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 0;
+                bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 3.0f;
+                bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+                float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+                bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
+                bullet.GetComponent<LaserBullet>().laserLength = 6.0f;
+            }
+            else
+            {
+                GameObject bullet = Instantiate(bulletManager.bulletObject);
+                bullet.SetActive(false);
+                bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                bulletManager.bulletPool.Enqueue(bullet);
+            }
+
+            yield return new WaitForSeconds(5.0f);
+        }
+    }
 
     #endregion
 

@@ -32,6 +32,7 @@ public class Stage5BulletCreate : MonoBehaviour
                 if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                 if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
                 if (!bullet.GetComponent<Stage5BulletCloneFire>()) bullet.AddComponent<Stage5BulletCloneFire>();
+                bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
                 bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                 bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                 bullet.GetComponent<InitializeBullet>().isGrazed = false;

@@ -38,11 +38,11 @@ public class EraseBullet : MonoBehaviour
                 ClearEmptyBullet();
             }
         }
-        else if (((gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE1") || gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE2")) &&
-            gameObject.tag != "BULLET_EMPTY") && collision.gameObject.tag == "PLAYER")
+        else if (((gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE1") || gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE2") ||
+            gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && gameObject.tag != "BULLET_EMPTY") && collision.gameObject.tag == "PLAYER")
         {
             GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().hitCount++;
-            StartCoroutine(GameObject.Find("PLAYER").GetComponent<PlayerDie>().CreateDieEffect());
+            // StartCoroutine(GameObject.Find("PLAYER").GetComponent<PlayerDie>().CreateDieEffect());
             ClearBullet();
         }
         else if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER"))

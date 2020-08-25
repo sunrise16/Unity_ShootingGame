@@ -25,6 +25,12 @@ public class BulletManager : MonoBehaviour
             bullet.SetActive(false);
             bullet.transform.SetParent(bulletParent.transform);
             bulletPool.Enqueue(bullet);
+
+            if (bullet.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER"))
+            {
+                bullet.GetComponent<LineRenderer>().startWidth = 0.0f;
+                bullet.GetComponent<LineRenderer>().endWidth = 0.0f;
+            }
         }
     }
 }
