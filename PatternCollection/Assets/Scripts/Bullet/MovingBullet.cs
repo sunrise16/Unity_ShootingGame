@@ -119,7 +119,14 @@ public class MovingBullet : MonoBehaviour
         }
 
         // 탄막 이동
-        transform.Translate(Vector2.up * bulletMoveSpeed * Time.deltaTime);
+        if (GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_NORMAL)
+        {
+            transform.Translate(Vector2.up * bulletMoveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector2.right * bulletMoveSpeed * Time.deltaTime);
+        }
     }
 
     // 탄도 변경 (일시적 변화)
@@ -132,5 +139,20 @@ public class MovingBullet : MonoBehaviour
     public void RotateAround(Vector2 target)
     {
         transform.RotateAround(target, Vector3.forward, bulletRotateSpeed * Time.deltaTime);
+    }
+
+    // 일정 시간 후 자동 삭제
+    public IEnumerator AutoRemoveBullet(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        if (gameObject.tag == "BULLET_EMPTY")
+        {
+            GetComponent<EraseBullet>().ClearEmptyBullet();
+        }
+        else
+        {
+            GetComponent<EraseBullet>().ClearBullet();
+        }
     }
 }

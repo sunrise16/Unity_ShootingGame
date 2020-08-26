@@ -9,6 +9,7 @@ public class EraseBullet : MonoBehaviour
     private BulletManager bulletManager;
     private InitializeBullet initializeBullet;
     private MovingBullet movingBullet;
+    private LaserBullet laserBullet;
     private EraseBullet eraseBullet;
     private Stage1BulletFragmentation stage1BulletFragmentation;
     private Stage5BulletCreate stage5BulletCreate;
@@ -18,6 +19,7 @@ public class EraseBullet : MonoBehaviour
     {
         initializeBullet = GetComponent<InitializeBullet>();
         movingBullet = GetComponent<MovingBullet>();
+        laserBullet = GetComponent<LaserBullet>();
         eraseBullet = GetComponent<EraseBullet>();
         stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
         stage5BulletCreate = GetComponent<Stage5BulletCreate>();
@@ -38,7 +40,7 @@ public class EraseBullet : MonoBehaviour
                 ClearEmptyBullet();
             }
         }
-        else if (((gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE1") || gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE2") ||
+        else if ((((gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE1") || gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE2")) ||
             gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && gameObject.tag != "BULLET_EMPTY") && collision.gameObject.tag == "PLAYER")
         {
             GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().hitCount++;
@@ -67,6 +69,7 @@ public class EraseBullet : MonoBehaviour
         // 컴포넌트 제거
         Destroy(initializeBullet);
         Destroy(movingBullet);
+        Destroy(laserBullet);
         Destroy(stage1BulletFragmentation);
         Destroy(stage5BulletCreate);
         Destroy(stage5BulletCloneFire);
@@ -84,6 +87,7 @@ public class EraseBullet : MonoBehaviour
         // 컴포넌트 제거
         Destroy(initializeBullet);
         Destroy(movingBullet);
+        Destroy(laserBullet);
         Destroy(stage1BulletFragmentation);
         Destroy(stage5BulletCreate);
         Destroy(stage5BulletCloneFire);
@@ -101,6 +105,7 @@ public class EraseBullet : MonoBehaviour
         // 컴포넌트 제거
         Destroy(initializeBullet);
         Destroy(movingBullet);
+        Destroy(laserBullet);
         Destroy(stage1BulletFragmentation);
         Destroy(stage5BulletCreate);
         Destroy(stage5BulletCloneFire);

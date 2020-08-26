@@ -12,7 +12,7 @@ public class EnemyFire : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
-                StartCoroutine(Stage9PatternAttack1());
+                StartCoroutine(Stage20PatternAttack1());
                 break;
             case 2:
                 StartCoroutine(Stage2PatternAttack());
@@ -1275,8 +1275,7 @@ public class EnemyFire : MonoBehaviour
     }
     #endregion
 
-    #region 패턴 9 (레이저 탄막 테스트중)
-
+    #region 패턴 9 (동방홍마향 1스테이지 - 루미아 중간보스 스펠 "문라이트 레이")
     public IEnumerator Stage9PatternAttack1()
     {
         Vector2 playerPosition;
@@ -1285,7 +1284,76 @@ public class EnemyFire : MonoBehaviour
         {
             playerPosition = GameObject.Find("PLAYER").transform.position;
 
-            // 탄막 발사 (파란색 고정 레이저탄) (조준탄)
+            // 탄막 발사 (빨간색 고정 레이저탄) (조준탄)
+            bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet28").transform.Find("Bullet28_16").GetComponent<BulletManager>();
+
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                bullet.transform.position = transform.position;
+                bullet.gameObject.tag = "BULLET";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
+                bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet28").transform.Find("Bullet28_16"));
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
+                bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_HOLD;
+                bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+                bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+                bullet.GetComponent<InitializeBullet>().isGrazed = false;
+                bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 30;
+                bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 15;
+                bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
+                bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+                float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+                bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
+                bullet.GetComponent<LaserBullet>().laserWidth = 0.25f;
+                bullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
+                bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.025f;
+                bullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
+                bullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.025f;
+            }
+            else
+            {
+                GameObject bullet = Instantiate(bulletManager.bulletObject);
+                bullet.SetActive(false);
+                bullet.transform.SetParent(bulletManager.bulletParent.transform);
+                bulletManager.bulletPool.Enqueue(bullet);
+            }
+
+            yield return new WaitForSeconds(5.0f);
+
+            // 랜덤한 지점으로 이동
+            Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
+            StartCoroutine(MoveToDestination(targetPosition, 1.0f));
+            if (targetPosition.x <= 0.0f)
+            {
+                transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
+            }
+            else
+            {
+                transform.Find("Body").GetComponent<EnemySprite>().isRightMove = true;
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+    #endregion
+
+    #region 패턴 20 (레이저 탄막 테스트중)
+    public IEnumerator Stage20PatternAttack1()
+    {
+        Vector2 playerPosition;
+
+        while (true)
+        {
+            playerPosition = GameObject.Find("PLAYER").transform.position;
+
+            // 탄막 발사 (회색 고정 레이저탄) (조준탄)
             bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet28").transform.Find("Bullet28_1").GetComponent<BulletManager>();
 
             if (bulletManager.bulletPool.Count > 0)
@@ -1312,10 +1380,14 @@ public class EnemyFire : MonoBehaviour
                 bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
                 float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
                 bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
+                float distance = Vector2.Distance(transform.position, GameObject.Find("PLAYER").transform.position);
+                bullet.transform.position = GameObject.Find("PLAYER").transform.position;
+                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x, distance * 7.143f, bullet.transform.localScale.z);
+                bullet.GetComponent<LaserBullet>().laserWidth = 1.8f;
                 bullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
-                bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.25f;
+                bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.1f;
                 bullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
-                bullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.25f;
+                bullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.1f;
             }
             else
             {
@@ -1343,9 +1415,9 @@ public class EnemyFire : MonoBehaviour
 
             playerPosition = GameObject.Find("PLAYER").transform.position;
 
-            // 탄막 발사 (파란색 무빙 레이저탄) (조준탄)
-            bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet28").transform.Find("Bullet28_1").GetComponent<BulletManager>();
-
+            // 탄막 발사 (분홍색 무빙 레이저탄) (조준탄)
+            bulletManager = GameObject.Find("BulletManager").transform.Find("Bullet29").transform.Find("Bullet29_5").GetComponent<BulletManager>();
+            
             if (bulletManager.bulletPool.Count > 0)
             {
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
@@ -1353,7 +1425,7 @@ public class EnemyFire : MonoBehaviour
                 bullet.transform.position = transform.position;
                 bullet.gameObject.tag = "BULLET";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
-                bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet28").transform.Find("Bullet28_1"));
+                bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("Bullet29").transform.Find("Bullet29_5"));
                 if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                 if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                 if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
@@ -1362,15 +1434,17 @@ public class EnemyFire : MonoBehaviour
                 bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
                 bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
                 bullet.GetComponent<InitializeBullet>().isGrazed = false;
-                bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 30;
-                bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 0;
-                bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 3.0f;
+                bullet.GetComponent<InitializeBullet>().bulletPoolIndex = 31;
+                bullet.GetComponent<InitializeBullet>().bulletPoolChildIndex = 4;
+                bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 5.0f;
+                // bullet.GetComponent<MovingBullet>().bulletAccelerationMoveSpeed = 0.2f;
+                // bullet.GetComponent<MovingBullet>().bulletAccelerationMoveSpeedMax = 4.0f;
                 bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
                 bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                 bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
                 float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
-                bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
-                bullet.GetComponent<LaserBullet>().laserLength = 6.0f;
+                bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle);
+                bullet.GetComponent<LaserBullet>().laserLength = 3.0f;
             }
             else
             {
@@ -1383,7 +1457,6 @@ public class EnemyFire : MonoBehaviour
             yield return new WaitForSeconds(5.0f);
         }
     }
-
     #endregion
 
     #region 기타 함수
