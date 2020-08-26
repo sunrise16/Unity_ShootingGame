@@ -1382,7 +1382,7 @@ public class EnemyFire : MonoBehaviour
                 bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
                 float distance = Vector2.Distance(transform.position, GameObject.Find("PLAYER").transform.position);
                 bullet.transform.position = GameObject.Find("PLAYER").transform.position;
-                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x, distance * 7.143f, bullet.transform.localScale.z);
+                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x, distance * 7.143f * 2.0f, bullet.transform.localScale.z);
                 bullet.GetComponent<LaserBullet>().laserWidth = 1.8f;
                 bullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
                 bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.1f;
