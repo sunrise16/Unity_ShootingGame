@@ -21,8 +21,6 @@ public class InitializeBullet : MonoBehaviour
     
     public float distance;
     public bool isGrazed;
-    public int bulletPoolIndex;
-    public int bulletPoolChildIndex;
 
     public Vector2 GetBulletDestination(Vector2 targetPosition)
     {

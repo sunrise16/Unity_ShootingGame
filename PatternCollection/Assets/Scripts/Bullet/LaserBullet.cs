@@ -21,6 +21,13 @@ public class LaserBullet : MonoBehaviour
     // 무빙 레이저 타입일 경우의 변수
     public float laserLength;
 
+    // 레이저 회전 관련 변수
+    public BulletRotateState laserRotateState;
+    public float laserRotateSpeed;
+    public float laserRotateLimit;
+    public bool isLaserRotateEnable;
+    public bool isLaserRotateDisable;
+
     void Start()
     {
         // 최초 변수 초기화 및 박스 콜라이더 해제
@@ -31,12 +38,12 @@ public class LaserBullet : MonoBehaviour
 
         if (GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_HOLD)
         {
-            transform.localScale = new Vector3(0.15f, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
             GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
-            transform.localScale = new Vector3(0.05f, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(0.15f, transform.localScale.y, transform.localScale.z);
         }
     }
 	
@@ -54,6 +61,13 @@ public class LaserBullet : MonoBehaviour
                     transform.localScale = new Vector3(transform.localScale.x + laserEnableSpeed, transform.localScale.y, transform.localScale.z);
                     if (transform.localScale.x >= laserWidth)
                     {
+                        if (isLaserRotateEnable == true)
+                        {
+                            GetComponent<MovingBullet>().bulletRotateState = laserRotateState;
+                            GetComponent<MovingBullet>().bulletRotateSpeed = laserRotateSpeed;
+                            GetComponent<MovingBullet>().bulletRotateLimit = laserRotateLimit;
+                            isLaserRotateEnable = false;
+                        }
                         transform.localScale = new Vector3(laserWidth, transform.localScale.y, transform.localScale.z);
                         isLaserDisabled = false;
                         isLaserEnabled = true;
@@ -70,6 +84,13 @@ public class LaserBullet : MonoBehaviour
                     transform.localScale = new Vector3(transform.localScale.x - laserDisableSpeed, transform.localScale.y, transform.localScale.z);
                     if (transform.localScale.x <= 0.0f)
                     {
+                        if (isLaserRotateDisable == true)
+                        {
+                            GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                            GetComponent<MovingBullet>().bulletRotateSpeed = 0.0f;
+                            GetComponent<MovingBullet>().bulletRotateLimit = 0.0f;
+                            isLaserRotateDisable = false;
+                        }
                         transform.localScale = new Vector3(0.0f, transform.localScale.y, transform.localScale.z);
                         isLaserEnabled = false;
                         GetComponent<BoxCollider2D>().enabled = false;
@@ -78,6 +99,7 @@ public class LaserBullet : MonoBehaviour
                 }
             }
         }
+        // 무빙 레이저의 스케일 조정
         else
         {
             float scaleValue = (GetComponent<MovingBullet>().bulletMoveSpeed * Time.deltaTime) * 0.8f;

@@ -38,9 +38,15 @@ public class MovingBullet : MonoBehaviour
     public float bulletRotateLimit;
     public float bulletRotateSpeed;
 
+    // 그레이즈 관련
+    private float grazeDelay;
+    private bool isGrazing;
+
     void Start()
     {
         bulletRotateTime = 0.0f;
+        grazeDelay = 0.0f;
+        isGrazing = false;
     }
 
     void Update()
@@ -127,6 +133,21 @@ public class MovingBullet : MonoBehaviour
         {
             transform.Translate(Vector2.right * bulletMoveSpeed * Time.deltaTime);
         }
+
+        // 탄막 그레이즈
+        if (isGrazing == true)
+        {
+            grazeDelay += Time.deltaTime;
+            if (grazeDelay >= 0.1f)
+            {
+                GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().grazeCount++;
+                grazeDelay = 0.0f;
+            }
+        }
+        else
+        {
+            grazeDelay = 0.0f;
+        }
     }
 
     // 탄도 변경 (일시적 변화)
@@ -141,18 +162,34 @@ public class MovingBullet : MonoBehaviour
         transform.RotateAround(target, Vector3.forward, bulletRotateSpeed * Time.deltaTime);
     }
 
-    // 일정 시간 후 자동 삭제
-    public IEnumerator AutoRemoveBullet(float waitTime)
+    // 탄막 그레이즈
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(waitTime);
-
-        if (gameObject.tag == "BULLET_EMPTY")
+        if ((gameObject.tag == "BULLET_ENEMY" && collision.gameObject.tag == "GRAZECIRCLE") && gameObject.GetComponent<InitializeBullet>().isGrazed == false)
         {
-            GetComponent<EraseBullet>().ClearEmptyBullet();
+            if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER"))
+            {
+                grazeDelay = 0.099f;
+                isGrazing = true;
+            }
+            else
+            {
+                GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().grazeCount++;
+                gameObject.GetComponent<InitializeBullet>().isGrazed = true;
+            }
         }
-        else
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        grazeDelay = 0.0f;
+        isGrazing = false;
+
+        if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER") && collision.gameObject.tag == "GRAZECIRCLE")
         {
-            GetComponent<EraseBullet>().ClearBullet();
+            if (gameObject.GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_MOVE)
+            {
+                gameObject.GetComponent<InitializeBullet>().isGrazed = true;
+            }
         }
     }
 }

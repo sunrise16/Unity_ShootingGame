@@ -7,9 +7,10 @@ public class BulletManager : MonoBehaviour
 {
     public GameObject bulletObject;
     public GameObject bulletParent;
-    public Queue<GameObject> bulletPool;
+    // public Queue<GameObject> bulletPool;
+    public Stack<GameObject> bulletPool;
 
-    int bulletPoolSize = 1000;
+    int bulletPoolSize = 10000;
     
     void Start()
     {
@@ -18,19 +19,20 @@ public class BulletManager : MonoBehaviour
     
     void InitObjectPooling()
     {
-        bulletPool = new Queue<GameObject>();
+        if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY") || gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY"))
+        {
+            bulletPoolSize = 1000;
+        }
+
+        // bulletPool = new Queue<GameObject>();
+        bulletPool = new Stack<GameObject>();
         for (int i = 0; i < bulletPoolSize; i++)
         {
             GameObject bullet = Instantiate(bulletObject);
             bullet.SetActive(false);
             bullet.transform.SetParent(bulletParent.transform);
-            bulletPool.Enqueue(bullet);
-
-            if (bullet.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER"))
-            {
-                bullet.GetComponent<LineRenderer>().startWidth = 0.0f;
-                bullet.GetComponent<LineRenderer>().endWidth = 0.0f;
-            }
+            // bulletPool.Enqueue(bullet);
+            bulletPool.Push(bullet);
         }
     }
 }

@@ -38,8 +38,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("ENEMY").transform.position = new Vector2(0.0f, 3.5f);
             GameObject.Find("ENEMY").transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = false;
             GameObject.Find("ENEMY").transform.Find("Body").GetComponent<EnemySprite>().isRightMove = false;
-            GameObject.Find("DESTROYZONE").transform.Find("ALLCLEARZONE1").gameObject.SetActive(true);
-            GameObject.Find("DESTROYZONE").transform.Find("ALLCLEARZONE2").gameObject.SetActive(true);
+            GameObject.Find("DESTROYZONE").transform.Find("DESTROYZONE_ALL").gameObject.SetActive(true);
         }
 
         if (isStageClear == true)
@@ -51,8 +50,7 @@ public class GameManager : MonoBehaviour
                 isStageClear = false;
                 enemyFire.Fire(stageNumber);
 
-                GameObject.Find("DESTROYZONE").transform.Find("ALLCLEARZONE1").gameObject.SetActive(false);
-                GameObject.Find("DESTROYZONE").transform.Find("ALLCLEARZONE2").gameObject.SetActive(false);
+                GameObject.Find("DESTROYZONE").transform.Find("DESTROYZONE_ALL").gameObject.SetActive(false);
             }
         }
 	}

@@ -22,6 +22,8 @@ public class PlayerMove : MonoBehaviour
     
     void Update ()
     {
+        GameObject.Find("GRAZECIRCLE").transform.position = transform.position;
+
         if (isDamaged == false)
         {
             if (Input.GetKey(KeyCode.LeftShift))
