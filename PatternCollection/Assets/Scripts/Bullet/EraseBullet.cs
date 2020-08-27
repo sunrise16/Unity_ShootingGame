@@ -68,8 +68,7 @@ public class EraseBullet : MonoBehaviour
         EnemyFire.ClearChild(gameObject);
 
         bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
-        // bulletManager.bulletPool.Enqueue(gameObject);
-        bulletManager.bulletPool.Push(gameObject);
+        bulletManager.bulletPool.Enqueue(gameObject);
         gameObject.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet").transform);
         gameObject.transform.position = new Vector2(0.0f, 0.0f);
         gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);

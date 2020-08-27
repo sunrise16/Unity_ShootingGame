@@ -27,8 +27,7 @@ public class PlayerFire : MonoBehaviour
                     {
                         if (bulletManager.bulletPool.Count > 0)
                         {
-                            // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                            GameObject bullet = bulletManager.bulletPool.Pop();
+                            GameObject bullet = bulletManager.bulletPool.Dequeue();
                             bullet.SetActive(true);
                             bullet.transform.position = GameObject.Find("PLAYER").transform.Find("AttackPoint").transform.Find("PrimaryPoint" + (i + 1).ToString()).transform.position;
                             bullet.gameObject.tag = "BULLET_PLAYER";
@@ -42,8 +41,7 @@ public class PlayerFire : MonoBehaviour
                             GameObject bullet = Instantiate(bulletManager.bulletObject);
                             bullet.SetActive(false);
                             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                            // bulletManager.bulletPool.Enqueue(bullet);
-                            bulletManager.bulletPool.Push(bullet);
+                            bulletManager.bulletPool.Enqueue(bullet);
                         }
                     }
 
@@ -54,8 +52,7 @@ public class PlayerFire : MonoBehaviour
                     {
                         if (bulletManager.bulletPool.Count > 0)
                         {
-                            // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                            GameObject bullet = bulletManager.bulletPool.Pop();
+                            GameObject bullet = bulletManager.bulletPool.Dequeue();
                             bullet.SetActive(true);
                             bullet.transform.position = GameObject.Find("PLAYER").transform.Find("AttackPoint").transform.Find("Yinyang" + (i + 1).ToString()).transform.position;
                             bullet.gameObject.tag = "BULLET_PLAYER";
@@ -67,8 +64,7 @@ public class PlayerFire : MonoBehaviour
                             GameObject bullet = Instantiate(bulletManager.bulletObject);
                             bullet.SetActive(false);
                             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                            // bulletManager.bulletPool.Enqueue(bullet);
-                            bulletManager.bulletPool.Push(bullet);
+                            bulletManager.bulletPool.Enqueue(bullet);
                         }
                     }
 

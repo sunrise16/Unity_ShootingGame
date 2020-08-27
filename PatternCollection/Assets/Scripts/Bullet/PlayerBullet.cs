@@ -59,8 +59,7 @@ public class PlayerBullet : MonoBehaviour
     public void ClearPlayerBullet(int bulletPoolIndex)
     {
         bulletManager = GameObject.Find("BulletManager").transform.GetChild(bulletPoolIndex).GetComponent<BulletManager>();
-        // bulletManager.bulletPool.Enqueue(gameObject);
-        bulletManager.bulletPool.Push(gameObject);
+        bulletManager.bulletPool.Enqueue(gameObject);
         gameObject.transform.SetParent(GameObject.Find("BULLET").transform.GetChild(bulletPoolIndex).transform);
         gameObject.transform.position = new Vector2(0.0f, 0.0f);
         gameObject.SetActive(false);

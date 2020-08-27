@@ -7,8 +7,7 @@ public class BulletManager : MonoBehaviour
 {
     public GameObject bulletObject;
     public GameObject bulletParent;
-    // public Queue<GameObject> bulletPool;
-    public Stack<GameObject> bulletPool;
+    public Queue<GameObject> bulletPool;
 
     int bulletPoolSize = 10000;
     
@@ -24,15 +23,13 @@ public class BulletManager : MonoBehaviour
             bulletPoolSize = 1000;
         }
 
-        // bulletPool = new Queue<GameObject>();
-        bulletPool = new Stack<GameObject>();
+        bulletPool = new Queue<GameObject>();
         for (int i = 0; i < bulletPoolSize; i++)
         {
             GameObject bullet = Instantiate(bulletObject);
             bullet.SetActive(false);
             bullet.transform.SetParent(bulletParent.transform);
-            // bulletPool.Enqueue(bullet);
-            bulletPool.Push(bullet);
+            bulletPool.Enqueue(bullet);
         }
     }
 }

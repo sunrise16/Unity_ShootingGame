@@ -22,8 +22,7 @@ public class Stage5BulletCreate : MonoBehaviour
 
             if (bulletManager.bulletPool.Count > 0)
             {
-                // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                GameObject bullet = bulletManager.bulletPool.Pop();
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
                 bullet.SetActive(true);
                 EnemyFire.ClearChild(bullet);
                 bullet.transform.position = transform.position;
@@ -55,8 +54,7 @@ public class Stage5BulletCreate : MonoBehaviour
                 GameObject bullet = Instantiate(bulletManager.bulletObject);
                 bullet.SetActive(false);
                 bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                // bulletManager.bulletPool.Enqueue(bullet);
-                bulletManager.bulletPool.Push(bullet);
+                bulletManager.bulletPool.Enqueue(bullet);
             }
 
             yield return new WaitForSeconds(0.2f);

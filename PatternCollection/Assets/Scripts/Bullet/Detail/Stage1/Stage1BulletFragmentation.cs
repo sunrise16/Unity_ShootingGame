@@ -25,8 +25,7 @@ public class Stage1BulletFragmentation : MonoBehaviour
             {
                 for (int i = 0; i < 16; i++)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     EnemyFire.ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -55,8 +54,7 @@ public class Stage1BulletFragmentation : MonoBehaviour
                 }
 
                 bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
-                // bulletManager.bulletPool.Enqueue(gameObject);
-                bulletManager.bulletPool.Push(gameObject);
+                bulletManager.bulletPool.Enqueue(gameObject);
                 transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
                 gameObject.SetActive(false);
             }
@@ -65,8 +63,7 @@ public class Stage1BulletFragmentation : MonoBehaviour
                 GameObject bullet = Instantiate(bulletManager.bulletObject);
                 bullet.SetActive(false);
                 bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                // bulletManager.bulletPool.Enqueue(bullet);
-                bulletManager.bulletPool.Push(bullet);
+                bulletManager.bulletPool.Enqueue(bullet);
             }
         }
     }

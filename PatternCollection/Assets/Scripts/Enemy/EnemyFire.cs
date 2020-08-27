@@ -105,8 +105,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -148,8 +147,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
 
@@ -170,8 +168,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = new Vector2(Random.Range(-6.0f, -5.0f), Random.Range(-4.5f, 1.5f));
@@ -206,8 +203,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
             // 탄막 발사 (분홍색 나비탄) (랜덤탄) (좌측 하단)
@@ -215,8 +211,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = new Vector2(Random.Range(-6.0f, -5.0f), Random.Range(1.5f, 7.5f));
@@ -251,8 +246,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
             // 탄막 발사 (분홍색 나비탄) (랜덤탄) (우측 상단)
@@ -260,8 +254,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = new Vector2(Random.Range(5.0f, 6.0f), Random.Range(-4.5f, 1.5f));
@@ -296,8 +289,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
             // 탄막 발사 (분홍색 나비탄) (랜덤탄) (우측 하단)
@@ -305,8 +297,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = new Vector2(Random.Range(5.0f, 6.0f), Random.Range(1.5f, 7.5f));
@@ -341,8 +332,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
 
@@ -361,9 +351,7 @@ public class EnemyFire : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 // 빈 탄막 발사
-                // GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
-                GameObject emptyBullet = bulletManager.bulletPool.Pop();
-
+                GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
                 if (bulletManager.bulletPool.Count > 0)
                 {
                     emptyBullet.SetActive(true);
@@ -398,8 +386,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
 
                 // 탄막 발사 (하늘색 나비탄) (빈 탄막을 중심으로 회전)
@@ -407,8 +394,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = emptyBullet.transform.position;
@@ -441,8 +427,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
             }
@@ -470,8 +455,7 @@ public class EnemyFire : MonoBehaviour
                     
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = gameObject.transform.position;
@@ -504,8 +488,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
                 
@@ -524,8 +507,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -559,8 +541,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -607,8 +588,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -656,8 +636,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
 
@@ -701,8 +680,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -734,8 +712,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -773,8 +750,7 @@ public class EnemyFire : MonoBehaviour
                 // 탄막 1 발사 (빨간색 대옥탄)
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -806,8 +782,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
 
                 // 탄막 2 발사 (빨간색 대형 환탄)
@@ -815,8 +790,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -848,8 +822,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -858,8 +831,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -891,8 +863,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -920,8 +891,7 @@ public class EnemyFire : MonoBehaviour
                 // 탄막 1 발사 (빨간색 대옥탄)
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -953,8 +923,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
 
                 // 탄막 2 발사 (빨간색 대형 환탄)
@@ -962,8 +931,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -995,8 +963,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -1005,8 +972,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -1038,8 +1004,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -1054,8 +1019,7 @@ public class EnemyFire : MonoBehaviour
                 // 탄막 1 발사 (빨간색 대옥탄)
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -1087,8 +1051,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
 
                 // 탄막 2 발사 (빨간색 대형 환탄)
@@ -1096,8 +1059,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -1129,8 +1091,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -1139,8 +1100,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -1172,8 +1132,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -1201,8 +1160,7 @@ public class EnemyFire : MonoBehaviour
                 // 탄막 1 발사 (빨간색 대옥탄)
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -1234,8 +1192,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
 
                 // 탄막 2 발사 (빨간색 대형 환탄)
@@ -1243,8 +1200,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -1276,8 +1232,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -1286,8 +1241,7 @@ public class EnemyFire : MonoBehaviour
                 {
                     if (bulletManager.bulletPool.Count > 0)
                     {
-                        // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                        GameObject bullet = bulletManager.bulletPool.Pop();
+                        GameObject bullet = bulletManager.bulletPool.Dequeue();
                         bullet.SetActive(true);
                         ClearChild(bullet);
                         bullet.transform.position = transform.position;
@@ -1319,8 +1273,7 @@ public class EnemyFire : MonoBehaviour
                         GameObject bullet = Instantiate(bulletManager.bulletObject);
                         bullet.SetActive(false);
                         bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                        // bulletManager.bulletPool.Enqueue(bullet);
-                        bulletManager.bulletPool.Push(bullet);
+                        bulletManager.bulletPool.Enqueue(bullet);
                     }
                 }
 
@@ -1352,8 +1305,7 @@ public class EnemyFire : MonoBehaviour
                     {
                         if (bulletManager.bulletPool.Count > 0)
                         {
-                            // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                            GameObject bullet = bulletManager.bulletPool.Pop();
+                            GameObject bullet = bulletManager.bulletPool.Dequeue();
                             bullet.SetActive(true);
                             ClearChild(bullet);
                             bullet.transform.position = transform.position;
@@ -1385,8 +1337,7 @@ public class EnemyFire : MonoBehaviour
                             GameObject bullet = Instantiate(bulletManager.bulletObject);
                             bullet.SetActive(false);
                             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                            // bulletManager.bulletPool.Enqueue(bullet);
-                            bulletManager.bulletPool.Push(bullet);
+                            bulletManager.bulletPool.Enqueue(bullet);
                         }
                     }
 
@@ -1404,8 +1355,7 @@ public class EnemyFire : MonoBehaviour
                     {
                         if (bulletManager.bulletPool.Count > 0)
                         {
-                            // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                            GameObject bullet = bulletManager.bulletPool.Pop();
+                            GameObject bullet = bulletManager.bulletPool.Dequeue();
                             bullet.SetActive(true);
                             ClearChild(bullet);
                             bullet.transform.position = transform.position;
@@ -1437,8 +1387,7 @@ public class EnemyFire : MonoBehaviour
                             GameObject bullet = Instantiate(bulletManager.bulletObject);
                             bullet.SetActive(false);
                             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                            // bulletManager.bulletPool.Enqueue(bullet);
-                            bulletManager.bulletPool.Push(bullet);
+                            bulletManager.bulletPool.Enqueue(bullet);
                         }
                     }
 
@@ -1476,9 +1425,7 @@ public class EnemyFire : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 // 빈 탄막 발사
-                // GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
-                GameObject emptyBullet = bulletManager.bulletPool.Pop();
-
+                GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
                 if (bulletManager.bulletPool.Count > 0)
                 {
                     emptyBullet.SetActive(true);
@@ -1526,15 +1473,13 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
 
                 // 탄막 발사 (회색 고정 레이저탄) (지점 조준 회전탄)
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = new Vector3(transform.position.x, transform.position.y - 7.0f, transform.position.z);
@@ -1582,8 +1527,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
 
@@ -1619,8 +1563,7 @@ public class EnemyFire : MonoBehaviour
             {
                 if (bulletManager.bulletPool.Count > 0)
                 {
-                    // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    GameObject bullet = bulletManager.bulletPool.Pop();
+                    GameObject bullet = bulletManager.bulletPool.Dequeue();
                     bullet.SetActive(true);
                     ClearChild(bullet);
                     bullet.transform.position = transform.position;
@@ -1652,8 +1595,7 @@ public class EnemyFire : MonoBehaviour
                     GameObject bullet = Instantiate(bulletManager.bulletObject);
                     bullet.SetActive(false);
                     bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                    // bulletManager.bulletPool.Enqueue(bullet);
-                    bulletManager.bulletPool.Push(bullet);
+                    bulletManager.bulletPool.Enqueue(bullet);
                 }
             }
             
@@ -1724,9 +1666,7 @@ public class EnemyFire : MonoBehaviour
             playerPosition = GameObject.Find("PLAYER").transform.position;
 
             // 빈 탄막 발사
-            // GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
-            GameObject emptyBullet = bulletManager.bulletPool.Pop();
-
+            GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
             if (bulletManager.bulletPool.Count > 0)
             {
                 emptyBullet.SetActive(true);
@@ -1767,15 +1707,14 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = Instantiate(bulletManager.bulletObject);
                 bullet.SetActive(false);
                 bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                // bulletManager.bulletPool.Enqueue(bullet);
-                bulletManager.bulletPool.Push(bullet);
+                bulletManager.bulletPool.Enqueue(bullet);
             }
 
             // 탄막 1 발사 (회색 고정 레이저탄) (조준탄)
             if (bulletManager.bulletPool.Count > 0)
             {
-                // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                GameObject bullet = bulletManager.bulletPool.Pop();
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                 
                 bullet.SetActive(true);
                 ClearChild(bullet);
                 bullet.transform.position = new Vector3(transform.position.x, transform.position.y - 7.0f, transform.position.z);
@@ -1815,8 +1754,8 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = Instantiate(bulletManager.bulletObject);
                 bullet.SetActive(false);
                 bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                // bulletManager.bulletPool.Enqueue(bullet);
-                bulletManager.bulletPool.Push(bullet);
+                bulletManager.bulletPool.Enqueue(bullet);
+                 
             }
 
             yield return new WaitForSeconds(5.0f);
@@ -1840,8 +1779,8 @@ public class EnemyFire : MonoBehaviour
             // 탄막 2 발사 (분홍색 무빙 레이저탄) (조준탄)
             if (bulletManager.bulletPool.Count > 0)
             {
-                // GameObject bullet = bulletManager.bulletPool.Dequeue();
-                GameObject bullet = bulletManager.bulletPool.Pop();
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                 
                 bullet.SetActive(true);
                 ClearChild(bullet);
                 bullet.transform.position = transform.position;
@@ -1879,8 +1818,8 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = Instantiate(bulletManager.bulletObject);
                 bullet.SetActive(false);
                 bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                // bulletManager.bulletPool.Enqueue(bullet);
-                bulletManager.bulletPool.Push(bullet);
+                bulletManager.bulletPool.Enqueue(bullet);
+                 
             }
 
             yield return new WaitForSeconds(5.0f);
