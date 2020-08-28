@@ -5,10 +5,20 @@ using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
-    private BulletManager bulletManager;
+    private BulletManager bulletManagerPrimary;
+    private BulletManager bulletManagerSecondary;
+    private Transform firePoint;
+    private Transform playerBullet1;
+    private Transform playerBullet2;
 
 	void Start()
     {
+        bulletManagerPrimary = GameObject.Find("BulletManager").transform.Find("PlayerBullet1").GetComponent<BulletManager>();
+        bulletManagerSecondary = GameObject.Find("BulletManager").transform.Find("PlayerBullet2").GetComponent<BulletManager>();
+        firePoint = GameObject.Find("PLAYER").transform.Find("AttackPoint").transform;
+        playerBullet1 = GameObject.Find("BULLET").transform.Find("PlayerBullet1");
+        playerBullet2 = GameObject.Find("BULLET").transform.Find("PlayerBullet2");
+
         StartCoroutine(Fire());
 	}
 	
@@ -21,50 +31,45 @@ public class PlayerFire : MonoBehaviour
                 if (Input.GetKey(KeyCode.Z))
                 {
                     // 주무기 발사
-                    bulletManager = GameObject.Find("BulletManager").transform.Find("PlayerBullet1").GetComponent<BulletManager>();
-
                     for (int i = 0; i < 2; i++)
                     {
-                        if (bulletManager.bulletPool.Count > 0)
+                        if (bulletManagerPrimary.bulletPool.Count > 0)
                         {
-                            GameObject bullet = bulletManager.bulletPool.Dequeue();
+                            GameObject bullet = bulletManagerPrimary.bulletPool.Dequeue();
                             bullet.SetActive(true);
-                            bullet.transform.position = GameObject.Find("PLAYER").transform.Find("AttackPoint").transform.Find("PrimaryPoint" + (i + 1).ToString()).transform.position;
+                            bullet.transform.position = firePoint.Find("PrimaryPoint" + (i + 1).ToString()).transform.position;
                             bullet.gameObject.tag = "BULLET_PLAYER";
                             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY");
-                            bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("PlayerBullet1"));
+                            bullet.transform.SetParent(playerBullet1);
                             bullet.transform.GetChild(0).gameObject.SetActive(true);
-                            bullet.transform.GetChild(0).GetComponent<PlayerBulletTailAlpha>().tailAlpha = 0.0f;
                         }
                         else
                         {
-                            GameObject bullet = Instantiate(bulletManager.bulletObject);
+                            GameObject bullet = Instantiate(bulletManagerPrimary.bulletObject);
                             bullet.SetActive(false);
-                            bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                            bulletManager.bulletPool.Enqueue(bullet);
+                            bullet.transform.SetParent(bulletManagerPrimary.bulletParent.transform);
+                            bulletManagerPrimary.bulletPool.Enqueue(bullet);
                         }
                     }
 
                     // 보조무기 발사
-                    bulletManager = GameObject.Find("BulletManager").transform.Find("PlayerBullet2").GetComponent<BulletManager>();
-
                     for (int i = 0; i < 4; i++)
                     {
-                        if (bulletManager.bulletPool.Count > 0)
+                        if (bulletManagerSecondary.bulletPool.Count > 0)
                         {
-                            GameObject bullet = bulletManager.bulletPool.Dequeue();
+                            GameObject bullet = bulletManagerSecondary.bulletPool.Dequeue();
                             bullet.SetActive(true);
-                            bullet.transform.position = GameObject.Find("PLAYER").transform.Find("AttackPoint").transform.Find("Yinyang" + (i + 1).ToString()).transform.position;
+                            bullet.transform.position = firePoint.Find("Yinyang" + (i + 1).ToString()).transform.position;
                             bullet.gameObject.tag = "BULLET_PLAYER";
                             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY");
-                            bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("PlayerBullet2"));
+                            bullet.transform.SetParent(playerBullet2);
                         }
                         else
                         {
-                            GameObject bullet = Instantiate(bulletManager.bulletObject);
+                            GameObject bullet = Instantiate(bulletManagerSecondary.bulletObject);
                             bullet.SetActive(false);
-                            bullet.transform.SetParent(bulletManager.bulletParent.transform);
-                            bulletManager.bulletPool.Enqueue(bullet);
+                            bullet.transform.SetParent(bulletManagerSecondary.bulletParent.transform);
+                            bulletManagerSecondary.bulletPool.Enqueue(bullet);
                         }
                     }
 

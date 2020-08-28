@@ -18,26 +18,26 @@ public class PlayerDie : MonoBehaviour
 
     public IEnumerator CreateDieEffect()
     {
-        // if (playerMove.isDamaged == false && isInvincible == false)
-        // {
-        //     playerMove.isDamaged = true;
-        //     isInvincible = true;
-        // 
-        //     GameObject body = transform.Find("Body").gameObject;
-        //     GameObject effect = Instantiate(dieEffect);
-        //     effect.transform.SetParent(transform.Find("Effect").transform);
-        //     effect.transform.position = transform.position;
-        //     body.SetActive(false);
-        // 
-             yield return new WaitForSeconds(1.5f);
-        // 
-        //     Destroy(effect);
-        //     transform.position = new Vector2(0.0f, -5.5f);
-        //     body.SetActive(true);
-        //     StartCoroutine(PlayerReviving());
-        //     StartCoroutine(PlayerBlinking());
-        //     StopCoroutine(CreateDieEffect());
-        // }
+        if (playerMove.isDamaged == false && isInvincible == false)
+        {
+            playerMove.isDamaged = true;
+            isInvincible = true;
+        
+            GameObject body = transform.Find("Body").gameObject;
+            GameObject effect = Instantiate(dieEffect);
+            effect.transform.SetParent(transform.Find("Effect").transform);
+            effect.transform.position = transform.position;
+            body.SetActive(false);
+        
+          yield return new WaitForSeconds(1.5f);
+        
+            Destroy(effect);
+            transform.position = new Vector2(0.0f, -5.5f);
+            body.SetActive(true);
+            StartCoroutine(PlayerReviving());
+            StartCoroutine(PlayerBlinking());
+            StopCoroutine(CreateDieEffect());
+        }
     }
 
     IEnumerator PlayerReviving()

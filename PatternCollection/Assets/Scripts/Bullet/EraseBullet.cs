@@ -10,10 +10,11 @@ public class EraseBullet : MonoBehaviour
     private BoxCollider2D boxCollider;
     private CapsuleCollider2D capsuleCollider;
     private BulletManager bulletManager;
+    private Transform enemyBullet;
+    private PlayerDatabase playerDatabase;
     private InitializeBullet initializeBullet;
     private MovingBullet movingBullet;
     private LaserBullet laserBullet;
-    private EraseBullet eraseBullet;
 
     // 커스텀 컴포넌트를 만들 경우 계속 추가할 것!
     private Stage1BulletFragmentation stage1BulletFragmentation;
@@ -25,10 +26,12 @@ public class EraseBullet : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
+        enemyBullet = GameObject.Find("BULLET").transform.Find("EnemyBullet");
+        playerDatabase = GameObject.Find("PLAYER").GetComponent<PlayerDatabase>();
         initializeBullet = GetComponent<InitializeBullet>();
         movingBullet = GetComponent<MovingBullet>();
         laserBullet = GetComponent<LaserBullet>();
-        eraseBullet = GetComponent<EraseBullet>();
         stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
         stage5BulletCreate = GetComponent<Stage5BulletCreate>();
     }
@@ -51,13 +54,18 @@ public class EraseBullet : MonoBehaviour
         {
             ClearBullet();
         }
+        else if ((gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER") && gameObject.GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_MOVE) &&
+            collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_LASER"))
+        {
+            ClearBullet();
+        }
         else if ((gameObject.tag == "BULLET_ENEMY" || gameObject.tag == "BULLET_ENEMY_EMPTY") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_ALL"))
         {
             ClearBullet();
         }
         else if (gameObject.tag == "BULLET_ENEMY" && collision.gameObject.tag == "PLAYER")
         {
-            GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().hitCount++;
+            playerDatabase.hitCount++;
             // StartCoroutine(GameObject.Find("PLAYER").GetComponent<PlayerDie>().CreateDieEffect());
             ClearBullet();
         }
@@ -66,10 +74,9 @@ public class EraseBullet : MonoBehaviour
     public void ClearBullet()
     {
         EnemyFire.ClearChild(gameObject);
-
-        bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
+        
         bulletManager.bulletPool.Enqueue(gameObject);
-        gameObject.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet").transform);
+        gameObject.transform.SetParent(enemyBullet.transform);
         gameObject.transform.position = new Vector2(0.0f, 0.0f);
         gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 0.0f);
@@ -88,7 +95,7 @@ public class EraseBullet : MonoBehaviour
         Destroy(stage5BulletCreate);
 
         // 최종 컴포넌트 제거 후 비활성화
-        Destroy(eraseBullet);
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
     public IEnumerator AutoClearBullet(float waitTime)

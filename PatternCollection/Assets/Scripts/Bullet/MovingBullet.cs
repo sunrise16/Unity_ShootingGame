@@ -9,6 +9,7 @@ public enum BulletSpeedState
     BULLETSPEEDSTATE_ACCELERATING,
     BULLETSPEEDSTATE_DECELERATING,
     BULLETSPEEDSTATE_LOOP,
+    BULLETSPEEDSTATE_LOOPONCE,
 }
 
 public enum BulletRotateState
@@ -24,6 +25,8 @@ public class MovingBullet : MonoBehaviour
     public BulletSpeedState bulletSpeedState;
     public BulletRotateState bulletRotateState;
     public Vector2 bulletDestination;
+    private GameObject playerObject;
+    private PlayerDatabase playerDatabase;
 
     // 탄속 관련
     public float bulletMoveSpeed;
@@ -44,6 +47,9 @@ public class MovingBullet : MonoBehaviour
 
     void Start()
     {
+        playerObject = GameObject.Find("PLAYER");
+        playerDatabase = playerObject.GetComponent<PlayerDatabase>();
+
         bulletRotateTime = 0.0f;
         grazeDelay = 0.0f;
         isGrazing = false;
@@ -102,6 +108,27 @@ public class MovingBullet : MonoBehaviour
                 }
             }
         }
+        else if (bulletSpeedState == BulletSpeedState.BULLETSPEEDSTATE_LOOPONCE)
+        {
+            if (bulletMoveSpeedLoopBool == true)
+            {
+                bulletMoveSpeed += bulletAccelerationMoveSpeed;
+                if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
+                {
+                    bulletMoveSpeedLoopBool = false;
+                    bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
+                }
+            }
+            else
+            {
+                bulletMoveSpeed -= bulletDecelerationMoveSpeed;
+                if (bulletMoveSpeed <= bulletDecelerationMoveSpeedMin)
+                {
+                    bulletMoveSpeedLoopBool = true;
+                    bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING;
+                }
+            }
+        }
 
         // 탄도 변경 (지속 증감)
         if (bulletRotateSpeed != 0.0f)
@@ -140,13 +167,49 @@ public class MovingBullet : MonoBehaviour
             grazeDelay += Time.deltaTime;
             if (grazeDelay >= 0.1f)
             {
-                GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().grazeCount++;
+                playerDatabase.grazeCount++;
                 grazeDelay = 0.0f;
             }
         }
         else
         {
             grazeDelay = 0.0f;
+        }
+
+        // 콜라이더 활성화
+        if (Vector2.Distance(transform.position, playerObject.transform.position) <= 0.5f)
+        {
+            if (GetComponent<CircleCollider2D>() != null)
+            {
+                GetComponent<CircleCollider2D>().enabled = true;
+            }
+            else if (GetComponent<CapsuleCollider2D>() != null)
+            {
+                GetComponent<CapsuleCollider2D>().enabled = true;
+            }
+            else if (GetComponent<BoxCollider2D>() != null)
+            {
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+        else
+        {
+            Vector3 targetScreenPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+            if ((targetScreenPos.x > Screen.width || targetScreenPos.x < 0) || (targetScreenPos.y > Screen.height || targetScreenPos.y < 0))
+            {
+                if (GetComponent<CircleCollider2D>() != null)
+                {
+                    GetComponent<CircleCollider2D>().enabled = true;
+                }
+                else if (GetComponent<CapsuleCollider2D>() != null)
+                {
+                    GetComponent<CapsuleCollider2D>().enabled = true;
+                }
+                else if (GetComponent<BoxCollider2D>() != null)
+                {
+                    GetComponent<BoxCollider2D>().enabled = true;
+                }
+            }
         }
     }
 
@@ -174,7 +237,7 @@ public class MovingBullet : MonoBehaviour
             }
             else
             {
-                GameObject.Find("PLAYER").GetComponent<PlayerDatabase>().grazeCount++;
+                playerDatabase.grazeCount++;
                 gameObject.GetComponent<InitializeBullet>().isGrazed = true;
             }
         }

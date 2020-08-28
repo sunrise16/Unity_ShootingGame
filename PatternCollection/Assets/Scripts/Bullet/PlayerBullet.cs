@@ -5,24 +5,36 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    private BulletManager bulletManager;
+    private GameManager gameManager;
+    private Transform bulletTransform;
+    private Transform bulletManagerTransform;
 
     private float playerBulletSpeed;
 
 	void Start()
     {
+        gameManager = GameObject.Find("MANAGER").transform.Find("GameManager").GetComponent<GameManager>();
+        bulletTransform = GameObject.Find("BULLET").transform;
+        bulletManagerTransform = GameObject.Find("BulletManager").transform;
+
         playerBulletSpeed = 24.0f;
 	}
-	
-	void Update()
+
+    void Update()
     {
         transform.Translate(Vector2.right * playerBulletSpeed * Time.deltaTime);
-	}
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ENEMY")
         {
+            collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp -= 1.0f;
+            if (collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp <= 0.0f)
+            {
+                StartCoroutine(gameManager.StageClear());
+            }
+
             if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY"))
             {
                 ClearPlayerBullet(1);
@@ -31,7 +43,6 @@ public class PlayerBullet : MonoBehaviour
             {
                 ClearPlayerBullet(2);
             }
-            collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp -= 1.0f;
         }
         else if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY") &&
             (collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER1") || collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER2")))
@@ -58,9 +69,9 @@ public class PlayerBullet : MonoBehaviour
 
     public void ClearPlayerBullet(int bulletPoolIndex)
     {
-        bulletManager = GameObject.Find("BulletManager").transform.GetChild(bulletPoolIndex).GetComponent<BulletManager>();
+        BulletManager bulletManager = bulletManagerTransform.GetChild(bulletPoolIndex).GetComponent<BulletManager>();
         bulletManager.bulletPool.Enqueue(gameObject);
-        gameObject.transform.SetParent(GameObject.Find("BULLET").transform.GetChild(bulletPoolIndex).transform);
+        gameObject.transform.SetParent(bulletTransform.GetChild(bulletPoolIndex).transform);
         gameObject.transform.position = new Vector2(0.0f, 0.0f);
         gameObject.SetActive(false);
     }

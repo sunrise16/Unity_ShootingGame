@@ -5,55 +5,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private GameObject enemy;
     private EnemyDatabase enemyDatabase;
     private EnemyFire enemyFire;
+    private EnemySprite enemySprite;
+    private GameObject destroyzoneAll;
 
     public int stageNumber;
-    public bool isStageClear;
-    private float waitTime;
-    private float waitTimeDelay;
 
     void Start()
     {
+        enemy = GameObject.Find("ENEMY");
         enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyDatabase>();
         enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
+        enemySprite = GameObject.Find("ENEMY").transform.Find("Body").GetComponent<EnemySprite>();
+        destroyzoneAll = GameObject.Find("DESTROYZONE").transform.Find("DESTROYZONE_ALL").gameObject;
 
         stageNumber = 1;
-        isStageClear = false;
-        waitTime = 2.0f;
-        waitTimeDelay = 0.0f;
-
         StartCoroutine(GameStart());
     }
-	
-	void Update()
-    {
-		if (enemyDatabase.enemyCurrentHp <= 0)
-        {
-            stageNumber++;
-            SetEnemyHp();
-            isStageClear = true;
-            enemyFire.StopAllCoroutines();
-
-            GameObject.Find("ENEMY").transform.position = new Vector2(0.0f, 3.5f);
-            GameObject.Find("ENEMY").transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = false;
-            GameObject.Find("ENEMY").transform.Find("Body").GetComponent<EnemySprite>().isRightMove = false;
-            GameObject.Find("DESTROYZONE").transform.Find("DESTROYZONE_ALL").gameObject.SetActive(true);
-        }
-
-        if (isStageClear == true)
-        {
-            waitTimeDelay += Time.deltaTime;
-            if (waitTimeDelay >= waitTime)
-            {
-                waitTimeDelay = 0.0f;
-                isStageClear = false;
-                enemyFire.Fire(stageNumber);
-
-                GameObject.Find("DESTROYZONE").transform.Find("DESTROYZONE_ALL").gameObject.SetActive(false);
-            }
-        }
-	}
 
     private void SetEnemyHp()
     {
@@ -79,6 +49,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         enemyFire.Fire(stageNumber);
-        StopAllCoroutines();
+        destroyzoneAll.SetActive(false);
+    }
+
+    public IEnumerator StageClear()
+    {
+        stageNumber++;
+        SetEnemyHp();
+        enemyFire.StopAllCoroutines();
+
+        enemy.transform.position = new Vector2(0.0f, 3.5f);
+        enemySprite.isLeftMove = false;
+        enemySprite.isRightMove = false;
+        destroyzoneAll.SetActive(true);
+        StartCoroutine(GameStart());
+
+        yield return null;
     }
 }

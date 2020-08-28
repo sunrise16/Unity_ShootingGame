@@ -5,16 +5,24 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    private PlayerHitPoint playerHitPoint;
+    private GameObject grazeCircle;
+    private Animator animator;
     private Vector2 margin;
     private Vector2 moveSpeedVector;
+
     private float moveSpeed;
     public bool isSlowMoveMode;
     public bool isDamaged;
 
     void Start()
     {
+        playerHitPoint = transform.Find("HitPoint").GetComponent<PlayerHitPoint>();
+        grazeCircle = GameObject.Find("GRAZECIRCLE");
+        animator = transform.Find("Body").GetComponent<Animator>();
         margin = new Vector2(0.03f, 0.03f);
         moveSpeedVector = Vector2.zero;
+
         moveSpeed = 3.0f;
         isSlowMoveMode = false;
         isDamaged = false;
@@ -22,17 +30,19 @@ public class PlayerMove : MonoBehaviour
     
     void Update ()
     {
-        GameObject.Find("GRAZECIRCLE").transform.position = transform.position;
+        grazeCircle.transform.position = transform.position;
 
         if (isDamaged == false)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 isSlowMoveMode = true;
+                StartCoroutine(playerHitPoint.AlphaUp());
             }
-            else
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 isSlowMoveMode = false;
+                StartCoroutine(playerHitPoint.AlphaDown());
             }
 
             if (isSlowMoveMode == true)
@@ -47,10 +57,16 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 moveSpeedVector.x = -moveSpeed;
+                animator.SetTrigger("isLeftMove");
+                animator.ResetTrigger("isIdle");
+                animator.ResetTrigger("isRightMove");
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
                 moveSpeedVector.x = moveSpeed;
+                animator.SetTrigger("isRightMove");
+                animator.ResetTrigger("isIdle");
+                animator.ResetTrigger("isLeftMove");
             }
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -65,6 +81,9 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
             {
                 moveSpeedVector = Vector2.zero;
+                animator.SetTrigger("isIdle");
+                animator.ResetTrigger("isLeftMove");
+                animator.ResetTrigger("isRightMove");
             }
         }
 

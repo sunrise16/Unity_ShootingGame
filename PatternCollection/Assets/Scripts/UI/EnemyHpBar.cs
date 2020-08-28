@@ -12,6 +12,7 @@ public class EnemyHpBar : MonoBehaviour
 	void Start()
     {
         enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyDatabase>();
+
         hpBarImage = GetComponent<Image>();
 	}
 	
