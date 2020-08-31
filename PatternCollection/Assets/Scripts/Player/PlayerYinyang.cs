@@ -12,19 +12,25 @@ public class PlayerYinyang : MonoBehaviour
     void Start()
     {
         playerMove = GameObject.Find("PLAYER").GetComponent<PlayerMove>();
+        StartCoroutine(YinyangPosition());
     }
 
-    void Update()
+    public IEnumerator YinyangPosition()
     {
         Vector3 vector = Vector3.zero;
 
-        if (playerMove.isSlowMoveMode == true)
+        while (true)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, slowMoveModePoint.transform.position, ref vector, 0.05f);
-        }
-        else
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, fastMoveModePoint.transform.position, ref vector, 0.05f);
+            if (playerMove.isSlowMoveMode == true)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, slowMoveModePoint.transform.position, ref vector, 0.05f);
+            }
+            else
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, fastMoveModePoint.transform.position, ref vector, 0.05f);
+            }
+
+            yield return new WaitForEndOfFrame();
         }
 	}
 }

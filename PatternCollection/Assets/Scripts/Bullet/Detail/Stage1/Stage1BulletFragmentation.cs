@@ -15,9 +15,9 @@ public class Stage1BulletFragmentation : MonoBehaviour
     void Start()
     {
         stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
-        enemyBullet = GameObject.Find("BULLET").transform.Find("EnemyBullet");
+        enemyBullet = GameObject.Find("BULLET").transform.GetChild(4);
         playerObject = GameObject.Find("PLAYER");
-        bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
+        bulletManager = GameObject.Find("BulletManager").transform.GetChild(0).GetComponent<BulletManager>();
         movingBullet = GetComponent<MovingBullet>();
         enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
 
@@ -66,7 +66,7 @@ public class Stage1BulletFragmentation : MonoBehaviour
                     
                     bulletManager.bulletPool.Enqueue(gameObject);
                     transform.SetParent(enemyBullet);
-                    Destroy(stage1BulletFragmentation);
+                    GetComponent<EraseBullet>().ClearBullet();
                     gameObject.SetActive(false);
                     break;
                 }

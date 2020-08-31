@@ -13,11 +13,17 @@ public class PlayerGrazeCount : MonoBehaviour
     {
         playerDatabase = GameObject.Find("PLAYER").GetComponent<PlayerDatabase>();
         grazeCountText = GetComponent<Text>();
+        StartCoroutine(GrazeCount());
     }
 
     // Update is called once per frame
-    void Update()
+    public IEnumerator GrazeCount()
     {
-        grazeCountText.text = playerDatabase.grazeCount.ToString();
+        while (true)
+        {
+            grazeCountText.text = playerDatabase.grazeCount.ToString();
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

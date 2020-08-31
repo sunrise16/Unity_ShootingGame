@@ -18,6 +18,7 @@ public enum BulletRotateState
     BULLETROTATESTATE_NORMAL,
     BULLETROTATESTATE_LIMIT,
     BULLETROTATESTATE_ROTATEAROUND,
+    BULLETROTATESTATE_LOOKAT,
 }
 
 public class MovingBullet : MonoBehaviour
@@ -150,6 +151,13 @@ public class MovingBullet : MonoBehaviour
                 RotateAround(bulletDestination);
             }
         }
+        // 탄도 변경 (지속적으로 대상을 향해 바라보기)
+        else if (bulletRotateState == BulletRotateState.BULLETROTATESTATE_LOOKAT)
+        {
+            bulletDestination = GetComponent<InitializeBullet>().GetAimedBulletDestination(GetComponent<InitializeBullet>().targetObject.transform.position);
+            float angle = Mathf.Atan2(GetComponent<MovingBullet>().bulletDestination.y, GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+            ChangeRotateAngle(angle - 90.0f);
+        }
 
         // 탄막 이동
         if (GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_NORMAL)
@@ -228,7 +236,7 @@ public class MovingBullet : MonoBehaviour
     // 탄막 그레이즈
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((gameObject.tag == "BULLET_ENEMY" && collision.gameObject.tag == "GRAZECIRCLE") && gameObject.GetComponent<InitializeBullet>().isGrazed == false)
+        if ((CompareTag("BULLET_ENEMY") == true && collision.CompareTag("GRAZECIRCLE") == true) && gameObject.GetComponent<InitializeBullet>().isGrazed == false)
         {
             if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER"))
             {
@@ -247,7 +255,7 @@ public class MovingBullet : MonoBehaviour
         grazeDelay = 0.0f;
         isGrazing = false;
 
-        if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER") && collision.gameObject.tag == "GRAZECIRCLE")
+        if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER") && collision.CompareTag("GRAZECIRCLE"))
         {
             if (gameObject.GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_MOVE)
             {

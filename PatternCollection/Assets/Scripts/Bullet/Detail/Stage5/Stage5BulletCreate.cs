@@ -12,9 +12,9 @@ public class Stage5BulletCreate : MonoBehaviour
 
     void Start()
     {
-        enemyBullet = GameObject.Find("BULLET").transform.Find("EnemyBulletTemp1");
+        enemyBullet = GameObject.Find("BULLET").transform.GetChild(4);
         playerObject = GameObject.Find("PLAYER");
-        bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
+        bulletManager = GameObject.Find("BulletManager").transform.GetChild(0).GetComponent<BulletManager>();
         enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
 
         StartCoroutine(CreateBullet());

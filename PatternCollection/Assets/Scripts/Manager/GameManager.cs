@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private EnemyFire enemyFire;
     private EnemySprite enemySprite;
     private GameObject destroyzoneAll;
+    private Transform bulletTransform;
 
     public int stageNumber;
 
@@ -18,8 +19,9 @@ public class GameManager : MonoBehaviour
         enemy = GameObject.Find("ENEMY");
         enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyDatabase>();
         enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
-        enemySprite = GameObject.Find("ENEMY").transform.Find("Body").GetComponent<EnemySprite>();
-        destroyzoneAll = GameObject.Find("DESTROYZONE").transform.Find("DESTROYZONE_ALL").gameObject;
+        enemySprite = GameObject.Find("ENEMY").transform.GetChild(0).GetComponent<EnemySprite>();
+        destroyzoneAll = GameObject.Find("DESTROYZONE").transform.GetChild(0).gameObject;
+        bulletTransform = GameObject.Find("BULLET").transform;
 
         stageNumber = 1;
         StartCoroutine(GameStart());
@@ -54,15 +56,40 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StageClear()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < bulletTransform.GetChild(i + 3).childCount; j++)
+            {
+                if (bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CircleCollider2D>() != null)
+                {
+                    bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CircleCollider2D>().enabled = true;
+                }
+                else if (bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CapsuleCollider2D>() != null)
+                {
+                    bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CapsuleCollider2D>().enabled = true;
+                }
+                else if (bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<BoxCollider2D>() != null)
+                {
+                    bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<BoxCollider2D>().enabled = true;
+                }
+            }
+        }
+
+        Vector3 originPosition = new Vector3(0.0f, 3.5f, 0.0f);
+        float moveTime = 1.5f;
+        iTween.MoveTo(enemy.gameObject, iTween.Hash("position", originPosition, "easetype", iTween.EaseType.easeOutQuad, "time", moveTime));
+        StartCoroutine(enemy.gameObject.GetComponent<EnemyFire>().EnemySpriteSet(originPosition.x, enemy.gameObject.transform.position.x, moveTime));
+
         stageNumber++;
         SetEnemyHp();
         enemyFire.StopAllCoroutines();
-
-        enemy.transform.position = new Vector2(0.0f, 3.5f);
+        
         enemySprite.isLeftMove = false;
         enemySprite.isRightMove = false;
         destroyzoneAll.SetActive(true);
         StartCoroutine(GameStart());
+
+        System.GC.Collect();
 
         yield return null;
     }

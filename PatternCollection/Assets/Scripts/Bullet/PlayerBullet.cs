@@ -27,7 +27,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "ENEMY")
+        if (collision.CompareTag("ENEMY") == true)
         {
             collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp -= 1.0f;
             if (collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp <= 0.0f)

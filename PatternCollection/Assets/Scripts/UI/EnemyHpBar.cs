@@ -14,10 +14,16 @@ public class EnemyHpBar : MonoBehaviour
         enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyDatabase>();
 
         hpBarImage = GetComponent<Image>();
+        StartCoroutine(HpBarUpdate());
 	}
 	
-	void Update()
+	public IEnumerator HpBarUpdate()
     {
-        hpBarImage.fillAmount = enemyDatabase.enemyCurrentHp / enemyDatabase.enemyMaxHp;
+        while (true)
+        {
+            hpBarImage.fillAmount = enemyDatabase.enemyCurrentHp / enemyDatabase.enemyMaxHp;
+
+            yield return new WaitForEndOfFrame();
+        }
 	}
 }

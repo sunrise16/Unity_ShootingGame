@@ -26,8 +26,8 @@ public class EraseBullet : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
-        enemyBullet = GameObject.Find("BULLET").transform.Find("EnemyBullet");
+        bulletManager = GameObject.Find("BulletManager").transform.GetChild(0).GetComponent<BulletManager>();
+        enemyBullet = GameObject.Find("BULLET").transform.GetChild(0);
         playerDatabase = GameObject.Find("PLAYER").GetComponent<PlayerDatabase>();
         initializeBullet = GetComponent<InitializeBullet>();
         movingBullet = GetComponent<MovingBullet>();
@@ -59,11 +59,11 @@ public class EraseBullet : MonoBehaviour
         {
             ClearBullet();
         }
-        else if ((gameObject.tag == "BULLET_ENEMY" || gameObject.tag == "BULLET_ENEMY_EMPTY") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_ALL"))
+        else if ((CompareTag("BULLET_ENEMY") == true || CompareTag("BULLET_ENEMY_EMPTY") == true) && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_ALL"))
         {
             ClearBullet();
         }
-        else if (gameObject.tag == "BULLET_ENEMY" && collision.gameObject.tag == "PLAYER")
+        else if (CompareTag("BULLET_ENEMY") == true && collision.CompareTag("PLAYER") == true)
         {
             playerDatabase.hitCount++;
             // StartCoroutine(GameObject.Find("PLAYER").GetComponent<PlayerDie>().CreateDieEffect());

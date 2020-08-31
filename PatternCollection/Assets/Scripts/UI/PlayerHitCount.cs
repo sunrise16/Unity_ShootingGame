@@ -13,11 +13,16 @@ public class PlayerHitCount : MonoBehaviour
     {
         playerDatabase = GameObject.Find("PLAYER").GetComponent<PlayerDatabase>();
         hitCountText = GetComponent<Text>();
+        StartCoroutine(HitCountText());
 	}
 	
-	// Update is called once per frame
-	void Update()
+	public IEnumerator HitCountText()
     {
-        hitCountText.text = playerDatabase.hitCount.ToString();
+        while (true)
+        {
+            hitCountText.text = playerDatabase.hitCount.ToString();
+
+            yield return new WaitForEndOfFrame();
+        }
 	}
 }

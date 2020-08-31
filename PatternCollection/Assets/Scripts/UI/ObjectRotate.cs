@@ -7,8 +7,18 @@ public class ObjectRotate : MonoBehaviour
 {
     public float rotateSpeed;
 
-	void Update()
+	void Start()
 	{
-		transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+        StartCoroutine(Rotate());
 	}
+
+    public IEnumerator Rotate()
+    {
+        while (true)
+        {
+            transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
 }
