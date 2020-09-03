@@ -26,7 +26,7 @@ public class PlayerFire : MonoBehaviour
     {
         while (true)
         {
-            if (GetComponent<PlayerMove>().isDamaged == false)
+            if (GetComponent<PlayerMove>().isDamaged.Equals(false))
             {
                 if (Input.GetKey(KeyCode.Z))
                 {
@@ -59,7 +59,7 @@ public class PlayerFire : MonoBehaviour
                         {
                             GameObject bullet = bulletManagerSecondary.bulletPool.Dequeue();
                             bullet.SetActive(true);
-                            bullet.transform.position = firePoint.Find("Yinyang" + (i + 1).ToString()).transform.position;
+                            bullet.transform.position = firePoint.Find("SecondaryPoint" + (i + 1).ToString()).transform.position;
                             bullet.gameObject.tag = "BULLET_PLAYER";
                             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY");
                             bullet.transform.SetParent(playerBullet2);

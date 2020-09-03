@@ -38,36 +38,39 @@ public class EraseBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER1"))
+        if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER1")))
         {
             ClearBullet();
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER2"))
+        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER2")))
         {
             ClearBullet();
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER1") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_OUTER1"))
+        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER1")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER1")))
         {
             ClearBullet();
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2") && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_OUTER2"))
+        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER2")))
         {
             ClearBullet();
         }
-        else if ((gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER") && gameObject.GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_MOVE) &&
-            collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_LASER"))
+        else if ((gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && gameObject.GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE)) &&
+            collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_LASER")))
         {
             ClearBullet();
         }
-        else if ((CompareTag("BULLET_ENEMY") == true || CompareTag("BULLET_ENEMY_EMPTY") == true) && collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_ALL"))
+        else if ((CompareTag("BULLET_ENEMY").Equals(true) || CompareTag("BULLET_ENEMY_EMPTY").Equals(true)) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")))
         {
             ClearBullet();
         }
-        else if (CompareTag("BULLET_ENEMY") == true && collision.CompareTag("PLAYER") == true)
+        else if (CompareTag("BULLET_ENEMY").Equals(true) && collision.CompareTag("PLAYER").Equals(true))
         {
             playerDatabase.hitCount++;
             // StartCoroutine(GameObject.Find("PLAYER").GetComponent<PlayerDie>().CreateDieEffect());
-            ClearBullet();
+            if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
+            {
+                ClearBullet();
+            }
         }
     }
 

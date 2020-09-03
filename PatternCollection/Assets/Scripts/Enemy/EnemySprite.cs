@@ -34,13 +34,13 @@ public class EnemySprite : MonoBehaviour
             spriteChangeDelay = 0.0f;
             if (spriteIndexNumber >= 3)
             {
-                if (isLeftMove == false && isRightMove == false)
+                if (isLeftMove.Equals(false) && isRightMove.Equals(false))
                 {
                     spriteIndexNumber = 0;
                 }
                 else
                 {
-                    if (isSpriteReturn == true)
+                    if (isSpriteReturn.Equals(true))
                     {
                         spriteIndexNumber--;
                     }
@@ -52,7 +52,7 @@ public class EnemySprite : MonoBehaviour
             }
             else
             {
-                if (isSpriteReturn == true)
+                if (isSpriteReturn.Equals(true))
                 {
                     spriteIndexNumber--;
                     if (spriteIndexNumber <= 0)
@@ -60,7 +60,7 @@ public class EnemySprite : MonoBehaviour
                         isSpriteReturn = false;
                         isLeftMove = false;
                         isRightMove = false;
-                        if (GetComponent<SpriteRenderer>().flipX == true)
+                        if (GetComponent<SpriteRenderer>().flipX.Equals(true))
                         {
                             GetComponent<SpriteRenderer>().flipX = false;
                         }
@@ -73,7 +73,7 @@ public class EnemySprite : MonoBehaviour
             }
         }
         
-        if (isLeftMove == true || isRightMove == true)
+        if (isLeftMove.Equals(true) || isRightMove.Equals(true))
         {
             enemySprite.sprite = enemyMoveSpriteArray[spriteIndexNumber];
         }

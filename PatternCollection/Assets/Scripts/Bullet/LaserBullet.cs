@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class LaserBullet : MonoBehaviour
 {
-    // 공통 변수
     public float laserWidth;
 
-    // 고정 레이저 타입일 경우의 변수
+    // 레이저 활성화, 비활성화 관련 변수
     public float laserEnableTime;
     public float laserEnableSpeed;
     private float laserEnableDelay;
@@ -17,9 +16,6 @@ public class LaserBullet : MonoBehaviour
     private float laserDisableDelay;
     public bool isLaserEnabled;
     public bool isLaserDisabled;
-
-    // 무빙 레이저 타입일 경우의 변수
-    public float laserLength;
 
     // 레이저 회전 관련 변수
     public BulletRotateState laserRotateState;
@@ -36,7 +32,7 @@ public class LaserBullet : MonoBehaviour
         isLaserEnabled = false;
         isLaserDisabled = true;
 
-        if (GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_HOLD)
+        if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
         {
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
             GetComponent<BoxCollider2D>().enabled = false;
@@ -50,9 +46,9 @@ public class LaserBullet : MonoBehaviour
 	void Update()
     {
         // 레이저 활성화, 비활성화
-        if (GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_HOLD)
+        if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
         {
-            if (isLaserDisabled == true)
+            if (isLaserDisabled.Equals(true))
             {
                 laserEnableDelay += Time.deltaTime;
                 if (laserEnableDelay >= laserEnableTime)
@@ -61,7 +57,7 @@ public class LaserBullet : MonoBehaviour
                     transform.localScale = new Vector3(transform.localScale.x + laserEnableSpeed, transform.localScale.y, transform.localScale.z);
                     if (transform.localScale.x >= laserWidth)
                     {
-                        if (isLaserRotateEnable == true)
+                        if (isLaserRotateEnable.Equals(true))
                         {
                             GetComponent<MovingBullet>().bulletRotateState = laserRotateState;
                             GetComponent<MovingBullet>().bulletRotateSpeed = laserRotateSpeed;
@@ -75,7 +71,7 @@ public class LaserBullet : MonoBehaviour
                     }
                 }
             }
-            else if (isLaserEnabled == true)
+            else if (isLaserEnabled.Equals(true))
             {
                 laserDisableDelay += Time.deltaTime;
                 if (laserDisableDelay >= laserDisableTime)
@@ -84,7 +80,7 @@ public class LaserBullet : MonoBehaviour
                     transform.localScale = new Vector3(transform.localScale.x - laserDisableSpeed, transform.localScale.y, transform.localScale.z);
                     if (transform.localScale.x <= 0.0f)
                     {
-                        if (isLaserRotateDisable == true)
+                        if (isLaserRotateDisable.Equals(true))
                         {
                             GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                             GetComponent<MovingBullet>().bulletRotateSpeed = 0.0f;
@@ -100,14 +96,14 @@ public class LaserBullet : MonoBehaviour
             }
         }
         // 무빙 레이저의 스케일 조정
-        else
-        {
-            float scaleValue = (GetComponent<MovingBullet>().bulletMoveSpeed * Time.deltaTime) * 0.8f;
-            transform.localScale = new Vector3(transform.localScale.x + scaleValue, transform.localScale.y, transform.localScale.z);
-            if (transform.localScale.x >= laserLength)
-            {
-                transform.localScale = new Vector3(laserLength, transform.localScale.y, transform.localScale.z);
-            }
-        }
+        // else
+        // {
+        //     float scaleValue = (GetComponent<MovingBullet>().bulletMoveSpeed * Time.deltaTime) * 0.8f;
+        //     transform.localScale = new Vector3(transform.localScale.x + scaleValue, transform.localScale.y, transform.localScale.z);
+        //     if (transform.localScale.x >= laserLength)
+        //     {
+        //         transform.localScale = new Vector3(laserLength, transform.localScale.y, transform.localScale.z);
+        //     }
+        // }
     }
 }

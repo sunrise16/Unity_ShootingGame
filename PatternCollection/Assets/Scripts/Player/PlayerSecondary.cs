@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class PlayerYinyang : MonoBehaviour
+public class PlayerSecondary : MonoBehaviour
 {
     public GameObject fastMoveModePoint;
     public GameObject slowMoveModePoint;
@@ -12,16 +12,16 @@ public class PlayerYinyang : MonoBehaviour
     void Start()
     {
         playerMove = GameObject.Find("PLAYER").GetComponent<PlayerMove>();
-        StartCoroutine(YinyangPosition());
+        StartCoroutine(SecondaryPosition());
     }
 
-    public IEnumerator YinyangPosition()
+    public IEnumerator SecondaryPosition()
     {
         Vector3 vector = Vector3.zero;
 
         while (true)
         {
-            if (playerMove.isSlowMoveMode == true)
+            if (playerMove.isSlowMoveMode.Equals(true))
             {
                 transform.position = Vector3.SmoothDamp(transform.position, slowMoveModePoint.transform.position, ref vector, 0.05f);
             }

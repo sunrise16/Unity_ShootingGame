@@ -27,7 +27,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("ENEMY") == true)
+        if (collision.CompareTag("ENEMY").Equals(true))
         {
             collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp -= 1.0f;
             if (collision.gameObject.GetComponent<EnemyDatabase>().enemyCurrentHp <= 0.0f)
@@ -35,28 +35,28 @@ public class PlayerBullet : MonoBehaviour
                 StartCoroutine(gameManager.StageClear());
             }
 
-            if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY"))
+            if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")))
             {
                 ClearPlayerBullet(1);
             }
-            else if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY"))
+            else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY")))
             {
                 ClearPlayerBullet(2);
             }
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY") &&
-            (collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER1") || collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_INNER2")))
+        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) &&
+            (collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER1")) || collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER2"))))
         {
             ClearPlayerBullet(1);
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY") &&
-            (collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_OUTER1") || collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_OUTER2")))
+        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY")) &&
+            (collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER1")) || collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER2"))))
         {
             ClearPlayerBullet(2);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("DESTROYZONE_ALL"))
+        else if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")))
         {
-            if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY"))
+            if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")))
             {
                 ClearPlayerBullet(1);
             }

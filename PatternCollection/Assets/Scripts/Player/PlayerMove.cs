@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
     {
         grazeCircle.transform.position = transform.position;
 
-        if (isDamaged == false)
+        if (isDamaged.Equals(false))
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {

@@ -60,18 +60,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < bulletTransform.GetChild(i + 3).childCount; j++)
             {
-                if (bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CircleCollider2D>() != null)
-                {
-                    bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CircleCollider2D>().enabled = true;
-                }
-                else if (bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CapsuleCollider2D>() != null)
-                {
-                    bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<CapsuleCollider2D>().enabled = true;
-                }
-                else if (bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<BoxCollider2D>() != null)
-                {
-                    bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<BoxCollider2D>().enabled = true;
-                }
+                bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<EraseBullet>().ClearBullet();
             }
         }
 

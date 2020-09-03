@@ -18,7 +18,7 @@ public class BulletManager : MonoBehaviour
     
     void InitObjectPooling()
     {
-        if (gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY") || gameObject.layer == LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY"))
+        if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) || gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_SECONDARY")))
         {
             bulletPoolSize = 1000;
         }

@@ -61,10 +61,10 @@ public class MovingBullet : MonoBehaviour
         bulletRotateTime += Time.deltaTime;
 
         // 탄속 변경
-        if (bulletSpeedState == BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING)
+        if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING))
         {
             bulletMoveSpeed += bulletAccelerationMoveSpeed;
-            if (bulletAccelerationMoveSpeedMax != 0.0f)
+            if (!bulletAccelerationMoveSpeedMax.Equals(0.0f))
             {
                 if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
                 {
@@ -72,10 +72,10 @@ public class MovingBullet : MonoBehaviour
                 }
             }
         }
-        else if (bulletSpeedState == BulletSpeedState.BULLETSPEEDSTATE_DECELERATING)
+        else if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_DECELERATING))
         {
             bulletMoveSpeed -= bulletDecelerationMoveSpeed;
-            if (bulletDecelerationMoveSpeedMin != 0.0f)
+            if (!bulletDecelerationMoveSpeedMin.Equals(0.0f))
             {
                 if (bulletMoveSpeed <= bulletDecelerationMoveSpeedMin)
                 {
@@ -90,9 +90,9 @@ public class MovingBullet : MonoBehaviour
                 }
             }
         }
-        else if (bulletSpeedState == BulletSpeedState.BULLETSPEEDSTATE_LOOP)
+        else if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOP))
         {
-            if (bulletMoveSpeedLoopBool == true)
+            if (bulletMoveSpeedLoopBool.Equals(true))
             {
                 bulletMoveSpeed += bulletAccelerationMoveSpeed;
                 if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
@@ -109,9 +109,9 @@ public class MovingBullet : MonoBehaviour
                 }
             }
         }
-        else if (bulletSpeedState == BulletSpeedState.BULLETSPEEDSTATE_LOOPONCE)
+        else if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOPONCE))
         {
-            if (bulletMoveSpeedLoopBool == true)
+            if (bulletMoveSpeedLoopBool.Equals(true))
             {
                 bulletMoveSpeed += bulletAccelerationMoveSpeed;
                 if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
@@ -132,13 +132,13 @@ public class MovingBullet : MonoBehaviour
         }
 
         // 탄도 변경 (지속 증감)
-        if (bulletRotateSpeed != 0.0f)
+        if (!bulletRotateSpeed.Equals(0.0f))
         {
-            if (bulletRotateState == BulletRotateState.BULLETROTATESTATE_NORMAL)
+            if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_NORMAL))
             {
                 transform.Rotate(Vector3.forward * bulletRotateSpeed * Time.deltaTime);
             }
-            else if (bulletRotateState == BulletRotateState.BULLETROTATESTATE_LIMIT)
+            else if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_LIMIT))
             {
                 transform.Rotate(Vector3.forward * bulletRotateSpeed * Time.deltaTime);
                 if (bulletRotateTime >= bulletRotateLimit)
@@ -146,21 +146,28 @@ public class MovingBullet : MonoBehaviour
                     bulletRotateSpeed = 0.0f;
                 }
             }
-            else if (bulletRotateState == BulletRotateState.BULLETROTATESTATE_ROTATEAROUND)
+            else if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_ROTATEAROUND))
             {
                 RotateAround(bulletDestination);
             }
         }
         // 탄도 변경 (지속적으로 대상을 향해 바라보기)
-        else if (bulletRotateState == BulletRotateState.BULLETROTATESTATE_LOOKAT)
+        else if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_LOOKAT))
         {
             bulletDestination = GetComponent<InitializeBullet>().GetAimedBulletDestination(GetComponent<InitializeBullet>().targetObject.transform.position);
             float angle = Mathf.Atan2(GetComponent<MovingBullet>().bulletDestination.y, GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
-            ChangeRotateAngle(angle - 90.0f);
+            if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE))
+            {
+                ChangeRotateAngle(angle - 180.0f);
+            }
+            else
+            {
+                ChangeRotateAngle(angle - 90.0f);
+            }
         }
 
         // 탄막 이동
-        if (GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_NORMAL)
+        if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
         {
             transform.Translate(Vector2.up * bulletMoveSpeed * Time.deltaTime);
         }
@@ -170,7 +177,7 @@ public class MovingBullet : MonoBehaviour
         }
 
         // 탄막 그레이즈
-        if (isGrazing == true)
+        if (isGrazing.Equals(true))
         {
             grazeDelay += Time.deltaTime;
             if (grazeDelay >= 0.1f)
@@ -187,15 +194,15 @@ public class MovingBullet : MonoBehaviour
         // 콜라이더 활성화
         if (Vector2.Distance(transform.position, playerObject.transform.position) <= 0.5f)
         {
-            if (GetComponent<CircleCollider2D>() != null)
+            if (!GetComponent<CircleCollider2D>().Equals(null))
             {
                 GetComponent<CircleCollider2D>().enabled = true;
             }
-            else if (GetComponent<CapsuleCollider2D>() != null)
+            else if (!GetComponent<CapsuleCollider2D>().Equals(null))
             {
                 GetComponent<CapsuleCollider2D>().enabled = true;
             }
-            else if (GetComponent<BoxCollider2D>() != null)
+            else if (!GetComponent<BoxCollider2D>().Equals(null))
             {
                 GetComponent<BoxCollider2D>().enabled = true;
             }
@@ -205,15 +212,15 @@ public class MovingBullet : MonoBehaviour
             Vector3 targetScreenPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
             if ((targetScreenPos.x > Screen.width || targetScreenPos.x < 0) || (targetScreenPos.y > Screen.height || targetScreenPos.y < 0))
             {
-                if (GetComponent<CircleCollider2D>() != null)
+                if (!GetComponent<CircleCollider2D>().Equals(null))
                 {
                     GetComponent<CircleCollider2D>().enabled = true;
                 }
-                else if (GetComponent<CapsuleCollider2D>() != null)
+                else if (!GetComponent<CapsuleCollider2D>().Equals(null))
                 {
                     GetComponent<CapsuleCollider2D>().enabled = true;
                 }
-                else if (GetComponent<BoxCollider2D>() != null)
+                else if (!GetComponent<BoxCollider2D>().Equals(null))
                 {
                     GetComponent<BoxCollider2D>().enabled = true;
                 }
@@ -236,9 +243,9 @@ public class MovingBullet : MonoBehaviour
     // 탄막 그레이즈
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((CompareTag("BULLET_ENEMY") == true && collision.CompareTag("GRAZECIRCLE") == true) && gameObject.GetComponent<InitializeBullet>().isGrazed == false)
+        if ((CompareTag("BULLET_ENEMY").Equals(true) && collision.CompareTag("GRAZECIRCLE").Equals(true)) && gameObject.GetComponent<InitializeBullet>().isGrazed.Equals(false))
         {
-            if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER"))
+            if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")))
             {
                 grazeDelay = 0.099f;
                 isGrazing = true;
@@ -255,9 +262,9 @@ public class MovingBullet : MonoBehaviour
         grazeDelay = 0.0f;
         isGrazing = false;
 
-        if (gameObject.layer == LayerMask.NameToLayer("BULLET_ENEMY_LASER") && collision.CompareTag("GRAZECIRCLE"))
+        if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && collision.CompareTag("GRAZECIRCLE"))
         {
-            if (gameObject.GetComponent<InitializeBullet>().bulletType == BulletType.BULLETTYPE_LASER_MOVE)
+            if (gameObject.GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE))
             {
                 gameObject.GetComponent<InitializeBullet>().isGrazed = true;
             }

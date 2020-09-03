@@ -27,7 +27,7 @@ public class InitializeBullet : MonoBehaviour
         bulletPosition = bulletObject.transform.position;
         distance = Vector2.Distance(targetPosition, bulletPosition);
         
-        if (distance != 0)
+        if (!distance.Equals(0))
         {
             bulletDestination.x = targetPosition.x - bulletPosition.x;
             bulletDestination.y = targetPosition.y - bulletPosition.y;
@@ -46,7 +46,7 @@ public class InitializeBullet : MonoBehaviour
         Vector2 targetPosition = new Vector2(Random.Range(-30.0f, 30.0f), Random.Range(-30.0f, 30.0f));
         distance = Vector2.Distance(targetPosition, bulletPosition);
 
-        if (distance != 0)
+        if (!distance.Equals(0))
         {
             bulletDestination.x = targetPosition.x - bulletPosition.x;
             bulletDestination.y = targetPosition.y - bulletPosition.y;
@@ -65,7 +65,7 @@ public class InitializeBullet : MonoBehaviour
         targetPosition = targetObject.transform.position;
         distance = Vector2.Distance(targetPosition, bulletPosition);
 
-        if (distance != 0)
+        if (!distance.Equals(0))
         {
             bulletDestination.x = targetPosition.x - bulletPosition.x;
             bulletDestination.y = targetPosition.y - bulletPosition.y;
@@ -83,7 +83,7 @@ public class InitializeBullet : MonoBehaviour
         bulletPosition = bulletObject.transform.position;
         distance = Vector2.Distance(targetPosition, bulletPosition);
 
-        if (distance != 0)
+        if (!distance.Equals(0))
         {
             bulletDestination.x = targetPosition.x - bulletPosition.x;
             bulletDestination.y = targetPosition.y - bulletPosition.y;

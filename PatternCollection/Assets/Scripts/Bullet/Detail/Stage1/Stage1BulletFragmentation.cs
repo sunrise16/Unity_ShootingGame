@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Stage1BulletFragmentation : MonoBehaviour
 {
-    private Stage1BulletFragmentation stage1BulletFragmentation;
     private Transform enemyBullet;
     private GameObject playerObject;
     private BulletManager bulletManager;
     private MovingBullet movingBullet;
+    private EraseBullet eraseBullet;
     private EnemyFire enemyFire;
     
     void Start()
     {
-        stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
         enemyBullet = GameObject.Find("BULLET").transform.GetChild(4);
         playerObject = GameObject.Find("PLAYER");
         bulletManager = GameObject.Find("BulletManager").transform.GetChild(0).GetComponent<BulletManager>();
         movingBullet = GetComponent<MovingBullet>();
+        eraseBullet = GetComponent<EraseBullet>();
         enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
 
         StartCoroutine(Fragmentation());
@@ -42,31 +42,35 @@ public class Stage1BulletFragmentation : MonoBehaviour
                         bullet.gameObject.tag = "BULLET_ENEMY";
                         bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
                         bullet.transform.SetParent(enemyBullet);
-                        if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
-                        if (!bullet.GetComponent<CircleCollider2D>()) bullet.AddComponent<CircleCollider2D>();
-                        bullet.GetComponent<SpriteRenderer>().sprite = enemyFire.spriteCollection[23];
-                        bullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
-                        bullet.GetComponent<CircleCollider2D>().isTrigger = true;
-                        bullet.GetComponent<CircleCollider2D>().radius = 0.04f;
-                        bullet.GetComponent<CircleCollider2D>().enabled = false;
-                        if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
-                        if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
-                        if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
-                        bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
-                        bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
-                        bullet.GetComponent<InitializeBullet>().targetObject = playerObject;
-                        bullet.GetComponent<InitializeBullet>().isGrazed = false;
-                        bullet.GetComponent<MovingBullet>().bulletMoveSpeed = Random.Range(4.0f, 6.0f);
-                        bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                        bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-                        bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetRandomAimedBulletDestination();
-                        float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
-                        bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
+                        bullet.AddComponent<SpriteRenderer>();
+                        bullet.AddComponent<CircleCollider2D>();
+                        SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                        CircleCollider2D circleCollider2D = bullet.GetComponent<CircleCollider2D>();
+                        spriteRenderer.sprite = enemyFire.spriteCollection[23];
+                        spriteRenderer.sortingOrder = 3;
+                        circleCollider2D.isTrigger = true;
+                        circleCollider2D.radius = 0.04f;
+                        circleCollider2D.enabled = false;
+                        bullet.AddComponent<InitializeBullet>();
+                        bullet.AddComponent<MovingBullet>();
+                        bullet.AddComponent<EraseBullet>();
+                        InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                        MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                        initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                        initializeBullet.bulletObject = bullet.gameObject;
+                        initializeBullet.targetObject = playerObject;
+                        initializeBullet.isGrazed = false;
+                        movingBullet.bulletMoveSpeed = Random.Range(4.0f, 6.0f);
+                        movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                        movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                        movingBullet.bulletDestination = initializeBullet.GetRandomAimedBulletDestination();
+                        float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                        movingBullet.ChangeRotateAngle(angle - 90.0f);
                     }
                     
                     bulletManager.bulletPool.Enqueue(gameObject);
                     transform.SetParent(enemyBullet);
-                    GetComponent<EraseBullet>().ClearBullet();
+                    eraseBullet.ClearBullet();
                     gameObject.SetActive(false);
                     break;
                 }
