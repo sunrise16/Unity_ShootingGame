@@ -615,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284135840}
   - component: {fileID: 284135841}
-  m_Layer: 24
+  m_Layer: 25
   m_Name: REFLECTZONE_3
   m_TagString: REFLECTZONE
   m_Icon: {fileID: 0}
@@ -3190,7 +3190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440124045}
   - component: {fileID: 1440124046}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: REFLECTZONE_4
   m_TagString: REFLECTZONE
   m_Icon: {fileID: 0}
@@ -3749,6 +3749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f6a394dd565de44951631bfbef6db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCleared: 0
   stageNumber: 0
 --- !u!1 &1920494035
 GameObject:

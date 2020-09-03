@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     private EnemyFire enemyFire;
     private EnemySprite enemySprite;
     private GameObject destroyzoneAll;
-    private Transform bulletTransform;
 
+    public bool isCleared;
     public int stageNumber;
 
     void Start()
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
         enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
         enemySprite = GameObject.Find("ENEMY").transform.GetChild(0).GetComponent<EnemySprite>();
         destroyzoneAll = GameObject.Find("DESTROYZONE").transform.GetChild(0).gameObject;
-        bulletTransform = GameObject.Find("BULLET").transform;
 
         stageNumber = 1;
         StartCoroutine(GameStart());
@@ -52,27 +51,22 @@ public class GameManager : MonoBehaviour
 
         enemyFire.Fire(stageNumber);
         destroyzoneAll.SetActive(false);
+        isCleared = false;
     }
 
     public IEnumerator StageClear()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < bulletTransform.GetChild(i + 3).childCount; j++)
-            {
-                bulletTransform.GetChild(i + 3).GetChild(i).GetComponent<EraseBullet>().ClearBullet();
-            }
-        }
-
+        isCleared = true;
         Vector3 originPosition = new Vector3(0.0f, 3.5f, 0.0f);
         float moveTime = 1.5f;
-        iTween.MoveTo(enemy.gameObject, iTween.Hash("position", originPosition, "easetype", iTween.EaseType.easeOutQuad, "time", moveTime));
-        StartCoroutine(enemy.gameObject.GetComponent<EnemyFire>().EnemySpriteSet(originPosition.x, enemy.gameObject.transform.position.x, moveTime));
 
         stageNumber++;
         SetEnemyHp();
         enemyFire.StopAllCoroutines();
-        
+
+        iTween.MoveTo(enemy.gameObject, iTween.Hash("position", originPosition, "easetype", iTween.EaseType.easeOutQuad, "time", moveTime));
+        StartCoroutine(enemy.GetComponent<EnemyFire>().EnemySpriteSet(originPosition.x, enemy.transform.position.x, moveTime));
+
         enemySprite.isLeftMove = false;
         enemySprite.isRightMove = false;
         destroyzoneAll.SetActive(true);

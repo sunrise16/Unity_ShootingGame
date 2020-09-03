@@ -15,6 +15,7 @@ public class EraseBullet : MonoBehaviour
     private InitializeBullet initializeBullet;
     private MovingBullet movingBullet;
     private LaserBullet laserBullet;
+    private ReflectBullet reflectBullet;
 
     // 커스텀 컴포넌트를 만들 경우 계속 추가할 것!
     private Stage1BulletFragmentation stage1BulletFragmentation;
@@ -32,6 +33,7 @@ public class EraseBullet : MonoBehaviour
         initializeBullet = GetComponent<InitializeBullet>();
         movingBullet = GetComponent<MovingBullet>();
         laserBullet = GetComponent<LaserBullet>();
+        reflectBullet = GetComponent<ReflectBullet>();
         stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
         stage5BulletCreate = GetComponent<Stage5BulletCreate>();
     }
@@ -92,6 +94,7 @@ public class EraseBullet : MonoBehaviour
         Destroy(initializeBullet);
         Destroy(movingBullet);
         Destroy(laserBullet);
+        Destroy(reflectBullet);
 
         // 커스텀 컴포넌트 제거
         Destroy(stage1BulletFragmentation);
