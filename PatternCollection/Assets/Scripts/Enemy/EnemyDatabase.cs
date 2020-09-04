@@ -13,4 +13,9 @@ public class EnemyDatabase : MonoBehaviour
         enemyCurrentHp = 1000.0f;
         enemyMaxHp = 1000.0f;
 	}
+
+    public float GetEnemyCurrentHPRate()
+    {
+        return enemyCurrentHp / enemyMaxHp;
+    }
 }

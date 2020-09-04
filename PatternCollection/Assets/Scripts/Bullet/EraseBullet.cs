@@ -40,6 +40,11 @@ public class EraseBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject player = GameObject.Find("PLAYER");
+        PlayerMove playerMove = player.GetComponent<PlayerMove>();
+        // PlayerDie playerDie = player.GetComponent<PlayerDie>();
+        InitializeBullet initializeBullet = GetComponent<InitializeBullet>();
+
         if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER1")))
         {
             ClearBullet();
@@ -65,11 +70,12 @@ public class EraseBullet : MonoBehaviour
         {
             ClearBullet();
         }
-        else if (CompareTag("BULLET_ENEMY").Equals(true) && collision.CompareTag("PLAYER").Equals(true))
+        else if ((CompareTag("BULLET_ENEMY").Equals(true) && collision.CompareTag("PLAYER").Equals(true)) && playerMove.isDamaged.Equals(false))
         {
             playerDatabase.hitCount++;
-            // StartCoroutine(GameObject.Find("PLAYER").GetComponent<PlayerDie>().CreateDieEffect());
-            if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
+            // playerMove.isDamaged = true;
+            // StartCoroutine(playerDie.CreateDieEffect());
+            if (initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
             {
                 ClearBullet();
             }

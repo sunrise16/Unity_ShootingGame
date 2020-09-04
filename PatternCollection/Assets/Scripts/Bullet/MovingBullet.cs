@@ -224,7 +224,7 @@ public class MovingBullet : MonoBehaviour
         else
         {
             Vector3 targetScreenPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-            if (((targetScreenPos.x > Screen.width - 0.5f || targetScreenPos.x < 0.5f) || (targetScreenPos.y > Screen.height - 0.5f || targetScreenPos.y < 0.5f)) ||
+            if (((targetScreenPos.x > Screen.width || targetScreenPos.x < 0.0f) || (targetScreenPos.y > Screen.height || targetScreenPos.y < 0.0f)) ||
                 (gameManager.isCleared.Equals(true)))
             {
                 if (!circleCollider2D.Equals(null))

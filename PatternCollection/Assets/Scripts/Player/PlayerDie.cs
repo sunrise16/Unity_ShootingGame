@@ -18,9 +18,8 @@ public class PlayerDie : MonoBehaviour
 
     public IEnumerator CreateDieEffect()
     {
-        if (playerMove.isDamaged == false && isInvincible == false)
+        if (isInvincible.Equals(false))
         {
-            playerMove.isDamaged = true;
             isInvincible = true;
         
             GameObject body = transform.Find("Body").gameObject;
@@ -29,14 +28,13 @@ public class PlayerDie : MonoBehaviour
             effect.transform.position = transform.position;
             body.SetActive(false);
         
-          yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.0f);
         
             Destroy(effect);
             transform.position = new Vector2(0.0f, -5.5f);
             body.SetActive(true);
             StartCoroutine(PlayerReviving());
             StartCoroutine(PlayerBlinking());
-            StopCoroutine(CreateDieEffect());
         }
     }
 
@@ -50,13 +48,12 @@ public class PlayerDie : MonoBehaviour
             reviveDelay += 0.1f;
             transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
 
-            if (reviveDelay <= 5.0f) break;
+            if (reviveDelay >= 5.0f) break;
 
             yield return new WaitForEndOfFrame();
         }
 
         playerMove.isDamaged = false;
-        StopCoroutine(PlayerReviving());
     }
 
     IEnumerator PlayerBlinking()
@@ -76,13 +73,12 @@ public class PlayerDie : MonoBehaviour
                 bodyColor = new Color(bodyColor.r, bodyColor.g, bodyColor.b, 0.8f);
             }
 
-            if (blinkCount < 30) break;
+            if (blinkCount > 30) break;
 
             yield return new WaitForSeconds(0.08f);
         }
 
         blinkCount = 0;
         isInvincible = false;
-        StopCoroutine(PlayerBlinking());
     }
 }

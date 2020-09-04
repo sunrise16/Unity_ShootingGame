@@ -35,10 +35,10 @@ using UnityEngine;
 //  * (Index 274 ~ 281) 나이프탄 : Capsule Collider 2D, Size X 0.035, Y 0.2, Direction Vertical
 //  * (Index 282 ~ 289) 알약탄 : Capsule Collider 2D, Size X 0.06, Y 0.18, Direction Vertical
 //  * (Index 290 ~ 297) 대형 별탄 : Circle Collider 2D, Radius 0.045, Offset X 0, Y -0.01
-//  * (Index 298 ~ 305) 중형 발광탄 : Circle Collider 2D, Radius 0.05
+//  * (Index 298 ~ 305) 탄막 발사 이펙트
 //  * (Index 306 ~ 313) 대형 발광탄 : Circle Collider 2D, Radius 0.1
 //  * (Index 314 ~ 321) 하트탄 : Circle Collider 2D, Radius 0.065, Offset X 0, Y -0.01
-//  * (Index 322 ~ 329) 소형 발광탄 : Circle Collider 2D, Radius 0.025
+//  * (Index 322 ~ 329) 탄막 발사 이펙트
 //  * (Index 330 ~ 337) 화살탄 : Capsule Collider 2D, Size X 0.01, Y 0.2, Direction Vertical
 //  * (Index 338 ~ 349) 음표탄 : Circle Collider 2D, Radius 0.02, Offset X -0.01, Y -0.09, Sprite Animation 적용
 //  * (Index 350 ~ 357) 쉼표탄 : Capsule Collider 2D, Size X 0.02, Y 0.18
@@ -54,6 +54,8 @@ using UnityEngine;
 public class EnemyFire : MonoBehaviour
 {
     private BulletManager bulletManager;
+    private BulletManager effectManager;
+    private EnemyDatabase enemyDatabase;
     private GameObject playerObject;
     private Transform enemyBulletTemp1;
     private Transform enemyBulletTemp2;
@@ -65,6 +67,8 @@ public class EnemyFire : MonoBehaviour
     void Start()
     {
         bulletManager = GameObject.Find("BulletManager").transform.GetChild(0).GetComponent<BulletManager>();
+        effectManager = GameObject.Find("EffectManager").GetComponent<BulletManager>();
+        enemyDatabase = GetComponent<EnemyDatabase>();
         playerObject = GameObject.Find("PLAYER");
         enemyBulletTemp1 = GameObject.Find("BULLET").transform.GetChild(3);
         enemyBulletTemp2 = GameObject.Find("BULLET").transform.GetChild(4);
@@ -78,12 +82,13 @@ public class EnemyFire : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
-                StartCoroutine(Stage2EnemyAttack());
+                StartCoroutine(Stage1());
                 break;
             case 2:
-                StartCoroutine(Stage2EnemyAttack());
+                StartCoroutine(Stage2());
                 break;
             case 3:
+                // StartCoroutine(Stage3());
                 break;
             case 4:
                 break;
@@ -106,11 +111,11 @@ public class EnemyFire : MonoBehaviour
 
     #region 패턴 1 (자작)
     
-    public IEnumerator Stage1EnemyAttack()
+    public IEnumerator Stage1()
     {
         StartCoroutine(Stage1EnemyMove());
-        StartCoroutine(Stage1EnemyAttack1());
-        StartCoroutine(Stage1EnemyAttack2());
+        StartCoroutine(Stage1Pattern1());
+        StartCoroutine(Stage1Pattern2());
 
         yield return null;
     }
@@ -127,58 +132,15 @@ public class EnemyFire : MonoBehaviour
             yield return new WaitForSeconds(2.5f);
         }
     }
-    public IEnumerator Stage1EnemyAttack1()
+    public IEnumerator Stage1Pattern1()
     {
-        Vector2 playerPosition;
         int angleMultiply = 1;
         float rotateAngle = 0.0f;
         int rotateMultiply = 1;
 
         while (true)
         {
-            playerPosition = playerObject.transform.position;
-
-            // 탄막 1 발사 (파란색, 하늘색 쐐기탄) (조준 방사탄)
-            for (int i = 0; i < 16; i++)
-            {
-                if (bulletManager.bulletPool.Count > 0)
-                {
-                    GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    bullet.SetActive(true);
-                    ClearChild(bullet);
-                    bullet.transform.position = transform.position;
-                    bullet.gameObject.tag = "BULLET_ENEMY";
-                    bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
-                    bullet.transform.SetParent(enemyBulletTemp1);
-                    if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
-                    if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
-                    if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
-                    if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
-                    if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
-                    SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
-                    CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
-                    InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
-                    MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
-                    spriteRenderer.sprite = spriteCollection[i % 2 == 0 ? 103 : 105];
-                    spriteRenderer.sortingOrder = 3;
-                    capsuleCollider2D.isTrigger = true;
-                    capsuleCollider2D.size = new Vector2(0.04f, 0.06f);
-                    capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
-                    capsuleCollider2D.enabled = false;
-                    initializeBullet.bulletObject = bullet.gameObject;
-                    initializeBullet.targetObject = playerObject;
-                    initializeBullet.isGrazed = false;
-                    movingBullet.bulletMoveSpeed = 9.0f;
-                    movingBullet.bulletDecelerationMoveSpeed = 0.3f;
-                    movingBullet.bulletDecelerationMoveSpeedMin = 3.0f;
-                    movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
-                    movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-                    movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(playerPosition);
-                    float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
-                    movingBullet.ChangeRotateAngle(angle - 90.0f + (22.5f * i) + (angleMultiply == 1 ? rotateAngle : -rotateAngle));
-                }
-                else AddBulletPool();
-            }
+            StartCoroutine(Stage1Pattern1Attack(rotateAngle, angleMultiply));
 
             rotateAngle += (1.0f * rotateMultiply);
             rotateMultiply++;
@@ -196,57 +158,121 @@ public class EnemyFire : MonoBehaviour
             }
         }
     }
-    public IEnumerator Stage1EnemyAttack2()
+    public IEnumerator Stage1Pattern1Attack(float rotateAngle, float angleMultiply)
+    {
+        Vector2 playerPosition = playerObject.transform.position;
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(301, 0.48f, 0.2f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.125f);
+
+        // 탄막 1 발사 (파란색, 하늘색 쐐기탄) (조준 방사탄)
+        for (int i = 0; i < 16; i++)
+        {
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                ClearChild(bullet);
+                bullet.transform.position = transform.position;
+                bullet.gameObject.tag = "BULLET_ENEMY";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
+                bullet.transform.SetParent(enemyBulletTemp1);
+                if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+                if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                spriteRenderer.sprite = spriteCollection[i % 2 == 0 ? 103 : 105];
+                spriteRenderer.sortingOrder = 3;
+                capsuleCollider2D.isTrigger = true;
+                capsuleCollider2D.size = new Vector2(0.04f, 0.06f);
+                capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
+                capsuleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                movingBullet.bulletMoveSpeed = 9.0f;
+                movingBullet.bulletDecelerationMoveSpeed = 0.3f;
+                movingBullet.bulletDecelerationMoveSpeedMin = 3.0f;
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(playerPosition);
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f + (22.5f * i) + (angleMultiply == 1 ? rotateAngle : -rotateAngle));
+            }
+            else AddBulletPool();
+        }
+    }
+    public IEnumerator Stage1Pattern2()
     {
         int rotateMultiply = 1;
 
         while (true)
         {
-            // 탄막 2 발사 (노란색, 주황색 부적탄) (조준 방사탄)
-            for (int i = 0; i < 18; i++)
-            {
-                if (bulletManager.bulletPool.Count > 0)
-                {
-                    GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    bullet.SetActive(true);
-                    ClearChild(bullet);
-                    bullet.transform.position = transform.position;
-                    bullet.gameObject.tag = "BULLET_ENEMY";
-                    bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
-                    bullet.transform.SetParent(enemyBulletTemp2);
-                    bullet.AddComponent<SpriteRenderer>();
-                    bullet.AddComponent<CapsuleCollider2D>();
-                    bullet.AddComponent<InitializeBullet>();
-                    bullet.AddComponent<MovingBullet>();
-                    bullet.AddComponent<EraseBullet>();
-                    SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
-                    CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
-                    InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
-                    MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
-                    spriteRenderer.sprite = spriteCollection[rotateMultiply == 1 ? 126 : 127];
-                    spriteRenderer.sortingOrder = 3;
-                    capsuleCollider2D.isTrigger = true;
-                    capsuleCollider2D.size = new Vector2(0.04f, 0.06f);
-                    capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
-                    capsuleCollider2D.enabled = false;
-                    initializeBullet.bulletObject = bullet.gameObject;
-                    initializeBullet.targetObject = playerObject;
-                    initializeBullet.isGrazed = false;
-                    movingBullet.bulletMoveSpeed = 3.0f;
-                    movingBullet.bulletRotateSpeed = rotateMultiply == 1 ? 45.0f : -45.0f;
-                    movingBullet.bulletRotateLimit = 1.5f;
-                    movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                    movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_LIMIT;
-                    movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination();
-                    float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
-                    movingBullet.ChangeRotateAngle(angle - 90.0f + (20.0f * i));
-                }
-                else AddBulletPool();
-            }
-
+            StartCoroutine(Stage1Pattern2Attack(rotateMultiply));
             rotateMultiply = (rotateMultiply == 1 ? -1 : 1);
 
             yield return new WaitForSeconds(0.25f);
+        }
+    }
+    public IEnumerator Stage1Pattern2Attack(int rotateMultiply)
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 2 이펙트
+        StartCoroutine(CreateBulletFireEffect(304, 0.48f, 0.2f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.20f);
+
+        // 탄막 2 발사 (노란색, 주황색 부적탄) (조준 방사탄)
+        for (int i = 0; i < 18; i++)
+        {
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                ClearChild(bullet);
+                bullet.transform.position = transform.position;
+                bullet.gameObject.tag = "BULLET_ENEMY";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
+                bullet.transform.SetParent(enemyBulletTemp2);
+                bullet.AddComponent<SpriteRenderer>();
+                bullet.AddComponent<CapsuleCollider2D>();
+                bullet.AddComponent<InitializeBullet>();
+                bullet.AddComponent<MovingBullet>();
+                bullet.AddComponent<EraseBullet>();
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                spriteRenderer.sprite = spriteCollection[rotateMultiply == 1 ? 126 : 127];
+                spriteRenderer.sortingOrder = 3;
+                capsuleCollider2D.isTrigger = true;
+                capsuleCollider2D.size = new Vector2(0.04f, 0.06f);
+                capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
+                capsuleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                movingBullet.bulletMoveSpeed = 3.0f;
+                movingBullet.bulletRotateSpeed = rotateMultiply == 1 ? 45.0f : -45.0f;
+                movingBullet.bulletRotateLimit = 1.5f;
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_LIMIT;
+                movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination();
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f + (20.0f * i));
+            }
+            else AddBulletPool();
         }
     }
 
@@ -254,59 +280,105 @@ public class EnemyFire : MonoBehaviour
 
     #region 패턴 2 (동방홍마향 EX스테이지 - 플랑드르 스칼렛 10스펠 "495년의 파문")
 
-    public IEnumerator Stage2EnemyAttack()
+    public IEnumerator Stage2()
     {
         while (true)
         {
-            Vector2 bulletFirePosition = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f));
+            // 탄막 1 발사
+            StartCoroutine(Stage2Pattern1Attack());
 
-            // 탄막 1 발사 (파란색 쌀탄) (조준 방사탄) (1회 반사탄)
-            for (int i = 0; i < 36; i++)
+            if (enemyDatabase.GetEnemyCurrentHPRate() >= 0.6f)
             {
-                if (bulletManager.bulletPool.Count > 0)
-                {
-                    GameObject bullet = bulletManager.bulletPool.Dequeue();
-                    bullet.SetActive(true);
-                    ClearChild(bullet);
-                    bullet.transform.position = bulletFirePosition;
-                    bullet.gameObject.tag = "BULLET_ENEMY";
-                    bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2");
-                    bullet.transform.SetParent(enemyBulletTemp1);
-                    if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
-                    if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
-                    if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
-                    if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
-                    if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
-                    if (!bullet.GetComponent<ReflectBullet>()) bullet.AddComponent<ReflectBullet>();
-                    SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
-                    CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
-                    InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
-                    MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
-                    ReflectBullet reflectBullet = bullet.GetComponent<ReflectBullet>();
-                    spriteRenderer.sprite = spriteCollection[55];
-                    spriteRenderer.sortingOrder = 3;
-                    capsuleCollider2D.isTrigger = true;
-                    capsuleCollider2D.size = new Vector2(0.025f, 0.05f);
-                    capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
-                    capsuleCollider2D.enabled = false;
-                    initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
-                    initializeBullet.bulletReflect = BulletReflect.BULLETREFLECT_NORMAL;
-                    initializeBullet.bulletObject = bullet.gameObject;
-                    initializeBullet.targetObject = playerObject;
-                    initializeBullet.isGrazed = false;
-                    movingBullet.bulletMoveSpeed = 3.0f;
-                    movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                    movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-                    movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(new Vector2(transform.position.x, transform.position.y - 10.0f));
-                    float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
-                    movingBullet.ChangeRotateAngle(angle - 90.0f + (10.0f * i));
-                    reflectBullet.reflectCount = 0;
-                    reflectBullet.reflectLimit = 1;
-                }
-                else AddBulletPool();
+                yield return new WaitForSeconds(2.0f);
             }
-            
-            yield return new WaitForSeconds(1.5f);
+            else if (enemyDatabase.GetEnemyCurrentHPRate() < 0.6f && enemyDatabase.GetEnemyCurrentHPRate() >= 0.4f)
+            {
+                yield return new WaitForSeconds(1.6f);
+            }
+            else if (enemyDatabase.GetEnemyCurrentHPRate() < 0.4f && enemyDatabase.GetEnemyCurrentHPRate() >= 0.2f)
+            {
+                yield return new WaitForSeconds(1.2f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.8f);
+            }
+        }
+    }
+    public IEnumerator Stage2Pattern1Attack()
+    {
+        Vector2 bulletFirePosition = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f));
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(301, 0.72f, 0.125f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.125f);
+
+        // 탄막 1 발사 (파란색 쌀탄) (조준 방사탄) (1회 반사탄)
+        for (int i = 0; i < 72; i++)
+        {
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                ClearChild(bullet);
+                bullet.transform.position = bulletFirePosition;
+                bullet.gameObject.tag = "BULLET_ENEMY";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2");
+                bullet.transform.SetParent(enemyBulletTemp1);
+                if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+                if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                if (!bullet.GetComponent<ReflectBullet>()) bullet.AddComponent<ReflectBullet>();
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                ReflectBullet reflectBullet = bullet.GetComponent<ReflectBullet>();
+                spriteRenderer.sprite = spriteCollection[55];
+                spriteRenderer.sortingOrder = 3;
+                capsuleCollider2D.isTrigger = true;
+                capsuleCollider2D.size = new Vector2(0.025f, 0.05f);
+                capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
+                capsuleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletReflect = BulletReflect.BULLETREFLECT_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                if (enemyDatabase.GetEnemyCurrentHPRate() >= 0.6f)
+                {
+                    movingBullet.bulletMoveSpeed = 1.8f;
+                }
+                else if (enemyDatabase.GetEnemyCurrentHPRate() < 0.6f && enemyDatabase.GetEnemyCurrentHPRate() >= 0.4f)
+                {
+                    movingBullet.bulletMoveSpeed = 2.2f;
+                }
+                else if (enemyDatabase.GetEnemyCurrentHPRate() < 0.4f && enemyDatabase.GetEnemyCurrentHPRate() >= 0.2f)
+                {
+                    movingBullet.bulletMoveSpeed = 2.6f;
+                }
+                else
+                {
+                    movingBullet.bulletMoveSpeed = 3.0f;
+                }
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(new Vector2(transform.position.x, transform.position.y - 10.0f));
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f + (5.0f * i));
+                reflectBullet.reflectCount = 0;
+                reflectBullet.reflectLimit = 1;
+                reflectBullet.isSpriteChange = true;
+                reflectBullet.isEffectOutput = true;
+                reflectBullet.changeSpriteNumber = 49;
+                reflectBullet.effectSpriteNumber = 325;
+                reflectBullet.scaleDownSpeed = 0.72f;
+                reflectBullet.scaleDownTime = 0.2f;
+            }
+            else AddBulletPool();
         }
     }
 
@@ -1888,7 +1960,7 @@ public class EnemyFire : MonoBehaviour
     #endregion
     */
     #endregion
-
+    
     #region 기타 함수
 
     #region 불릿 풀 추가 함수
@@ -1898,6 +1970,29 @@ public class EnemyFire : MonoBehaviour
         bullet.SetActive(false);
         bullet.transform.SetParent(bulletManager.bulletParent.transform);
         bulletManager.bulletPool.Enqueue(bullet);
+    }
+    public void AddEffect()
+    {
+        GameObject effect = Instantiate(effectManager.bulletObject);
+        effect.SetActive(false);
+        effect.transform.SetParent(effectManager.bulletParent.transform);
+        effectManager.bulletPool.Enqueue(effect);
+    }
+    #endregion
+
+    #region 차일드 제거 함수
+    public static void ClearChild(GameObject bullet)
+    {
+        if (bullet.transform.childCount > 0)
+        {
+            for (int i = 0; i < bullet.transform.childCount; i++)
+            {
+                if (bullet.transform.GetChild(i).gameObject.activeSelf == true)
+                {
+                    bullet.transform.GetChild(i).GetComponent<EraseBullet>().ClearBullet();
+                }
+            }
+        }
     }
     #endregion
 
@@ -1919,194 +2014,238 @@ public class EnemyFire : MonoBehaviour
         body.GetComponent<EnemySprite>().isSpriteReturn = true;
     }
     #endregion
-    
-    #region 차일드 제거 함수
-    public static void ClearChild(GameObject bullet)
+
+    #region 탄막 발사 이펙트 생성 함수
+
+    public IEnumerator CreateBulletFireEffect(int spriteNumber, float scaleDownSpeed, float scaleDownTime, Vector2 effectPosition)
     {
-        if (bullet.transform.childCount > 0)
+        if (effectManager.bulletPool.Count > 0)
         {
-            for (int i = 0; i < bullet.transform.childCount; i++)
-            {
-                if (bullet.transform.GetChild(i).gameObject.activeSelf == true)
-                {
-                    bullet.transform.GetChild(i).GetComponent<EraseBullet>().ClearBullet();
-                }
-            }
+            GameObject effect = effectManager.bulletPool.Dequeue();
+            if (!effect.GetComponent<EraseEffect>()) effect.AddComponent<EraseEffect>();
+            SpriteRenderer spriteRenderer = effect.GetComponent<SpriteRenderer>();
+            effect.SetActive(true);
+            effect.transform.position = effectPosition;
+            spriteRenderer.sprite = spriteCollection[spriteNumber];
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
+
+            StartCoroutine(EffectAlphaUp(effect));
+            StartCoroutine(EffectScaleDown(effect, scaleDownSpeed, scaleDownTime));
         }
+        else AddEffect();
+
+        yield return null;
     }
+    public IEnumerator EffectAlphaUp(GameObject effect)
+    {
+        SpriteRenderer spriteRenderer = effect.GetComponent<SpriteRenderer>();
+        float alpha = 0.0f;
+
+        while (true)
+        {
+            alpha += 0.2f;
+            if (alpha >= 1.0f) break;
+
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
+    }
+    public IEnumerator EffectScaleDown(GameObject effect, float scaleDownSpeed, float scaleDownTime)
+    {
+        EraseEffect eraseEffect = effect.GetComponent<EraseEffect>();
+        float delay = 0.0f;
+
+        while (true)
+        {
+            delay += Time.deltaTime;
+            if (delay >= scaleDownTime) break;
+
+            effect.transform.localScale = new Vector3(effect.transform.localScale.x - scaleDownSpeed, effect.transform.localScale.y - scaleDownSpeed, 0.0f);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        eraseEffect.ClearEffect();
+        yield return null;
+    }
+
     #endregion
 
     #endregion
-    
+
     #region 레이저 발사 및 회전 예제
 
-    // public IEnumerator LaserRotatePattern()
-    // {
-    //     Vector2 playerPosition;
-    // 
-    //     while (true)
-    //     {
-    //         bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
-    //         playerPosition = GameObject.Find("PLAYER").transform.position;
-    // 
-    //         // 빈 탄막 발사
-    //         GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
-    //         if (bulletManager.bulletPool.Count > 0)
-    //         {
-    //             emptyBullet.SetActive(true);
-    //             ClearChild(emptyBullet);
-    //             emptyBullet.transform.position = transform.position;
-    //             emptyBullet.gameObject.tag = "BULLET_ENEMY_EMPTY";
-    //             emptyBullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
-    //             emptyBullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
-    //             if (!emptyBullet.GetComponent<SpriteRenderer>()) emptyBullet.AddComponent<SpriteRenderer>();
-    //             if (!emptyBullet.GetComponent<BoxCollider2D>()) emptyBullet.AddComponent<BoxCollider2D>();
-    //             emptyBullet.GetComponent<SpriteRenderer>().sprite = spriteCollection[0];
-    //             emptyBullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
-    //             emptyBullet.GetComponent<BoxCollider2D>().isTrigger = true;
-    //             emptyBullet.GetComponent<BoxCollider2D>().size = new Vector2(0.05f, 0.05f);
-    //             if (!emptyBullet.GetComponent<InitializeBullet>()) emptyBullet.AddComponent<InitializeBullet>();
-    //             if (!emptyBullet.GetComponent<MovingBullet>()) emptyBullet.AddComponent<MovingBullet>();
-    //             if (!emptyBullet.GetComponent<EraseBullet>()) emptyBullet.AddComponent<EraseBullet>();
-    //             if (!emptyBullet.GetComponent<LaserBullet>()) emptyBullet.AddComponent<LaserBullet>();
-    //             emptyBullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_HOLD;
-    //             emptyBullet.GetComponent<InitializeBullet>().bulletObject = emptyBullet.gameObject;
-    //             emptyBullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
-    //             emptyBullet.GetComponent<InitializeBullet>().isGrazed = false;
-    //             emptyBullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
-    //             emptyBullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-    //             emptyBullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-    //             emptyBullet.GetComponent<LaserBullet>().laserWidth = 1.8f;
-    //             emptyBullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
-    //             emptyBullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.1f;
-    //             emptyBullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
-    //             emptyBullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.1f;
-    //             emptyBullet.GetComponent<LaserBullet>().laserRotateState = BulletRotateState.BULLETROTATESTATE_NORMAL;
-    //             emptyBullet.GetComponent<LaserBullet>().laserRotateSpeed = 30.0f;
-    //             emptyBullet.GetComponent<LaserBullet>().isLaserRotateEnable = true;
-    //             emptyBullet.GetComponent<LaserBullet>().isLaserRotateDisable = true;
-    //         }
-    //         else
-    //         {
-    //             GameObject bullet = Instantiate(bulletManager.bulletObject);
-    //             bullet.SetActive(false);
-    //             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-    //             bulletManager.bulletPool.Enqueue(bullet);
-    //         }
-    // 
-    //         // 탄막 1 발사 (회색 고정 레이저탄) (조준탄)
-    //         if (bulletManager.bulletPool.Count > 0)
-    //         {
-    //             GameObject bullet = bulletManager.bulletPool.Dequeue();
-    //              
-    //             bullet.SetActive(true);
-    //             ClearChild(bullet);
-    //             bullet.transform.position = new Vector3(transform.position.x, transform.position.y - 7.0f, transform.position.z);
-    //             bullet.transform.localScale = new Vector3(1.8f, 100.0f, bullet.transform.localScale.z);
-    //             bullet.gameObject.tag = "BULLET_ENEMY";
-    //             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
-    //             bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
-    //             if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
-    //             if (!bullet.GetComponent<BoxCollider2D>()) bullet.AddComponent<BoxCollider2D>();
-    //             bullet.GetComponent<SpriteRenderer>().sprite = spriteCollection[358];
-    //             bullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
-    //             bullet.GetComponent<BoxCollider2D>().isTrigger = true;
-    //             bullet.GetComponent<BoxCollider2D>().size = new Vector2(0.08f, 0.14f);
-    //             if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
-    //             if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
-    //             if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
-    //             if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
-    //             bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_HOLD;
-    //             bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
-    //             bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
-    //             bullet.GetComponent<InitializeBullet>().isGrazed = false;
-    //             bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
-    //             bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-    //             bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-    //             bullet.GetComponent<LaserBullet>().laserWidth = 1.8f;
-    //             bullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
-    //             bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.1f;
-    //             bullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
-    //             bullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.1f;
-    //             bullet.transform.SetParent(emptyBullet.transform);
-    //             emptyBullet.GetComponent<MovingBullet>().bulletDestination = emptyBullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
-    //             float angle = Mathf.Atan2(emptyBullet.GetComponent<MovingBullet>().bulletDestination.y, emptyBullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
-    //             emptyBullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle + 90.0f);
-    //         }
-    //         else
-    //         {
-    //             GameObject bullet = Instantiate(bulletManager.bulletObject);
-    //             bullet.SetActive(false);
-    //             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-    //             bulletManager.bulletPool.Enqueue(bullet);
-    //         }
-    // 
-    //         yield return new WaitForSeconds(5.0f);
-    // 
-    //         // 랜덤한 지점으로 이동
-    //         Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
-    //         StartCoroutine(MoveToDestination(targetPosition, 1.0f));
-    //         if (targetPosition.x <= 0.0f)
-    //         {
-    //             transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
-    //         }
-    //         else
-    //         {
-    //             transform.Find("Body").GetComponent<EnemySprite>().isRightMove = true;
-    //         }
-    // 
-    //         yield return new WaitForSeconds(1.5f);
-    // 
-    //         playerPosition = GameObject.Find("PLAYER").transform.position;
-    // 
-    //         // 탄막 2 발사 (분홍색 무빙 레이저탄) (조준탄)
-    //         if (bulletManager.bulletPool.Count > 0)
-    //         {
-    //             GameObject bullet = bulletManager.bulletPool.Dequeue();
-    //              
-    //             bullet.SetActive(true);
-    //             ClearChild(bullet);
-    //             bullet.transform.position = transform.position;
-    //             bullet.gameObject.tag = "BULLET_ENEMY";
-    //             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
-    //             bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
-    //             if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
-    //             if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
-    //             bullet.GetComponent<SpriteRenderer>().sprite = spriteCollection[378];
-    //             bullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
-    //             bullet.GetComponent<CapsuleCollider2D>().isTrigger = true;
-    //             bullet.GetComponent<CapsuleCollider2D>().size = new Vector2(2.4f, 0.04f);
-    //             bullet.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
-    //             if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
-    //             if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
-    //             if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
-    //             if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
-    //             bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_MOVE;
-    //             bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
-    //             bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
-    //             bullet.GetComponent<InitializeBullet>().isGrazed = false;
-    //             bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 1.0f;
-    //             bullet.GetComponent<MovingBullet>().bulletAccelerationMoveSpeed = 0.3f;
-    //             bullet.GetComponent<MovingBullet>().bulletAccelerationMoveSpeedMax = 6.0f;
-    //             bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING;
-    //             bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-    //             bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
-    //             float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
-    //             bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle);
-    //             bullet.GetComponent<LaserBullet>().laserLength = 1.0f;
-    //             StartCoroutine(bullet.GetComponent<EraseBullet>().AutoClearBullet(3.0f));
-    //         }
-    //         else
-    //         {
-    //             GameObject bullet = Instantiate(bulletManager.bulletObject);
-    //             bullet.SetActive(false);
-    //             bullet.transform.SetParent(bulletManager.bulletParent.transform);
-    //             bulletManager.bulletPool.Enqueue(bullet);
-    //         }
-    // 
-    //         yield return new WaitForSeconds(5.0f);
-    //     }
-    // }
+        // public IEnumerator LaserRotatePattern()
+        // {
+        //     Vector2 playerPosition;
+        // 
+        //     while (true)
+        //     {
+        //         bulletManager = GameObject.Find("BulletManager").transform.Find("EnemyBullet").GetComponent<BulletManager>();
+        //         playerPosition = GameObject.Find("PLAYER").transform.position;
+        // 
+        //         // 빈 탄막 발사
+        //         GameObject emptyBullet = bulletManager.bulletPool.Dequeue();
+        //         if (bulletManager.bulletPool.Count > 0)
+        //         {
+        //             emptyBullet.SetActive(true);
+        //             ClearChild(emptyBullet);
+        //             emptyBullet.transform.position = transform.position;
+        //             emptyBullet.gameObject.tag = "BULLET_ENEMY_EMPTY";
+        //             emptyBullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
+        //             emptyBullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
+        //             if (!emptyBullet.GetComponent<SpriteRenderer>()) emptyBullet.AddComponent<SpriteRenderer>();
+        //             if (!emptyBullet.GetComponent<BoxCollider2D>()) emptyBullet.AddComponent<BoxCollider2D>();
+        //             emptyBullet.GetComponent<SpriteRenderer>().sprite = spriteCollection[0];
+        //             emptyBullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        //             emptyBullet.GetComponent<BoxCollider2D>().isTrigger = true;
+        //             emptyBullet.GetComponent<BoxCollider2D>().size = new Vector2(0.05f, 0.05f);
+        //             if (!emptyBullet.GetComponent<InitializeBullet>()) emptyBullet.AddComponent<InitializeBullet>();
+        //             if (!emptyBullet.GetComponent<MovingBullet>()) emptyBullet.AddComponent<MovingBullet>();
+        //             if (!emptyBullet.GetComponent<EraseBullet>()) emptyBullet.AddComponent<EraseBullet>();
+        //             if (!emptyBullet.GetComponent<LaserBullet>()) emptyBullet.AddComponent<LaserBullet>();
+        //             emptyBullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_HOLD;
+        //             emptyBullet.GetComponent<InitializeBullet>().bulletObject = emptyBullet.gameObject;
+        //             emptyBullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+        //             emptyBullet.GetComponent<InitializeBullet>().isGrazed = false;
+        //             emptyBullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
+        //             emptyBullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+        //             emptyBullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+        //             emptyBullet.GetComponent<LaserBullet>().laserWidth = 1.8f;
+        //             emptyBullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
+        //             emptyBullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.1f;
+        //             emptyBullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
+        //             emptyBullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.1f;
+        //             emptyBullet.GetComponent<LaserBullet>().laserRotateState = BulletRotateState.BULLETROTATESTATE_NORMAL;
+        //             emptyBullet.GetComponent<LaserBullet>().laserRotateSpeed = 30.0f;
+        //             emptyBullet.GetComponent<LaserBullet>().isLaserRotateEnable = true;
+        //             emptyBullet.GetComponent<LaserBullet>().isLaserRotateDisable = true;
+        //         }
+        //         else
+        //         {
+        //             GameObject bullet = Instantiate(bulletManager.bulletObject);
+        //             bullet.SetActive(false);
+        //             bullet.transform.SetParent(bulletManager.bulletParent.transform);
+        //             bulletManager.bulletPool.Enqueue(bullet);
+        //         }
+        // 
+        //         // 탄막 1 발사 (회색 고정 레이저탄) (조준탄)
+        //         if (bulletManager.bulletPool.Count > 0)
+        //         {
+        //             GameObject bullet = bulletManager.bulletPool.Dequeue();
+        //              
+        //             bullet.SetActive(true);
+        //             ClearChild(bullet);
+        //             bullet.transform.position = new Vector3(transform.position.x, transform.position.y - 7.0f, transform.position.z);
+        //             bullet.transform.localScale = new Vector3(1.8f, 100.0f, bullet.transform.localScale.z);
+        //             bullet.gameObject.tag = "BULLET_ENEMY";
+        //             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
+        //             bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
+        //             if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+        //             if (!bullet.GetComponent<BoxCollider2D>()) bullet.AddComponent<BoxCollider2D>();
+        //             bullet.GetComponent<SpriteRenderer>().sprite = spriteCollection[358];
+        //             bullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        //             bullet.GetComponent<BoxCollider2D>().isTrigger = true;
+        //             bullet.GetComponent<BoxCollider2D>().size = new Vector2(0.08f, 0.14f);
+        //             if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+        //             if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+        //             if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+        //             if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
+        //             bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_HOLD;
+        //             bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+        //             bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+        //             bullet.GetComponent<InitializeBullet>().isGrazed = false;
+        //             bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
+        //             bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+        //             bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+        //             bullet.GetComponent<LaserBullet>().laserWidth = 1.8f;
+        //             bullet.GetComponent<LaserBullet>().laserEnableTime = 1.0f;
+        //             bullet.GetComponent<LaserBullet>().laserEnableSpeed = 0.1f;
+        //             bullet.GetComponent<LaserBullet>().laserDisableTime = 2.5f;
+        //             bullet.GetComponent<LaserBullet>().laserDisableSpeed = 0.1f;
+        //             bullet.transform.SetParent(emptyBullet.transform);
+        //             emptyBullet.GetComponent<MovingBullet>().bulletDestination = emptyBullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+        //             float angle = Mathf.Atan2(emptyBullet.GetComponent<MovingBullet>().bulletDestination.y, emptyBullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+        //             emptyBullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle + 90.0f);
+        //         }
+        //         else
+        //         {
+        //             GameObject bullet = Instantiate(bulletManager.bulletObject);
+        //             bullet.SetActive(false);
+        //             bullet.transform.SetParent(bulletManager.bulletParent.transform);
+        //             bulletManager.bulletPool.Enqueue(bullet);
+        //         }
+        // 
+        //         yield return new WaitForSeconds(5.0f);
+        // 
+        //         // 랜덤한 지점으로 이동
+        //         Vector3 targetPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(1.5f, 3.0f), 0.0f);
+        //         StartCoroutine(MoveToDestination(targetPosition, 1.0f));
+        //         if (targetPosition.x <= 0.0f)
+        //         {
+        //             transform.Find("Body").GetComponent<EnemySprite>().isLeftMove = true;
+        //         }
+        //         else
+        //         {
+        //             transform.Find("Body").GetComponent<EnemySprite>().isRightMove = true;
+        //         }
+        // 
+        //         yield return new WaitForSeconds(1.5f);
+        // 
+        //         playerPosition = GameObject.Find("PLAYER").transform.position;
+        // 
+        //         // 탄막 2 발사 (분홍색 무빙 레이저탄) (조준탄)
+        //         if (bulletManager.bulletPool.Count > 0)
+        //         {
+        //             GameObject bullet = bulletManager.bulletPool.Dequeue();
+        //              
+        //             bullet.SetActive(true);
+        //             ClearChild(bullet);
+        //             bullet.transform.position = transform.position;
+        //             bullet.gameObject.tag = "BULLET_ENEMY";
+        //             bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_LASER");
+        //             bullet.transform.SetParent(GameObject.Find("BULLET").transform.Find("EnemyBullet"));
+        //             if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+        //             if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
+        //             bullet.GetComponent<SpriteRenderer>().sprite = spriteCollection[378];
+        //             bullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        //             bullet.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        //             bullet.GetComponent<CapsuleCollider2D>().size = new Vector2(2.4f, 0.04f);
+        //             bullet.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
+        //             if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+        //             if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+        //             if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+        //             if (!bullet.GetComponent<LaserBullet>()) bullet.AddComponent<LaserBullet>();
+        //             bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_LASER_MOVE;
+        //             bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
+        //             bullet.GetComponent<InitializeBullet>().targetObject = GameObject.Find("PLAYER");
+        //             bullet.GetComponent<InitializeBullet>().isGrazed = false;
+        //             bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 1.0f;
+        //             bullet.GetComponent<MovingBullet>().bulletAccelerationMoveSpeed = 0.3f;
+        //             bullet.GetComponent<MovingBullet>().bulletAccelerationMoveSpeedMax = 6.0f;
+        //             bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING;
+        //             bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+        //             bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetAimedBulletDestination(playerPosition);
+        //             float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
+        //             bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle);
+        //             bullet.GetComponent<LaserBullet>().laserLength = 1.0f;
+        //             StartCoroutine(bullet.GetComponent<EraseBullet>().AutoClearBullet(3.0f));
+        //         }
+        //         else
+        //         {
+        //             GameObject bullet = Instantiate(bulletManager.bulletObject);
+        //             bullet.SetActive(false);
+        //             bullet.transform.SetParent(bulletManager.bulletParent.transform);
+        //             bulletManager.bulletPool.Enqueue(bullet);
+        //         }
+        // 
+        //         yield return new WaitForSeconds(5.0f);
+        //     }
+        // }
 
-    #endregion
+        #endregion
+
 }

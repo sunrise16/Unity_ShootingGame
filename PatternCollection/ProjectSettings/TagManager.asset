@@ -12,6 +12,7 @@ TagManager:
   - BULLET_ENEMY
   - GRAZECIRCLE
   - BULLET_ENEMY_EMPTY
+  - EFFECT
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,10 @@ public class BulletManager : MonoBehaviour
         {
             bulletPoolSize = 1000;
         }
+        else if (gameObject.tag.Equals("EFFECT"))
+        {
+            bulletPoolSize = 500;
+        }
 
         bulletPool = new Queue<GameObject>();
         for (int i = 0; i < bulletPoolSize; i++)

@@ -6,9 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private GameObject enemy;
-    private EnemyDatabase enemyDatabase;
     private EnemyFire enemyFire;
     private EnemySprite enemySprite;
+    private EnemyDatabase enemyDatabase;
+    private Transform effectParent;
     private GameObject destroyzoneAll;
 
     public bool isCleared;
@@ -17,9 +18,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         enemy = GameObject.Find("ENEMY");
-        enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyDatabase>();
-        enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
-        enemySprite = GameObject.Find("ENEMY").transform.GetChild(0).GetComponent<EnemySprite>();
+        enemyFire = enemy.GetComponent<EnemyFire>();
+        enemySprite = enemy.transform.GetChild(0).GetComponent<EnemySprite>();
+        enemyDatabase = enemy.GetComponent<EnemyDatabase>();
+        effectParent = GameObject.Find("EFFECT").transform;
         destroyzoneAll = GameObject.Find("DESTROYZONE").transform.GetChild(0).gameObject;
 
         stageNumber = 1;
@@ -30,9 +32,13 @@ public class GameManager : MonoBehaviour
     {
         switch (stageNumber)
         {
-            case 1: case 2: case 3: case 4: case 5: case 6:
+            case 1: case 3: case 4: case 5: case 6:
                 enemyDatabase.enemyCurrentHp = 1000.0f;
                 enemyDatabase.enemyMaxHp = 1000.0f;
+                break;
+            case 2:
+                enemyDatabase.enemyCurrentHp = 2500.0f;
+                enemyDatabase.enemyMaxHp = 2500.0f;
                 break;
             case 7: case 8: case 9: case 10:
                 enemyDatabase.enemyCurrentHp = 1200.0f;
@@ -59,19 +65,26 @@ public class GameManager : MonoBehaviour
         isCleared = true;
         Vector3 originPosition = new Vector3(0.0f, 3.5f, 0.0f);
         float moveTime = 1.5f;
-
+        
         stageNumber++;
         SetEnemyHp();
-        enemyFire.StopAllCoroutines();
-
-        iTween.MoveTo(enemy.gameObject, iTween.Hash("position", originPosition, "easetype", iTween.EaseType.easeOutQuad, "time", moveTime));
-        StartCoroutine(enemy.GetComponent<EnemyFire>().EnemySpriteSet(originPosition.x, enemy.transform.position.x, moveTime));
-
-        enemySprite.isLeftMove = false;
-        enemySprite.isRightMove = false;
         destroyzoneAll.SetActive(true);
+
+        for (int i = 0; i < effectParent.childCount; i++)
+        {
+            if (effectParent.GetChild(i).gameObject.activeSelf.Equals(true))
+            {
+                effectParent.GetChild(i).GetComponent<EraseEffect>().ClearEffect();
+            }
+        }
+
+        enemyFire.StopAllCoroutines();
         StartCoroutine(GameStart());
 
+        iTween.MoveTo(enemy.gameObject, iTween.Hash("position", originPosition, "easetype", iTween.EaseType.easeOutQuad, "time", moveTime));
+        enemySprite.spriteIndexNumber = 0;
+        StartCoroutine(enemy.GetComponent<EnemyFire>().EnemySpriteSet(originPosition.x, enemy.transform.position.x, moveTime));
+        
         System.GC.Collect();
 
         yield return null;
