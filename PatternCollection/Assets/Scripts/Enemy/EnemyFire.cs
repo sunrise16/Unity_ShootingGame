@@ -481,11 +481,11 @@ public class EnemyFire : MonoBehaviour
                         movingBullet.bulletMoveSpeed = 0.0f;
                         break;
                 }
-                movingBullet.bulletAccelerationMoveSpeed = movingBullet.bulletMoveSpeed * 0.009f;
-                movingBullet.bulletAccelerationMoveSpeedMax = 6.0f;
+                movingBullet.bulletAccelerationMoveSpeed = movingBullet.bulletMoveSpeed * 0.005f;
+                movingBullet.bulletAccelerationMoveSpeedMax = 8.0f;
                 movingBullet.bulletDecelerationMoveSpeed = movingBullet.bulletMoveSpeed * 0.01f;
-                movingBullet.bulletRotateSpeed = (angleMultiply == 1 ? 90.0f : -90.0f);
-                movingBullet.bulletRotateLimit = 4.0f;
+                movingBullet.bulletRotateSpeed = (angleMultiply == 1 ? 75.0f : -75.0f);
+                movingBullet.bulletRotateLimit = 4.5f;
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
                 movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                 movingBullet.bulletDestination = initializeBullet.GetRandomAimedBulletDestination();
