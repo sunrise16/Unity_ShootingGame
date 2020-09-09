@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private PlayerHitPoint playerHitPoint;
     private GameObject grazeCircle;
     private Animator animator;
     private Vector2 margin;
@@ -17,7 +16,6 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        playerHitPoint = transform.Find("HitPoint").GetComponent<PlayerHitPoint>();
         grazeCircle = GameObject.Find("GRAZECIRCLE");
         animator = transform.Find("Body").GetComponent<Animator>();
         margin = new Vector2(0.03f, 0.03f);
@@ -37,12 +35,10 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 isSlowMoveMode = true;
-                StartCoroutine(playerHitPoint.AlphaUp());
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 isSlowMoveMode = false;
-                StartCoroutine(playerHitPoint.AlphaDown());
             }
 
             if (isSlowMoveMode == true)

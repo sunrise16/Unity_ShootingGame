@@ -15,6 +15,7 @@ public class ReflectBullet : MonoBehaviour
     public int effectSpriteNumber;
     public float scaleDownSpeed;
     public float scaleDownTime;
+    public float alphaUpSpeed;
 
     void Start()
     {
@@ -57,7 +58,7 @@ public class ReflectBullet : MonoBehaviour
                     }
                     if (isEffectOutput.Equals(true))
                     {
-                        StartCoroutine(enemyFire.CreateBulletFireEffect(effectSpriteNumber, scaleDownSpeed, scaleDownTime, transform.position));
+                        StartCoroutine(enemyFire.CreateBulletFireEffect(effectSpriteNumber, scaleDownSpeed, scaleDownTime, alphaUpSpeed, transform.position));
                     }
                 }
             }

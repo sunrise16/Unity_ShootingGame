@@ -57,6 +57,7 @@ public class EnemySprite : MonoBehaviour
                     spriteIndexNumber--;
                     if (spriteIndexNumber <= 0)
                     {
+                        spriteIndexNumber = 0;
                         isSpriteReturn = false;
                         isLeftMove = false;
                         isRightMove = false;
