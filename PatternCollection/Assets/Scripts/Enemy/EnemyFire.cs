@@ -178,9 +178,9 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = transform.position;
 
         // 탄막 1 이펙트
-        StartCoroutine(CreateBulletFireEffect(301, 0.48f, 0.2f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(301, 0.8f, 0.15f, 0.3f, bulletFirePosition));
 
-        yield return new WaitForSeconds(0.125f);
+        yield return new WaitForSeconds(0.15f);
 
         // 탄막 1 발사 (파란색, 하늘색 쐐기탄) (조준 방사탄)
         for (int i = 0; i < 16; i++)
@@ -190,7 +190,7 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
                 bullet.SetActive(true);
                 ClearChild(bullet);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = bulletFirePosition;
                 bullet.gameObject.tag = "BULLET_ENEMY";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
                 bullet.transform.SetParent(enemyBulletTemp1);
@@ -242,9 +242,9 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = transform.position;
 
         // 탄막 2 이펙트
-        StartCoroutine(CreateBulletFireEffect(304, 0.48f, 0.2f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(304, 0.6f, 0.225f, 0.3f, bulletFirePosition));
 
-        yield return new WaitForSeconds(0.20f);
+        yield return new WaitForSeconds(0.225f);
 
         // 탄막 2 발사 (노란색, 주황색 부적탄) (조준 방사탄)
         for (int i = 0; i < 18; i++)
@@ -254,7 +254,7 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
                 bullet.SetActive(true);
                 ClearChild(bullet);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = bulletFirePosition;
                 bullet.gameObject.tag = "BULLET_ENEMY";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
                 bullet.transform.SetParent(enemyBulletTemp2);
@@ -298,18 +298,72 @@ public class EnemyFire : MonoBehaviour
     {
         Vector3 targetPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
-        iTween.MoveTo(gameObject, iTween.Hash("position", targetPosition, "easetype", iTween.EaseType.easeOutQuad, "time", 1.5f));
-        StartCoroutine(EnemySpriteSet(targetPosition.x, transform.position.x, 1.5f));
+        iTween.MoveTo(gameObject, iTween.Hash("position", targetPosition, "easetype", iTween.EaseType.easeOutQuad, "time", 1.2f));
+        StartCoroutine(EnemySpriteSet(targetPosition.x, transform.position.x, 1.2f));
 
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1.5f);
 
         StartCoroutine(Stage2Pattern1());
     }
     public IEnumerator Stage2Pattern1()
     {
+        while (true)
+        {
+            StartCoroutine(Stage2Pattern1Attack());
 
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+    public IEnumerator Stage2Pattern1Attack()
+    {
+        Vector2 bulletFirePosition = transform.position;
 
-        yield return null;
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(303, 0.6f, 0.225f, 0.2f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.225f);
+
+        // 탄막 1 발사 (초록색 화살탄) (각도 제한 랜덤탄)
+        for (int i = 0; i < 2; i++)
+        {
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                ClearChild(bullet);
+                bullet.transform.position = bulletFirePosition;
+                bullet.gameObject.tag = "BULLET_ENEMY";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2");
+                bullet.transform.SetParent(enemyBulletTemp1);
+                if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+                if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                spriteRenderer.sprite = spriteCollection[335];
+                spriteRenderer.sortingOrder = 3;
+                capsuleCollider2D.isTrigger = true;
+                capsuleCollider2D.size = new Vector2(0.01f, 0.2f);
+                capsuleCollider2D.direction = CapsuleDirection2D.Vertical;
+                capsuleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                movingBullet.bulletMoveSpeed = 5.0f;
+                movingBullet.bulletDecelerationMoveSpeed = Random.Range(0.04f, 0.06f);
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(new Vector2(bulletFirePosition.x, bulletFirePosition.y + 10.0f));
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f + Random.Range(-40.0f, 40.0f));
+            }
+            else AddBulletPool();
+        }
     }
 
     #endregion
@@ -361,9 +415,9 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = transform.position;
 
         // 탄막 1 이펙트
-        StartCoroutine(CreateBulletFireEffect(301, 0.48f, 0.2f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(301, 0.8f, 0.15f, 0.3f, bulletFirePosition));
 
-        yield return new WaitForSeconds(0.125f);
+        yield return new WaitForSeconds(0.15f);
 
         // 탄막 1 발사 (파란색 보석탄, 쿠나이탄) (랜덤탄)
         for (int i = 0; i < 192; i++)
@@ -375,7 +429,7 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
                 bullet.SetActive(true);
                 ClearChild(bullet);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = bulletFirePosition;
                 bullet.gameObject.tag = "BULLET_ENEMY";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2");
                 bullet.transform.SetParent(enemyBulletTemp1);
@@ -439,9 +493,9 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = transform.position;
 
         // 탄막 2 이펙트
-        StartCoroutine(CreateBulletFireEffect(300, 0.48f, 0.2f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(300, 0.8f, 0.15f, 0.3f, bulletFirePosition));
 
-        yield return new WaitForSeconds(0.125f);
+        yield return new WaitForSeconds(0.15f);
 
         // 탄막 2 발사 (분홍색 보석탄, 쿠나이탄) (랜덤탄)
         for (int i = 0; i < 192; i++)
@@ -453,7 +507,7 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
                 bullet.SetActive(true);
                 ClearChild(bullet);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = bulletFirePosition;
                 bullet.gameObject.tag = "BULLET_ENEMY";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2");
                 bullet.transform.SetParent(enemyBulletTemp1);
@@ -518,7 +572,7 @@ public class EnemyFire : MonoBehaviour
 
         while (true)
         {
-            StartCoroutine(Stage3Pattern2Attack1());
+            StartCoroutine(Stage3Pattern2Attack());
             fireCount++;
 
             if (fireCount.Equals(8))
@@ -534,14 +588,14 @@ public class EnemyFire : MonoBehaviour
 
         yield return null;
     }
-    public IEnumerator Stage3Pattern2Attack1()
+    public IEnumerator Stage3Pattern2Attack()
     {
         Vector2 bulletFirePosition = transform.position;
 
         // 탄막 3 이펙트
-        StartCoroutine(CreateBulletFireEffect(304, 0.6f, 0.25f, 0.4f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(304, 0.6f, 0.225f, 0.4f, bulletFirePosition));
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.225f);
 
         // 탄막 3 발사 (노란색 나비탄) (조준 방사탄)
         for (int i = 0; i < 18; i++)
@@ -551,10 +605,10 @@ public class EnemyFire : MonoBehaviour
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
                 bullet.SetActive(true);
                 ClearChild(bullet);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = bulletFirePosition;
                 bullet.gameObject.tag = "BULLET_ENEMY";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2");
-                bullet.transform.SetParent(enemyBulletTemp1);
+                bullet.transform.SetParent(enemyBulletTemp2);
                 if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
                 if (!bullet.GetComponent<CircleCollider2D>()) bullet.AddComponent<CircleCollider2D>();
                 if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
@@ -776,7 +830,7 @@ public class EnemyFire : MonoBehaviour
                     bullet.transform.position = transform.position;
                     bullet.gameObject.tag = "BULLET_ENEMY";
                     bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2");
-                    bullet.transform.SetParent(enemyBulletTemp1);
+                    bullet.transform.SetParent(enemyBulletTemp2);
                     if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
                     if (!bullet.GetComponent<CircleCollider2D>()) bullet.AddComponent<CircleCollider2D>();
                     if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
@@ -2449,6 +2503,8 @@ public class EnemyFire : MonoBehaviour
     public IEnumerator EffectScaleUp(GameObject effect, float scaleUpSpeed, float scaleLimit)
     {
         EraseEffect eraseEffect = effect.GetComponent<EraseEffect>();
+
+        effect.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
 
         while (true)
         {
