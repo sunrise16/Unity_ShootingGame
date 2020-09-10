@@ -1237,6 +1237,9 @@ MonoBehaviour:
   - {fileID: 21301470, guid: eca1e617b9cf8bc49a295f78bba95b3a, type: 3}
   - {fileID: 21301472, guid: eca1e617b9cf8bc49a295f78bba95b3a, type: 3}
   - {fileID: 21301474, guid: eca1e617b9cf8bc49a295f78bba95b3a, type: 3}
+  enemyBulletTemp1: {fileID: 0}
+  enemyBulletTemp2: {fileID: 0}
+  enemyBulletTemp3: {fileID: 0}
 --- !u!61 &361404269
 BoxCollider2D:
   m_ObjectHideFlags: 0
