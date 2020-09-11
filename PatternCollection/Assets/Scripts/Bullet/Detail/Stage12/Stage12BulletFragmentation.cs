@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Stage2BulletFragmentation : MonoBehaviour
+public class Stage12BulletFragmentation : MonoBehaviour
 {
     private Transform enemyBullet;
     private GameObject playerObject;
@@ -33,7 +33,7 @@ public class Stage2BulletFragmentation : MonoBehaviour
                 Vector2 bulletFirePosition = transform.position;
 
                 // 탄막 2 이펙트
-                StartCoroutine(enemyFire.CreateBulletFireEffect(303, 1.0f, 12.0f, 0.3f, 0.1f, 0.5f, bulletFirePosition));
+                StartCoroutine(enemyFire.CreateBulletFireEffect(303, 1.0f, 12.0f, 0.3f, 0.1f, 0.4f, bulletFirePosition));
 
                 // 탄막 2 발사 (초록색 / 노란색 소형 테두리 원탄) (랜덤탄)
                 StartCoroutine(FragmentationAttack1(bulletFirePosition));

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class LaserBullet : MonoBehaviour
 {
+    private InitializeBullet initializeBullet;
+    private MovingBullet movingBullet;
+    private EraseBullet eraseBullet;
+    private CapsuleCollider2D capsuleCollider2D;
+
     public float laserWidth;
 
     // 레이저 활성화, 비활성화 관련 변수
@@ -26,16 +31,21 @@ public class LaserBullet : MonoBehaviour
 
     void Start()
     {
+        initializeBullet = GetComponent<InitializeBullet>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        movingBullet = GetComponent<MovingBullet>();
+        eraseBullet = GetComponent<EraseBullet>();
+
         // 최초 변수 초기화 및 박스 콜라이더 해제
         laserEnableDelay = 0.0f;
         laserDisableDelay = 0.0f;
         isLaserEnabled = false;
         isLaserDisabled = true;
 
-        if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
+        if (initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
         {
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
-            GetComponent<BoxCollider2D>().enabled = false;
+            capsuleCollider2D.enabled = false;
         }
         else
         {
@@ -46,7 +56,7 @@ public class LaserBullet : MonoBehaviour
 	void Update()
     {
         // 레이저 활성화, 비활성화
-        if (GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
+        if (initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
         {
             if (isLaserDisabled.Equals(true))
             {
@@ -59,15 +69,15 @@ public class LaserBullet : MonoBehaviour
                     {
                         if (isLaserRotateEnable.Equals(true))
                         {
-                            GetComponent<MovingBullet>().bulletRotateState = laserRotateState;
-                            GetComponent<MovingBullet>().bulletRotateSpeed = laserRotateSpeed;
-                            GetComponent<MovingBullet>().bulletRotateLimit = laserRotateLimit;
+                            movingBullet.bulletRotateState = laserRotateState;
+                            movingBullet.bulletRotateSpeed = laserRotateSpeed;
+                            movingBullet.bulletRotateLimit = laserRotateLimit;
                             isLaserRotateEnable = false;
                         }
                         transform.localScale = new Vector3(laserWidth, transform.localScale.y, transform.localScale.z);
                         isLaserDisabled = false;
                         isLaserEnabled = true;
-                        GetComponent<BoxCollider2D>().enabled = true;
+                        capsuleCollider2D.enabled = true;
                     }
                 }
             }
@@ -82,15 +92,15 @@ public class LaserBullet : MonoBehaviour
                     {
                         if (isLaserRotateDisable.Equals(true))
                         {
-                            GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-                            GetComponent<MovingBullet>().bulletRotateSpeed = 0.0f;
-                            GetComponent<MovingBullet>().bulletRotateLimit = 0.0f;
+                            movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                            movingBullet.bulletRotateSpeed = 0.0f;
+                            movingBullet.bulletRotateLimit = 0.0f;
                             isLaserRotateDisable = false;
                         }
                         transform.localScale = new Vector3(0.0f, transform.localScale.y, transform.localScale.z);
                         isLaserEnabled = false;
-                        GetComponent<BoxCollider2D>().enabled = false;
-                        GetComponent<EraseBullet>().ClearBullet();
+                        capsuleCollider2D.enabled = false;
+                        eraseBullet.ClearBullet();
                     }
                 }
             }

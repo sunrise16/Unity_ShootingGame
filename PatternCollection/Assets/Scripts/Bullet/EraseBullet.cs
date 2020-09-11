@@ -18,12 +18,10 @@ public class EraseBullet : MonoBehaviour
     private ReflectBullet reflectBullet;
 
     // 커스텀 컴포넌트를 만들 경우 계속 추가할 것!
-    private Stage2BulletFragmentation stage2BulletFragmentation;
-
-    // 패턴 보관함
-    // private Stage1BulletFragmentation stage1BulletFragmentation;
-    // private Stage3BulletRotate stage3BulletRotate;
-    // private Stage5BulletCreate stage5BulletCreate;
+    private Stage12BulletFragmentation stage12BulletFragmentation;
+    private Stage1BulletFragmentation stage1BulletFragmentation;
+    private Stage13BulletRotate stage13BulletRotate;
+    private Stage5BulletCreate stage5BulletCreate;
 
     void Start()
     {
@@ -39,12 +37,11 @@ public class EraseBullet : MonoBehaviour
         laserBullet = GetComponent<LaserBullet>();
         reflectBullet = GetComponent<ReflectBullet>();
 
-        stage2BulletFragmentation = GetComponent<Stage2BulletFragmentation>();
-
-        // 패턴 보관함
-        // stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
-        // stage3BulletRotate = GetComponent<Stage3BulletRotate>();
-        // stage5BulletCreate = GetComponent<Stage5BulletCreate>();
+        // 커스텀 컴포넌트 캐싱
+        stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
+        stage5BulletCreate = GetComponent<Stage5BulletCreate>();
+        stage12BulletFragmentation = GetComponent<Stage12BulletFragmentation>();
+        stage13BulletRotate = GetComponent<Stage13BulletRotate>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -112,11 +109,10 @@ public class EraseBullet : MonoBehaviour
         Destroy(reflectBullet);
 
         // 커스텀 컴포넌트 제거
-        Destroy(stage2BulletFragmentation);
-        // 패턴 보관함
-        // Destroy(stage1BulletFragmentation);
-        // Destroy(stage3BulletRotate);
-        // Destroy(stage5BulletCreate);
+        Destroy(stage1BulletFragmentation);
+        Destroy(stage5BulletCreate);
+        Destroy(stage12BulletFragmentation);
+        Destroy(stage13BulletRotate);
 
         // 최종 컴포넌트 제거 후 비활성화
         StopAllCoroutines();

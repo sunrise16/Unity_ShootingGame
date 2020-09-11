@@ -31,6 +31,11 @@ public class Stage1BulletFragmentation : MonoBehaviour
             // 탄막 2 발사 (파란색 원탄) (랜덤탄)
             if (movingBullet.bulletMoveSpeed <= 0.0f)
             {
+                Vector2 bulletFirePosition = transform.position;
+
+                // 탄막 2 이펙트
+                StartCoroutine(enemyFire.CreateBulletFireEffect(301, 1.0f, 12.0f, 0.4f, 0.1f, 0.35f, bulletFirePosition));
+
                 if (bulletManager.bulletPool.Count > 0)
                 {
                     for (int i = 0; i < 16; i++)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Stage3BulletRotate : MonoBehaviour
+public class Stage13BulletRotate : MonoBehaviour
 {
     private MovingBullet movingBullet;
 

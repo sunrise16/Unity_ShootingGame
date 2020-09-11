@@ -22,10 +22,11 @@ public class Stage5BulletCreate : MonoBehaviour
 
     private IEnumerator CreateBullet()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.075f);
 
         while (true)
         {
+            // 탄막 2 생성
             if (bulletManager.bulletPool.Count > 0)
             {
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
@@ -37,28 +38,32 @@ public class Stage5BulletCreate : MonoBehaviour
                 bullet.transform.SetParent(enemyBullet);
                 if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
                 if (!bullet.GetComponent<CircleCollider2D>()) bullet.AddComponent<CircleCollider2D>();
-                bullet.GetComponent<SpriteRenderer>().sprite = enemyFire.spriteCollection[18];
-                bullet.GetComponent<SpriteRenderer>().sortingOrder = 3;
-                bullet.GetComponent<CircleCollider2D>().isTrigger = true;
-                bullet.GetComponent<CircleCollider2D>().radius = 0.04f;
-                bullet.GetComponent<CircleCollider2D>().enabled = false;
                 if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
                 if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
                 if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
-                bullet.GetComponent<InitializeBullet>().bulletType = BulletType.BULLETTYPE_NORMAL;
-                bullet.GetComponent<InitializeBullet>().bulletObject = bullet.gameObject;
-                bullet.GetComponent<InitializeBullet>().targetObject = playerObject;
-                bullet.GetComponent<InitializeBullet>().isGrazed = false;
-                bullet.GetComponent<MovingBullet>().bulletMoveSpeed = 0.0f;
-                bullet.GetComponent<MovingBullet>().bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                bullet.GetComponent<MovingBullet>().bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
-                bullet.GetComponent<MovingBullet>().bulletDestination = bullet.GetComponent<InitializeBullet>().GetRandomAimedBulletDestination();
-                float angle = Mathf.Atan2(bullet.GetComponent<MovingBullet>().bulletDestination.y, bullet.GetComponent<MovingBullet>().bulletDestination.x) * Mathf.Rad2Deg;
-                bullet.GetComponent<MovingBullet>().ChangeRotateAngle(angle - 90.0f);
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CircleCollider2D circleCollider2D = bullet.GetComponent<CircleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                spriteRenderer.sprite = enemyFire.spriteCollection[18];
+                spriteRenderer.sortingOrder = 3;
+                circleCollider2D.isTrigger = true;
+                circleCollider2D.radius = 0.04f;
+                circleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                movingBullet.bulletMoveSpeed = 0.0f;
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                movingBullet.bulletDestination = initializeBullet.GetRandomAimedBulletDestination();
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f);
             }
             else enemyFire.AddBulletPool();
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.15f);
         }
     }
 }

@@ -1237,9 +1237,9 @@ MonoBehaviour:
   - {fileID: 21301470, guid: eca1e617b9cf8bc49a295f78bba95b3a, type: 3}
   - {fileID: 21301472, guid: eca1e617b9cf8bc49a295f78bba95b3a, type: 3}
   - {fileID: 21301474, guid: eca1e617b9cf8bc49a295f78bba95b3a, type: 3}
-  enemyBulletTemp1: {fileID: 0}
-  enemyBulletTemp2: {fileID: 0}
-  enemyBulletTemp3: {fileID: 0}
+  enemyBulletTemp1: {fileID: 23173183}
+  enemyBulletTemp2: {fileID: 1623953670}
+  enemyBulletTemp3: {fileID: 45887463}
 --- !u!61 &361404269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16668cad970e9448949b46442ba8fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 90
+  rotateSpeed: -120
 --- !u!212 &1116176767
 SpriteRenderer:
   m_ObjectHideFlags: 0

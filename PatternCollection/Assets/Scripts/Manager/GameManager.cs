@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         effectParent = GameObject.Find("EFFECT").transform;
         destroyzoneAll = GameObject.Find("DESTROYZONE").transform.GetChild(0).gameObject;
 
-        stageNumber = 1;
+        stageNumber = 15;
         StartCoroutine(GameStart());
     }
 
@@ -37,16 +37,16 @@ public class GameManager : MonoBehaviour
                 enemyDatabase.enemyMaxHp = 1000.0f;
                 break;
             case 2:
-                enemyDatabase.enemyCurrentHp = 2500.0f;
-                enemyDatabase.enemyMaxHp = 2500.0f;
+                enemyDatabase.enemyCurrentHp = 1100.0f;
+                enemyDatabase.enemyMaxHp = 1100.0f;
                 break;
             case 7: case 8: case 9: case 10:
                 enemyDatabase.enemyCurrentHp = 1200.0f;
                 enemyDatabase.enemyMaxHp = 1200.0f;
                 break;
             default:
-                enemyDatabase.enemyCurrentHp = 0.0f;
-                enemyDatabase.enemyMaxHp = 0.0f;
+                enemyDatabase.enemyCurrentHp = 1000.0f;
+                enemyDatabase.enemyMaxHp = 1000.0f;
                 break;
         }
     }
