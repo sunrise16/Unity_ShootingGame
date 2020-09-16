@@ -13,39 +13,39 @@ using UnityEngine;
 // 4. 자체 이미지 회전하는 탄막은 차일드에 Object Rotate 스크립트를 컴포넌트로 넣고, Rotate Speed를 설정(기본 120.0f)
 // 5. *** Collider 2D는 Is Trigger를 체크하고, Size를 아래와 같이 설정
 //  * (Index 0) 빈 탄막
-//  * (Index 1 ~ 16)    콩알탄 : Circle Collider 2D, Radius 0.02
-//  * (Index 17 ~ 32)   기본 원탄 : Circle Collider 2D, Radius 0.04
-//  * (Index 33 ~ 48)   테두리 원탄 : Circle Collider 2D, Radius 0.03
-//  * (Index 49 ~ 64)   쌀탄 : Capsule Collider 2D, Size X 0.025, Y 0.05, Direction Vertical
-//  * (Index 65 ~ 80)   보석탄 : Capsule Collider 2D, Size X 0.02, Y 0.05, Direction Vertical
-//  * (Index 81 ~ 96)   쿠나이탄 : Capsule Collider 2D, Size X 0.02, Y 0.055, Direction Vertical
-//  * (Index 97 ~ 112)  쐐기탄 : Capsule Collider 2D, Size X 0.04, Y 0.06, Direction Vertical
-//  * (Index 113 ~ 128) 부적탄 : Box Collider 2D, Size X 0.025, Y 0.05
-//  * (Index 129 ~ 144) 총알탄 : Box Collider 2D, Size X 0.02, Y 0.06
-//  * (Index 145 ~ 160) 감주탄 : Capsule Collider 2D, Size X 0.02, Y 0.07, Direction Vertical
-//  * (Index 161 ~ 176) 소형 별탄 : Circle Collider 2D, Radius 0.015, Offset X 0, Y -0.005
-//  * (Index 177 ~ 192) 옥구슬탄 : Circle Collider 2D, Radius 0.04
-//  * (Index 193 ~ 208) 소형 테두리 원탄 : Circle Collider 2D, Radius 0.015
-//  * (Index 209 ~ 224) 소형 쌀탄 : Circle Collider 2D, Radius 0.015
-//  * (Index 225 ~ 240) 소형 촉탄 : Circle Collider 2D, Radius 0.02, Offset X 0, Y 0.01
-//  * (Index 241 ~ 244) 대옥탄 : Circle Collider 2D, Radius 0.135
-//  * (Index 245 ~ 247) 엽전탄 : Circle Collider 2D, Radius 0.04
-//  * (Index 258 ~ 265) 대형 환탄 : Circle Collider 2D, Radius 0.08
-//  * (Index 266 ~ 273) 나비탄 : Circle Collider 2D, Radius 0.02
-//  * (Index 274 ~ 281) 나이프탄 : Capsule Collider 2D, Size X 0.035, Y 0.2, Direction Vertical
-//  * (Index 282 ~ 289) 알약탄 : Capsule Collider 2D, Size X 0.06, Y 0.18, Direction Vertical
-//  * (Index 290 ~ 297) 대형 별탄 : Circle Collider 2D, Radius 0.045, Offset X 0, Y -0.01
+//  * (Index 1 ~ 16)    콩알탄                : Circle Collider 2D, Radius 0.02
+//  * (Index 17 ~ 32)   기본 원탄             : Circle Collider 2D, Radius 0.04
+//  * (Index 33 ~ 48)   테두리 원탄           : Circle Collider 2D, Radius 0.03
+//  * (Index 49 ~ 64)   쌀탄                  : Capsule Collider 2D, Size X 0.025, Y 0.05, Direction Vertical
+//  * (Index 65 ~ 80)   보석탄                : Capsule Collider 2D, Size X 0.02, Y 0.05, Direction Vertical
+//  * (Index 81 ~ 96)   쿠나이탄              : Capsule Collider 2D, Size X 0.02, Y 0.055, Direction Vertical
+//  * (Index 97 ~ 112)  쐐기탄                : Capsule Collider 2D, Size X 0.04, Y 0.06, Direction Vertical
+//  * (Index 113 ~ 128) 부적탄                : Box Collider 2D, Size X 0.025, Y 0.05
+//  * (Index 129 ~ 144) 총알탄                : Box Collider 2D, Size X 0.02, Y 0.06
+//  * (Index 145 ~ 160) 감주탄                : Capsule Collider 2D, Size X 0.02, Y 0.07, Direction Vertical
+//  * (Index 161 ~ 176) 소형 별탄             : Circle Collider 2D, Radius 0.015, Offset X 0, Y -0.005
+//  * (Index 177 ~ 192) 옥구슬탄              : Circle Collider 2D, Radius 0.04
+//  * (Index 193 ~ 208) 소형 테두리 원탄       : Circle Collider 2D, Radius 0.015
+//  * (Index 209 ~ 224) 소형 쌀탄             : Circle Collider 2D, Radius 0.015
+//  * (Index 225 ~ 240) 소형 촉탄             : Circle Collider 2D, Radius 0.02, Offset X 0, Y 0.01
+//  * (Index 241 ~ 244) 대옥탄                : Circle Collider 2D, Radius 0.135
+//  * (Index 245 ~ 247) 엽전탄                : Circle Collider 2D, Radius 0.04
+//  * (Index 258 ~ 265) 대형 환탄             : Circle Collider 2D, Radius 0.08
+//  * (Index 266 ~ 273) 나비탄                : Circle Collider 2D, Radius 0.02
+//  * (Index 274 ~ 281) 나이프탄              : Capsule Collider 2D, Size X 0.035, Y 0.2, Direction Vertical
+//  * (Index 282 ~ 289) 알약탄                : Capsule Collider 2D, Size X 0.06, Y 0.18, Direction Vertical
+//  * (Index 290 ~ 297) 대형 별탄             : Circle Collider 2D, Radius 0.045, Offset X 0, Y -0.01
 //  * (Index 298 ~ 305) 탄막 발사 이펙트
-//  * (Index 306 ~ 313) 대형 발광탄 : Circle Collider 2D, Radius 0.1
-//  * (Index 314 ~ 321) 하트탄 : Circle Collider 2D, Radius 0.065, Offset X 0, Y -0.01
+//  * (Index 306 ~ 313) 대형 발광탄           : Circle Collider 2D, Radius 0.1
+//  * (Index 314 ~ 321) 하트탄                : Circle Collider 2D, Radius 0.065, Offset X 0, Y -0.01
 //  * (Index 322 ~ 329) 탄막 발사 이펙트
-//  * (Index 330 ~ 337) 화살탄 : Capsule Collider 2D, Size X 0.01, Y 0.2, Direction Vertical
-//  * (Index 338 ~ 349) 음표탄 : Circle Collider 2D, Radius 0.02, Offset X -0.01, Y -0.09, Sprite Animation 적용
-//  * (Index 350 ~ 357) 쉼표탄 : Capsule Collider 2D, Size X 0.02, Y 0.18
-//  * (Index 358 ~ 373) 고정 레이저탄 : Box Collider 2D, Size X 0.09, Y 0.13
+//  * (Index 330 ~ 337) 화살탄                : Capsule Collider 2D, Size X 0.01, Y 0.2, Direction Vertical
+//  * (Index 338 ~ 349) 음표탄                : Circle Collider 2D, Radius 0.02, Offset X -0.01, Y -0.09, Sprite Animation 적용
+//  * (Index 350 ~ 357) 쉼표탄                : Capsule Collider 2D, Size X 0.02, Y 0.18
+//  * (Index 358 ~ 373) 고정 레이저탄          : Box Collider 2D, Size X 0.09, Y 0.13
 //  * (Index 374 ~ 389) 무빙 레이저탄 (머리 1) : Box Collider 2D, Size X 0.52, Y 0.04, Offset X 0.02, Y 0
 //  * (Index 390 ~ 405) 무빙 레이저탄 (머리 2) : Box Collider 2D, Size X 0.56, Y 0.04
-//  * (Index 406 ~ 421) 무빙 레이저탄 (몸통) : Box Collider 2D, Size X 0.24, Y 0.04
+//  * (Index 406 ~ 421) 무빙 레이저탄 (몸통)   : Box Collider 2D, Size X 0.24, Y 0.04
 //  * (Index 422 ~ 437) 무빙 레이저탄 (꼬리 1) : Box Collider 2D, Size X 0.56, Y 0.04
 //  * (Index 438 ~ 453) 무빙 레이저탄 (꼬리 2) : Box Collider 2D, Size X 0.52, Y 0.04, Offset X -0.02, Y 0
 
@@ -1134,7 +1134,7 @@ public class EnemyFire : MonoBehaviour
 
     #endregion
 
-    #region 패턴 8 (동방홍마향 1스테이지 - 루미아 1스펠 "나이트 버드")
+    #region 패턴 8 (동방홍마향 1스테이지 - 루미아 1스펠 "나이트 버드" 리메이크)
 
     public IEnumerator Stage8()
     {
@@ -1227,7 +1227,8 @@ public class EnemyFire : MonoBehaviour
                 movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                 movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(targetPosition);
                 float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
-                movingBullet.ChangeRotateAngle(angle - 90.0f + (rotateDirection.Equals(1) ? -30.0f + rotateAngle : 30.0f - rotateAngle));
+                movingBullet.ChangeRotateAngle(angle - 90.0f + (rotateDirection.Equals(1) ? -30.0f + rotateAngle : 30.0f - rotateAngle) +
+                    (rotateDirection.Equals(1) ? (-1.0f * i) : (1.0f * i)));
             }
             else AddBulletPool();
         }
@@ -1612,11 +1613,11 @@ public class EnemyFire : MonoBehaviour
                 bullet.gameObject.tag = "BULLET_ENEMY";
                 bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
                 bullet.transform.SetParent(enemyBulletTemp2);
-                bullet.AddComponent<SpriteRenderer>();
-                bullet.AddComponent<CapsuleCollider2D>();
-                bullet.AddComponent<InitializeBullet>();
-                bullet.AddComponent<MovingBullet>();
-                bullet.AddComponent<EraseBullet>();
+                if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+                if (!bullet.GetComponent<CapsuleCollider2D>()) bullet.AddComponent<CapsuleCollider2D>();
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
                 SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
                 CapsuleCollider2D capsuleCollider2D = bullet.GetComponent<CapsuleCollider2D>();
                 InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
@@ -2097,7 +2098,36 @@ public class EnemyFire : MonoBehaviour
 
     public IEnumerator Stage15()
     {
+        StartCoroutine(Stage15Pattern1());
+        StartCoroutine(Stage15Pattern2());
+
+        yield return null;
+    }
+    public IEnumerator Stage15Pattern1()
+    {
         while (true)
+        {
+            StartCoroutine(Stage15Pattern1Attack());
+
+            yield return new WaitForSeconds(3.0f);
+
+            StartCoroutine(Stage15EnemyMove());
+
+            yield return new WaitForSeconds(1.25f);
+        }
+    }
+    public IEnumerator Stage15EnemyMove()
+    {
+        Vector3 randomPosition = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(2.0f, 4.25f), 0.0f);
+
+        iTween.MoveTo(gameObject, iTween.Hash("position", randomPosition, "easetype", iTween.EaseType.easeOutQuad, "time", 1.0f));
+        StartCoroutine(EnemySpriteSet(randomPosition.x, transform.position.x, 1.0f));
+
+        yield return null;
+    }
+    public IEnumerator Stage15Pattern1Attack()
+    {
+        for (int i = 0; i < 2; i++)
         {
             // 빈 탄막 발사
             if (bulletManager.bulletPool.Count <= 0) AddBulletPool();
@@ -2133,18 +2163,18 @@ public class EnemyFire : MonoBehaviour
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
                 movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                 laserBullet.laserWidth = 1.8f;
-                laserBullet.laserEnableTime = 1.0f;
+                laserBullet.laserEnableTime = 0.0f;
                 laserBullet.laserEnableSpeed = 0.1f;
-                laserBullet.laserDisableTime = 2.5f;
+                laserBullet.laserDisableTime = 1.5f;
                 laserBullet.laserDisableSpeed = 0.1f;
                 laserBullet.laserRotateState = BulletRotateState.BULLETROTATESTATE_NORMAL;
-                laserBullet.laserRotateSpeed = 30.0f;
+                laserBullet.laserRotateSpeed = (i == 0 ? 30.0f : -30.0f);
                 laserBullet.isLaserRotateEnable = true;
                 laserBullet.isLaserRotateDisable = true;
             }
             else AddBulletPool();
 
-            // 탄막 1 발사 (회색 고정 레이저탄) (조준탄)
+            // 탄막 2 발사 (회색 고정 레이저탄) (조준탄)
             if (bulletManager.bulletPool.Count > 0)
             {
                 GameObject bullet = bulletManager.bulletPool.Dequeue();
@@ -2180,18 +2210,145 @@ public class EnemyFire : MonoBehaviour
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
                 movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                 laserBullet.laserWidth = 1.8f;
-                laserBullet.laserEnableTime = 1.0f;
+                laserBullet.laserEnableTime = 0.0f;
                 laserBullet.laserEnableSpeed = 0.1f;
-                laserBullet.laserDisableTime = 2.5f;
+                laserBullet.laserDisableTime = 1.5f;
                 laserBullet.laserDisableSpeed = 0.1f;
                 bullet.transform.SetParent(emptyBullet.transform);
-                emptyMovingBullet.bulletDestination = emptyInitializeBullet.GetAimedBulletDestination(playerObject.transform.position);
+                emptyMovingBullet.bulletDestination = emptyInitializeBullet.GetAimedBulletDestination(new Vector2(transform.position.x, transform.position.y - 7.0f));
                 float angle = Mathf.Atan2(emptyMovingBullet.bulletDestination.y, emptyMovingBullet.bulletDestination.x) * Mathf.Rad2Deg;
-                emptyMovingBullet.ChangeRotateAngle(angle + 90.0f);
+                emptyMovingBullet.ChangeRotateAngle(angle + 90.0f + (i == 0 ? -55.0f : 55.0f));
             }
             else AddBulletPool();
+        }
 
-            yield return new WaitForSeconds(5.0f);
+        yield return null;
+    }
+    public IEnumerator Stage15Pattern2()
+    {
+        while (true)
+        {
+            StartCoroutine(Stage15Pattern2Attack());
+
+            yield return new WaitForSeconds(0.4f);
+        }
+    }
+    public IEnumerator Stage15Pattern2Attack()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(301, 0.8f, 0.1f, 0.4f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.1f);
+
+        // 탄막 1 발사 (흰색 콩알탄) (조준 방사탄)
+        for (int i = 0; i < 64; i++)
+        {
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                ClearChild(bullet);
+                bullet.transform.position = transform.position;
+                bullet.gameObject.tag = "BULLET_ENEMY";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
+                bullet.transform.SetParent(enemyBulletTemp1);
+                if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+                if (!bullet.GetComponent<CircleCollider2D>()) bullet.AddComponent<CircleCollider2D>();
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CircleCollider2D circleCollider2D = bullet.GetComponent<CircleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                spriteRenderer.sprite = spriteCollection[16];
+                spriteRenderer.sortingOrder = 3;
+                circleCollider2D.isTrigger = true;
+                circleCollider2D.radius = 0.02f;
+                circleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                movingBullet.bulletMoveSpeed = 4.5f;
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination();
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f + (5.625f * i));
+            }
+            else AddBulletPool();
+        }
+    }
+
+    #endregion
+
+    #region 패턴 16 (테스트)
+
+    public IEnumerator Stage16()
+    {
+        StartCoroutine(Stage16Pattern1());
+
+        yield return null;
+    }
+    public IEnumerator Stage16Pattern1()
+    {
+        while (true)
+        {
+            StartCoroutine(Stage16Pattern1Attack());
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+    public IEnumerator Stage16Pattern1Attack()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(301, 0.8f, 0.1f, 0.4f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.1f);
+
+        // 탄막 1 발사 (흰색 콩알탄) (조준 방사탄)
+        for (int i = 0; i < 36; i++)
+        {
+            if (bulletManager.bulletPool.Count > 0)
+            {
+                GameObject bullet = bulletManager.bulletPool.Dequeue();
+                bullet.SetActive(true);
+                ClearChild(bullet);
+                bullet.transform.position = bulletFirePosition;
+                bullet.gameObject.tag = "BULLET_ENEMY";
+                bullet.gameObject.layer = LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1");
+                bullet.transform.SetParent(enemyBulletTemp1);
+                if (!bullet.GetComponent<SpriteRenderer>()) bullet.AddComponent<SpriteRenderer>();
+                if (!bullet.GetComponent<CircleCollider2D>()) bullet.AddComponent<CircleCollider2D>();
+                if (!bullet.GetComponent<InitializeBullet>()) bullet.AddComponent<InitializeBullet>();
+                if (!bullet.GetComponent<MovingBullet>()) bullet.AddComponent<MovingBullet>();
+                if (!bullet.GetComponent<EraseBullet>()) bullet.AddComponent<EraseBullet>();
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                CircleCollider2D circleCollider2D = bullet.GetComponent<CircleCollider2D>();
+                InitializeBullet initializeBullet = bullet.GetComponent<InitializeBullet>();
+                MovingBullet movingBullet = bullet.GetComponent<MovingBullet>();
+                spriteRenderer.sprite = spriteCollection[16];
+                spriteRenderer.sortingOrder = 3;
+                circleCollider2D.isTrigger = true;
+                circleCollider2D.radius = 0.02f;
+                circleCollider2D.enabled = false;
+                initializeBullet.bulletType = BulletType.BULLETTYPE_NORMAL;
+                initializeBullet.bulletObject = bullet.gameObject;
+                initializeBullet.targetObject = playerObject;
+                initializeBullet.isGrazed = false;
+                movingBullet.bulletMoveSpeed = 4.5f;
+                movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
+                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
+                movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(new Vector2(bulletFirePosition.x, bulletFirePosition.y - 7.0f));
+                float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
+                movingBullet.ChangeRotateAngle(angle - 90.0f + (10.0f * i));
+            }
+            else AddBulletPool();
         }
     }
 
