@@ -39,6 +39,7 @@ public class MovingBullet : MonoBehaviour
     // 탄속 관련
     public float bulletMoveSpeed;
     public bool bulletMoveSpeedLoopBool;
+    public bool bulletMoveSpeedLoopOnceBool;
     public float bulletAccelerationMoveSpeed;
     public float bulletAccelerationMoveSpeedMax;
     public float bulletDecelerationMoveSpeed;

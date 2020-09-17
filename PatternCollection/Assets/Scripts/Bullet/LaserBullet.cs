@@ -26,8 +26,8 @@ public class LaserBullet : MonoBehaviour
     public BulletRotateState laserRotateState;
     public float laserRotateSpeed;
     public float laserRotateLimit;
-    public bool isLaserRotateEnable;
-    public bool isLaserRotateDisable;
+    public bool isLaserRotateEnabled;
+    public bool isLaserRotateDisabled;
 
     void Start()
     {
@@ -67,12 +67,12 @@ public class LaserBullet : MonoBehaviour
                     transform.localScale = new Vector3(transform.localScale.x + laserEnableSpeed, transform.localScale.y, transform.localScale.z);
                     if (transform.localScale.x >= laserWidth)
                     {
-                        if (isLaserRotateEnable.Equals(true))
+                        if (isLaserRotateEnabled.Equals(true))
                         {
                             movingBullet.bulletRotateState = laserRotateState;
                             movingBullet.bulletRotateSpeed = laserRotateSpeed;
                             movingBullet.bulletRotateLimit = laserRotateLimit;
-                            isLaserRotateEnable = false;
+                            isLaserRotateEnabled = false;
                         }
                         transform.localScale = new Vector3(laserWidth, transform.localScale.y, transform.localScale.z);
                         isLaserDisabled = false;
@@ -90,12 +90,12 @@ public class LaserBullet : MonoBehaviour
                     transform.localScale = new Vector3(transform.localScale.x - laserDisableSpeed, transform.localScale.y, transform.localScale.z);
                     if (transform.localScale.x <= 0.0f)
                     {
-                        if (isLaserRotateDisable.Equals(true))
+                        if (isLaserRotateDisabled.Equals(true))
                         {
                             movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_NONE;
                             movingBullet.bulletRotateSpeed = 0.0f;
                             movingBullet.bulletRotateLimit = 0.0f;
-                            isLaserRotateDisable = false;
+                            isLaserRotateDisabled = false;
                         }
                         transform.localScale = new Vector3(0.0f, transform.localScale.y, transform.localScale.z);
                         isLaserEnabled = false;

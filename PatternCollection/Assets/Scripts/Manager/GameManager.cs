@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         effectParent = GameObject.Find("EFFECT").transform;
         destroyzoneAll = GameObject.Find("DESTROYZONE").transform.GetChild(0).gameObject;
 
-        stageNumber = 8;
+        stageNumber = 1;
         StartCoroutine(GameStart());
     }
 
