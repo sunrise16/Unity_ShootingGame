@@ -39,13 +39,10 @@ public class LaserBullet : MonoBehaviour
         // 최초 변수 초기화 및 박스 콜라이더 해제
         laserEnableDelay = 0.0f;
         laserDisableDelay = 0.0f;
-        isLaserEnabled = false;
-        isLaserDisabled = true;
 
         if (initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD))
         {
             transform.localScale = new Vector3(0.25f, transform.localScale.y, transform.localScale.z);
-            capsuleCollider2D.enabled = false;
         }
         else
         {

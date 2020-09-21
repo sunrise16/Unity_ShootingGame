@@ -207,7 +207,7 @@ public class MovingBullet : MonoBehaviour
         }
 
         // 콜라이더 활성화
-        if (Vector2.Distance(transform.position, playerObject.transform.position) <= 0.5f)
+        if (!initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_LASER_HOLD) && Vector2.Distance(transform.position, playerObject.transform.position) <= 0.5f)
         {
             if (!circleCollider2D.Equals(null))
             {
@@ -269,30 +269,23 @@ public class MovingBullet : MonoBehaviour
 
         if ((CompareTag("BULLET_ENEMY").Equals(true) && collision.CompareTag("GRAZECIRCLE").Equals(true)) && initializeBullet.isGrazed.Equals(false))
         {
-            if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")))
-            {
-                grazeDelay = 0.099f;
-                isGrazing = true;
-            }
-            else
-            {
-                playerDatabase.grazeCount++;
-                initializeBullet.isGrazed = true;
-            }
+            playerDatabase.grazeCount++;
+            initializeBullet.isGrazed = true;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        LaserBullet laserBullet = gameObject.GetComponent<LaserBullet>();
+
+        if ((gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && laserBullet.isLaserEnabled.Equals(true)) &&
+            collision.CompareTag("GRAZECIRCLE").Equals(true))
+        {
+            isGrazing = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        InitializeBullet initializeBullet = gameObject.GetComponent<InitializeBullet>();
         grazeDelay = 0.0f;
         isGrazing = false;
-
-        if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && collision.CompareTag("GRAZECIRCLE"))
-        {
-            if (initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE))
-            {
-                initializeBullet.isGrazed = true;
-            }
-        }
     }
 }

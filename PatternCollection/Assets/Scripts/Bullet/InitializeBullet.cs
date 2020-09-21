@@ -27,7 +27,8 @@ public class InitializeBullet : MonoBehaviour
     public Vector2 bulletPosition;
     public Vector2 targetPosition;
     public Vector2 bulletDestination;
-    
+
+    public int bulletNumber;
     public float distance;
     public bool isGrazed;
 

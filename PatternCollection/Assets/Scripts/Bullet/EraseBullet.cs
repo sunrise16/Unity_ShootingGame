@@ -18,10 +18,14 @@ public class EraseBullet : MonoBehaviour
     private ReflectBullet reflectBullet;
 
     // 커스텀 컴포넌트를 만들 경우 계속 추가할 것!
-    private Stage12BulletFragmentation stage12BulletFragmentation;
     private Stage1BulletFragmentation stage1BulletFragmentation;
-    private Stage13BulletRotate stage13BulletRotate;
     private Stage5BulletCreate stage5BulletCreate;
+    private Stage12BulletFragmentation stage12BulletFragmentation;
+    private Stage13BulletRotate stage13BulletRotate;
+
+    private Stage6BulletRotate stage6BulletRotate;
+    private Stage6BulletAiming stage6BulletAiming;
+    private Stage7BulletAiming stage7BulletAiming;
 
     void Start()
     {
@@ -42,6 +46,10 @@ public class EraseBullet : MonoBehaviour
         stage5BulletCreate = GetComponent<Stage5BulletCreate>();
         stage12BulletFragmentation = GetComponent<Stage12BulletFragmentation>();
         stage13BulletRotate = GetComponent<Stage13BulletRotate>();
+
+        stage6BulletRotate = GetComponent<Stage6BulletRotate>();
+        stage6BulletAiming = GetComponent<Stage6BulletAiming>();
+        stage7BulletAiming = GetComponent<Stage7BulletAiming>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -113,6 +121,10 @@ public class EraseBullet : MonoBehaviour
         Destroy(stage5BulletCreate);
         Destroy(stage12BulletFragmentation);
         Destroy(stage13BulletRotate);
+
+        Destroy(stage6BulletRotate);
+        Destroy(stage6BulletAiming);
+        Destroy(stage7BulletAiming);
 
         // 최종 컴포넌트 제거 후 비활성화
         StopAllCoroutines();
