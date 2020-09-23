@@ -23,9 +23,11 @@ public class EraseBullet : MonoBehaviour
     private Stage12BulletFragmentation stage12BulletFragmentation;
     private Stage13BulletRotate stage13BulletRotate;
 
-    private Stage6BulletRotate stage6BulletRotate;
-    private Stage6BulletAiming stage6BulletAiming;
-    private Stage7BulletAiming stage7BulletAiming;
+    private Pattern6BulletRotate pattern6BulletRotate;
+    private Pattern6BulletAiming pattern6BulletAiming;
+    private Pattern7BulletAiming pattern7BulletAiming;
+    private Pattern8BulletAiming pattern8BulletAiming;
+    private Pattern9BulletRotate pattern9BulletRotate;
 
     void Start()
     {
@@ -47,9 +49,11 @@ public class EraseBullet : MonoBehaviour
         stage12BulletFragmentation = GetComponent<Stage12BulletFragmentation>();
         stage13BulletRotate = GetComponent<Stage13BulletRotate>();
 
-        stage6BulletRotate = GetComponent<Stage6BulletRotate>();
-        stage6BulletAiming = GetComponent<Stage6BulletAiming>();
-        stage7BulletAiming = GetComponent<Stage7BulletAiming>();
+        pattern6BulletRotate = GetComponent<Pattern6BulletRotate>();
+        pattern6BulletAiming = GetComponent<Pattern6BulletAiming>();
+        pattern7BulletAiming = GetComponent<Pattern7BulletAiming>();
+        pattern8BulletAiming = GetComponent<Pattern8BulletAiming>();
+        pattern9BulletRotate = GetComponent<Pattern9BulletRotate>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -117,14 +121,16 @@ public class EraseBullet : MonoBehaviour
         Destroy(reflectBullet);
 
         // 커스텀 컴포넌트 제거
-        Destroy(stage1BulletFragmentation);
-        Destroy(stage5BulletCreate);
-        Destroy(stage12BulletFragmentation);
-        Destroy(stage13BulletRotate);
+        // Destroy(stage1BulletFragmentation);
+        // Destroy(stage5BulletCreate);
+        // Destroy(stage12BulletFragmentation);
+        // Destroy(stage13BulletRotate);
 
-        Destroy(stage6BulletRotate);
-        Destroy(stage6BulletAiming);
-        Destroy(stage7BulletAiming);
+        Destroy(pattern6BulletRotate);
+        Destroy(pattern6BulletAiming);
+        Destroy(pattern7BulletAiming);
+        Destroy(pattern8BulletAiming);
+        Destroy(pattern9BulletRotate);
 
         // 최종 컴포넌트 제거 후 비활성화
         StopAllCoroutines();
@@ -135,5 +141,7 @@ public class EraseBullet : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         ClearBullet();
+
+        yield return null;
     }
 }

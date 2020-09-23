@@ -3864,7 +3864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCleared: 0
-  stageNumber: 0
+  patternNumber: 14
+  gameDifficulty: 4
 --- !u!1 &1920494035
 GameObject:
   m_ObjectHideFlags: 0

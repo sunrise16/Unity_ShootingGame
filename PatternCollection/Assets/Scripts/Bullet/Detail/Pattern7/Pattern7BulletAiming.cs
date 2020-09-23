@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Stage6BulletAiming : MonoBehaviour
+public class Pattern7BulletAiming : MonoBehaviour
 {
     private InitializeBullet initializeBullet;
     private MovingBullet movingBullet;
@@ -20,14 +20,14 @@ public class Stage6BulletAiming : MonoBehaviour
 
     public IEnumerator SetBullet()
     {
-        Vector2 targetPosition = playerObject.transform.position;
-
         while (true)
         {
             if (movingBullet.bulletMoveSpeed <= 0.0f)
             {
+                Vector2 targetPosition = playerObject.transform.position;
+
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                movingBullet.bulletMoveSpeed = 3.5f;
+                movingBullet.bulletMoveSpeed = 6.0f;
                 movingBullet.bulletDestination = initializeBullet.GetAimedBulletDestination(targetPosition);
                 float angle = Mathf.Atan2(movingBullet.bulletDestination.y, movingBullet.bulletDestination.x) * Mathf.Rad2Deg;
                 movingBullet.ChangeRotateAngle(angle - 90.0f);

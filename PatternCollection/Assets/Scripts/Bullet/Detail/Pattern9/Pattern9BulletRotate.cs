@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Stage6BulletRotate : MonoBehaviour
+public class Pattern9BulletRotate : MonoBehaviour
 {
     private InitializeBullet initializeBullet;
     private MovingBullet movingBullet;
@@ -22,11 +22,16 @@ public class Stage6BulletRotate : MonoBehaviour
         {
             if (movingBullet.bulletMoveSpeed <= 0.0f)
             {
-                movingBullet.bulletRotateTime = 0.0f;
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                movingBullet.bulletMoveSpeed = 1.8f;
-                movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_LIMIT;
-                movingBullet.ChangeRotateAngle(movingBullet.GetAngle() + ((initializeBullet.bulletNumber % 2).Equals(0) ? 90.0f : -90.0f));
+                movingBullet.bulletMoveSpeed = 2.0f;
+                if (initializeBullet.bulletNumber < 8)
+                {
+                    movingBullet.ChangeRotateAngle(-110.0f - (20.0f * initializeBullet.bulletNumber) + Random.Range(-2.0f, 2.0f));
+                }
+                else
+                {
+                    movingBullet.ChangeRotateAngle(110.0f + (20.0f * (initializeBullet.bulletNumber - 8) + Random.Range(-2.0f, 2.0f)));
+                }
                 break;
             }
 

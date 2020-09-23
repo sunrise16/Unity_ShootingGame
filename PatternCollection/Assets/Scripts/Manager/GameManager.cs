@@ -3,6 +3,16 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+public enum GameDifficulty
+{
+    DIFFICULTY_NONE,
+    DIFFICULTY_EASY,
+    DIFFICULTY_NORMAL,
+    DIFFICULTY_HARD,
+    DIFFICULTY_LUNATIC,
+    DIFFICULTY_EXTRA,
+}
+
 public class GameManager : MonoBehaviour
 {
     private GameObject enemy;
@@ -13,7 +23,8 @@ public class GameManager : MonoBehaviour
     private GameObject destroyzoneAll;
 
     public bool isCleared;
-    public int stageNumber;
+    public int patternNumber;
+    public GameDifficulty gameDifficulty;
 
     void Start()
     {
@@ -24,33 +35,53 @@ public class GameManager : MonoBehaviour
         effectParent = GameObject.Find("EFFECT").transform;
         destroyzoneAll = GameObject.Find("DESTROYZONE").transform.GetChild(0).gameObject;
 
-        stageNumber = 7;
         StartCoroutine(GameStart());
     }
 
     private void SetEnemyHp()
     {
-        switch (stageNumber)
+        switch (patternNumber)
         {
-            case 1: case 2:
-                enemyDatabase.enemyCurrentHp = 400.0f;
-                enemyDatabase.enemyMaxHp = 400.0f;
+            case 1:     // 루미아 중간보스 통상
+                enemyDatabase.enemyCurrentHp = 200.0f;
+                enemyDatabase.enemyMaxHp = 200.0f;
                 break;
-            case 7:
+            case 2:     // 루미아 중간보스 스펠
+                enemyDatabase.enemyCurrentHp = 250.0f;
+                enemyDatabase.enemyMaxHp = 250.0f;
+                break;
+            case 7:     // 대요정 중간보스 통상
+                enemyDatabase.enemyCurrentHp = 300.0f;
+                enemyDatabase.enemyMaxHp = 300.0f;
+                break;
+            case 13:    // 홍 메이링 중간보스 통상
+            case 14:    // 홍 메이링 중간보스 스펠
                 enemyDatabase.enemyCurrentHp = 450.0f;
                 enemyDatabase.enemyMaxHp = 450.0f;
                 break;
-            case 3: case 5:
+            case 3:     // 루미아 1통상
+            case 5:     // 루미아 2통상
                 enemyDatabase.enemyCurrentHp = 500.0f;
                 enemyDatabase.enemyMaxHp = 500.0f;
                 break;
-            case 8:
+            case 8:     // 치르노 1통상
                 enemyDatabase.enemyCurrentHp = 550.0f;
                 enemyDatabase.enemyMaxHp = 550.0f;
                 break;
-            case 4: case 6:
+            case 4:     // 루미아 1스펠
+            case 6:     // 루미아 2스펠
+            case 10:    // 치르노 2통상
                 enemyDatabase.enemyCurrentHp = 600.0f;
                 enemyDatabase.enemyMaxHp = 600.0f;
+                break;
+            case 9:     // 치르노 1스펠
+                enemyDatabase.enemyCurrentHp = 650.0f;
+                enemyDatabase.enemyMaxHp = 650.0f;
+                break;
+            case 11:    // 치르노 2스펠
+            case 12:    // 치르노 3스펠
+                enemyDatabase.enemyCurrentHp = 700.0f;
+                enemyDatabase.enemyMaxHp = 700.0f;
                 break;
             default:
                 enemyDatabase.enemyCurrentHp = 1000.0f;
@@ -63,7 +94,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
 
-        enemyFire.Fire(stageNumber);
+        enemyFire.Fire(patternNumber);
         destroyzoneAll.SetActive(false);
         isCleared = false;
     }
@@ -73,8 +104,8 @@ public class GameManager : MonoBehaviour
         isCleared = true;
         Vector3 originPosition = new Vector3(0.0f, 3.5f, 0.0f);
         float moveTime = 1.5f;
-        
-        stageNumber++;
+
+        patternNumber++;
         SetEnemyHp();
         destroyzoneAll.SetActive(true);
 
