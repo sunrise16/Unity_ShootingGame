@@ -26,6 +26,7 @@ public class MovingBullet : MonoBehaviour
     private CircleCollider2D circleCollider2D;
     private CapsuleCollider2D capsuleCollider2D;
     private BoxCollider2D boxCollider2D;
+    private Rigidbody2D rigidbody2D;
     private GameManager gameManager;
     private GameObject playerObject;
     private InitializeBullet initializeBullet;
@@ -49,6 +50,7 @@ public class MovingBullet : MonoBehaviour
     public float bulletRotateTime;
     public float bulletRotateLimit;
     public float bulletRotateSpeed;
+    public bool isLookAt;
 
     // 그레이즈 관련
     private float grazeDelay;
@@ -59,6 +61,7 @@ public class MovingBullet : MonoBehaviour
         circleCollider2D = GetComponent<CircleCollider2D>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
 
         gameManager = GameObject.Find("MANAGER").transform.GetChild(0).GetComponent<GameManager>();
         playerObject = GameObject.Find("PLAYER");
@@ -244,6 +247,15 @@ public class MovingBullet : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (isLookAt.Equals(true))
+        {
+            float angle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x) * Mathf.Rad2Deg;
+            transform.eulerAngles = new Vector3(0.0f, 0.0f, angle - 90.0f);
+        }
+    }
+
     // 탄도 산출
     public float GetAngle()
     {
@@ -253,7 +265,7 @@ public class MovingBullet : MonoBehaviour
     // 탄도 변경 (일시적 변화)
     public void ChangeRotateAngle(float angle)
     {
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     // 탄도 변경 (공전)

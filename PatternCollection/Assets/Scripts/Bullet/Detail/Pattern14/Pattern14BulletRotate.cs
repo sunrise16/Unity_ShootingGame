@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Pattern14BulletRotate : MonoBehaviour
 {
+    private EnemyFire enemyFire;
+    private SpriteRenderer spriteRenderer;
     private InitializeBullet initializeBullet;
     private MovingBullet movingBullet;
 
@@ -12,6 +14,8 @@ public class Pattern14BulletRotate : MonoBehaviour
 
     void Start()
     {
+        enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         initializeBullet = GetComponent<InitializeBullet>();
         movingBullet = GetComponent<MovingBullet>();
 
@@ -27,24 +31,26 @@ public class Pattern14BulletRotate : MonoBehaviour
             if (movingBullet.bulletMoveSpeed <= 0.0f)
             {
                 movingBullet.bulletMoveSpeed = 3.0f;
-                movingBullet.bulletDecelerationMoveSpeed = 0.04f;
-                
+                movingBullet.bulletDecelerationMoveSpeed = 0.06f;
+                if (initializeBullet.bulletNumber <= 2)
+                {
+                    movingBullet.ChangeRotateAngle(movingBullet.GetAngle() + 25.0f + 180.0f);
+                }
+                else
+                {
+                    movingBullet.ChangeRotateAngle(movingBullet.GetAngle() - 25.0f + 180.0f);
+                }
+
                 if (rotateCount >= 1)
                 {
+                    spriteRenderer.sprite = enemyFire.spriteCollection[79];
+                    movingBullet.bulletMoveSpeed = 2.0f;
                     movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                    if ((initializeBullet.bulletNumber % 2).Equals(0))
-                    {
-                        movingBullet.ChangeRotateAngle(movingBullet.GetAngle() + 60.0f);
-                    }
-                    else
-                    {
-                        movingBullet.ChangeRotateAngle(movingBullet.GetAngle() - 60.0f);
-                    }
                     break;
                 }
                 else
                 {
-                    movingBullet.ChangeRotateAngle(movingBullet.GetAngle() + 150.0f);
+                    spriteRenderer.sprite = enemyFire.spriteCollection[78];
                     rotateCount++;
                 }
             }

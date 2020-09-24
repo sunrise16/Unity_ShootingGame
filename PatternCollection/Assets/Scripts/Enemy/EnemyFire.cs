@@ -302,7 +302,8 @@ public class EnemyFire : MonoBehaviour
     {
         switch (gameManager.gameDifficulty)
         {
-            case GameDifficulty.DIFFICULTY_EASY: case GameDifficulty.DIFFICULTY_NORMAL:
+            case GameDifficulty.DIFFICULTY_EASY:
+            case GameDifficulty.DIFFICULTY_NORMAL:
                 gameManager.patternNumber++;
                 StartCoroutine(Pattern3());
                 break;
@@ -1962,7 +1963,7 @@ public class EnemyFire : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 9; i++)
             {
                 StartCoroutine(Pattern12_1LunaticAttack());
             }
@@ -1975,7 +1976,7 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = GetRandomBulletFirePosition(1.5f);
 
         // 탄막 1 이펙트
-        StartCoroutine(CreateBulletFireEffect(302, 0.8f, 0.15f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(302, 0.4f, 0.15f, 0.3f, bulletFirePosition, 4.0f, 4.0f));
 
         yield return new WaitForSeconds(0.15f);
 
@@ -1986,7 +1987,7 @@ public class EnemyFire : MonoBehaviour
             0.02f, 0.05f, 0.0f, 0.0f,
             0.0f, 0.0f, 0.0f, 0.0f,
             1.0f, 72, BulletType.BULLETTYPE_NORMAL, playerObject,
-            BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 12.5f,
+            BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 14.0f,
             0.0f, 0.0f,
             0.5f, Random.Range(2.0f, 4.0f), false,
             BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
@@ -2016,7 +2017,7 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = GetBulletFirePosition(2.0f, (90.0f * bulletNumber) + rotateAngle);
 
         // 탄막 2 이펙트
-        StartCoroutine(CreateBulletFireEffect(301, 0.55f, 0.3f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(301, 0.4f, 0.3f, 0.3f, bulletFirePosition, 8.0f, 8.0f));
 
         yield return new WaitForSeconds(0.3f);
 
@@ -2242,7 +2243,8 @@ public class EnemyFire : MonoBehaviour
         {
             for (int i = 0; i < 12; i++)
             {
-                StartCoroutine(Pattern14_1LunaticAttack2(fireCount, 60 * (i / 2) + ((i % 2).Equals(0) ? 1.5f : -1.5f), (i % 2).Equals(0) ? rotateAngle : -rotateAngle, extraRotateAngle));
+                StartCoroutine(Pattern14_1LunaticAttack2((i % 2).Equals(0) ? fireCount : 5 - fireCount,
+                    60 * (i / 2) + ((i % 2).Equals(0) ? 1.5f : -1.5f) + 22.5f, (i % 2).Equals(0) ? rotateAngle : -rotateAngle, extraRotateAngle));
             }
 
             if (fireCount >= 3)
@@ -2259,7 +2261,7 @@ public class EnemyFire : MonoBehaviour
             if (fireCount.Equals(6)) fireCount = 0;
             if (extraRotateAngle >= 360.0f) extraRotateAngle = 0.0f;
 
-            yield return new WaitForSeconds(0.12f);
+            yield return new WaitForSeconds(0.08f);
         }
     }
     public IEnumerator Pattern14_1LunaticAttack1()
@@ -2269,11 +2271,11 @@ public class EnemyFire : MonoBehaviour
         while (true)
         {
             // 탄막 1 이펙트
-            StartCoroutine(CreateBulletFireEffect(299, 0.65f, 0.3f, 0.3f, bulletFirePosition));
+            StartCoroutine(CreateBulletFireEffect(299, 0.3f, 0.3f, 0.3f, bulletFirePosition, 0.7f, 0.7f));
 
             yield return new WaitForSeconds(0.3f);
 
-            // 탄막 1 발사 (빨강색 쌀탄) (랜덤탄)
+            // 탄막 1 발사 (빨강색 쌀탄) (조준 방사탄)
             for (int i = 0; i < 32; i++)
             {
                 StartCoroutine
@@ -2297,22 +2299,659 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = transform.position;
 
         // 탄막 2 이펙트
-        StartCoroutine(CreateBulletFireEffect(304, 0.65f, 0.3f, 0.3f, bulletFirePosition));
+        StartCoroutine(CreateBulletFireEffect(304, 0.3f, 0.3f, 0.3f, bulletFirePosition, 0.7f, 0.7f));
 
         yield return new WaitForSeconds(0.3f);
 
         // 탄막 2 발사 (노란색 쌀탄) (고정탄)
         StartCoroutine
-            (BulletFire(fireCount % 2, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+            (BulletFire(fireCount, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
             LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp2, 2, 0.0f,
             0.025f, 0.05f, 0.0f, 0.0f,
             0.0f, 0.0f, 0.0f, 0.0f,
             1.0f, 77, BulletType.BULLETTYPE_NORMAL, playerObject,
-            BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 3.0f,
+            BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 6.0f,
             0.0f, 0.0f,
-            0.03f, 0.0f, false,
+            0.08f, 0.0f, false,
             BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
             4, new Vector2(transform.position.x, transform.position.y - 5.0f), initRotateAngle + addRotateAngle + extraRotateAngle, 6));
+
+        yield return null;
+    }
+
+    #endregion
+
+    #endregion
+
+    #region 패턴 15 (동방홍마향 3스테이지 - 홍 메이링 1통상)
+
+    public IEnumerator Pattern15()
+    {
+        switch (gameManager.gameDifficulty)
+        {
+            case GameDifficulty.DIFFICULTY_EASY:
+                break;
+            case GameDifficulty.DIFFICULTY_NORMAL:
+                break;
+            case GameDifficulty.DIFFICULTY_HARD:
+                break;
+            case GameDifficulty.DIFFICULTY_LUNATIC:
+                StartCoroutine(Pattern15_1Lunatic());
+                break;
+            default:
+                break;
+        }
+
+        yield return null;
+    }
+
+    #region Lunatic
+
+    public IEnumerator Pattern15_1Lunatic()
+    {
+        float rotateAngle = 0.0f;
+
+        while (true)
+        {
+            Vector2 targetPosition = playerObject.transform.position;
+
+            for (int i = 0; i < 24; i++)
+            {
+                if (i.Equals(16))
+                {
+                    StartCoroutine(EnemyRandomMove(-1.5f, 1.5f, 1.5f, 3.0f, 1.25f));
+                }
+
+                if (i < 16)
+                {
+                    StartCoroutine(Pattern15_1LunaticAttack1(false, targetPosition, rotateAngle));
+                }
+                else
+                {
+                    StartCoroutine(Pattern15_1LunaticAttack1(true, targetPosition, rotateAngle));
+                    if (i.Equals(23))
+                    {
+                        StartCoroutine(Pattern15_1LunaticAttack2());
+                    }
+                }
+
+                rotateAngle += 4.0f;
+
+                yield return new WaitForSeconds(0.2f - (0.0075f * i));
+            }
+            rotateAngle = 0.0f;
+
+            yield return new WaitForSeconds(1.25f);
+        }
+    }
+    public IEnumerator Pattern15_1LunaticAttack1(bool isRandomBullet, Vector2 targetPosition, float rotateAngle)
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(299, 0.7f, 0.2f, 0.3f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.2f);
+
+        // 탄막 1 발사 (빨강색 보석탄) (조준 방사탄, 랜덤탄)
+        for (int i = 0; i < 32; i++)
+        {
+            StartCoroutine
+            (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+            LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp1, 2, 0.0f,
+            0.02f, 0.05f, 0.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 0.0f,
+            1.0f, 67, BulletType.BULLETTYPE_NORMAL, playerObject,
+            BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, isRandomBullet.Equals(false) ? 5.0f : Random.Range(4.5f, 6.5f),
+            0.0f, 0.0f,
+            0.008f, 4.0f, false,
+            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+            isRandomBullet.Equals(false) ? 4 : 2, targetPosition, isRandomBullet.Equals(false) ? (11.25f * i) + rotateAngle : 0.0f));
+        }
+
+        yield return null;
+    }
+    public IEnumerator Pattern15_1LunaticAttack2()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 2 이펙트
+        StartCoroutine(CreateBulletFireEffect(299, 0.7f, 0.2f, 0.3f, bulletFirePosition));
+
+        yield return new WaitForSeconds(0.2f);
+
+        // 탄막 2 발사 (빨강색 테두리 원탄) (조준 방사탄)
+        for (int i = 0; i < 48; i++)
+        {
+            StartCoroutine
+            (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+            LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp2, 1, 0.03f,
+            0.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 0.0f,
+            1.0f, 34, BulletType.BULLETTYPE_NORMAL, playerObject,
+            BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 7.0f,
+            0.0f, 0.0f,
+            0.0f, 0.0f, false,
+            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+            3, playerObject.transform.position, 7.5f * i));
+        }
+
+        yield return null;
+    }
+
+    #endregion
+
+    #endregion
+
+    #region 패턴 16 (동방홍마향 3스테이지 - 홍 메이링 1스펠 "채홍의 풍령" 리메이크)
+
+    public IEnumerator Pattern16()
+    {
+        switch (gameManager.gameDifficulty)
+        {
+            case GameDifficulty.DIFFICULTY_EASY:
+                break;
+            case GameDifficulty.DIFFICULTY_NORMAL:
+                break;
+            case GameDifficulty.DIFFICULTY_HARD:
+                break;
+            case GameDifficulty.DIFFICULTY_LUNATIC:
+                StartCoroutine(Pattern16_1Lunatic());
+                StartCoroutine(Pattern16_2Lunatic());
+                StartCoroutine(Pattern16_3Lunatic());
+                break;
+            default:
+                break;
+        }
+
+        yield return null;
+    }
+
+    #region Lunatic
+
+    public IEnumerator Pattern16_1Lunatic()
+    {
+        int fireCount = 0;
+        int rotateDirection = 1;
+        float rotateAngle = 0.0f;
+
+        while (true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                StartCoroutine(Pattern16_1LunaticAttack(i, rotateAngle));
+            }
+            fireCount++;
+            if (rotateDirection.Equals(1)) rotateAngle += 7.0f;
+            else rotateAngle -= 7.0f;
+
+            if (fireCount >= 40)
+            {
+                fireCount = 0;
+                rotateDirection *= -1;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+    public IEnumerator Pattern16_1LunaticAttack(int fireDirection, float rotateAngle)
+    {
+        int spriteNumber = 0;
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(305, 0.5f, 0.2f, 0.3f, bulletFirePosition, 0.8f, 0.8f));
+
+        yield return new WaitForSeconds(0.2f);
+
+        // 탄막 1 발사 (무지개색 보석탄) (고정탄)
+        for (int i = 0; i < 7; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    spriteNumber = 67;
+                    break;
+                case 1:
+                    spriteNumber = 79;
+                    break;
+                case 2:
+                    spriteNumber = 77;
+                    break;
+                case 3:
+                    spriteNumber = 74;
+                    break;
+                case 4:
+                    spriteNumber = 72;
+                    break;
+                case 5:
+                    spriteNumber = 71;
+                    break;
+                case 6:
+                    spriteNumber = 68;
+                    break;
+                default:
+                    break;
+            }
+
+            StartCoroutine
+                (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+                LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp1, 2, 0.0f,
+                0.02f, 0.05f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 0.0f,
+                1.0f, spriteNumber, BulletType.BULLETTYPE_NORMAL, playerObject,
+                BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 4.0f,
+                0.0f, 0.0f,
+                0.0f, 0.0f, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                4, new Vector2(transform.position.x, transform.position.y - 5.0f), (90.0f * fireDirection) + (18.0f - (6.0f * i)) + rotateAngle));
+        }
+
+        yield return null;
+    }
+    public IEnumerator Pattern16_2Lunatic()
+    {
+        int fireCount = 0;
+        int spriteIndex = 0;
+        float rotateAngle = 0.0f;
+
+        while (true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                StartCoroutine(Pattern16_2LunaticAttack(i, spriteIndex, rotateAngle));
+            }
+            fireCount++;
+            rotateAngle += 4.0f;
+
+            if (rotateAngle >= 360.0f) rotateAngle = 0.0f;
+            if (fireCount.Equals(16))
+            {
+                fireCount = 0;
+                spriteIndex++;
+                if (spriteIndex.Equals(7)) spriteIndex = 0;
+            }
+
+            yield return new WaitForSeconds(0.12f);
+        }
+    }
+    public IEnumerator Pattern16_2LunaticAttack(int fireDirection, int spriteIndex, float rotateAngle)
+    {
+        int spriteNumber = 0;
+        Vector2 bulletFirePosition = transform.position;
+
+        switch (spriteIndex)
+        {
+            case 0:
+                spriteNumber = 67;
+                break;
+            case 1:
+                spriteNumber = 79;
+                break;
+            case 2:
+                spriteNumber = 77;
+                break;
+            case 3:
+                spriteNumber = 74;
+                break;
+            case 4:
+                spriteNumber = 72;
+                break;
+            case 5:
+                spriteNumber = 71;
+                break;
+            case 6:
+                spriteNumber = 68;
+                break;
+            default:
+                break;
+        }
+
+        // 탄막 2 이펙트
+        StartCoroutine(CreateBulletFireEffect(305, 0.5f, 0.2f, 0.3f, bulletFirePosition, 0.8f, 0.8f));
+
+        yield return new WaitForSeconds(0.2f);
+
+        // 탄막 2 발사 (무지개색 보석탄) (고정탄)
+        for (int i = 0; i < 4; i++)
+        {
+            StartCoroutine
+                (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+                LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp2, 2, 0.0f,
+                0.02f, 0.05f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 0.0f,
+                1.0f, spriteNumber, BulletType.BULLETTYPE_NORMAL, playerObject,
+                BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 2.5f + (0.5f * i),
+                0.0f, 0.0f,
+                0.0f, 0.0f, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                4, new Vector2(transform.position.x, transform.position.y - 5.0f), (90.0f * fireDirection) + (1.0f * i) + rotateAngle));
+        }
+
+        yield return null;
+    }
+    public IEnumerator Pattern16_3Lunatic()
+    {
+        int fireCount = 0;
+        float rotateAngle = 0.0f;
+
+        while (true)
+        {
+            StartCoroutine(Pattern16_3LunaticAttack(fireCount, rotateAngle));
+            fireCount++;
+            rotateAngle += 2.0f;
+
+            if (rotateAngle >= 360.0f) rotateAngle = 0.0f;
+            if (fireCount.Equals(7))
+            {
+                fireCount = 0;
+            }
+
+            yield return new WaitForSeconds(0.75f);
+        }
+    }
+    public IEnumerator Pattern16_3LunaticAttack(int fireCount, float rotateAngle)
+    {
+        int spriteNumber = 0;
+        Vector2 bulletFirePosition = transform.position;
+
+        switch (fireCount)
+        {
+            case 0:
+                spriteNumber = 68;
+                break;
+            case 1:
+                spriteNumber = 71;
+                break;
+            case 2:
+                spriteNumber = 72;
+                break;
+            case 3:
+                spriteNumber = 74;
+                break;
+            case 4:
+                spriteNumber = 77;
+                break;
+            case 5:
+                spriteNumber = 79;
+                break;
+            case 6:
+                spriteNumber = 67;
+                break;
+            default:
+                break;
+        }
+
+        // 탄막 3 이펙트
+        StartCoroutine(CreateBulletFireEffect(305, 0.5f, 0.2f, 0.3f, bulletFirePosition, 0.8f, 0.8f));
+
+        yield return new WaitForSeconds(0.2f);
+
+        // 탄막 3 발사 (무지개색 보석탄) (원형 방사탄)
+        for (int i = 0; i < 30; i++)
+        {
+            StartCoroutine
+                (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+                LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp3, 2, 0.0f,
+                0.02f, 0.05f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 0.0f,
+                1.0f, spriteNumber, BulletType.BULLETTYPE_NORMAL, playerObject,
+                BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 3.0f,
+                0.0f, 0.0f,
+                0.0f, 0.0f, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                4, new Vector2(transform.position.x, transform.position.y - 5.0f), (12.0f * i) + rotateAngle));
+        }
+
+        yield return null;
+    }
+
+    #endregion
+
+    #endregion
+
+    #region 패턴 17 (동방홍마향 3스테이지 - 홍 메이링 2통상) (자코가 등장하므로 보류)
+
+    public IEnumerator Pattern17()
+    {
+        gameManager.patternNumber++;
+        StartCoroutine(Pattern18());
+
+        // switch (gameManager.gameDifficulty)
+        // {
+        //     case GameDifficulty.DIFFICULTY_EASY:
+        //         break;
+        //     case GameDifficulty.DIFFICULTY_NORMAL:
+        //         break;
+        //     case GameDifficulty.DIFFICULTY_HARD:
+        //         break;
+        //     case GameDifficulty.DIFFICULTY_LUNATIC:
+        //         StartCoroutine(Pattern17_1Lunatic());
+        //         break;
+        //     default:
+        //         break;
+        // }
+
+        yield return null;
+    }
+
+    #endregion
+
+    #region 패턴 18 (동방홍마향 3스테이지 - 홍 메이링 2스펠 "화상몽갈")
+
+    public IEnumerator Pattern18()
+    {
+        switch (gameManager.gameDifficulty)
+        {
+            case GameDifficulty.DIFFICULTY_EASY:
+            case GameDifficulty.DIFFICULTY_NORMAL:
+                gameManager.patternNumber++;
+                StartCoroutine(Pattern19());
+                break;
+            case GameDifficulty.DIFFICULTY_HARD:
+                break;
+            case GameDifficulty.DIFFICULTY_LUNATIC:
+                StartCoroutine(Pattern18_1Lunatic());
+                break;
+            default:
+                break;
+        }
+
+        yield return null;
+    }
+
+    #region Lunatic
+
+    public IEnumerator Pattern18_1Lunatic()
+    {
+        int fireCount = 0;
+        float rotateAngle = 0.0f;
+
+        StartCoroutine(EnemyRandomMove(-1.5f, 1.5f, 1.5f, 3.0f, 1.25f));
+
+        while (true)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                StartCoroutine(Pattern18_1LunaticAttack(i, fireCount, rotateAngle));
+            }
+            fireCount++;
+            rotateAngle += 9.0f;
+
+            if (rotateAngle >= 360.0f) rotateAngle = 0.0f;
+
+            if (fireCount.Equals(20))
+            {
+                fireCount = 0;
+                yield return new WaitForSeconds(0.75f);
+
+                StartCoroutine(EnemyRandomMove(-1.5f, 1.5f, 1.5f, 3.0f, 1.25f));
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.12f);
+            }
+        }
+    }
+    public IEnumerator Pattern18_1LunaticAttack(int fireDirection, int fireCount, float rotateAngle)
+    {
+        float distance = 0.0f;
+        switch (fireCount % 4)
+        {
+            case 0:
+                distance = 1.6f;
+                break;
+            case 1:
+            case 3:
+                distance = 1.2f;
+                break;
+            case 2:
+                distance = 0.8f;
+                break;
+        }
+
+        Vector2 bulletFirePosition = GetBulletFirePosition(distance, (72.0f * (fireDirection % 5)) + rotateAngle);
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(301, 0.4f, 0.2f, 0.3f, bulletFirePosition, 8.0f, 8.0f));
+
+        yield return new WaitForSeconds(0.2f);
+
+        // 탄막 1 발사 (파란색 원탄) (랜덤탄)
+        for (int i = 0; i < 6; i++)
+        {
+            StartCoroutine
+            (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+            LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1"), enemyBulletTemp1, 1, 0.04f,
+            0.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 0.0f,
+            1.0f, 23, BulletType.BULLETTYPE_NORMAL, playerObject,
+            BulletSpeedState.BULLETSPEEDSTATE_NORMAL, Random.Range(3.0f, 5.0f),
+            0.0f, 0.0f,
+            0.0f, 0.0f, false,
+            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+            2, playerObject.transform.position, 0.0f));
+        }
+
+        yield return null;
+    }
+
+    #endregion
+
+    #endregion
+
+    #region 패턴 19 (동방홍마향 3스테이지 - 홍 메이링 3통상)
+
+    public IEnumerator Pattern19()
+    {
+        switch (gameManager.gameDifficulty)
+        {
+            case GameDifficulty.DIFFICULTY_EASY:
+                break;
+            case GameDifficulty.DIFFICULTY_NORMAL:
+                break;
+            case GameDifficulty.DIFFICULTY_HARD:
+                break;
+            case GameDifficulty.DIFFICULTY_LUNATIC:
+                StartCoroutine(Pattern19_1Lunatic());
+                break;
+            default:
+                break;
+        }
+
+        yield return null;
+    }
+
+    #region Lunatic
+
+    public IEnumerator Pattern19_1Lunatic()
+    {
+        while (true)
+        {
+            for (int i = 0; i < 36; i++)
+            {
+                StartCoroutine(Pattern19_1LunaticAttack(0, 10.0f * i));
+            }
+
+            yield return new WaitForSeconds(1.25f);
+
+            for (int i = 0; i < 36; i++)
+            {
+                StartCoroutine(Pattern19_1LunaticAttack(1, 10.0f * i));
+            }
+
+            yield return new WaitForSeconds(0.25f);
+
+            StartCoroutine(Pattern19_2Lunatic());
+
+            yield return new WaitForSeconds(3.5f);
+        }
+    }
+    public IEnumerator Pattern19_1LunaticAttack(int rotateDirection, float rotateAngle)
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        StartCoroutine(CreateBulletFireEffect(rotateDirection.Equals(0) ? 301 : 299, 0.3f, 0.3f, 0.3f, bulletFirePosition, 7.0f, 7.0f));
+
+        yield return new WaitForSeconds(0.3f);
+
+        // 탄막 1 발사 (파란색, 빨강색 쿠나이탄) (방사탄)
+        for (int i = 0; i < 6; i++)
+        {
+            StartCoroutine
+                (BulletFire(rotateDirection, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+                LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2"), rotateDirection.Equals(0) ? enemyBulletTemp1 : enemyBulletTemp2, 2, 0.0f,
+                0.02f, 0.055f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 0.0f,
+                1.0f, rotateDirection.Equals(0) ? 87 : 82, BulletType.BULLETTYPE_NORMAL, playerObject,
+                BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 5.0f + (1.0f * i),
+                0.0f, 0.0f,
+                0.1f + (0.02f * i), 0.0f, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                4, new Vector2(transform.position.x, transform.position.y - 5.0f), rotateAngle, 7));
+        }
+
+        yield return null;
+    }
+    public IEnumerator Pattern19_2Lunatic()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            StartCoroutine(Pattern19_2LunaticAttack());
+
+            yield return new WaitForSeconds(0.06f);
+        }
+
+        StartCoroutine(EnemyRandomMove(-1.5f, 1.5f, 1.5f, 3.0f, 1.0f));
+
+        yield return null;
+    }
+    public IEnumerator Pattern19_2LunaticAttack()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 2 이펙트
+        StartCoroutine(CreateBulletFireEffect(301, 0.3f, 0.3f, 0.3f, bulletFirePosition, 7.0f, 7.0f));
+
+        yield return new WaitForSeconds(0.3f);
+
+        // 탄막 2 발사 (파란색 쌀탄) (랜덤탄, 중력 적용)
+        for (int i = 0; i < 16; i++)
+        {
+            StartCoroutine
+                (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+                LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2"), enemyBulletTemp3, 2, 0.0f,
+                0.025f, 0.05f, 0.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 0.0f,
+                1.0f, 55, BulletType.BULLETTYPE_NORMAL, playerObject,
+                BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 0.0f,
+                0.0f, 0.0f,
+                0.0f, 0.0f, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                4, new Vector2(transform.position.x + Random.Range(-1.5f, 1.5f), transform.position.y + 5.0f), 0.0f, 0,
+                false, 0, true, Random.Range(100.0f, 200.0f), 0.2f, true));
+        }
 
         yield return null;
     }
@@ -4413,7 +5052,7 @@ public class EnemyFire : MonoBehaviour
     #region 기타 함수
 
     #region 탄막 발사 함수
-    
+
     // 일반 탄막
     public IEnumerator BulletFire
         (int bulletNumber, Vector2 bulletFirePosition, Vector3 bulletScale, string bulletTag,
@@ -4426,6 +5065,7 @@ public class EnemyFire : MonoBehaviour
         float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int addCustomScript = 0,
+        bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f, bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false,
         bool isLaserType = false, float laserWidth = 1.8f, bool isLaserEnabled = false, bool isLaserDisabled = false,
         float laserEnableTime = 0.0f, float laserEnableSpeed = 0.0f, float laserDisableTime = 0.0f, float laserDisableSpeed = 0.0f,
         BulletRotateState laserRotateState = BulletRotateState.BULLETROTATESTATE_NONE, float laserRotateSpeed = 0.0f,
@@ -4528,6 +5168,20 @@ public class EnemyFire : MonoBehaviour
                 laserBullet.isLaserRotateEnabled = isLaserRotateEnabled;
                 laserBullet.isLaserRotateDisabled = isLaserRotateDisabled;
             }
+            if (isSpriteRotate.Equals(true))
+            {
+                if (!bullet.GetComponent<ObjectRotate>()) bullet.AddComponent<ObjectRotate>();
+                ObjectRotate objectRotate = bullet.GetComponent<ObjectRotate>();
+                objectRotate.rotateSpeed = spriteRotateSpeed;
+            }
+            if (isGravity.Equals(true))
+            {
+                Rigidbody2D rigidbody2D = bullet.GetComponent<Rigidbody2D>();
+                // rigidbody2D.AddForce(bullet.transform.position * velocity);
+                rigidbody2D.AddForce(movingBullet.bulletDestination.normalized * velocity);
+                rigidbody2D.gravityScale = gravityScale;
+                movingBullet.isLookAt = isLookAt;
+            }
             // 패턴 별 커스텀 스크립트는 여기에 집어넣기 !! 
             switch (addCustomScript)
             {
@@ -4549,6 +5203,9 @@ public class EnemyFire : MonoBehaviour
                 case 6:
                     if (!bullet.GetComponent<Pattern14BulletRotate>()) bullet.AddComponent<Pattern14BulletRotate>();
                     break;
+                case 7:
+                    if (!bullet.GetComponent<Pattern19BulletRotate>()) bullet.AddComponent<Pattern19BulletRotate>();
+                    break;
                 default:
                     break;
             }
@@ -4557,7 +5214,7 @@ public class EnemyFire : MonoBehaviour
 
         yield return null;
     }
-
+    
     // 빈 탄막
     public IEnumerator EmptyBulletFire
         (int bulletNumber, GameObject emptyBullet, Vector2 bulletFirePosition, Vector3 bulletScale, string bulletTag,
@@ -4570,6 +5227,7 @@ public class EnemyFire : MonoBehaviour
         float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int addCustomScript = 0,
+        bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f, bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false,
         bool isLaserType = false, float laserWidth = 1.8f, bool isLaserEnabled = false, bool isLaserDisabled = false,
         float laserEnableTime = 0.0f, float laserEnableSpeed = 0.0f, float laserDisableTime = 0.0f, float laserDisableSpeed = 0.0f,
         BulletRotateState laserRotateState = BulletRotateState.BULLETROTATESTATE_NONE, float laserRotateSpeed = 0.0f,
@@ -4671,26 +5329,23 @@ public class EnemyFire : MonoBehaviour
                 laserBullet.isLaserRotateEnabled = isLaserRotateEnabled;
                 laserBullet.isLaserRotateDisabled = isLaserRotateDisabled;
             }
+            if (isSpriteRotate.Equals(true))
+            {
+                if (!emptyBullet.GetComponent<ObjectRotate>()) emptyBullet.AddComponent<ObjectRotate>();
+                ObjectRotate objectRotate = emptyBullet.GetComponent<ObjectRotate>();
+                objectRotate.rotateSpeed = spriteRotateSpeed;
+            }
+            if (isGravity.Equals(true))
+            {
+                Rigidbody2D rigidbody2D = emptyBullet.GetComponent<Rigidbody2D>();
+                rigidbody2D.velocity = movingBullet.bulletDestination.normalized * velocity;
+                rigidbody2D.gravityScale = gravityScale;
+                movingBullet.isLookAt = isLookAt;
+            }
             // 패턴 별 커스텀 스크립트는 여기에 집어넣기 !! 
             switch (addCustomScript)
             {
                 case 1:
-                    if (!emptyBullet.GetComponent<Pattern6BulletRotate>()) emptyBullet.AddComponent<Pattern6BulletRotate>();
-                    break;
-                case 2:
-                    if (!emptyBullet.GetComponent<Pattern6BulletAiming>()) emptyBullet.AddComponent<Pattern6BulletAiming>();
-                    break;
-                case 3:
-                    if (!emptyBullet.GetComponent<Pattern7BulletAiming>()) emptyBullet.AddComponent<Pattern7BulletAiming>();
-                    break;
-                case 4:
-                    if (!emptyBullet.GetComponent<Pattern8BulletAiming>()) emptyBullet.AddComponent<Pattern8BulletAiming>();
-                    break;
-                case 5:
-                    if (!emptyBullet.GetComponent<Pattern9BulletRotate>()) emptyBullet.AddComponent<Pattern9BulletRotate>();
-                    break;
-                case 6:
-                    if (!emptyBullet.GetComponent<Pattern14BulletRotate>()) emptyBullet.AddComponent<Pattern14BulletRotate>();
                     break;
                 default:
                     break;
@@ -4705,11 +5360,13 @@ public class EnemyFire : MonoBehaviour
 
     #region 탄막 발사 이펙트 생성 함수
 
-    public IEnumerator CreateBulletFireEffect(int spriteNumber, float scaleDownSpeed, float scaleDownTime, float alphaUpSpeed, Vector2 effectPosition)
+    public IEnumerator CreateBulletFireEffect(int spriteNumber, float scaleDownSpeed, float scaleDownTime, float alphaUpSpeed,
+        Vector2 effectPosition, float scaleX = 12.0f, float scaleY = 12.0f)
     {
         if (effectManager.bulletPool.Count > 0)
         {
             GameObject effect = effectManager.bulletPool.Dequeue();
+            effect.transform.localScale = new Vector3(scaleX, scaleY, 0.0f);
             if (!effect.GetComponent<EraseEffect>()) effect.AddComponent<EraseEffect>();
             SpriteRenderer spriteRenderer = effect.GetComponent<SpriteRenderer>();
             effect.SetActive(true);
@@ -4725,11 +5382,13 @@ public class EnemyFire : MonoBehaviour
 
         yield return null;
     }
-    public IEnumerator CreateBulletFireEffect(int spriteNumber, float scaleUpSpeed, float scaleLimit, float alphaUpSpeed, float alphaDownSpeed, float alphaRemainTime, Vector2 effectPosition)
+    public IEnumerator CreateBulletFireEffect(int spriteNumber, float scaleUpSpeed, float scaleLimit, float alphaUpSpeed, float alphaDownSpeed,
+        float alphaRemainTime, Vector2 effectPosition, float scaleX = 12.0f, float scaleY = 12.0f)
     {
         if (effectManager.bulletPool.Count > 0)
         {
             GameObject effect = effectManager.bulletPool.Dequeue();
+            effect.transform.localScale = new Vector3(scaleX, scaleY, 0.0f);
             if (!effect.GetComponent<EraseEffect>()) effect.AddComponent<EraseEffect>();
             SpriteRenderer spriteRenderer = effect.GetComponent<SpriteRenderer>();
             effect.SetActive(true);
@@ -4784,6 +5443,25 @@ public class EnemyFire : MonoBehaviour
 
         StartCoroutine(EffectAlphaDown(effect, alphaDownSpeed));
     }
+    public IEnumerator EffectAlphaDown(GameObject effect, float alphaDownSpeed)
+    {
+        EraseEffect eraseEffect = effect.GetComponent<EraseEffect>();
+        SpriteRenderer spriteRenderer = effect.GetComponent<SpriteRenderer>();
+        float alpha = 1.0f;
+
+        while (true)
+        {
+            alpha -= alphaDownSpeed;
+            if (alpha <= 0.0f) break;
+
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        eraseEffect.ClearEffect();
+        yield return null;
+    }
     public IEnumerator EffectScaleUp(GameObject effect, float scaleUpSpeed, float scaleLimit)
     {
         effect.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
@@ -4816,25 +5494,6 @@ public class EnemyFire : MonoBehaviour
             if (delay >= scaleDownTime) break;
 
             effect.transform.localScale = new Vector3(effect.transform.localScale.x - scaleDownSpeed, effect.transform.localScale.y - scaleDownSpeed, 0.0f);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        eraseEffect.ClearEffect();
-        yield return null;
-    }
-    public IEnumerator EffectAlphaDown(GameObject effect, float alphaDownSpeed)
-    {
-        EraseEffect eraseEffect = effect.GetComponent<EraseEffect>();
-        SpriteRenderer spriteRenderer = effect.GetComponent<SpriteRenderer>();
-        float alpha = 1.0f;
-
-        while (true)
-        {
-            alpha -= alphaDownSpeed;
-            if (alpha <= 0.0f) break;
-
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
 
             yield return new WaitForEndOfFrame();
         }
@@ -4892,30 +5551,6 @@ public class EnemyFire : MonoBehaviour
         Vector2 position = new Vector2(transform.position.x + addPositionX, (positionMultiply.Equals(0) ? transform.position.y + addPositionY : transform.position.y - addPositionY));
 
         return position;
-    }
-
-    #endregion
-
-    #region 각도 산출 함수
-
-    public float GetAimedBulletAngle(Vector2 targetPosition)
-    {
-        Vector2 bulletDestination;
-        Vector2 enemyPosition = transform.position;
-        float distance = Vector2.Distance(targetPosition, enemyPosition);
-
-        if (!distance.Equals(0))
-        {
-            bulletDestination.x = targetPosition.x - enemyPosition.x;
-            bulletDestination.y = targetPosition.y - enemyPosition.y;
-        }
-        else
-        {
-            bulletDestination.x = 0;
-            bulletDestination.y = 0;
-        }
-
-        return Mathf.Atan2(bulletDestination.y, bulletDestination.x) * Mathf.Rad2Deg;
     }
 
     #endregion

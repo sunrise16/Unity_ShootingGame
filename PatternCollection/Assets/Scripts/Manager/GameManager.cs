@@ -43,16 +43,13 @@ public class GameManager : MonoBehaviour
         switch (patternNumber)
         {
             case 1:     // 루미아 중간보스 통상
-                enemyDatabase.enemyCurrentHp = 200.0f;
-                enemyDatabase.enemyMaxHp = 200.0f;
+                enemyDatabase.enemyCurrentHp = 150.0f;
+                enemyDatabase.enemyMaxHp = 150.0f;
                 break;
             case 2:     // 루미아 중간보스 스펠
-                enemyDatabase.enemyCurrentHp = 250.0f;
-                enemyDatabase.enemyMaxHp = 250.0f;
-                break;
             case 7:     // 대요정 중간보스 통상
-                enemyDatabase.enemyCurrentHp = 300.0f;
-                enemyDatabase.enemyMaxHp = 300.0f;
+                enemyDatabase.enemyCurrentHp = 350.0f;
+                enemyDatabase.enemyMaxHp = 350.0f;
                 break;
             case 13:    // 홍 메이링 중간보스 통상
             case 14:    // 홍 메이링 중간보스 스펠
@@ -71,6 +68,7 @@ public class GameManager : MonoBehaviour
             case 4:     // 루미아 1스펠
             case 6:     // 루미아 2스펠
             case 10:    // 치르노 2통상
+            case 15:    // 홍 메이링 1통상
                 enemyDatabase.enemyCurrentHp = 600.0f;
                 enemyDatabase.enemyMaxHp = 600.0f;
                 break;
