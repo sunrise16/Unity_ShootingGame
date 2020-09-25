@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
                 enemyDatabase.enemyMaxHp = 350.0f;
                 break;
             case 13:    // 홍 메이링 중간보스 통상
-            case 14:    // 홍 메이링 중간보스 스펠
                 enemyDatabase.enemyCurrentHp = 450.0f;
                 enemyDatabase.enemyMaxHp = 450.0f;
                 break;
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
                 enemyDatabase.enemyMaxHp = 500.0f;
                 break;
             case 8:     // 치르노 1통상
+            case 14:    // 홍 메이링 중간보스 스펠
                 enemyDatabase.enemyCurrentHp = 550.0f;
                 enemyDatabase.enemyMaxHp = 550.0f;
                 break;
@@ -69,17 +69,26 @@ public class GameManager : MonoBehaviour
             case 6:     // 루미아 2스펠
             case 10:    // 치르노 2통상
             case 15:    // 홍 메이링 1통상
+            case 17:    // 홍 메이링 2통상
                 enemyDatabase.enemyCurrentHp = 600.0f;
                 enemyDatabase.enemyMaxHp = 600.0f;
                 break;
             case 9:     // 치르노 1스펠
+            case 19:    // 홍 메이링 3통상
                 enemyDatabase.enemyCurrentHp = 650.0f;
                 enemyDatabase.enemyMaxHp = 650.0f;
                 break;
             case 11:    // 치르노 2스펠
             case 12:    // 치르노 3스펠
+            case 16:    // 홍 메이링 1스펠
+            case 18:    // 홍 메이링 2스펠
+            case 20:    // 홍 메이링 3스펠
                 enemyDatabase.enemyCurrentHp = 700.0f;
                 enemyDatabase.enemyMaxHp = 700.0f;
+                break;
+            case 21:    // 홍 메이링 4스펠
+                enemyDatabase.enemyCurrentHp = 750.0f;
+                enemyDatabase.enemyMaxHp = 750.0f;
                 break;
             default:
                 enemyDatabase.enemyCurrentHp = 1000.0f;

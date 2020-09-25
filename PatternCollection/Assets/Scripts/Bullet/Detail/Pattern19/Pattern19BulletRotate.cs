@@ -24,7 +24,7 @@ public class Pattern19BulletRotate : MonoBehaviour
             {
                 movingBullet.bulletMoveSpeed = initializeBullet.bulletNumber.Equals(0) ? 5.0f : 6.0f;
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_NORMAL;
-                movingBullet.ChangeRotateAngle(movingBullet.GetAngle() + 180.0f + (initializeBullet.bulletNumber.Equals(0) ? -35.0f : 45.0f));
+                movingBullet.ChangeRotateAngle(movingBullet.GetAngle() + 180.0f + (initializeBullet.bulletNumber.Equals(0) ? -35.0f : 35.0f));
                 break;
             }
 
