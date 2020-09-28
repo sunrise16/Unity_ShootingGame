@@ -2992,7 +2992,7 @@ public class EnemyFire : MonoBehaviour
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    StartCoroutine(Pattern20_1LunaticAttack1(i / 8, i, j, 11.25f * i));
+                    StartCoroutine(Pattern20_1LunaticAttack(i / 8, i, j, 11.25f * i));
                 }
 
                 yield return new WaitForSeconds(0.00625f);
@@ -3004,12 +3004,12 @@ public class EnemyFire : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f);
 
-            StartCoroutine(Pattern20_1LunaticAttack2());
+            StartCoroutine(Pattern20_2Lunatic());
 
             yield return new WaitForSeconds(1.25f);
         }
     }
-    public IEnumerator Pattern20_1LunaticAttack1(int spriteIndex, int fireCount, int fireDirection, float rotateAngle)
+    public IEnumerator Pattern20_1LunaticAttack(int spriteIndex, int fireCount, int fireDirection, float rotateAngle)
     {
         int spriteNumber = 0;
         Vector2 bulletFirePosition = GetBulletFirePosition(0.8f, (90 * fireDirection) + rotateAngle);
@@ -3062,7 +3062,18 @@ public class EnemyFire : MonoBehaviour
 
         yield return null;
     }
-    public IEnumerator Pattern20_1LunaticAttack2()
+    public IEnumerator Pattern20_2Lunatic()
+    {
+        for (int i = 0; i < 24; i++)
+        {
+            StartCoroutine(Pattern20_2LunaticAttack());
+
+            yield return new WaitForSeconds(0.06f);
+        }
+
+        yield return null;
+    }
+    public IEnumerator Pattern20_2LunaticAttack()
     {
         Vector2 bulletFirePosition = transform.position;
 
@@ -3072,10 +3083,10 @@ public class EnemyFire : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
 
         // 탄막 2 발사 (무작위 색상 쌀탄) (랜덤 회전탄)
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 12; i++)
         {
             StartCoroutine
-            (BulletFire(0, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
+            (BulletFire(i, bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f), "BULLET_ENEMY",
             LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2"), enemyBulletTemp2, 2, 0.0f,
             0.025f, 0.05f, 0.0f, 0.0f,
             0.0f, 0.0f, 0.0f, 0.0f,

@@ -26,7 +26,7 @@ public class Pattern20BulletRotate : MonoBehaviour
                 movingBullet.bulletAccelerationMoveSpeed = Random.Range(0.01f, 0.02f);
                 movingBullet.bulletAccelerationMoveSpeedMax = Random.Range(4.0f, 6.0f);
                 movingBullet.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING;
-                movingBullet.bulletRotateSpeed = Random.Range(30.0f, 75.0f);
+                movingBullet.bulletRotateSpeed = Random.Range(30.0f, 75.0f) * ((initializeBullet.bulletNumber % 2).Equals(0) ? 1 : -1);
                 movingBullet.bulletRotateLimit = Random.Range(1.0f, 1.5f);
                 movingBullet.bulletRotateState = BulletRotateState.BULLETROTATESTATE_LIMIT;
                 break;

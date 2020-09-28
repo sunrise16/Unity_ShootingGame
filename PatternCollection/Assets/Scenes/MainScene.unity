@@ -3864,7 +3864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCleared: 0
-  patternNumber: 20
+  patternNumber: 17
   gameDifficulty: 4
 --- !u!1 &1920494035
 GameObject:
