@@ -7,79 +7,64 @@ public class PlayerMove : MonoBehaviour
 {
     private GameObject grazeCircle;
     private Animator animator;
+    private PlayerStatus playerStatus;
+
     private Vector2 margin;
     private Vector2 moveSpeedVector;
 
-    private float moveSpeed;
-    public bool isDamaged
+    private void Start()
     {
-        get
-        {
-            return isDamaged;
-        }
-        set
-        {
-            isDamaged = value;
-        }
-    }
+        grazeCircle = GameObject.Find("GrazeCircle").gameObject;
+        animator = GameObject.Find("Body").GetComponent<Animator>();
+        playerStatus = GetComponent<PlayerStatus>();
 
-    void Start()
-    {
-        grazeCircle = GameObject.Find("CHARACTER").transform.Find("PLAYER").transform.Find("GrazeCircle").gameObject;
-        animator = transform.Find("Body").GetComponent<Animator>();
         margin = new Vector2(0.03f, 0.03f);
         moveSpeedVector = Vector2.zero;
-
-        moveSpeed = 3.0f;
-        isDamaged = false;
     }
     
-    void Update()
+    private void Update()
     {
         grazeCircle.transform.position = transform.position;
 
-        if (isDamaged.Equals(false))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                moveSpeed = 1.2f;
-            }
-            else
-            {
-                moveSpeed = 3.0f;
-            }
+            playerStatus.SetMoveSpeed(1.5f);
+        }
+        else
+        {
+            playerStatus.SetMoveSpeed(4.0f);
+        }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                moveSpeedVector.x = -moveSpeed;
-                animator.SetTrigger("isLeftMove");
-                animator.ResetTrigger("isIdle");
-                animator.ResetTrigger("isRightMove");
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                moveSpeedVector.x = moveSpeed;
-                animator.SetTrigger("isRightMove");
-                animator.ResetTrigger("isIdle");
-                animator.ResetTrigger("isLeftMove");
-            }
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                moveSpeedVector.y = moveSpeed;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                moveSpeedVector.y = -moveSpeed;
-            }
-            GetComponent<Rigidbody2D>().velocity = moveSpeedVector;
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveSpeedVector.x = -playerStatus.GetMoveSpeed();
+            animator.SetTrigger("isLeftMove");
+            animator.ResetTrigger("isIdle");
+            animator.ResetTrigger("isRightMove");
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveSpeedVector.x = playerStatus.GetMoveSpeed();
+            animator.SetTrigger("isRightMove");
+            animator.ResetTrigger("isIdle");
+            animator.ResetTrigger("isLeftMove");
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            moveSpeedVector.y = playerStatus.GetMoveSpeed();
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            moveSpeedVector.y = -playerStatus.GetMoveSpeed();
+        }
+        GetComponent<Rigidbody2D>().velocity = moveSpeedVector;
 
-            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                moveSpeedVector = Vector2.zero;
-                animator.SetTrigger("isIdle");
-                animator.ResetTrigger("isLeftMove");
-                animator.ResetTrigger("isRightMove");
-            }
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            moveSpeedVector = Vector2.zero;
+            animator.SetTrigger("isIdle");
+            animator.ResetTrigger("isLeftMove");
+            animator.ResetTrigger("isRightMove");
         }
 
         MoveInScreen();

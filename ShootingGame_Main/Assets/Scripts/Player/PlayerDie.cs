@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class PlayerDie : MonoBehaviour
 {
-    private PlayerMove playerMove;
-
     public GameObject dieEffect;
+
     public bool isInvincible;
 
-    void Start()
+    private void Start()
     {
-        playerMove = GameObject.Find("PLAYER").GetComponent<PlayerMove>();
         isInvincible = false;
     }
 
@@ -52,8 +50,6 @@ public class PlayerDie : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-
-        playerMove.isDamaged = false;
     }
 
     IEnumerator PlayerBlinking()

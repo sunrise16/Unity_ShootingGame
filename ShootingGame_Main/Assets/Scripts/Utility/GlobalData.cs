@@ -17,7 +17,7 @@ public sealed class GlobalData : MonoBehaviour
     public static int currentPlayerLife = 0;            // 현재 플레이어 남은 목숨
     public static int currentPlayerBomb = 0;            // 현재 플레이어 남은 폭탄
 
-    public static float currentPower = 0.0f;            // 현재 기체 파워
+    public static float currentPower = 4.0f;            // 현재 기체 파워
     public static int currentScoreItem = 0;             // 현재 점수 아이템 획득 수
 
     public static int currentGraze = 0;                 // 현재 플레이어 그레이즈 횟수
@@ -60,7 +60,7 @@ public sealed class GlobalData : MonoBehaviour
     public static int highScore_PracticeStage6C = 0;    // 최고 득점 (연습 모드 스테이지 6, 캐릭터 C)
     public static int highScore_PracticeStage6D = 0;    // 최고 득점 (연습 모드 스테이지 6, 캐릭터 D)
 
-    public static void InitCurrentData()
+    public static void InitGlobalData()
     {
         gameDifficulty = GameDifficulty.DIFFICULTY_NONE;
         gameMode = GameMode.GAMEMODE_NONE;

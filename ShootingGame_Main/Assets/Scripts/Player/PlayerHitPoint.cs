@@ -9,7 +9,7 @@ public class PlayerHitPoint : MonoBehaviour
     
     private float alphaValue;
 
-	void Start ()
+	private void Start ()
     {
         hitPointSprite = GetComponent<SpriteRenderer>();
         

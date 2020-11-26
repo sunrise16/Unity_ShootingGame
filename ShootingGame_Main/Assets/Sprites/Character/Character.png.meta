@@ -26,9 +26,9 @@ TextureImporter:
     21300042: Character_21
     21300044: Character_22
     21300046: Character_23
-    21300048: Character_24
+    21300048: Character_86
     21300050: Character_25
-    21300052: Character_26
+    21300052: Character_40
     21300054: Character_27
     21300056: Character_28
     21300058: Character_29
@@ -56,58 +56,61 @@ TextureImporter:
     21300102: Character_51
     21300104: Character_52
     21300106: Character_53
-    21300108: Character_54
-    21300110: Character_55
-    21300112: Character_56
-    21300114: Character_57
-    21300116: Character_58
-    21300118: Character_59
-    21300120: Character_60
-    21300122: Character_61
-    21300124: Character_62
-    21300126: Character_63
-    21300128: Character_64
-    21300130: Character_65
-    21300132: Character_66
-    21300134: Character_67
-    21300136: Character_68
-    21300138: Character_69
-    21300140: Character_70
-    21300142: Character_71
-    21300144: Character_73
-    21300146: Character_74
-    21300148: Character_75
-    21300150: Character_84
-    21300152: Character_85
-    21300154: Character_87
-    21300156: Character_88
-    21300158: Character_89
-    21300160: Character_72
-    21300162: Character_76
-    21300164: Character_77
-    21300166: Character_78
-    21300168: Character_79
-    21300170: Character_80
-    21300172: Character_81
-    21300174: Character_82
-    21300176: Character_83
-    21300178: Character_86
-    21300180: Character_90
-    21300182: Character_91
-    21300184: Character_92
-    21300186: Character_93
-    21300188: Character_94
-    21300190: Character_95
-    21300192: Character_96
-    21300194: Character_97
-    21300196: Character_98
-    21300198: Character_99
-    21300200: Character_100
-    21300202: Character_101
-    21300204: Character_102
-    21300206: Character_103
-    21300208: Character_104
-    21300210: Character_105
+    21300108: Character_8
+    21300110: Character_9
+    21300112: Character_10
+    21300114: Character_11
+    21300116: Character_12
+    21300118: Character_13
+    21300120: Character_14
+    21300122: Character_15
+    21300124: Character_16
+    21300126: Character_17
+    21300128: Character_18
+    21300130: Character_19
+    21300132: Character_20
+    21300134: Character_21
+    21300136: Character_22
+    21300138: Character_23
+    21300140: Character_41
+    21300142: Character_33
+    21300144: Character_30
+    21300146: Character_31
+    21300148: Character_32
+    21300150: Character_60
+    21300152: Character_61
+    21300154: Character_62
+    21300156: Character_63
+    21300158: Character_64
+    21300160: Character_93
+    21300162: Character_92
+    21300164: Character_91
+    21300166: Character_90
+    21300168: Character_74
+    21300170: Character_75
+    21300172: Character_76
+    21300174: Character_77
+    21300176: Character_78
+    21300178: Character_79
+    21300180: Character_80
+    21300182: Character_70
+    21300184: Character_71
+    21300186: Character_72
+    21300188: Character_81
+    21300190: Character_82
+    21300192: Character_83
+    21300194: Character_84
+    21300196: Character_85
+    21300198: Character_52
+    21300200: Character_50
+    21300202: Character_51
+    21300204: Character_53
+    21300206: Character_54
+    21300208: Character_55
+    21300210: Character_73
+    21300212: Character_87
+    21300214: Character_88
+    21300216: Character_89
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -317,7 +320,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_26
+      name: Character_40
       rect:
         serializedVersion: 2
         x: 301
@@ -331,7 +334,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_54
+      name: Character_8
       rect:
         serializedVersion: 2
         x: 13
@@ -345,7 +348,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_55
+      name: Character_9
       rect:
         serializedVersion: 2
         x: 46
@@ -359,7 +362,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_56
+      name: Character_10
       rect:
         serializedVersion: 2
         x: 77
@@ -373,7 +376,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_57
+      name: Character_11
       rect:
         serializedVersion: 2
         x: 110
@@ -387,7 +390,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_58
+      name: Character_12
       rect:
         serializedVersion: 2
         x: 142
@@ -401,7 +404,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_59
+      name: Character_13
       rect:
         serializedVersion: 2
         x: 174
@@ -415,7 +418,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_60
+      name: Character_14
       rect:
         serializedVersion: 2
         x: 206
@@ -429,7 +432,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_61
+      name: Character_15
       rect:
         serializedVersion: 2
         x: 238
@@ -443,7 +446,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_62
+      name: Character_16
       rect:
         serializedVersion: 2
         x: 14
@@ -457,7 +460,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_63
+      name: Character_17
       rect:
         serializedVersion: 2
         x: 47
@@ -471,7 +474,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_64
+      name: Character_18
       rect:
         serializedVersion: 2
         x: 79
@@ -485,7 +488,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_65
+      name: Character_19
       rect:
         serializedVersion: 2
         x: 110
@@ -499,7 +502,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_66
+      name: Character_20
       rect:
         serializedVersion: 2
         x: 141
@@ -513,7 +516,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_67
+      name: Character_21
       rect:
         serializedVersion: 2
         x: 173
@@ -527,7 +530,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_68
+      name: Character_22
       rect:
         serializedVersion: 2
         x: 205
@@ -541,7 +544,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_69
+      name: Character_23
       rect:
         serializedVersion: 2
         x: 238
@@ -555,7 +558,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_70
+      name: Character_41
       rect:
         serializedVersion: 2
         x: 303
@@ -569,7 +572,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_71
+      name: Character_33
       rect:
         serializedVersion: 2
         x: 514
@@ -583,7 +586,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_73
+      name: Character_30
       rect:
         serializedVersion: 2
         x: 75
@@ -597,7 +600,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_74
+      name: Character_31
       rect:
         serializedVersion: 2
         x: 91
@@ -611,7 +614,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_75
+      name: Character_32
       rect:
         serializedVersion: 2
         x: 107
@@ -625,7 +628,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_84
+      name: Character_60
       rect:
         serializedVersion: 2
         x: 14
@@ -639,7 +642,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_85
+      name: Character_61
       rect:
         serializedVersion: 2
         x: 78
@@ -653,7 +656,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_87
+      name: Character_62
       rect:
         serializedVersion: 2
         x: 14
@@ -667,7 +670,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_88
+      name: Character_63
       rect:
         serializedVersion: 2
         x: 77
@@ -681,7 +684,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_89
+      name: Character_64
       rect:
         serializedVersion: 2
         x: 144
@@ -695,7 +698,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_72
+      name: Character_93
       rect:
         serializedVersion: 2
         x: 82
@@ -709,7 +712,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_76
+      name: Character_92
       rect:
         serializedVersion: 2
         x: 58
@@ -723,7 +726,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_77
+      name: Character_91
       rect:
         serializedVersion: 2
         x: 34
@@ -737,7 +740,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_78
+      name: Character_90
       rect:
         serializedVersion: 2
         x: 10
@@ -751,7 +754,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_79
+      name: Character_74
       rect:
         serializedVersion: 2
         x: 11
@@ -765,7 +768,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_80
+      name: Character_75
       rect:
         serializedVersion: 2
         x: 27
@@ -779,7 +782,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_81
+      name: Character_76
       rect:
         serializedVersion: 2
         x: 43
@@ -793,7 +796,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_82
+      name: Character_77
       rect:
         serializedVersion: 2
         x: 58
@@ -807,7 +810,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_83
+      name: Character_78
       rect:
         serializedVersion: 2
         x: 75
@@ -821,7 +824,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_86
+      name: Character_79
       rect:
         serializedVersion: 2
         x: 91
@@ -835,7 +838,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_90
+      name: Character_80
       rect:
         serializedVersion: 2
         x: 107
@@ -849,7 +852,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_91
+      name: Character_70
       rect:
         serializedVersion: 2
         x: 10
@@ -863,7 +866,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_92
+      name: Character_71
       rect:
         serializedVersion: 2
         x: 26
@@ -877,7 +880,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_93
+      name: Character_72
       rect:
         serializedVersion: 2
         x: 42
@@ -891,7 +894,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_94
+      name: Character_81
       rect:
         serializedVersion: 2
         x: 122
@@ -905,7 +908,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_95
+      name: Character_82
       rect:
         serializedVersion: 2
         x: 138
@@ -919,7 +922,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_96
+      name: Character_83
       rect:
         serializedVersion: 2
         x: 154
@@ -933,10 +936,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_97
+      name: Character_84
       rect:
         serializedVersion: 2
-        x: 170
+        x: 169
         y: 91
         width: 15
         height: 14
@@ -947,7 +950,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_98
+      name: Character_85
       rect:
         serializedVersion: 2
         x: 186
@@ -961,7 +964,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_99
+      name: Character_52
       rect:
         serializedVersion: 2
         x: 249
@@ -975,7 +978,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_100
+      name: Character_50
       rect:
         serializedVersion: 2
         x: 249
@@ -989,7 +992,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_101
+      name: Character_51
       rect:
         serializedVersion: 2
         x: 210
@@ -1003,7 +1006,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_102
+      name: Character_53
       rect:
         serializedVersion: 2
         x: 210
@@ -1017,7 +1020,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_103
+      name: Character_54
       rect:
         serializedVersion: 2
         x: 249
@@ -1031,7 +1034,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_104
+      name: Character_55
       rect:
         serializedVersion: 2
         x: 200
@@ -1045,7 +1048,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character_105
+      name: Character_73
       rect:
         serializedVersion: 2
         x: 58
@@ -1054,6 +1057,62 @@ TextureImporter:
         height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character_86
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 107
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character_87
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 107
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character_88
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 107
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character_89
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 107
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

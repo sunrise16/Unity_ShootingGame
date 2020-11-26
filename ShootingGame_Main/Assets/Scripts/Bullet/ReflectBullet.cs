@@ -5,60 +5,45 @@ using UnityEngine;
 
 public class ReflectBullet : MonoBehaviour
 {
-    private EnemyFire enemyFire;
-
-    public int reflectCount;
-    public int reflectLimit;
-    public bool isSpriteChange;
-    public bool isEffectOutput;
-    public int changeSpriteNumber;
-    public int effectSpriteNumber;
-    public float scaleDownSpeed;
-    public float scaleDownTime;
-    public float alphaUpSpeed;
-
-    void Start()
-    {
-        enemyFire = GameObject.Find("ENEMY").GetComponent<EnemyFire>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
-        InitializeBullet initializeBullet = this.GetComponent<InitializeBullet>();
-        MovingBullet movingBullet = this.GetComponent<MovingBullet>();
-        
-        if (!initializeBullet.bulletReflect.Equals(BulletReflect.BULLETREFLECT_NONE) && collision.tag.Equals("REFLECTZONE"))
+        if (collision.CompareTag("BULLET_ENEMY"))
         {
-            if (this.gameObject.activeSelf.Equals(true) && reflectCount < reflectLimit)
-            {
-                reflectCount++;
-                if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_LEFTRIGHT")))
-                {
-                    movingBullet.ChangeRotateAngle(movingBullet.GetAngle() * -1);
-                }
-                else if ((collision.gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_TOP"))) ||
-                    (collision.gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_BOTTOM")) && initializeBullet.bulletReflect.Equals(BulletReflect.BULLETREFLECT_CONTAINBOTTOM)))
-                {
-                    if (movingBullet.GetAngle() >= 0.0f && movingBullet.GetAngle() <= 180.0f)
-                    {
-                        movingBullet.ChangeRotateAngle(180.0f - movingBullet.GetAngle());
-                    }
-                    else
-                    {
-                        movingBullet.ChangeRotateAngle(-180.0f - movingBullet.GetAngle());
-                    }
-                }
+            BulletState bulletState = collision.gameObject.GetComponent<BulletState>();
+            BulletMove bulletMove = collision.gameObject.GetComponent<BulletMove>();
 
-                if (!(collision.gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_BOTTOM")) && !initializeBullet.bulletReflect.Equals(BulletReflect.BULLETREFLECT_CONTAINBOTTOM)))
+            if (!bulletState.bulletReflectState.Equals(BulletReflectState.BULLETREFLECTSTATE_NONE) && gameObject.CompareTag("REFLECTZONE"))
+            {
+                if (bulletMove.reflectCount < bulletMove.reflectLimit)
                 {
-                    if (isSpriteChange.Equals(true))
+                    bulletMove.reflectCount++;
+                    if (gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_LEFTRIGHT")))
                     {
-                        spriteRenderer.sprite = enemyFire.spriteCollection[changeSpriteNumber];
+                        bulletMove.ChangeRotateAngle(bulletMove.GetAngle() * -1);
                     }
-                    if (isEffectOutput.Equals(true))
+                    else if ((gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_TOP"))) ||
+                        (gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_BOTTOM")) && bulletState.bulletReflectState.Equals(BulletReflectState.BULLETREFLECTSTATE_CONTAINBOTTOM)))
                     {
-                        StartCoroutine(enemyFire.CreateBulletFireEffect(effectSpriteNumber, scaleDownSpeed, scaleDownTime, alphaUpSpeed, transform.position));
+                        if (bulletMove.GetAngle() >= 0.0f && bulletMove.GetAngle() <= 180.0f)
+                        {
+                            bulletMove.ChangeRotateAngle(180.0f - bulletMove.GetAngle());
+                        }
+                        else
+                        {
+                            bulletMove.ChangeRotateAngle(-180.0f - bulletMove.GetAngle());
+                        }
+                    }
+
+                    if (!(gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_BOTTOM")) && !bulletState.bulletReflectState.Equals(BulletReflectState.BULLETREFLECTSTATE_CONTAINBOTTOM)))
+                    {
+                        if (bulletMove.isSpriteChange.Equals(true))
+                        {
+                            // spriteRenderer.sprite = enemyFire.spriteCollection[changeSpriteNumber];
+                        }
+                        if (bulletMove.isEffectOutput.Equals(true))
+                        {
+                            // StartCoroutine(enemyFire.CreateBulletFireEffect(effectSpriteNumber, scaleDownSpeed, scaleDownTime, alphaUpSpeed, transform.position));
+                        }
                     }
                 }
             }

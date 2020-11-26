@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class EnemyHpBar : MonoBehaviour
 {
-    private EnemyDatabase enemyDatabase;
+    private EnemyStatus enemyDatabase;
     private Image hpBarImage;
 
-	void Start()
+	private void Start()
     {
-        enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyDatabase>();
+        enemyDatabase = GameObject.Find("ENEMY").GetComponent<EnemyStatus>();
 
         hpBarImage = GetComponent<Image>();
         StartCoroutine(HpBarUpdate());
@@ -21,7 +21,7 @@ public class EnemyHpBar : MonoBehaviour
     {
         while (true)
         {
-            hpBarImage.fillAmount = enemyDatabase.enemyCurrentHp / enemyDatabase.enemyMaxHp;
+            hpBarImage.fillAmount = enemyDatabase.GetEnemyCurrentHP() / enemyDatabase.GetEnemyMaxHP();
 
             yield return new WaitForEndOfFrame();
         }

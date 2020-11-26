@@ -5,149 +5,117 @@ using UnityEngine;
 
 public class EraseBullet : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    private CircleCollider2D circleCollider;
-    private BoxCollider2D boxCollider;
-    private CapsuleCollider2D capsuleCollider;
-    private BulletManager bulletManager;
-    private Transform enemyBullet;
-    private PlayerDatabase playerDatabase;
-    private InitializeBullet initializeBullet;
-    private MovingBullet movingBullet;
-    private LaserBullet laserBullet;
-    private ReflectBullet reflectBullet;
+    private ObjectPool playerPrimaryBullet;
+    private ObjectPool playerSecondaryBullet;
+    private ObjectPool circleBullet;
+    private ObjectPool capsuleBullet;
+    private ObjectPool boxBullet;
 
-    // 커스텀 컴포넌트를 만들 경우 계속 추가할 것!
-    // private Stage1BulletFragmentation stage1BulletFragmentation;
-    // private Stage5BulletCreate stage5BulletCreate;
-    // private Stage12BulletFragmentation stage12BulletFragmentation;
-    // private Stage13BulletRotate stage13BulletRotate;
+    private Transform playerPrimaryBulletParent;
+    private Transform playerSecondaryBulletParent;
+    private Transform circleBulletParent;
+    private Transform capsuleBulletParent;
+    private Transform boxBulletParent;
 
-    private Pattern6BulletRotate pattern6BulletRotate;
-    private Pattern6BulletAiming pattern6BulletAiming;
-    private Pattern7BulletAiming pattern7BulletAiming;
-    private Pattern8BulletAiming pattern8BulletAiming;
-    private Pattern9BulletRotate pattern9BulletRotate;
-    private Pattern14BulletRotate pattern14BulletRotate;
-    private Pattern19BulletRotate pattern19BulletRotate;
-
-    void Start()
+    private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        circleCollider = GetComponent<CircleCollider2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
-        bulletManager = GameObject.Find("BulletManager").transform.GetChild(0).GetComponent<BulletManager>();
-        enemyBullet = GameObject.Find("BULLET").transform.GetChild(0);
-        playerDatabase = GameObject.Find("PLAYER").GetComponent<PlayerDatabase>();
-        initializeBullet = GetComponent<InitializeBullet>();
-        movingBullet = GetComponent<MovingBullet>();
-        laserBullet = GetComponent<LaserBullet>();
-        reflectBullet = GetComponent<ReflectBullet>();
+        playerPrimaryBullet = GameObject.Find("BulletPool").transform.Find("PlayerBullet1").GetComponent<ObjectPool>();
+        playerSecondaryBullet = GameObject.Find("BulletPool").transform.Find("PlayerBullet2").GetComponent<ObjectPool>();
+        circleBullet = GameObject.Find("BulletPool").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Circle").GetComponent<ObjectPool>();
+        capsuleBullet = GameObject.Find("BulletPool").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Capsule").GetComponent<ObjectPool>();
+        boxBullet = GameObject.Find("BulletPool").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Rectangle").GetComponent<ObjectPool>();
 
-        // 커스텀 컴포넌트 캐싱
-        // stage1BulletFragmentation = GetComponent<Stage1BulletFragmentation>();
-        // stage5BulletCreate = GetComponent<Stage5BulletCreate>();
-        // stage12BulletFragmentation = GetComponent<Stage12BulletFragmentation>();
-        // stage13BulletRotate = GetComponent<Stage13BulletRotate>();
-
-        pattern6BulletRotate = GetComponent<Pattern6BulletRotate>();
-        pattern6BulletAiming = GetComponent<Pattern6BulletAiming>();
-        pattern7BulletAiming = GetComponent<Pattern7BulletAiming>();
-        pattern8BulletAiming = GetComponent<Pattern8BulletAiming>();
-        pattern9BulletRotate = GetComponent<Pattern9BulletRotate>();
-        pattern14BulletRotate = GetComponent<Pattern14BulletRotate>();
-        pattern19BulletRotate = GetComponent<Pattern19BulletRotate>();
+        playerPrimaryBulletParent = GameObject.Find("BULLET").transform.Find("PlayerBullet1");
+        playerSecondaryBulletParent = GameObject.Find("BULLET").transform.Find("PlayerBullet2");
+        circleBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Circle");
+        capsuleBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Capsule");
+        boxBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Rectangle");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject player = GameObject.Find("PLAYER");
-        PlayerMove playerMove = player.GetComponent<PlayerMove>();
-        // PlayerDie playerDie = player.GetComponent<PlayerDie>();
-        InitializeBullet initializeBullet = GetComponent<InitializeBullet>();
-
-        if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER1")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER1")))
+        if (collision.CompareTag("BULLET_PLAYER"))
         {
-            ClearBullet();
+            ClearPlayerBullet(collision.gameObject, (collision.gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY"))) ? 1 : 2);
         }
-        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_INNER2")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER2")))
+        else if (collision.CompareTag("BULLET_ENEMY"))
         {
-            ClearBullet();
-        }
-        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER1")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER1")))
-        {
-            ClearBullet();
-        }
-        else if (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_DESTROYZONE_OUTER2")) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER2")))
-        {
-            ClearBullet();
-        }
-        else if ((gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_LASER")) && gameObject.GetComponent<InitializeBullet>().bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE)) &&
-            collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_LASER")))
-        {
-            ClearBullet();
-        }
-        else if ((CompareTag("BULLET_ENEMY").Equals(true) || CompareTag("BULLET_ENEMY_EMPTY").Equals(true)) && collision.gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")))
-        {
-            ClearBullet();
-        }
-        else if ((CompareTag("BULLET_ENEMY").Equals(true) && collision.CompareTag("PLAYER").Equals(true)) && playerMove.isDamaged.Equals(false))
-        {
-            playerDatabase.hitCount++;
-            // playerMove.isDamaged = true;
-            // StartCoroutine(playerDie.CreateDieEffect());
-            if (initializeBullet.bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
+            if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER1")) &&
+            collision.gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_INNER1")))
             {
-                ClearBullet();
+                ClearBullet(collision.gameObject);
+            }
+            else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER2")) &&
+                collision.gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_INNER2")))
+            {
+                ClearBullet(collision.gameObject);
+            }
+            else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER1")) &&
+                collision.gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_OUTER1")))
+            {
+                ClearBullet(collision.gameObject);
+            }
+            else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_OUTER2")) &&
+                collision.gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_OUTER2")))
+            {
+                ClearBullet(collision.gameObject);
             }
         }
+        else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")) &&
+            (collision.CompareTag("BULLET_ENEMY") || collision.CompareTag("BULLET_PLAYER")))
+        {
+            ClearBulletAll(collision.gameObject);
+        }
     }
 
-    public void ClearBullet()
+    private void ClearPlayerBullet(GameObject bullet, int bulletType)
     {
-        EnemyFire.ClearChild(gameObject);
-        
-        bulletManager.bulletPool.Enqueue(gameObject);
-        gameObject.transform.SetParent(enemyBullet.transform);
-        gameObject.transform.position = new Vector2(0.0f, 0.0f);
-        gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 0.0f);
+        switch (bulletType)
+        {
+            case 1:
+                playerPrimaryBullet.objectPool.Enqueue(bullet);
+                bullet.transform.SetParent(playerPrimaryBulletParent);
+                break;
+            case 2:
+                playerSecondaryBullet.objectPool.Enqueue(bullet);
+                bullet.transform.SetParent(playerSecondaryBulletParent);
+                break;
+            default:
+                break;
+        }
+        bullet.transform.position = new Vector2(0.0f, 0.0f);
+        bullet.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+        bullet.transform.localScale = new Vector3(2.0f, 2.0f, 1.0f);
 
-        // 컴포넌트 제거
-        Destroy(spriteRenderer);
-        Destroy(circleCollider);
-        Destroy(boxCollider);
-        Destroy(capsuleCollider);
-        Destroy(initializeBullet);
-        Destroy(movingBullet);
-        Destroy(laserBullet);
-        Destroy(reflectBullet);
-
-        // 커스텀 컴포넌트 제거
-        // Destroy(stage1BulletFragmentation);
-        // Destroy(stage5BulletCreate);
-        // Destroy(stage12BulletFragmentation);
-        // Destroy(stage13BulletRotate);
-
-        Destroy(pattern6BulletRotate);
-        Destroy(pattern6BulletAiming);
-        Destroy(pattern7BulletAiming);
-        Destroy(pattern8BulletAiming);
-        Destroy(pattern9BulletRotate);
-        Destroy(pattern14BulletRotate);
-        Destroy(pattern19BulletRotate);
-
-        // 최종 컴포넌트 제거 후 비활성화
-        StopAllCoroutines();
-        gameObject.SetActive(false);
+        bullet.SetActive(false);
     }
-    public IEnumerator AutoClearBullet(float waitTime)
+
+    private void ClearBullet(GameObject bullet)
     {
-        yield return new WaitForSeconds(waitTime);
+        if (bullet.GetComponent<CircleCollider2D>())
+        {
+            circleBullet.objectPool.Enqueue(bullet);
+            bullet.transform.SetParent(circleBulletParent);
+        }
+        else if (bullet.GetComponent<CapsuleCollider2D>())
+        {
+            capsuleBullet.objectPool.Enqueue(bullet);
+            bullet.transform.SetParent(capsuleBulletParent);
+        }
+        else if (bullet.GetComponent<BoxCollider2D>())
+        {
+            boxBullet.objectPool.Enqueue(bullet);
+            bullet.transform.SetParent(boxBulletParent);
+        }
+        bullet.transform.position = new Vector2(0.0f, 0.0f);
+        bullet.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        bullet.transform.localScale = new Vector3(1.8f, 1.8f, 1.0f);
 
-        ClearBullet();
+        bullet.SetActive(false);
+    }
 
-        yield return null;
+    private void ClearBulletAll(GameObject bullet)
+    {
+
     }
 }

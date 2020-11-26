@@ -10,7 +10,7 @@ public class PlayerSecondary : MonoBehaviour
     public GameObject fastMoveModePoint;
     public GameObject slowMoveModePoint;
 
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 

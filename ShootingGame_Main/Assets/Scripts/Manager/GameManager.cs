@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Sprite[] bulletSprite;
+    public Sprite[] characterSprite;
+
     private void Start()
     {
         if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
                     GlobalData.currentStage = 7;
                     break;
             }
+            // 최초 잔기 수와 폭탄은 옵션에서 설정한 값으로 넣어야 함 (옵션 기능 추가 시 고쳐야 된다는 뜻)
             GlobalData.currentPlayerLife = 2;
             GlobalData.currentPlayerBomb = 3;
         }
@@ -136,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     #region 스테이지 클리어
 
-    private void StageClear()
+    public void StageClear()
     {
         if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
         {
@@ -159,7 +163,7 @@ public class GameManager : MonoBehaviour
         else if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_PRACTICE))
         {
             GlobalData.gameMode = GameMode.GAMEMODE_TITLE;
-            GlobalData.InitCurrentData();
+            GlobalData.InitGlobalData();
         }
     }
 

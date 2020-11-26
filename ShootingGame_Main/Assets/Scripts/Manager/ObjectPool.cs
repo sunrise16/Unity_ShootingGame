@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    private int poolSize;
+
     public GameObject poolObject;
     public GameObject poolParent;
     public Queue<GameObject> objectPool;
-
-    private int poolSize;
     
-    void Start()
+    private void Start()
     {
         if (poolObject.CompareTag("ENEMY"))
         {
@@ -33,10 +33,10 @@ public class ObjectPool : MonoBehaviour
         objectPool = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject bullet = Instantiate(poolObject);
-            bullet.SetActive(false);
-            bullet.transform.SetParent(poolParent.transform);
-            objectPool.Enqueue(bullet);
+            GameObject obj = Instantiate(poolObject);
+            obj.SetActive(false);
+            obj.transform.SetParent(poolParent.transform);
+            objectPool.Enqueue(obj);
         }
     }
 }

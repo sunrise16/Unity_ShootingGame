@@ -7,7 +7,7 @@ public class ObjectRotate : MonoBehaviour
 {
     public float rotateSpeed;
 
-	void Start()
+	private void Start()
 	{
         StartCoroutine(Rotate());
 	}

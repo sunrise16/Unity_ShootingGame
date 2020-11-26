@@ -15,7 +15,7 @@ public class EnemySprite : MonoBehaviour
     public bool isRightMove;
     public bool isSpriteReturn;
 
-    void Start()
+    private void Start()
     {
         enemySprite = GetComponent<SpriteRenderer>();
 
@@ -26,7 +26,7 @@ public class EnemySprite : MonoBehaviour
         isSpriteReturn = false;
     }
 
-    void Update()
+    private void Update()
     {
         spriteChangeDelay += Time.deltaTime;
         if (spriteChangeDelay >= 0.08f)

@@ -7,12 +7,12 @@ public class EnemyPosition : MonoBehaviour
 {
     private Vector2 margin;
     
-    void Start()
+    private void Start()
     {
         margin = new Vector2(0.03f, 0.03f);
     }
-	
-	void Update()
+
+    private void Update()
     {
         MoveInScreen();
     }
