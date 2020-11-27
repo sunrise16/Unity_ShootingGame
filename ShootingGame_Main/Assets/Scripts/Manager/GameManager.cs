@@ -92,9 +92,19 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        GameObject stage1_MinionLarge1 = CreateMinion(new Vector2(-5.0f, 2.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
+        int wave1Count = 0;
+        while (wave1Count <= 8)
+        {
+            GameObject stage1_MinionLarge1 = CreateMinion(new Vector2(-5.0f, 2.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
             new Vector3(1.5f, 1.5f, 1.0f), 0.3f, 0, EnemyType.ENEMYTYPE_LMINION, 500.0f, 1, true, 10.0f);
-        EnemyMoveOnce(stage1_MinionLarge1, new Vector3(5.0f, 1.5f, 1.0f), iTween.EaseType.easeInOutQuad, 10.0f);
+            EnemyMoveOnce(stage1_MinionLarge1, new Vector3(5.0f, 1.5f, 1.0f), iTween.EaseType.easeInOutQuad, 10.0f);
+
+            yield return new WaitForSeconds(1.2f);
+
+            wave1Count++;
+        }
+
+        yield return new WaitForSeconds(1.0f);
     }
 
     #endregion
