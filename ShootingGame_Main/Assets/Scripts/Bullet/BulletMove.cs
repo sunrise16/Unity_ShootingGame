@@ -3,116 +3,118 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class BulletMove : BulletState
+public class BulletMove : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
+    private BulletState bulletState;
 
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        bulletState = GetComponent<BulletState>();
     }
 
     private void Update()
     {
-        bulletRotateTime += Time.deltaTime;
+        bulletState.bulletRotateTime += Time.deltaTime;
 
         // 탄속 변경
-        if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING))
+        if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING))
         {
-            bulletMoveSpeed += bulletAccelerationMoveSpeed;
-            if (!bulletAccelerationMoveSpeedMax.Equals(0.0f))
+            bulletState.bulletMoveSpeed += bulletState.bulletAccelerationMoveSpeed;
+            if (!bulletState.bulletAccelerationMoveSpeedMax.Equals(0.0f))
             {
-                if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
+                if (bulletState.bulletMoveSpeed >= bulletState.bulletAccelerationMoveSpeedMax)
                 {
-                    bulletMoveSpeed = bulletAccelerationMoveSpeedMax;
+                    bulletState.bulletMoveSpeed = bulletState.bulletAccelerationMoveSpeedMax;
                 }
             }
         }
-        else if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_DECELERATING))
+        else if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_DECELERATING))
         {
-            bulletMoveSpeed -= bulletDecelerationMoveSpeed;
-            if (!bulletDecelerationMoveSpeedMin.Equals(0.0f))
+            bulletState.bulletMoveSpeed -= bulletState.bulletDecelerationMoveSpeed;
+            if (!bulletState.bulletDecelerationMoveSpeedMin.Equals(0.0f))
             {
-                if (bulletMoveSpeed <= bulletDecelerationMoveSpeedMin)
+                if (bulletState.bulletMoveSpeed <= bulletState.bulletDecelerationMoveSpeedMin)
                 {
-                    bulletMoveSpeed = bulletDecelerationMoveSpeedMin;
+                    bulletState.bulletMoveSpeed = bulletState.bulletDecelerationMoveSpeedMin;
                 }
             }
             else
             {
-                if (bulletMoveSpeed <= 0.0f)
+                if (bulletState.bulletMoveSpeed <= 0.0f)
                 {
-                    bulletMoveSpeed = 0.0f;
+                    bulletState.bulletMoveSpeed = 0.0f;
                 }
             }
         }
-        else if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOP))
+        else if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOP))
         {
-            if (bulletMoveSpeedLoopBool.Equals(true))
+            if (bulletState.bulletMoveSpeedLoopBool.Equals(true))
             {
-                bulletMoveSpeed += bulletAccelerationMoveSpeed;
-                if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
+                bulletState.bulletMoveSpeed += bulletState.bulletAccelerationMoveSpeed;
+                if (bulletState.bulletMoveSpeed >= bulletState.bulletAccelerationMoveSpeedMax)
                 {
-                    bulletMoveSpeedLoopBool = false;
+                    bulletState.bulletMoveSpeedLoopBool = false;
                 }
             }
             else
             {
-                bulletMoveSpeed -= bulletDecelerationMoveSpeed;
-                if (bulletMoveSpeed <= bulletDecelerationMoveSpeedMin)
+                bulletState.bulletMoveSpeed -= bulletState.bulletDecelerationMoveSpeed;
+                if (bulletState.bulletMoveSpeed <= bulletState.bulletDecelerationMoveSpeedMin)
                 {
-                    bulletMoveSpeedLoopBool = true;
+                    bulletState.bulletMoveSpeedLoopBool = true;
                 }
             }
         }
-        else if (bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOPONCE))
+        else if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOPONCE))
         {
-            if (bulletMoveSpeedLoopBool.Equals(true))
+            if (bulletState.bulletMoveSpeedLoopBool.Equals(true))
             {
-                bulletMoveSpeed += bulletAccelerationMoveSpeed;
-                if (bulletMoveSpeed >= bulletAccelerationMoveSpeedMax)
+                bulletState.bulletMoveSpeed += bulletState.bulletAccelerationMoveSpeed;
+                if (bulletState.bulletMoveSpeed >= bulletState.bulletAccelerationMoveSpeedMax)
                 {
-                    bulletMoveSpeedLoopBool = false;
-                    bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
+                    bulletState.bulletMoveSpeedLoopBool = false;
+                    bulletState.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_DECELERATING;
                 }
             }
             else
             {
-                bulletMoveSpeed -= bulletDecelerationMoveSpeed;
-                if (bulletMoveSpeed <= bulletDecelerationMoveSpeedMin)
+                bulletState.bulletMoveSpeed -= bulletState.bulletDecelerationMoveSpeed;
+                if (bulletState.bulletMoveSpeed <= bulletState.bulletDecelerationMoveSpeedMin)
                 {
-                    bulletMoveSpeedLoopBool = true;
-                    bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING;
+                    bulletState.bulletMoveSpeedLoopBool = true;
+                    bulletState.bulletSpeedState = BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING;
                 }
             }
         }
 
         // 탄도 변경 (지속 증감)
-        if (!bulletRotateSpeed.Equals(0.0f))
+        if (!bulletState.bulletRotateSpeed.Equals(0.0f))
         {
-            if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_NORMAL))
+            if (bulletState.bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_NORMAL))
             {
-                transform.Rotate(Vector3.forward * bulletRotateSpeed * Time.deltaTime);
+                transform.Rotate(Vector3.forward * bulletState.bulletRotateSpeed * Time.deltaTime);
             }
-            else if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_LIMIT))
+            else if (bulletState.bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_LIMIT))
             {
-                transform.Rotate(Vector3.forward * bulletRotateSpeed * Time.deltaTime);
-                if (bulletRotateTime >= bulletRotateLimit)
+                transform.Rotate(Vector3.forward * bulletState.bulletRotateSpeed * Time.deltaTime);
+                if (bulletState.bulletRotateTime >= bulletState.bulletRotateLimit)
                 {
-                    bulletRotateSpeed = 0.0f;
+                    bulletState.bulletRotateSpeed = 0.0f;
                 }
             }
-            else if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_ROTATEAROUND))
+            else if (bulletState.bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_ROTATEAROUND))
             {
-                RotateAround(bulletDestination);
+                RotateAround(bulletState.bulletDestination);
             }
         }
         // 탄도 변경 (지속적으로 대상을 향해 바라보기)
-        else if (bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_LOOKAT))
+        else if (bulletState.bulletRotateState.Equals(BulletRotateState.BULLETROTATESTATE_LOOKAT))
         {
-            bulletDestination = GetBulletDestination(targetObject.transform.position);
-            float angle = Mathf.Atan2(bulletDestination.y, bulletDestination.x) * Mathf.Rad2Deg;
-            if (bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE))
+            bulletState.bulletDestination = bulletState.GetBulletDestination(bulletState.targetObject.transform.position);
+            float angle = Mathf.Atan2(bulletState.bulletDestination.y, bulletState.bulletDestination.x) * Mathf.Rad2Deg;
+            if (bulletState.bulletType.Equals(BulletType.BULLETTYPE_LASER_MOVE))
             {
                 ChangeRotateAngle(angle - 180.0f);
             }
@@ -123,21 +125,21 @@ public class BulletMove : BulletState
         }
 
         // 탄막 이동
-        if (bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
+        if (bulletState.bulletType.Equals(BulletType.BULLETTYPE_NORMAL))
         {
-            transform.Translate(Vector2.up * bulletMoveSpeed * Time.deltaTime);
+            transform.Translate(Vector2.up * bulletState.bulletMoveSpeed * Time.deltaTime);
             // transform.localPosition = Vector2.MoveTowards(transform.position, GetBulletDestination(targetPosition), bulletMoveSpeed * Time.deltaTime);
         }
         else
         {
-            transform.Translate(Vector2.right * bulletMoveSpeed * Time.deltaTime);
+            transform.Translate(Vector2.right * bulletState.bulletMoveSpeed * Time.deltaTime);
             // transform.localPosition = Vector2.MoveTowards(transform.position, GetBulletDestination(targetPosition), bulletMoveSpeed * Time.deltaTime);
         }
     }
 
     private void FixedUpdate()
     {
-        if (isLookAt.Equals(true))
+        if (bulletState.isLookAt.Equals(true))
         {
             float angle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0.0f, 0.0f, angle - 90.0f);
@@ -159,6 +161,6 @@ public class BulletMove : BulletState
     // 탄도 변경 (공전)
     public void RotateAround(Vector2 target)
     {
-        transform.RotateAround(target, Vector3.forward, bulletRotateSpeed * Time.deltaTime);
+        transform.RotateAround(target, Vector3.forward, bulletState.bulletRotateSpeed * Time.deltaTime);
     }
 }

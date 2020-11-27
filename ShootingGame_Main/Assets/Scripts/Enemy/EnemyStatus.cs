@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
+    private EnemyType enemyType;
+
     private float enemyCurrentHP;
     private float enemyMaxHP;
-
-    private void Awake()
-    {
-        enemyCurrentHP = 1000.0f;
-        enemyMaxHP = 1000.0f;
-	}
 
     public float GetEnemyCurrentHPRate()
     {
         return enemyCurrentHP / enemyMaxHP;
+    }
+
+    public EnemyType GetEnemyType()
+    {
+        return enemyType;
     }
 
     public float GetEnemyCurrentHP()
@@ -29,9 +30,14 @@ public class EnemyStatus : MonoBehaviour
         return enemyMaxHP;
     }
 
-    public void SetEnemyCurrentHP(float damage)
+    public void SetEnemyType(EnemyType type)
     {
-        enemyCurrentHP -= damage;
+        enemyType = type;
+    }
+
+    public void SetEnemyCurrentHP(float targetHP)
+    {
+        enemyCurrentHP = targetHP;
     }
 
     public void SetEnemyMaxHP(float targetHP)

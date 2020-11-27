@@ -41,11 +41,11 @@ public class PlayerSecondary : MonoBehaviour
     {
         while (true)
         {
-            if (GlobalData.currentPower < 2.0f)
+            if (GameData.currentPower < 2.0f)
             {
                 spriteRenderer.enabled = false;
             }
-            else if (GlobalData.currentPower >= 2.0f && GlobalData.currentPower < 4.0f)
+            else if (GameData.currentPower >= 2.0f && GameData.currentPower < 4.0f)
             {
                 if (gameObject.name.Equals("SecondaryPoint1") || gameObject.name.Equals("SecondaryPoint2"))
                 {

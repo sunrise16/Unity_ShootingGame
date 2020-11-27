@@ -14,9 +14,9 @@ public class ReflectBullet : MonoBehaviour
 
             if (!bulletState.bulletReflectState.Equals(BulletReflectState.BULLETREFLECTSTATE_NONE) && gameObject.CompareTag("REFLECTZONE"))
             {
-                if (bulletMove.reflectCount < bulletMove.reflectLimit)
+                if (bulletState.reflectCount < bulletState.reflectLimit)
                 {
-                    bulletMove.reflectCount++;
+                    bulletState.reflectCount++;
                     if (gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_LEFTRIGHT")))
                     {
                         bulletMove.ChangeRotateAngle(bulletMove.GetAngle() * -1);
@@ -36,11 +36,11 @@ public class ReflectBullet : MonoBehaviour
 
                     if (!(gameObject.layer.Equals(LayerMask.NameToLayer("REFLECTZONE_BOTTOM")) && !bulletState.bulletReflectState.Equals(BulletReflectState.BULLETREFLECTSTATE_CONTAINBOTTOM)))
                     {
-                        if (bulletMove.isSpriteChange.Equals(true))
+                        if (bulletState.isSpriteChange.Equals(true))
                         {
                             // spriteRenderer.sprite = enemyFire.spriteCollection[changeSpriteNumber];
                         }
-                        if (bulletMove.isEffectOutput.Equals(true))
+                        if (bulletState.isEffectOutput.Equals(true))
                         {
                             // StartCoroutine(enemyFire.CreateBulletFireEffect(effectSpriteNumber, scaleDownSpeed, scaleDownTime, alphaUpSpeed, transform.position));
                         }

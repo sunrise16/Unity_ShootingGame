@@ -5888,7 +5888,7 @@ public class EnemyFire : MonoBehaviour
     {
         Vector3 randomPosition = new Vector3(Random.Range(posXMin, posXMax), Random.Range(posYMin, posYMax), 0.0f);
 
-        iTween.MoveTo(gameObject, iTween.Hash("position", randomPosition, "easetype", iTween.EaseType.easeOutQuad, "time", moveTime));
+        iTween.MoveBy(gameObject, iTween.Hash("position", randomPosition, "easetype", iTween.EaseType.easeInOutQuad, "time", moveTime));
         StartCoroutine(EnemySpriteSet(randomPosition.x, transform.position.x, moveTime));
 
         yield return null;

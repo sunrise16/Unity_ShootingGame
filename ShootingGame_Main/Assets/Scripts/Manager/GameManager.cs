@@ -7,43 +7,56 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private Transform enemyPool;
+    private Transform enemyParent;
+
     public Sprite[] bulletSprite;
+    public Sprite[] effectSprite;
     public Sprite[] characterSprite;
+    public RuntimeAnimatorController[] animatorController;
 
     private void Start()
     {
-        if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
+        // 테스트용
+        GameData.gameMode = GameMode.GAMEMODE_MAINGAME;
+        GameData.gameDifficulty = GameDifficulty.DIFFICULTY_LUNATIC;
+        // 테스트용
+
+        enemyPool = GameObject.Find("CHARACTER").transform.Find("Enemy");
+        enemyParent = GameObject.Find("CHARACTER").transform.Find("Enemy_Temp");
+
+        if (GameData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
         {
-            switch (GlobalData.gameDifficulty)
+            switch (GameData.gameDifficulty)
             {
                 case GameDifficulty.DIFFICULTY_EASY:
                 case GameDifficulty.DIFFICULTY_NORMAL:
                 case GameDifficulty.DIFFICULTY_HARD:
                 case GameDifficulty.DIFFICULTY_LUNATIC:
-                    GlobalData.currentStage = 1;
+                    GameData.currentStage = 1;
                     break;
                 case GameDifficulty.DIFFICULTY_EXTRA:
-                    GlobalData.currentStage = 7;
+                    GameData.currentStage = 7;
                     break;
             }
             // 최초 잔기 수와 폭탄은 옵션에서 설정한 값으로 넣어야 함 (옵션 기능 추가 시 고쳐야 된다는 뜻)
-            GlobalData.currentPlayerLife = 2;
-            GlobalData.currentPlayerBomb = 3;
+            GameData.currentPlayerLife = 2;
+            GameData.currentPlayerBomb = 3;
         }
-        else if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_PRACTICE))
+        else if (GameData.gameMode.Equals(GameMode.GAMEMODE_PRACTICE))
         {
-            GlobalData.currentStage = (int)GlobalData.gamePracticeStage;
-            GlobalData.currentPlayerLife = 8;
-            GlobalData.currentPlayerBomb = 8;
+            GameData.currentStage = (int)GameData.gamePracticeStage;
+            GameData.currentPlayerLife = 8;
+            GameData.currentPlayerBomb = 8;
         }
-        GlobalData.currentChapter = 1;
+        GameData.currentChapter = 1;
 
         StageStart();
     }
 
     private void StageStart()
     {
-        switch (GlobalData.currentStage)
+        switch (GameData.currentStage)
         {
             case 1:
                 StartCoroutine(Stage1());
@@ -75,9 +88,13 @@ public class GameManager : MonoBehaviour
 
     #region 스테이지 1
 
-    private IEnumerator Stage1()
+    public IEnumerator Stage1()
     {
-        return null;
+        yield return new WaitForSeconds(1.0f);
+
+        GameObject stage1_MinionLarge1 = CreateMinion(new Vector2(-5.0f, 2.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
+            new Vector3(1.5f, 1.5f, 1.0f), 0.3f, 0, EnemyType.ENEMYTYPE_LMINION, 500.0f, 1, true, 10.0f);
+        EnemyMoveOnce(stage1_MinionLarge1, new Vector3(5.0f, 1.5f, 1.0f), iTween.EaseType.easeInOutQuad, 10.0f);
     }
 
     #endregion
@@ -142,17 +159,17 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
-        if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
+        if (GameData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
         {
-            if (GlobalData.currentStage < 6)
+            if (GameData.currentStage < 6)
             {
-                GlobalData.currentStage++;
-                GlobalData.currentChapter = 1;
+                GameData.currentStage++;
+                GameData.currentChapter = 1;
                 StageStart();
             }
             else
             {
-                GlobalData.gameMode = GameMode.GAMEMODE_ENDING;
+                GameData.gameMode = GameMode.GAMEMODE_ENDING;
 
                 // 조건에 따른 최종 등급 설정
                 // 여기에 작성
@@ -160,11 +177,70 @@ public class GameManager : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene");
             }
         }
-        else if (GlobalData.gameMode.Equals(GameMode.GAMEMODE_PRACTICE))
+        else if (GameData.gameMode.Equals(GameMode.GAMEMODE_PRACTICE))
         {
-            GlobalData.gameMode = GameMode.GAMEMODE_TITLE;
-            GlobalData.InitGlobalData();
+            GameData.gameMode = GameMode.GAMEMODE_TITLE;
+            GameData.InitGameData();
         }
+    }
+
+    #endregion
+
+    #region 적 미니언 생성
+
+    public GameObject CreateMinion(Vector2 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
+        int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, bool isAutoDestroy = false, float waitTime = 0.0f)
+    {
+        GameObject enemy = enemyPool.GetChild(0).gameObject;
+        enemy.SetActive(true);
+        enemy.transform.position = spawnPosition;
+        enemy.gameObject.tag = enemyTag;
+        enemy.gameObject.layer = enemyLayer;
+        enemy.transform.SetParent(enemyParent);
+        enemy.transform.localScale = enemyScale;
+        enemy.GetComponent<CircleCollider2D>().radius = colliderRadius;
+        enemy.GetComponent<Animator>().runtimeAnimatorController = animatorController[animationNumber];
+
+        EnemyStatus enemyStatus = enemy.GetComponent<EnemyStatus>();
+        enemyStatus.SetEnemyType(enemyType);
+        enemyStatus.SetEnemyMaxHP(enemyHP);
+        enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyMaxHP());
+
+        if (!enemy.GetComponent<Minion_Pattern1>())
+        {
+            enemy.AddComponent<Minion_Pattern1>();
+        }
+
+        EnemyDestroy enemyDestroy = enemy.GetComponent<EnemyDestroy>();
+        if (isAutoDestroy.Equals(true))
+        {
+            StartCoroutine(enemyDestroy.EnemyAutoDestroy(waitTime));
+        }
+
+        return enemy;
+    }
+
+    // 적 이동
+    public void EnemyMoveOnce(GameObject gameObject, Vector3 targetPosition, iTween.EaseType easeType, float moveTime)
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+
+        // 스프라이트 조절
+        if (gameObject.transform.position.x > targetPosition.x)
+        {
+            animator.SetTrigger("isLeftMove");
+        }
+        else if (gameObject.transform.position.x < targetPosition.x)
+        {
+            animator.SetTrigger("isRightMove");
+        }
+        else
+        {
+            animator.SetTrigger("isIdle");
+        }
+
+        // 최종 이동 처리
+        iTween.MoveTo(gameObject, iTween.Hash("position", targetPosition, "easetype", easeType, "time", moveTime));
     }
 
     #endregion

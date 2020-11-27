@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour
     private float moveSpeed;
     private bool isInvincible;
 
-	public void Awake()
+	public void Status()
     {
         moveSpeed = 0.0f;
         isInvincible = false;

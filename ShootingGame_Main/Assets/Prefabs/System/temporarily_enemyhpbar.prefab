@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1741432948016112
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,14 +53,13 @@ GameObject:
   - component: {fileID: 224494529275961668}
   - component: {fileID: 222575135986280430}
   - component: {fileID: 114532807327157280}
-  - component: {fileID: 114532689306172780}
   m_Layer: 5
   m_Name: temporarily_enemyhpbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114442165561734660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39215687, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -88,17 +87,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114532689306172780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872821621005982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 922041825f021f244a0ab8e9951a9e13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114532807327157280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
