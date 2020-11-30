@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // 테스트용
+        /// 테스트용 (메인 화면 구현하면 지울 것 !!!)
         GameData.gameMode = GameMode.GAMEMODE_MAINGAME;
         GameData.gameDifficulty = GameDifficulty.DIFFICULTY_LUNATIC;
-        // 테스트용
+        /// 테스트용 (메인 화면 구현하면 지울 것 !!!)
 
         enemyPool = GameObject.Find("CHARACTER").transform.Find("Enemy");
         enemyParent = GameObject.Find("CHARACTER").transform.Find("Enemy_Temp");
@@ -92,19 +92,69 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
+        #region Wave 1
+
         int wave1Count = 0;
-        while (wave1Count <= 8)
+        while (wave1Count < 8)
         {
-            GameObject stage1_MinionLarge1 = CreateMinion(new Vector2(-5.0f, 2.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-            new Vector3(1.5f, 1.5f, 1.0f), 0.3f, 0, EnemyType.ENEMYTYPE_LMINION, 500.0f, 1, true, 10.0f);
-            EnemyMoveOnce(stage1_MinionLarge1, new Vector3(5.0f, 1.5f, 1.0f), iTween.EaseType.easeInOutQuad, 10.0f);
+            GameObject stage1_MinionSmall1 = CreateMinion(new Vector2(-1.75f + (0.5f * wave1Count), 5.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
+            new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.15f, true, 9.0f);
 
-            yield return new WaitForSeconds(1.2f);
-
+            Vector3[] paths = new Vector3[3];
+            paths[0] = new Vector3(stage1_MinionSmall1.transform.position.x, stage1_MinionSmall1.transform.position.y, 0.0f);
+            if (wave1Count <= 3)
+            {
+                paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x - 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
+                paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x - 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
+            }
+            else
+            {
+                paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x + 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
+                paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x + 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
+            }
+            EnemyMovePathOnce(stage1_MinionSmall1, paths, iTween.EaseType.easeInOutQuad, 9.0f);
             wave1Count++;
+
+            yield return new WaitForSeconds(0.25f);
         }
 
-        yield return new WaitForSeconds(1.0f);
+        #endregion
+
+        yield return new WaitForSeconds(6.0f);
+        // 스테이지 타이틀
+        StageTitleOutput(1);
+
+        yield return new WaitForSeconds(3.5f);
+        GameData.currentChapter++;
+
+        #region Wave 2
+
+        int wave2ACount = 0;
+        int wave2BCount = 0;
+        while (wave2ACount < 8)
+        {
+            GameObject stage1_MinionSmall1 = CreateMinion(new Vector2(-1.75f + (0.5f * wave1Count), 5.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
+            new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.15f, true, 9.0f);
+
+            Vector3[] paths = new Vector3[3];
+            paths[0] = new Vector3(stage1_MinionSmall1.transform.position.x, stage1_MinionSmall1.transform.position.y, 0.0f);
+            if (wave1Count <= 3)
+            {
+                paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x - 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
+                paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x - 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
+            }
+            else
+            {
+                paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x + 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
+                paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x + 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
+            }
+            EnemyMovePathOnce(stage1_MinionSmall1, paths, iTween.EaseType.easeInOutQuad, 9.0f);
+            wave1Count++;
+
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        #endregion
     }
 
     #endregion
@@ -199,7 +249,8 @@ public class GameManager : MonoBehaviour
     #region 적 미니언 생성
 
     public GameObject CreateMinion(Vector2 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
-        int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, bool isAutoDestroy = false, float waitTime = 0.0f)
+        int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, float enemyAttackWaitTime, float enemyAttackRepeatTime,
+        bool isAutoDestroy = false, float waitTime = 0.0f)
     {
         GameObject enemy = enemyPool.GetChild(0).gameObject;
         enemy.SetActive(true);
@@ -208,18 +259,22 @@ public class GameManager : MonoBehaviour
         enemy.gameObject.layer = enemyLayer;
         enemy.transform.SetParent(enemyParent);
         enemy.transform.localScale = enemyScale;
-        enemy.GetComponent<CircleCollider2D>().radius = colliderRadius;
-        enemy.GetComponent<Animator>().runtimeAnimatorController = animatorController[animationNumber];
+
+        CircleCollider2D circleCollider2D = enemy.GetComponent<CircleCollider2D>();
+        circleCollider2D.radius = colliderRadius;
+
+        Animator animator = enemy.GetComponent<Animator>();
+        animator.runtimeAnimatorController = animatorController[animationNumber];
 
         EnemyStatus enemyStatus = enemy.GetComponent<EnemyStatus>();
         enemyStatus.SetEnemyType(enemyType);
+        enemyStatus.SetEnemyPatternNumber(enemyPatternNumber);
         enemyStatus.SetEnemyMaxHP(enemyHP);
         enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyMaxHP());
 
-        if (!enemy.GetComponent<Minion_Pattern1>())
-        {
-            enemy.AddComponent<Minion_Pattern1>();
-        }
+        EnemyFire enemyFire = enemy.GetComponent<EnemyFire>();
+        enemyFire.SetEnemyAttackWaitTime(enemyAttackWaitTime);
+        enemyFire.SetEnemyAttackRepeatTime(enemyAttackRepeatTime);
 
         EnemyDestroy enemyDestroy = enemy.GetComponent<EnemyDestroy>();
         if (isAutoDestroy.Equals(true))
@@ -230,7 +285,11 @@ public class GameManager : MonoBehaviour
         return enemy;
     }
 
-    // 적 이동
+    #endregion
+
+    #region 적 이동
+
+    // 지정 장소로 1회 이동
     public void EnemyMoveOnce(GameObject gameObject, Vector3 targetPosition, iTween.EaseType easeType, float moveTime)
     {
         Animator animator = gameObject.GetComponent<Animator>();
@@ -251,6 +310,39 @@ public class GameManager : MonoBehaviour
 
         // 최종 이동 처리
         iTween.MoveTo(gameObject, iTween.Hash("position", targetPosition, "easetype", easeType, "time", moveTime));
+    }
+
+    // 지정 장소로 곡선을 그리며 1회 이동
+    public void EnemyMovePathOnce(GameObject gameObject, Vector3[] paths, iTween.EaseType easeType, float moveTime)
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+
+        // 스프라이트 조절
+        if (gameObject.transform.position.x > paths[paths.Length - 1].x)
+        {
+            animator.SetTrigger("isLeftMove");
+        }
+        else if (gameObject.transform.position.x < paths[paths.Length - 1].x)
+        {
+            animator.SetTrigger("isRightMove");
+        }
+        else
+        {
+            animator.SetTrigger("isIdle");
+        }
+
+        // 최종 이동 처리
+        iTween.MoveTo(gameObject, iTween.Hash("path", paths, "easetype", iTween.EaseType.easeInOutQuad, "time", 10.0f));
+    }
+
+    #endregion
+
+    #region 스테이지 타이틀
+
+    public void StageTitleOutput(int stageNumber)
+    {
+        // 임시
+        Debug.Log(string.Format("Stage {0}", stageNumber));
     }
 
     #endregion

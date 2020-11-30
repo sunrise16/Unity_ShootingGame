@@ -38,9 +38,6 @@ public class EnemyDestroy : MonoBehaviour
         enemyStatus.SetEnemyMaxHP(1.0f);
         enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyMaxHP());
 
-        // 개별 추가한 스크립트 전부 삭제
-        DestroyScript();
-
         gameObject.SetActive(false);
     }
 
@@ -49,11 +46,5 @@ public class EnemyDestroy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         Destroy();
-    }
-
-    public void DestroyScript()
-    {
-        // 개별 패턴 작성하는 대로 여기에 전부 추가하기 !!!
-        Destroy(GetComponent<Minion_Pattern1>());
     }
 }

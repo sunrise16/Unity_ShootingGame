@@ -17,7 +17,7 @@ public sealed class GameData : MonoBehaviour
     public static int currentPlayerLife = 0;            // 현재 플레이어 남은 목숨
     public static int currentPlayerBomb = 0;            // 현재 플레이어 남은 폭탄
 
-    public static float currentPower = 4.0f;            // 현재 기체 파워
+    public static float currentPower = 0.0f;            // 현재 기체 파워
     public static int currentScoreItem = 0;             // 현재 점수 아이템 획득 수
 
     public static int currentGraze = 0;                 // 현재 플레이어 그레이즈 횟수

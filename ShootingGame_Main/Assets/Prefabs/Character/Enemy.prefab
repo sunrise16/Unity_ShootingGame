@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212767062189079992}
   - component: {fileID: 95632839422090960}
   - component: {fileID: 114086111276506140}
+  - component: {fileID: 114902994100553712}
   - component: {fileID: 114791777913043330}
   m_Layer: 10
   m_Name: Enemy
@@ -87,8 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82397f5dd1237b6428ed4c3b02ee2390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCurrentHP: 100
-  enemyMaxHP: 100
 --- !u!114 &114791777913043330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +97,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 884e242c0e27b774c86d329e34cdaf1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114902994100553712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067632226732272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c18476cc3bd6a4098bc954555c1cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212767062189079992

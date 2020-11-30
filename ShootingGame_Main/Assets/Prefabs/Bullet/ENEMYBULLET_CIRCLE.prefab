@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 212229952335888982}
   - component: {fileID: 114224164008300128}
   - component: {fileID: 114261026094427328}
+  - component: {fileID: 114868543682565508}
   m_Layer: 0
   m_Name: ENEMYBULLET_CIRCLE
   m_TagString: BULLET_ENEMY
@@ -128,33 +129,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21554b14570615244abec6f4a4ce6e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObject: {fileID: 0}
-  targetObject: {fileID: 0}
-  bulletType: 0
-  bulletReflectState: 0
-  bulletSpeedState: 0
-  bulletRotateState: 0
-  bulletPosition: {x: 0, y: 0}
-  targetPosition: {x: 0, y: 0}
-  bulletDestination: {x: 0, y: 0}
-  bulletNumber: 0
-  distance: 0
-  isGrazed: 0
-  bulletMoveSpeed: 0
-  bulletAccelerationMoveSpeed: 0
-  bulletAccelerationMoveSpeedMax: 0
-  bulletDecelerationMoveSpeed: 0
-  bulletDecelerationMoveSpeedMin: 0
-  bulletMoveSpeedLoopBool: 0
-  bulletMoveSpeedLoopOnceBool: 0
-  bulletRotateTime: 0
-  bulletRotateLimit: 0
-  bulletRotateSpeed: 0
-  isLookAt: 0
-  reflectCount: 0
-  reflectLimit: 0
-  isSpriteChange: 0
-  isEffectOutput: 0
+--- !u!114 &114868543682565508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833312469455828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16668cad970e9448949b46442ba8fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 0
 --- !u!212 &212229952335888982
 SpriteRenderer:
   m_ObjectHideFlags: 1
