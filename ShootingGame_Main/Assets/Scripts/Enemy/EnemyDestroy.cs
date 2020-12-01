@@ -7,6 +7,7 @@ public class EnemyDestroy : MonoBehaviour
 {
     private GameManager gameManager;
     private EnemyStatus enemyStatus;
+    private EnemyFire enemyFire;
     private Transform enemyParent;
     private Transform itemPool;
     private Transform itemParent;
@@ -15,6 +16,7 @@ public class EnemyDestroy : MonoBehaviour
     {
         gameManager = GameObject.Find("MANAGER").transform.Find("GameManager").GetComponent<GameManager>();
         enemyStatus = GetComponent<EnemyStatus>();
+        enemyFire = GetComponent<EnemyFire>();
         enemyParent = GameObject.Find("CHARACTER").transform.Find("Enemy");
         itemPool = GameObject.Find("ITEM").transform.Find("Item");
         itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
@@ -24,7 +26,9 @@ public class EnemyDestroy : MonoBehaviour
     {
         if (enemyStatus.GetEnemyCurrentHP() <= 0.0f)
         {
+            // 모든 적 코루틴 제거
             StopAllCoroutines();
+            enemyFire.StopAllCoroutines();
             
             Destroy(false);
         }

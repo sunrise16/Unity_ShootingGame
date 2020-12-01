@@ -94,17 +94,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         #region Wave 1
-
-        int wave1Count = 0;
+        
         int[] wave1Item = new int[11] { 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
-        while (wave1Count < 8)
+        for (int i = 0; i < 8; i++)
         {
-            GameObject stage1_MinionSmall1 = CreateMinion(new Vector2(-1.75f + (0.5f * wave1Count), 5.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
+            GameObject stage1_MinionSmall1 = CreateMinion(new Vector2(-1.75f + (0.5f * i), 5.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
             new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.125f, true, 8, 0.5f, wave1Item, true, 9.0f);
 
             Vector3[] paths = new Vector3[3];
             paths[0] = new Vector3(stage1_MinionSmall1.transform.position.x, stage1_MinionSmall1.transform.position.y, 0.0f);
-            if (wave1Count <= 3)
+            if (i <= 3)
             {
                 paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x - 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
                 paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x - 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
@@ -115,7 +114,6 @@ public class GameManager : MonoBehaviour
                 paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x + 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
             }
             EnemyMovePathOnce(stage1_MinionSmall1, paths, iTween.EaseType.easeInOutQuad, 9.0f);
-            wave1Count++;
 
             yield return new WaitForSeconds(0.25f);
         }
@@ -131,30 +129,7 @@ public class GameManager : MonoBehaviour
 
         #region Wave 2
 
-        // int wave2ACount = 0;
-        // int wave2BCount = 0;
-        // while (wave2ACount < 8)
-        // {
-        //     GameObject stage1_MinionSmall1 = CreateMinion(new Vector2(-1.75f + (0.5f * wave1Count), 5.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-        //     new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.15f, false, 0, 0.0f, true, 9.0f);
-        // 
-        //     Vector3[] paths = new Vector3[3];
-        //     paths[0] = new Vector3(stage1_MinionSmall1.transform.position.x, stage1_MinionSmall1.transform.position.y, 0.0f);
-        //     if (wave2ACount <= 3)
-        //     {
-        //         paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x - 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
-        //         paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x - 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
-        //     }
-        //     else
-        //     {
-        //         paths[1] = new Vector3(stage1_MinionSmall1.transform.position.x + 1.0f, stage1_MinionSmall1.transform.position.y - 2.0f, 0.0f);
-        //         paths[2] = new Vector3(stage1_MinionSmall1.transform.position.x + 5.0f, stage1_MinionSmall1.transform.position.y - 3.0f, 0.0f);
-        //     }
-        //     EnemyMovePathOnce(stage1_MinionSmall1, paths, iTween.EaseType.easeInOutQuad, 9.0f);
-        //     wave2ACount++;
-        // 
-        //     yield return new WaitForSeconds(0.25f);
-        // }
+        // 웨이브 2
 
         #endregion
     }
@@ -219,7 +194,7 @@ public class GameManager : MonoBehaviour
 
     #region 스테이지 클리어
 
-    public void StageClear()
+    private void StageClear()
     {
         if (GameData.gameMode.Equals(GameMode.GAMEMODE_MAINGAME))
         {
@@ -250,7 +225,7 @@ public class GameManager : MonoBehaviour
 
     #region 적 미니언 생성
 
-    public GameObject CreateMinion(Vector2 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
+    private GameObject CreateMinion(Vector2 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
         int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, float enemyAttackWaitTime, float enemyAttackDelayTime,
         bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime, int[] enemyItem, bool isAutoDestroy = false, float waitTime = 0.0f)
     {

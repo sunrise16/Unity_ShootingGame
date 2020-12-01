@@ -67,6 +67,8 @@ public class EnemyFire : MonoBehaviour
 
         while (true)
         {
+            yield return null;
+
             switch (GameData.gameDifficulty)
             {
                 case GameDifficulty.DIFFICULTY_EASY:
@@ -112,7 +114,7 @@ public class EnemyFire : MonoBehaviour
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition);
+        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 5.0f, 5.0f);
 
         yield return new WaitForSeconds(0.1f);
 

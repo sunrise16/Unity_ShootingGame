@@ -5,42 +5,37 @@ using UnityEngine;
 
 public class PlayerHitPoint : MonoBehaviour
 {
+    private PlayerStatus playerStatus;
     private SpriteRenderer hitPointSprite;
     
     private float alphaValue;
 
 	private void Start ()
     {
+        playerStatus = GameObject.Find("CHARACTER").transform.Find("Player").GetComponent<PlayerStatus>();
         hitPointSprite = GetComponent<SpriteRenderer>();
         
         alphaValue = 0.0f;
-
-        StartCoroutine(HitPointAlpha());
 	}
 
-    public IEnumerator HitPointAlpha()
+    private void Update()
     {
-        while (true)
+        if (playerStatus.GetSlowMove().Equals(true))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            alphaValue += 0.1f;
+            if (alphaValue >= 1.0f)
             {
-                alphaValue += 0.1f;
-                if (alphaValue >= 1.0f)
-                {
-                    alphaValue = 1.0f;
-                }
+                alphaValue = 1.0f;
             }
-            else
-            {
-                alphaValue -= 0.1f;
-                if (alphaValue <= 0.0f)
-                {
-                    alphaValue = 0.0f;
-                }
-            }
-            hitPointSprite.color = new Color(hitPointSprite.color.r, hitPointSprite.color.g, hitPointSprite.color.b, alphaValue);
-
-            yield return new WaitForEndOfFrame();
         }
+        else
+        {
+            alphaValue -= 0.1f;
+            if (alphaValue <= 0.0f)
+            {
+                alphaValue = 0.0f;
+            }
+        }
+        hitPointSprite.color = new Color(hitPointSprite.color.r, hitPointSprite.color.g, hitPointSprite.color.b, alphaValue);
     }
 }

@@ -6,13 +6,11 @@ using UnityEngine;
 public class BulletEffectManager : MonoBehaviour
 {
     private GameManager gameManager;
-    private Transform effectPool;
     private Transform effectParent;
 
     private void Start()
     {
         gameManager = GameObject.Find("MANAGER").transform.Find("GameManager").GetComponent<GameManager>();
-        effectPool = GameObject.Find("EFFECT").transform.Find("Effect");
         effectParent = GameObject.Find("EFFECT").transform.Find("Effect_Temp");
     }
 
@@ -247,6 +245,7 @@ public class BulletEffectManager : MonoBehaviour
         Vector2 effectPosition, float scaleX = 10.0f, float scaleY = 10.0f)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        EffectAlpha effectAlpha = obj.GetComponent<EffectAlpha>();
         obj.transform.localScale = new Vector3(scaleX, scaleY, 1.0f);
         obj.SetActive(true);
         obj.transform.position = effectPosition;
@@ -254,14 +253,15 @@ public class BulletEffectManager : MonoBehaviour
         spriteRenderer.sprite = gameManager.effectSprite[spriteNumber];
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
 
-        StartCoroutine(EffectAlphaUp(obj, alphaUpSpeed));
-        StartCoroutine(EffectScaleDown(obj, scaleDownSpeed, scaleDownTime));
+        StartCoroutine(effectAlpha.EffectAlphaUp(obj, alphaUpSpeed));
+        StartCoroutine(effectAlpha.EffectScaleDown(obj, scaleDownSpeed, scaleDownTime));
     }
 
     public void CreateBulletFireEffect(GameObject obj, int spriteNumber, float scaleUpSpeed, float scaleLimit, float alphaUpSpeed, float alphaDownSpeed,
         float alphaRemainTime, Vector2 effectPosition, float scaleX = 10.0f, float scaleY = 10.0f)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        EffectAlpha effectAlpha = obj.GetComponent<EffectAlpha>();
         obj.transform.localScale = new Vector3(scaleX, scaleY, 1.0f);
         obj.SetActive(true);
         obj.transform.position = effectPosition;
@@ -269,120 +269,8 @@ public class BulletEffectManager : MonoBehaviour
         spriteRenderer.sprite = gameManager.effectSprite[spriteNumber];
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
 
-        StartCoroutine(EffectAlphaUp(obj, alphaUpSpeed, alphaDownSpeed, alphaRemainTime));
-        StartCoroutine(EffectScaleUp(obj, scaleUpSpeed, scaleLimit));
-    }
-
-    public IEnumerator EffectAlphaUp(GameObject obj, float alphaUpSpeed)
-    {
-        SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
-        float alpha = 0.0f;
-
-        while (true)
-        {
-            alpha += alphaUpSpeed;
-            if (alpha >= 1.0f) break;
-
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        yield return null;
-    }
-
-    public IEnumerator EffectAlphaUp(GameObject obj, float alphaUpSpeed, float alphaDownSpeed, float alphaRemainTime)
-    {
-        SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
-        float alpha = 0.0f;
-
-        while (true)
-        {
-            alpha += alphaUpSpeed;
-            if (alpha >= 1.0f)
-            {
-                alpha = 1.0f;
-                break;
-            }
-
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        yield return new WaitForSeconds(alphaRemainTime);
-
-        StartCoroutine(EffectAlphaDown(obj, alphaDownSpeed));
-    }
-
-    public IEnumerator EffectAlphaDown(GameObject obj, float alphaDownSpeed)
-    {
-        SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
-        float alpha = 1.0f;
-
-        while (true)
-        {
-            alpha -= alphaDownSpeed;
-            if (alpha <= 0.0f) break;
-
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        ClearEffect(obj);
-        yield return null;
-    }
-
-    public IEnumerator EffectScaleUp(GameObject obj, float scaleUpSpeed, float scaleLimit)
-    {
-        obj.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
-
-        while (true)
-        {
-            if (obj.transform.localScale.x >= scaleLimit || obj.transform.localScale.y >= scaleLimit)
-            {
-                obj.transform.localScale = new Vector3(scaleLimit, scaleLimit, 0.0f);
-                break;
-            }
-            else
-            {
-                obj.transform.localScale = new Vector3(obj.transform.localScale.x + scaleUpSpeed, obj.transform.localScale.y + scaleUpSpeed, 0.0f);
-            }
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        yield return null;
-    }
-
-    public IEnumerator EffectScaleDown(GameObject obj, float scaleDownSpeed, float scaleDownTime)
-    {
-        float delay = 0.0f;
-
-        while (true)
-        {
-            delay += Time.deltaTime;
-            if (delay >= scaleDownTime) break;
-
-            obj.transform.localScale = new Vector3(obj.transform.localScale.x - scaleDownSpeed, obj.transform.localScale.y - scaleDownSpeed, 0.0f);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        ClearEffect(obj);
-        yield return null;
-    }
-
-    public void ClearEffect(GameObject obj)
-    {
-        obj.transform.SetParent(effectPool);
-        obj.transform.position = new Vector2(0.0f, 0.0f);
-        obj.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        obj.transform.localScale = new Vector3(10.0f, 10.0f, 1.0f);
-
-        // 비활성화
-        obj.SetActive(false);
+        StartCoroutine(effectAlpha.EffectAlphaUp(obj, alphaUpSpeed, alphaDownSpeed, alphaRemainTime));
+        StartCoroutine(effectAlpha.EffectScaleUp(obj, scaleUpSpeed, scaleLimit));
     }
 
     #endregion
