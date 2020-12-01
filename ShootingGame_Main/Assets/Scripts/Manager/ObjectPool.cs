@@ -12,21 +12,26 @@ public class ObjectPool : MonoBehaviour
     
     private void Start()
     {
-        if (poolObject.CompareTag("BULLET_PLAYER"))
+        switch (poolObject.tag)
         {
-            poolSize = 80;
-        }
-        else if (poolObject.CompareTag("ENEMY"))
-        {
-            poolSize = 100;
-        }
-        else if (poolObject.CompareTag("BULLET_ENEMY"))
-        {
-            poolSize = 2000;
-        }
-        else if (poolObject.CompareTag("EFFECT"))
-        {
-            poolSize = 3000;
+            case "BULLET_PLAYER":
+                poolSize = 80;
+                break;
+            case "ENEMY":
+                poolSize = 100;
+                break;
+            case "ITEM":
+                poolSize = 1000;
+                break;
+            case "BULLET_ENEMY":
+                poolSize = 2000;
+                break;
+            case "EFFECT":
+                poolSize = 3000;
+                break;
+            default:
+                poolSize = 500;
+                break;
         }
 
         for (int i = 0; i < poolSize; i++)

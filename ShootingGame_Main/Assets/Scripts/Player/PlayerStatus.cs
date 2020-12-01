@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    private float moveSpeed;
+    private float playerMoveSpeed;
     private bool isInvincible;
 
-	public void Status()
+    private void Start()
     {
-        moveSpeed = 0.0f;
+        playerMoveSpeed = 0.0f;
         isInvincible = false;
 	}
 
-    public float GetMoveSpeed()
+    #region GET, SET
+
+    public float GetPlayerMoveSpeed()
     {
-        return moveSpeed;
+        return playerMoveSpeed;
     }
 
     public bool GetInvincible()
@@ -24,13 +26,15 @@ public class PlayerStatus : MonoBehaviour
         return isInvincible;
     }
 
-    public void SetMoveSpeed(float speed)
+    public void SetPlayerMoveSpeed(float speed)
     {
-        moveSpeed = speed;
+        playerMoveSpeed = speed;
     }
 
     public void SetInvincible(bool invincible)
     {
         isInvincible = invincible;
     }
+
+    #endregion
 }

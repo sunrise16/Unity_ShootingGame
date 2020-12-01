@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50012244863642444}
   - component: {fileID: 114148368333513494}
   m_Layer: 12
-  m_Name: PLAYERBULLET_1
+  m_Name: PlayerBullet_1
   m_TagString: BULLET_PLAYER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

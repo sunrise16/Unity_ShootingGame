@@ -11,6 +11,7 @@ TagManager:
   - EFFECT
   - BULLET_PLAYER
   - BULLET_ENEMY
+  - ITEM
   layers:
   - Default
   - TransparentFX

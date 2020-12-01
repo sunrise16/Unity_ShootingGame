@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114453984817892346}
   - component: {fileID: 114748641119001634}
   m_Layer: 0
-  m_Name: ENEMYBULLET_RECTANGLE
+  m_Name: EnemyBullet_Rectangle
   m_TagString: BULLET_ENEMY
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114261026094427328}
   - component: {fileID: 114868543682565508}
   m_Layer: 0
-  m_Name: ENEMYBULLET_CIRCLE
+  m_Name: EnemyBullet_Circle
   m_TagString: BULLET_ENEMY
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

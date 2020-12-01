@@ -7,10 +7,10 @@ public class EnemyStatus : MonoBehaviour
 {
     private EnemyType enemyType;
 
-    private int enemyPatternNumber;
-
     private float enemyCurrentHP;
     private float enemyMaxHP;
+
+    #region GET, SET
 
     public float GetEnemyCurrentHPRate()
     {
@@ -20,11 +20,6 @@ public class EnemyStatus : MonoBehaviour
     public EnemyType GetEnemyType()
     {
         return enemyType;
-    }
-
-    public int GetEnemyPatternNumber()
-    {
-        return enemyPatternNumber;
     }
 
     public float GetEnemyCurrentHP()
@@ -42,11 +37,6 @@ public class EnemyStatus : MonoBehaviour
         enemyType = type;
     }
 
-    public void SetEnemyPatternNumber(int number)
-    {
-        enemyPatternNumber = number;
-    }
-
     public void SetEnemyCurrentHP(float targetHP)
     {
         enemyCurrentHP = targetHP;
@@ -56,4 +46,6 @@ public class EnemyStatus : MonoBehaviour
     {
         enemyMaxHP = targetHP;
     }
+
+    #endregion
 }

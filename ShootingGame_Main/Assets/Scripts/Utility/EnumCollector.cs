@@ -56,6 +56,26 @@ public enum EnemyType
     ENEMYTYPE_BOSS,
 }
 
+public enum ItemSize
+{
+    ITEMSIZE_NONE,
+    ITEMSIZE_SMALL,
+    ITEMSIZE_MEDIUM,
+    ITEMSIZE_LARGE,
+}
+
+public enum ItemType
+{
+    ITEMTYPE_NONE,
+    ITEMTYPE_POWER,
+    ITEMTYPE_SCORE,
+    ITEMTYPE_LIFE,
+    ITEMTYPE_LIFEFRAGMENT,
+    ITEMTYPE_SPELL,
+    ITEMTYPE_SPELLFRAGMENT,
+    ITEMTYPE_FULLPOWER,
+}
+
 public enum BulletType
 {
     BULLETTYPE_NONE,

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4324955105830600}
   - component: {fileID: 212187301037960268}
   m_Layer: 0
-  m_Name: BULLETEFFECT
+  m_Name: BulletEffect
   m_TagString: EFFECT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

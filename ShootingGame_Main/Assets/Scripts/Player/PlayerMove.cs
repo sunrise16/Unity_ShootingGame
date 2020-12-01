@@ -28,34 +28,34 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            playerStatus.SetMoveSpeed(1.5f);
+            playerStatus.SetPlayerMoveSpeed(1.5f);
         }
         else
         {
-            playerStatus.SetMoveSpeed(4.0f);
+            playerStatus.SetPlayerMoveSpeed(4.0f);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            moveSpeedVector.x = -playerStatus.GetMoveSpeed();
+            moveSpeedVector.x = -playerStatus.GetPlayerMoveSpeed();
             animator.SetTrigger("isLeftMove");
             animator.ResetTrigger("isIdle");
             animator.ResetTrigger("isRightMove");
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            moveSpeedVector.x = playerStatus.GetMoveSpeed();
+            moveSpeedVector.x = playerStatus.GetPlayerMoveSpeed();
             animator.SetTrigger("isRightMove");
             animator.ResetTrigger("isIdle");
             animator.ResetTrigger("isLeftMove");
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            moveSpeedVector.y = playerStatus.GetMoveSpeed();
+            moveSpeedVector.y = playerStatus.GetPlayerMoveSpeed();
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            moveSpeedVector.y = -playerStatus.GetMoveSpeed();
+            moveSpeedVector.y = -playerStatus.GetPlayerMoveSpeed();
         }
         GetComponent<Rigidbody2D>().velocity = moveSpeedVector;
 
