@@ -15,15 +15,15 @@ public sealed class GameData : MonoBehaviour
     public static long currentScore = 0;                // 현재 게임 득점
 
     public static int currentPlayerLife = 0;            // 현재 플레이어 남은 목숨
-    public static int currentPlayerBomb = 0;            // 현재 플레이어 남은 스펠
+    public static int currentPlayerSpell = 0;           // 현재 플레이어 남은 스펠
     public static int currentPlayerLifeFragment = 0;    // 현재 플레이어 남은 목숨 조각
-    public static int currentPlayerBombFragment = 0;    // 현재 플레이어 남은 스펠 조각
+    public static int currentPlayerSpellFragment = 0;   // 현재 플레이어 남은 스펠 조각
     public static float currentPower = 0.0f;            // 현재 기체 파워
 
     public static int currentScoreItem = 0;             // 현재 점수 아이템 획득 수
     public static int currentGraze = 0;                 // 현재 플레이어 그레이즈 횟수
     public static int currentMissCount = 0;             // 현재 미스 횟수
-    public static int currentBombUseCount = 0;          // 현재 스펠 사용 횟수
+    public static int currentSpellUseCount = 0;         // 현재 스펠 사용 횟수
     public static int currentContinueCount = 0;         // 현재 컨티뉴 횟수
 
     public static long highScore_MainGameA = 0;         // 최고 득점 (메인 게임, 캐릭터 A)
@@ -73,13 +73,13 @@ public sealed class GameData : MonoBehaviour
         currentScore = 0;
         currentPlayerLife = 0;
         currentPlayerLifeFragment = 0;
-        currentPlayerBomb = 0;
-        currentPlayerBombFragment = 0;
+        currentPlayerSpell = 0;
+        currentPlayerSpellFragment = 0;
         currentPower = 0.0f;
         currentScoreItem = 0;
         currentGraze = 0;
         currentMissCount = 0;
-        currentBombUseCount = 0;
+        currentSpellUseCount = 0;
         currentContinueCount = 0;
     }
 }

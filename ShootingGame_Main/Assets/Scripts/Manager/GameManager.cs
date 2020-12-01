@@ -42,13 +42,13 @@ public class GameManager : MonoBehaviour
             }
             // 최초 잔기 수와 폭탄은 옵션에서 설정한 값으로 넣어야 함 (옵션 기능 추가 시 고쳐야 된다는 뜻)
             GameData.currentPlayerLife = 2;
-            GameData.currentPlayerBomb = 3;
+            GameData.currentPlayerSpell = 3;
         }
         else if (GameData.gameMode.Equals(GameMode.GAMEMODE_PRACTICE))
         {
             GameData.currentStage = (int)GameData.gamePracticeStage;
             GameData.currentPlayerLife = 8;
-            GameData.currentPlayerBomb = 8;
+            GameData.currentPlayerSpell = 8;
         }
         GameData.currentChapter = 1;
 
@@ -96,10 +96,11 @@ public class GameManager : MonoBehaviour
         #region Wave 1
 
         int wave1Count = 0;
+        int[] wave1Item = new int[11] { 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
         while (wave1Count < 8)
         {
             GameObject stage1_MinionSmall1 = CreateMinion(new Vector2(-1.75f + (0.5f * wave1Count), 5.0f), "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-            new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.125f, true, 8, 0.5f, true, 9.0f);
+            new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.125f, true, 8, 0.5f, wave1Item, true, 9.0f);
 
             Vector3[] paths = new Vector3[3];
             paths[0] = new Vector3(stage1_MinionSmall1.transform.position.x, stage1_MinionSmall1.transform.position.y, 0.0f);
@@ -251,7 +252,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject CreateMinion(Vector2 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
         int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, float enemyAttackWaitTime, float enemyAttackDelayTime,
-        bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime, bool isAutoDestroy = false, float waitTime = 0.0f)
+        bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime, int[] enemyItem, bool isAutoDestroy = false, float waitTime = 0.0f)
     {
         GameObject enemy = enemyPool.GetChild(0).gameObject;
         enemy.SetActive(true);
@@ -269,6 +270,7 @@ public class GameManager : MonoBehaviour
 
         EnemyStatus enemyStatus = enemy.GetComponent<EnemyStatus>();
         enemyStatus.SetEnemyType(enemyType);
+        enemyStatus.SetEnemyItem(enemyItem);
         enemyStatus.SetEnemyMaxHP(enemyHP);
         enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyMaxHP());
 

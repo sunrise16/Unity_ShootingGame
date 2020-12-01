@@ -28,10 +28,12 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            playerStatus.SetSlowMode(true);
             playerStatus.SetPlayerMoveSpeed(1.5f);
         }
         else
         {
+            playerStatus.SetSlowMode(false);
             playerStatus.SetPlayerMoveSpeed(4.0f);
         }
 

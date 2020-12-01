@@ -7,6 +7,8 @@ public class EnemyStatus : MonoBehaviour
 {
     private EnemyType enemyType;
 
+    private int[] enemyItem = new int[11];
+
     private float enemyCurrentHP;
     private float enemyMaxHP;
 
@@ -22,6 +24,11 @@ public class EnemyStatus : MonoBehaviour
         return enemyType;
     }
 
+    public int GetEnemyItem(int index)
+    {
+        return enemyItem[index];
+    }
+
     public float GetEnemyCurrentHP()
     {
         return enemyCurrentHP;
@@ -35,6 +42,14 @@ public class EnemyStatus : MonoBehaviour
     public void SetEnemyType(EnemyType type)
     {
         enemyType = type;
+    }
+
+    public void SetEnemyItem(int[] itemArray)
+    {
+        for (int i = 0; i < 11; i++)
+        {
+            enemyItem[i] = itemArray[i];
+        }
     }
 
     public void SetEnemyCurrentHP(float targetHP)
