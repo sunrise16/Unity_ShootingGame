@@ -114,7 +114,53 @@ public class EnemyFire : MonoBehaviour
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 5.0f, 5.0f);
+        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 3.0f, 3.0f);
+
+        yield return new WaitForSeconds(0.1f);
+
+        // 탄막 1 발사
+        GameObject bullet = bulletPool[0].GetChild(0).gameObject;
+        bulletEffectManager.CircleBulletFire
+            (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+            bulletParent[0], 0.04f, 1.0f, 20,
+            BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
+            0.1f, 7.0f,
+            0.0f, 0.0f, false, false,
+            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+            3, player.transform.position, 0.0f);
+    }
+
+    // 패턴 2
+    public IEnumerator Minion_Pattern2_Lunatic()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        GameObject effect = effectPool.GetChild(0).gameObject;
+        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 3.0f, 3.0f);
+
+        yield return new WaitForSeconds(0.1f);
+
+        // 탄막 1 발사
+        GameObject bullet = bulletPool[0].GetChild(0).gameObject;
+        bulletEffectManager.CircleBulletFire
+            (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+            bulletParent[0], 0.04f, 1.0f, 20,
+            BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
+            0.1f, 7.0f,
+            0.0f, 0.0f, false, false,
+            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+            3, player.transform.position, 0.0f);
+    }
+
+    // 패턴 3
+    public IEnumerator Minion_Pattern3_Lunatic()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 탄막 1 이펙트
+        GameObject effect = effectPool.GetChild(0).gameObject;
+        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 3.0f, 3.0f);
 
         yield return new WaitForSeconds(0.1f);
 

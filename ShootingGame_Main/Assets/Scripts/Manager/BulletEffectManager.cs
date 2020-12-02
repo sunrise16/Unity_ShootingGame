@@ -242,7 +242,7 @@ public class BulletEffectManager : MonoBehaviour
     #region 이펙트 관련
 
     public void CreateBulletFireEffect(GameObject obj, int spriteNumber, float scaleDownSpeed, float scaleDownTime, float alphaUpSpeed,
-        Vector2 effectPosition, float scaleX = 10.0f, float scaleY = 10.0f)
+        Vector2 effectPosition, float scaleX = 5.0f, float scaleY = 5.0f)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
         EffectAlpha effectAlpha = obj.GetComponent<EffectAlpha>();
@@ -258,7 +258,7 @@ public class BulletEffectManager : MonoBehaviour
     }
 
     public void CreateBulletFireEffect(GameObject obj, int spriteNumber, float scaleUpSpeed, float scaleLimit, float alphaUpSpeed, float alphaDownSpeed,
-        float alphaRemainTime, Vector2 effectPosition, float scaleX = 10.0f, float scaleY = 10.0f)
+        float alphaRemainTime, Vector2 effectPosition, float scaleX = 5.0f, float scaleY = 5.0f)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
         EffectAlpha effectAlpha = obj.GetComponent<EffectAlpha>();
