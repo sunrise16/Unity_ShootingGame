@@ -105,21 +105,22 @@ public class GameManager : MonoBehaviour
             Vector3[] paths1 = new Vector3[3];
             Vector3[] paths2 = new Vector3[3];
 
-            GameObject stage1MinionSmall1 = CreateMinion(wave1SpawnPosition1, "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-            new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 0, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.125f, true, 8, 0.5f, wave1Item, true, 9.0f);
-
-            GameObject stage1MinionSmall2 = CreateMinion(wave1SpawnPosition2, "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-            new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 0, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.0f, 0.125f, true, 8, 0.5f, wave1Item, true, 9.0f);
+            GameObject stage1MinionSmall1 = CreateMinion(wave1SpawnPosition1, "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
+                0.2f, 0, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.5f, 0.125f, false, true, 8, 0.5f, wave1Item, true, 9.0f);
+            GameObject stage1MinionSmall2 = CreateMinion(wave1SpawnPosition2, "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
+                0.2f, 0, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 1.5f, 0.125f, false, true, 8, 0.5f, wave1Item, true, 9.0f);
+            EnemyMove enemyMove1 = stage1MinionSmall1.GetComponent<EnemyMove>();
+            EnemyMove enemyMove2 = stage1MinionSmall2.GetComponent<EnemyMove>();
 
             paths1[0] = new Vector3(stage1MinionSmall1.transform.position.x, stage1MinionSmall1.transform.position.y, 0.0f);
             paths1[1] = new Vector3(stage1MinionSmall1.transform.position.x - 1.0f, stage1MinionSmall1.transform.position.y - 2.0f, 0.0f);
             paths1[2] = new Vector3(stage1MinionSmall1.transform.position.x - 5.0f, stage1MinionSmall1.transform.position.y - 3.0f, 0.0f);
-            StartCoroutine(EnemyMovePathOnce(stage1MinionSmall1, paths1, iTween.EaseType.easeInOutQuad, 9.0f));
+            StartCoroutine(enemyMove1.EnemyMovePathOnce(paths1, iTween.EaseType.easeInOutQuad, 9.0f));
 
             paths2[0] = new Vector3(stage1MinionSmall2.transform.position.x, stage1MinionSmall2.transform.position.y, 0.0f);
             paths2[1] = new Vector3(stage1MinionSmall2.transform.position.x + 1.0f, stage1MinionSmall2.transform.position.y - 2.0f, 0.0f);
             paths2[2] = new Vector3(stage1MinionSmall2.transform.position.x + 5.0f, stage1MinionSmall2.transform.position.y - 3.0f, 0.0f);
-            StartCoroutine(EnemyMovePathOnce(stage1MinionSmall2, paths2, iTween.EaseType.easeInOutQuad, 9.0f));
+            StartCoroutine(enemyMove2.EnemyMovePathOnce(paths2, iTween.EaseType.easeInOutQuad, 9.0f));
 
             yield return new WaitForSeconds(0.25f);
         }
@@ -130,7 +131,7 @@ public class GameManager : MonoBehaviour
         // 스테이지 타이틀
         StageTitleOutput(1);
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(5.0f);
         GameData.currentChapter++;
 
         #region Wave 2
@@ -139,33 +140,44 @@ public class GameManager : MonoBehaviour
         int[] wave2Item2 = new int[11] { 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
         int[] wave2Item3 = new int[11] { 4, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0 };
         Vector3[] wave2SpawnPosition = new Vector3[12]
-            { new Vector3(1.5f, 5.0f), new Vector3(-0.5f, 5.0f), new Vector3(2.5f, 5.0f), new Vector3(0.0f, 5.0f), new Vector3(-1.5f, 5.0f),
-            new Vector3(1.0f, 5.0f), new Vector3(-2.5f, 5.0f), new Vector3(2.0f, 5.0f), new Vector3(-2.0f, 5.0f), new Vector3(0.5f, 5.0f),
-            new Vector3(-1.0f, 5.0f), new Vector3(0.0f, 5.0f) };
+            { new Vector3(0.0f, 5.0f), new Vector3(1.5f, 5.0f), new Vector3(-0.5f, 5.0f), new Vector3(2.5f, 5.0f), new Vector3(0.0f, 5.0f),
+                new Vector3(-1.5f, 5.0f), new Vector3(1.0f, 5.0f), new Vector3(-2.5f, 5.0f), new Vector3(2.0f, 5.0f), new Vector3(-2.0f, 5.0f),
+                new Vector3(0.5f, 5.0f), new Vector3(-1.0f, 5.0f) };
         Vector3 wave2TargetPosition;
         for (int i = 0; i < 12; i++)
         {
-            if (i < 11)
+            if (i.Equals(0))
             {
-                wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 4.0f, 0.0f);
+                wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 2.0f, 0.0f);
 
-                GameObject stage1MinionSmall3 = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-                new Vector3(1.5f, 1.5f, 1.0f), 0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 2, 1.5f, 0.25f, false, 0, 0.0f, (i % 4 == 0) ? wave2Item2 : wave2Item1, true, 11.0f);
+                GameObject stage1MinionLarge = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
+                    0.5f, 3, EnemyType.ENEMYTYPE_LMINION, 80.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, wave2Item3, true, 16.0f);
+                EnemyMove enemyMove = stage1MinionLarge.GetComponent<EnemyMove>();
 
-                StartCoroutine(EnemyMoveTwice(stage1MinionSmall3, wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 1.5f, 4.0f, 6.0f));
+                StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 10.0f));
             }
             else
             {
-                wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 2.5f, 0.0f);
+                wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 3.0f, 0.0f);
 
-                GameObject stage1MinionLarge1 = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"),
-                new Vector3(1.5f, 1.5f, 1.0f), 0.5f, 2, EnemyType.ENEMYTYPE_LMINION, 80.0f, 3, 2.0f, 0.125f, true, 8, 0.5f, wave2Item3, true, 14.0f);
+                GameObject stage1MinionSmall = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
+                    0.2f, 1, EnemyType.ENEMYTYPE_SMINION, 15.0f, 2, 1.5f, 1.3f, true, true, 5, 0.0f, (i % 4 == 0) ? wave2Item2 : wave2Item1, true, 11.0f);
+                EnemyMove enemyMove = stage1MinionSmall.GetComponent<EnemyMove>();
 
-                StartCoroutine(EnemyMoveTwice(stage1MinionLarge1, wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 8.0f));
+                StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 1.5f, 4.0f, 6.0f));
             }
 
             yield return new WaitForSeconds(1.0f);
         }
+
+        #endregion
+
+        yield return new WaitForSeconds(3.5f);
+        GameData.currentChapter++;
+
+        #region Wave 3
+
+        
 
         #endregion
 
@@ -266,7 +278,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject CreateMinion(Vector3 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
         int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, float enemyAttackWaitTime, float enemyAttackDelayTime,
-        bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime, int[] enemyItem, bool isAutoDestroy = false, float waitTime = 0.0f)
+        bool isPatternOnce, bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime, int[] enemyItem, bool isAutoDestroy = false, float waitTime = 0.0f)
     {
         GameObject enemy = enemyPool.GetChild(0).gameObject;
         enemy.SetActive(true);
@@ -292,6 +304,7 @@ public class GameManager : MonoBehaviour
         enemyFire.SetEnemyPatternNumber(enemyPatternNumber);
         enemyFire.SetEnemyAttackWaitTime(enemyAttackWaitTime);
         enemyFire.SetEnemyAttackDelayTime(enemyAttackDelayTime);
+        enemyFire.SetEnemyPatternOnce(isPatternOnce);
         enemyFire.SetEnemyPatternRepeat(isPatternRepeat);
         enemyFire.SetEnemyFireCount(enemyFireCount);
         enemyFire.SetEnemyAttackRepeatTime(enemyAttackRepeatTime);
@@ -303,77 +316,6 @@ public class GameManager : MonoBehaviour
         }
 
         return enemy;
-    }
-
-    #endregion
-
-    #region 적 이동
-
-    // 지정 장소로 1회 이동
-    private IEnumerator EnemyMoveOnce(GameObject gameObject, Vector3 targetPosition, iTween.EaseType easeType, float moveTime)
-    {
-        yield return null;
-
-        // 스프라이트 조절
-        SetAnimatorTrigger(gameObject, targetPosition);
-
-        // 이동 처리
-        iTween.MoveTo(gameObject, iTween.Hash("position", targetPosition, "easetype", easeType, "time", moveTime));
-    }
-
-    // 지정 장소로 곡선을 그리며 1회 이동
-    private IEnumerator EnemyMovePathOnce(GameObject gameObject, Vector3[] paths, iTween.EaseType easeType, float moveTime)
-    {
-        yield return null;
-        
-        // 스프라이트 조절
-        SetAnimatorTrigger(gameObject, paths[paths.Length - 1]);
-
-        // 이동 처리
-        iTween.MoveTo(gameObject, iTween.Hash("path", paths, "easetype", easeType, "time", moveTime));
-    }
-
-    // 지정 장소 이동 후 일정 시간 지난 뒤 다시 이동 (총 2회)
-    private IEnumerator EnemyMoveTwice(GameObject gameObject, Vector3 targetPositionFirst, Vector3 targetPositionSecond, iTween.EaseType easeType1, iTween.EaseType easeType2, float moveTime1, float moveTime2, float waitTime)
-    {
-        yield return null;
-
-        // 스프라이트 조절
-        SetAnimatorTrigger(gameObject, targetPositionFirst);
-
-        // 이동 1 처리
-        iTween.MoveTo(gameObject, iTween.Hash("position", targetPositionFirst, "easetype", easeType1, "time", moveTime1));
-
-        yield return new WaitForSeconds(waitTime);
-
-        // 스프라이트 조절
-        SetAnimatorTrigger(gameObject, targetPositionSecond);
-
-        // 이동 2 처리
-        iTween.MoveTo(gameObject, iTween.Hash("position", targetPositionSecond, "easetype", easeType2, "time", moveTime2));
-    }
-
-    #endregion
-
-    #region 애니메이터 트리거 설정
-
-    private void SetAnimatorTrigger(GameObject gameObject, Vector3 targetPosition)
-    {
-        Animator animator = gameObject.GetComponent<Animator>();
-
-        // 스프라이트 조절
-        if (gameObject.transform.position.x > targetPosition.x)
-        {
-            animator.SetTrigger("isLeftMove");
-        }
-        else if (gameObject.transform.position.x < targetPosition.x)
-        {
-            animator.SetTrigger("isRightMove");
-        }
-        else
-        {
-            animator.SetTrigger("isIdle");
-        }
     }
 
     #endregion

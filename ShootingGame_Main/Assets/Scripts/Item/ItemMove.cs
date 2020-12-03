@@ -21,16 +21,16 @@ public class ItemMove : MonoBehaviour
 
         itemSpeed = 2.0f;
 
-        rigidbody2D.AddForce(Vector2.up * 60.0f);
+        rigidbody2D.AddForce(Vector2.up * 100.0f);
 	}
 	
     private void Update()
     {
-        if (itemStatus.GetPlayerFind().Equals(true) || playerStatus.GetAutoCollect().Equals(true))
+        if (itemStatus.GetPlayerFind().Equals(true))
         {
-            if (itemSpeed < 15.0f)
+            if (itemSpeed < 25.0f)
             {
-                itemSpeed += 0.25f;
+                itemSpeed += 0.75f;
             }
             rigidbody2D.gravityScale = 0.0f;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, itemSpeed * Time.deltaTime);

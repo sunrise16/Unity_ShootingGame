@@ -3,6 +3,47 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+#region 탄막 콜리더 설정
+
+//  * (Index 0) 빈 탄막
+//  * (Index 1 ~ 16)    콩알탄                : Circle Collider 2D, Radius 0.02
+//  * (Index 17 ~ 32)   기본 원탄             : Circle Collider 2D, Radius 0.04
+//  * (Index 33 ~ 48)   테두리 원탄           : Circle Collider 2D, Radius 0.03
+//  * (Index 49 ~ 64)   쌀탄                  : Capsule Collider 2D, Size X 0.025, Y 0.05, Direction Vertical
+//  * (Index 65 ~ 80)   보석탄                : Capsule Collider 2D, Size X 0.02, Y 0.05, Direction Vertical
+//  * (Index 81 ~ 96)   쿠나이탄              : Capsule Collider 2D, Size X 0.02, Y 0.055, Direction Vertical
+//  * (Index 97 ~ 112)  쐐기탄                : Capsule Collider 2D, Size X 0.04, Y 0.06, Direction Vertical
+//  * (Index 113 ~ 128) 부적탄                : Box Collider 2D, Size X 0.025, Y 0.05
+//  * (Index 129 ~ 144) 총알탄                : Box Collider 2D, Size X 0.02, Y 0.06
+//  * (Index 145 ~ 160) 감주탄                : Capsule Collider 2D, Size X 0.02, Y 0.07, Direction Vertical
+//  * (Index 161 ~ 176) 소형 별탄             : Circle Collider 2D, Radius 0.015, Offset X 0, Y -0.005
+//  * (Index 177 ~ 192) 옥구슬탄              : Circle Collider 2D, Radius 0.04
+//  * (Index 193 ~ 208) 소형 테두리 원탄       : Circle Collider 2D, Radius 0.015
+//  * (Index 209 ~ 224) 소형 쌀탄             : Circle Collider 2D, Radius 0.015
+//  * (Index 225 ~ 240) 소형 촉탄             : Circle Collider 2D, Radius 0.02, Offset X 0, Y 0.01
+//  * (Index 241 ~ 244) 대옥탄                : Circle Collider 2D, Radius 0.135
+//  * (Index 245 ~ 247) 엽전탄                : Circle Collider 2D, Radius 0.04
+//  * (Index 258 ~ 265) 대형 환탄             : Circle Collider 2D, Radius 0.08
+//  * (Index 266 ~ 273) 나비탄                : Circle Collider 2D, Radius 0.02
+//  * (Index 274 ~ 281) 나이프탄              : Capsule Collider 2D, Size X 0.035, Y 0.2, Direction Vertical
+//  * (Index 282 ~ 289) 알약탄                : Capsule Collider 2D, Size X 0.06, Y 0.18, Direction Vertical
+//  * (Index 290 ~ 297) 대형 별탄             : Circle Collider 2D, Radius 0.045, Offset X 0, Y -0.01
+//  * (Index 298 ~ 305) 대형 발광탄           : Circle Collider 2D, Radius 0.1
+//  * (Index 306 ~ 313) 하트탄                : Circle Collider 2D, Radius 0.065, Offset X 0, Y -0.01
+//  * (Index 314 ~ 321) 탄막 발사 이펙트 (임시)
+//  * (Index 322 ~ 329) 화살탄                : Capsule Collider 2D, Size X 0.01, Y 0.2, Direction Vertical
+//  * (Index 330 ~ 341) 음표탄                : Circle Collider 2D, Radius 0.02, Offset X -0.01, Y -0.09, Sprite Animation 적용
+//  * (Index 342 ~ 349) 쉼표탄                : Capsule Collider 2D, Size X 0.02, Y 0.18
+//  * (Index 350 ~ 365) 고정 레이저탄          : Box Collider 2D, Size X 0.09, Y 0.13
+//  * (Index 366 ~ 381) 무빙 레이저탄 (머리 1) : Box Collider 2D, Size X 0.52, Y 0.04, Offset X 0.02, Y 0
+//  * (Index 382 ~ 397) 무빙 레이저탄 (머리 2) : Box Collider 2D, Size X 0.56, Y 0.04
+//  * (Index 398 ~ 413) 무빙 레이저탄 (몸통)   : Box Collider 2D, Size X 0.24, Y 0.04
+//  * (Index 414 ~ 429) 무빙 레이저탄 (꼬리 1) : Box Collider 2D, Size X 0.56, Y 0.04
+//  * (Index 430 ~ 445) 무빙 레이저탄 (꼬리 2) : Box Collider 2D, Size X 0.52, Y 0.04, Offset X -0.02, Y 0
+//  * (Index 446 ~ 461) 무빙 레이저탄 (전체)   : Box Collider 2D, Size X 2.3, Y 0.04
+
+#endregion
+
 public class BulletEffectManager : MonoBehaviour
 {
     private GameManager gameManager;
@@ -21,8 +62,7 @@ public class BulletEffectManager : MonoBehaviour
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float circleColliderRadius, float spriteAlpha, int spriteNumber,
         BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
-        float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax,
-        float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
+        float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f,
         bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
@@ -94,8 +134,7 @@ public class BulletEffectManager : MonoBehaviour
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float capsuleColliderSizeX, float capsuleColliderSizeY, float capsuleColliderOffsetX, float capsuleColliderOffsetY,
         float spriteAlpha, int spriteNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
-        float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax,
-        float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
+        float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f,
         bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
@@ -168,8 +207,7 @@ public class BulletEffectManager : MonoBehaviour
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float boxColliderSizeX, float boxColliderSizeY, float boxColliderOffsetX, float boxColliderOffsetY,
         float spriteAlpha, int spriteNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
-        float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax,
-        float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
+        float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f,
         bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)

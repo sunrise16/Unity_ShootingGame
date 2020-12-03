@@ -6,12 +6,16 @@ using UnityEngine;
 public class ItemGet : MonoBehaviour
 {
     private GameObject player;
+    private ItemStatus itemStatus;
     private PlayerStatus playerStatus;
     private Transform itemParent;
+
+    private float scoreRatio;
     
     private void Start()
     {
         player = GameObject.Find("CHARACTER").transform.Find("Player").gameObject;
+        itemStatus = GetComponent<ItemStatus>();
         playerStatus = player.GetComponent<PlayerStatus>();
         itemParent = GameObject.Find("ITEM").transform.Find("Item");
     }
@@ -29,17 +33,42 @@ public class ItemGet : MonoBehaviour
                     switch (itemStatus.GetItemType())
                     {
                         case ItemType.ITEMTYPE_POWER:
-                            if (GameData.currentPower >= 4.0f)
-                            {
-                                GameData.currentScore += 10;
-                            }
-                            else
+                            GameData.currentScore += 10;
+                            if (GameData.currentPower < 4.0f)
                             {
                                 GameData.currentPower += 0.01f;
                             }
                             break;
                         case ItemType.ITEMTYPE_SCORE:
-                            GameData.currentScore += (10 * GameData.currentScoreItem);
+                            if (itemStatus.GetPlayerFind().Equals(true))
+                            {
+                                scoreRatio = 1.0f;
+                            }
+                            else
+                            {
+                                scoreRatio = (player.transform.position.y + 4.334f) / 8.668f;
+                            }
+                            switch (GameData.gameDifficulty)
+                            {
+                                case GameDifficulty.DIFFICULTY_EASY:
+                                    GameData.currentScore += (int)Mathf.Round((5000 + (int)Mathf.Round(5000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_NORMAL:
+                                    GameData.currentScore += (int)Mathf.Round((10000 + (int)Mathf.Round(10000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_HARD:
+                                    GameData.currentScore += (int)Mathf.Round((15000 + (int)Mathf.Round(15000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_LUNATIC:
+                                    GameData.currentScore += (int)Mathf.Round((20000 + (int)Mathf.Round(20000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_EXTRA:
+                                    GameData.currentScore += (int)Mathf.Round((30000 + (int)Mathf.Round(30000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            GameData.currentScoreItem++;
                             break;
                         default:
                             break;
@@ -50,11 +79,8 @@ public class ItemGet : MonoBehaviour
                     switch (itemStatus.GetItemType())
                     {
                         case ItemType.ITEMTYPE_POWER:
-                            if (GameData.currentPower >= 4.0f)
-                            {
-                                GameData.currentScore += 50;
-                            }
-                            else
+                            GameData.currentScore += 50;
+                            if (GameData.currentPower < 4.0f)
                             {
                                 GameData.currentPower += 0.05f;
                                 if (GameData.currentPower >= 4.0f)
@@ -64,14 +90,43 @@ public class ItemGet : MonoBehaviour
                             }
                             break;
                         case ItemType.ITEMTYPE_SCORE:
-                            GameData.currentScore += (50 * GameData.currentScoreItem);
+                            if (itemStatus.GetPlayerFind().Equals(true))
+                            {
+                                scoreRatio = 1.0f;
+                            }
+                            else
+                            {
+                                scoreRatio = (player.transform.position.y + 4.334f) / 8.668f;
+                            }
+                            switch (GameData.gameDifficulty)
+                            {
+                                case GameDifficulty.DIFFICULTY_EASY:
+                                    GameData.currentScore += (int)Mathf.Round((25000 + (int)Mathf.Round(25000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_NORMAL:
+                                    GameData.currentScore += (int)Mathf.Round((50000 + (int)Mathf.Round(50000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_HARD:
+                                    GameData.currentScore += (int)Mathf.Round((75000 + (int)Mathf.Round(75000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_LUNATIC:
+                                    GameData.currentScore += (int)Mathf.Round((100000 + (int)Mathf.Round(100000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                case GameDifficulty.DIFFICULTY_EXTRA:
+                                    GameData.currentScore += (int)Mathf.Round((150000 + (int)Mathf.Round(150000 * scoreRatio)) * 0.1f) * 10;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            GameData.currentScoreItem += 5;
                             break;
                         case ItemType.ITEMTYPE_FULLPOWER:
+                            GameData.currentScore += 10000;
                             if (GameData.currentPower < 4.0f)
                             {
+                                GameData.currentPower = 4.0f;
                                 // 풀 파워 메세지
                             }
-                            GameData.currentPower = 4.0f;
                             break;
                         default:
                             break;
@@ -82,11 +137,8 @@ public class ItemGet : MonoBehaviour
                     switch (itemStatus.GetItemType())
                     {
                         case ItemType.ITEMTYPE_POWER:
-                            if (GameData.currentPower >= 4.0f)
-                            {
-                                GameData.currentScore += 150;
-                            }
-                            else
+                            GameData.currentScore += 150;
+                            if (GameData.currentPower < 4.0f)
                             {
                                 GameData.currentPower += 0.15f;
                                 if (GameData.currentPower >= 4.0f)
@@ -122,11 +174,12 @@ public class ItemGet : MonoBehaviour
                             }
                             break;
                         case ItemType.ITEMTYPE_FULLPOWER:
+                            GameData.currentScore += 100000;
                             if (GameData.currentPower < 4.0f)
                             {
+                                GameData.currentPower = 4.0f;
                                 // 풀 파워 메세지
                             }
-                            GameData.currentPower = 4.0f;
                             break;
                         default:
                             break;

@@ -17,6 +17,7 @@ public class EnemyFire : MonoBehaviour
     private int enemyPatternNumber;
     private float enemyAttackWaitTime;
     private float enemyAttackDelayTime;
+    private bool isPatternOnce;
     private bool isPatternRepeat;
     private int enemyFireCount;
     private float enemyAttackRepeatTime;
@@ -99,6 +100,12 @@ public class EnemyFire : MonoBehaviour
                 if (count >= fireCount)
                 {
                     count = 0;
+
+                    if (isPatternOnce.Equals(true))
+                    {
+                        break;
+                    }
+
                     yield return new WaitForSeconds(repeatTime);
                 }
             }
@@ -114,7 +121,7 @@ public class EnemyFire : MonoBehaviour
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 3.0f, 3.0f);
+        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 4.0f, 4.0f);
 
         yield return new WaitForSeconds(0.1f);
 
@@ -124,8 +131,7 @@ public class EnemyFire : MonoBehaviour
             (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
             bulletParent[0], 0.04f, 1.0f, 20,
             BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
-            0.1f, 7.0f,
-            0.0f, 0.0f, false, false,
+            0.1f, 7.0f, 0.0f, 0.0f, false, false,
             BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
             3, player.transform.position, 0.0f);
     }
@@ -137,20 +143,22 @@ public class EnemyFire : MonoBehaviour
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 3.0f, 3.0f);
+        bulletEffectManager.CreateBulletFireEffect(effect, 1, 0.5f, 0.15f, 0.5f, bulletFirePosition, 4.0f, 4.0f);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
 
         // 탄막 1 발사
-        GameObject bullet = bulletPool[0].GetChild(0).gameObject;
-        bulletEffectManager.CircleBulletFire
-            (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-            bulletParent[0], 0.04f, 1.0f, 20,
-            BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
-            0.1f, 7.0f,
-            0.0f, 0.0f, false, false,
-            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-            3, player.transform.position, 0.0f);
+        for (int i = 0; i < 9; i++)
+        {
+            GameObject bullet = bulletPool[0].GetChild(i).gameObject;
+            bulletEffectManager.CircleBulletFire
+                (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+                bulletParent[0], 0.03f, 1.0f, 35,
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 12.0f,
+                0.0f, 0.0f, 1.0f, 3.0f, false, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                3, player.transform.position, (6.0f * i) - 24.0f);
+        }
     }
 
     // 패턴 3
@@ -160,20 +168,22 @@ public class EnemyFire : MonoBehaviour
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 3.0f, 3.0f);
+        bulletEffectManager.CreateBulletFireEffect(effect, 6, 0.5f, 0.18f, 0.5f, bulletFirePosition);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         // 탄막 1 발사
-        GameObject bullet = bulletPool[0].GetChild(0).gameObject;
-        bulletEffectManager.CircleBulletFire
-            (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-            bulletParent[0], 0.04f, 1.0f, 20,
-            BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
-            0.1f, 7.0f,
-            0.0f, 0.0f, false, false,
-            BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-            3, player.transform.position, 0.0f);
+        for (int i = 0; i < 36; i++)
+        {
+            GameObject bullet = bulletPool[1].GetChild(i).gameObject;
+            bulletEffectManager.CapsuleBulletFire
+                (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+                bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110,
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) : 4.0f + (1.0f * (i % 3)),
+                0.0f, 0.0f, 0.0f, 0.0f, false, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                3, player.transform.position, 10.0f * i);
+        }
     }
 
     #endregion
@@ -209,6 +219,11 @@ public class EnemyFire : MonoBehaviour
         return enemyAttackDelayTime;
     }
 
+    public bool GetEnemyPatternOnce()
+    {
+        return isPatternOnce;
+    }
+
     public bool GetEnemyPatternRepeat()
     {
         return isPatternRepeat;
@@ -237,6 +252,11 @@ public class EnemyFire : MonoBehaviour
     public void SetEnemyAttackDelayTime(float time)
     {
         enemyAttackDelayTime = time;
+    }
+
+    public void SetEnemyPatternOnce(bool once)
+    {
+        isPatternOnce = once;
     }
 
     public void SetEnemyPatternRepeat(bool repeat)
