@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
                 wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 2.0f, 0.0f);
 
                 GameObject stage1MinionLarge = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                    0.5f, 3, EnemyType.ENEMYTYPE_LMINION, 80.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, wave2Item3, true, 16.0f);
+                    0.5f, 22, EnemyType.ENEMYTYPE_LMINION, 80.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, wave2Item3, true, 16.0f);
                 EnemyMove enemyMove = stage1MinionLarge.GetComponent<EnemyMove>();
 
                 StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 10.0f));
