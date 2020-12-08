@@ -31,14 +31,16 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("ENEMY_BODY")) || collision.gameObject.CompareTag("DESTROYZONE"))
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("ENEMY_BODY")))
         {
-            if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("ENEMY_BODY")))
-            {
-                collision.gameObject.GetComponent<EnemyStatus>().SetEnemyCurrentHP
-                    (collision.gameObject.GetComponent<EnemyStatus>().GetEnemyCurrentHP() -
-                    (1.0f + GameData.currentPower) * (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1.0f : 0.5f));
-            }
+            EnemyStatus enemyStatus = collision.gameObject.GetComponent<EnemyStatus>();
+            collision.gameObject.GetComponent<EnemyStatus>().SetEnemyCurrentHP
+                (collision.gameObject.GetComponent<EnemyStatus>().GetEnemyCurrentHP() -
+                (1.0f + GameData.currentPower) * (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1.0f : 0.5f));
+            ClearPlayerBullet(gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1 : 2);
+        }
+        else if (collision.gameObject.name.Equals("PLAYERBULLETDESTROYZONE"))
+        {
             ClearPlayerBullet(gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1 : 2);
         }
     }

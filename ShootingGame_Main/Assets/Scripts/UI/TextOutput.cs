@@ -44,20 +44,21 @@ public class TextOutput : MonoBehaviour
                 text.text = GameData.currentScore.ToString();
                 break;
             case "CurrentLife":
-                text.text = GameData.currentPlayerLife.ToString();
-                break;
-            case "CurrentLifeFragment":
-                text.text = GameData.currentPlayerLifeFragment.ToString();
+                text.text = string.Format("{0} ({1} / 8)", GameData.currentPlayerLife, GameData.currentPlayerLifeFragment);
                 break;
             case "CurrentSpell":
-                text.text = GameData.currentPlayerSpell.ToString();
-                break;
-            case "CurrentSpellFragment":
-                text.text = GameData.currentPlayerSpellFragment.ToString();
+                text.text = string.Format("{0} ({1} / 8)", GameData.currentPlayerSpell, GameData.currentPlayerSpellFragment);
                 break;
             case "CurrentPower":
-                power = Mathf.Round(GameData.currentPower * 100) * 0.01f;
-                text.text = power.ToString();
+                if (GameData.currentPower.Equals(0.0f) || GameData.currentPower.Equals(1.0f) || GameData.currentPower.Equals(2.0f) ||
+                    GameData.currentPower.Equals(3.0f) || GameData.currentPower.Equals(4.0f))
+                {
+                    text.text = string.Format("{0}.00 / 4.00", Mathf.Round(GameData.currentPower * 100) * 0.01f);
+                }
+                else
+                {
+                    text.text = string.Format("{0} / 4.00", Mathf.Round(GameData.currentPower * 100) * 0.01f);
+                }
                 break;
             case "CurrentScoreItem":
                 text.text = GameData.currentScoreItem.ToString();

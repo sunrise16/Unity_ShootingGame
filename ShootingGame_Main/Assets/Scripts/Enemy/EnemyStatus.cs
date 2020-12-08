@@ -11,7 +11,7 @@ public class EnemyStatus : MonoBehaviour
 
     private float enemyCurrentHP;
     private float enemyMaxHP;
-
+    
     #region GET, SET
 
     public float GetEnemyCurrentHPRate()

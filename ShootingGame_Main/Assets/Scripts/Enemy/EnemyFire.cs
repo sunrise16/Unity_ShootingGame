@@ -173,13 +173,14 @@ public class EnemyFire : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         // 탄막 1 발사
-        for (int i = 0; i < 36; i++)
+        for (int i = 0; i < 108; i++)
         {
             GameObject bullet = bulletPool[1].GetChild(i).gameObject;
             bulletEffectManager.CapsuleBulletFire
                 (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
                 bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110,
-                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) : 4.0f + (1.0f * (i % 3)),
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL,
+                (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))) : 4.0f + (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))),
                 0.0f, 0.0f, 0.0f, 0.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
                 3, player.transform.position, 10.0f * i);

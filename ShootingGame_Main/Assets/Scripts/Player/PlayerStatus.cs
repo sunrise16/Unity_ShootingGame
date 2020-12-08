@@ -8,7 +8,6 @@ public class PlayerStatus : MonoBehaviour
     private float playerMoveSpeed;
 
     private bool isSlowMode;
-    private bool isAutoCollect;
     private bool isInvincible;
 
     private void Start()
@@ -16,7 +15,6 @@ public class PlayerStatus : MonoBehaviour
         playerMoveSpeed = 0.0f;
 
         isSlowMode = false;
-        isAutoCollect = false;
         isInvincible = false;
 	}
 
@@ -32,11 +30,6 @@ public class PlayerStatus : MonoBehaviour
         return isSlowMode;
     }
 
-    public bool GetAutoCollect()
-    {
-        return isAutoCollect;
-    }
-
     public bool GetInvincible()
     {
         return isInvincible;
@@ -50,11 +43,6 @@ public class PlayerStatus : MonoBehaviour
     public void SetSlowMode(bool slowMode)
     {
         isSlowMode = slowMode;
-    }
-
-    public void SetAutoCollect(bool autoCollect)
-    {
-        isAutoCollect = autoCollect;
     }
 
     public void SetInvincible(bool invincible)

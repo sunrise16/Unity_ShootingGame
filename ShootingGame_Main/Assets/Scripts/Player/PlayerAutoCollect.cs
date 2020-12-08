@@ -12,7 +12,6 @@ public class PlayerAutoCollect : MonoBehaviour
 
 	private void Start()
     {
-        playerStatus = GetComponent<PlayerStatus>();
         itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
 	}
 
@@ -34,7 +33,13 @@ public class PlayerAutoCollect : MonoBehaviour
     {
         if (collision.name.Equals("AUTOCOLLECTZONE"))
         {
-            playerStatus.SetAutoCollect(true);
+            itemCount = itemParent.childCount;
+            for (int i = 0; i < itemCount; i++)
+            {
+                GameObject item = itemParent.GetChild(i).gameObject;
+                ItemStatus itemStatus = item.GetComponent<ItemStatus>();
+                itemStatus.SetPlayerFind(true);
+            }
         }
     }
 
@@ -42,8 +47,6 @@ public class PlayerAutoCollect : MonoBehaviour
     {
         if (collision.name.Equals("AUTOCOLLECTZONE"))
         {
-            playerStatus.SetAutoCollect(false);
-
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
             {
