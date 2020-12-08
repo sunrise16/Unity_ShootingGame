@@ -79,7 +79,7 @@ public class EnemyDestroy : MonoBehaviour
 
         for (int i = 0; i < itemCount; i++)
         {
-            spawnPosition = new Vector2(transform.position.x + Random.Range(-1.0f, 1.0f), transform.position.y + Random.Range(-1.0f, 1.0f));
+            spawnPosition = new Vector2(transform.position.x + Random.Range(-0.4f, 0.4f), transform.position.y + Random.Range(-0.6f, 0.6f));
             item = itemPool.GetChild(0).gameObject;
             item.SetActive(true);
             item.transform.position = spawnPosition;
