@@ -5,76 +5,103 @@ using UnityEngine;
 
 public class PlayerDie : MonoBehaviour
 {
-    public GameObject dieEffect;
+    private GameManager gameManager;
+    private Transform player;
+    private SpriteRenderer playerBodySprite;
+    private SpriteRenderer playerHitPointSprite;
+    private PlayerStatus playerStatus;
+    private Transform itemPool;
+    private Transform itemParent;
 
-    public bool isInvincible;
+    private int itemCount;
 
     private void Start()
     {
-        isInvincible = false;
+        gameManager = GameObject.Find("MANAGER").transform.Find("GameManager").GetComponent<GameManager>();
+        player = GameObject.Find("CHARACTER").transform.Find("Player");
+        playerBodySprite = GetComponent<SpriteRenderer>();
+        playerHitPointSprite = player.transform.Find("HitPoint").GetComponent<SpriteRenderer>();
+        playerStatus = player.GetComponent<PlayerStatus>();
+        itemPool = GameObject.Find("ITEM").transform.Find("Item");
+        itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
     }
 
-    public IEnumerator CreateDieEffect()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isInvincible.Equals(false))
+        if ((collision.CompareTag("ENEMY") || collision.CompareTag("BULLET_ENEMY")) && playerStatus.GetInvincible().Equals(false))
         {
-            isInvincible = true;
-        
-            GameObject body = transform.Find("Body").gameObject;
-            GameObject effect = Instantiate(dieEffect);
-            effect.transform.SetParent(transform.Find("Effect").transform);
-            effect.transform.position = transform.position;
-            body.SetActive(false);
-        
-            yield return new WaitForSeconds(1.0f);
-        
-            Destroy(effect);
-            transform.position = new Vector2(0.0f, -5.5f);
-            body.SetActive(true);
-            StartCoroutine(PlayerReviving());
-            StartCoroutine(PlayerBlinking());
+            StartCoroutine(PlayerDieStart());
         }
     }
 
-    IEnumerator PlayerReviving()
+    private IEnumerator PlayerDieStart()
     {
-        float moveSpeed = 2.0f;
-        float reviveDelay = 0.0f;
-
-        while (true)
+        playerStatus.SetInvincible(true);
+        playerStatus.SetSpriteOff(true);
+        playerBodySprite.enabled = false;
+        playerHitPointSprite.enabled = false;
+        GameData.currentPower -= 1.0f;
+        if (GameData.currentPower <= 0.0f)
         {
-            reviveDelay += 0.1f;
-            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
-
-            if (reviveDelay >= 5.0f) break;
-
-            yield return new WaitForEndOfFrame();
+            GameData.currentPower = 0.0f;
         }
+        itemCount = itemParent.childCount;
+        for (int i = 0; i < itemCount; i++)
+        {
+            GameObject item = itemParent.GetChild(i).gameObject;
+            ItemStatus itemStatus = item.GetComponent<ItemStatus>();
+            itemStatus.SetPlayerFind(false);
+        }
+        ItemDrop();
+        player.transform.position = new Vector3(0.0f, -5.0f, 0.0f);
+
+        yield return new WaitForSeconds(1.0f);
+
+        if (GameData.currentPlayerLife <= 0)
+        {
+            // 게임오버 처리
+        }
+        else
+        {
+            GameData.currentPlayerLife--;
+        }
+        playerBodySprite.enabled = true;
+        playerHitPointSprite.enabled = true;
+        iTween.MoveTo(player.gameObject, iTween.Hash("position", new Vector3(0.0f, -3.5f, 0.0f), "easetype", iTween.EaseType.linear, "time", 1.0f));
+        playerStatus.SetSpriteOff(false);
+        playerStatus.SetRespawn(true);
+        playerStatus.SetBlinking(true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        playerStatus.SetRespawn(false);
+
+        yield return new WaitForSeconds(4.0f);
+
+        playerStatus.SetInvincible(false);
+        playerStatus.SetBlinking(false);
     }
 
-    IEnumerator PlayerBlinking()
+    private void ItemDrop()
     {
-        int blinkCount = 0;
-        Color bodyColor = transform.Find("Body").GetComponent<SpriteRenderer>().color;
+        GameObject item;
+        Vector2 spawnPosition;
 
-        while (true)
+        for (int i = 0; i < 7; i++)
         {
-            blinkCount++;
-            if (bodyColor.a >= 0.8f)
-            {
-                bodyColor = new Color(bodyColor.r, bodyColor.g, bodyColor.b, 0.2f);
-            }
-            else if (bodyColor.a <= 0.2f)
-            {
-                bodyColor = new Color(bodyColor.r, bodyColor.g, bodyColor.b, 0.8f);
-            }
+            spawnPosition = new Vector2(transform.position.x + Random.Range(-0.4f, 0.4f), transform.position.y + Random.Range(0.0f, 0.4f));
+            item = itemPool.GetChild(0).gameObject;
+            item.SetActive(true);
+            item.transform.position = spawnPosition;
+            item.transform.SetParent(itemParent);
 
-            if (blinkCount > 30) break;
-
-            yield return new WaitForSeconds(0.08f);
+            ItemStatus itemStatus = item.GetComponent<ItemStatus>();
+            BoxCollider2D boxCollider2D = item.GetComponent<BoxCollider2D>();
+            SpriteRenderer spriteRenderer = item.GetComponent<SpriteRenderer>();
+            itemStatus.SetItemSize(ItemSize.ITEMSIZE_MEDIUM);
+            itemStatus.SetItemType(ItemType.ITEMTYPE_POWER);
+            boxCollider2D.size = new Vector2(0.15f, 0.15f);
+            spriteRenderer.sprite = gameManager.itemSprite[2];
         }
-
-        blinkCount = 0;
-        isInvincible = false;
     }
 }

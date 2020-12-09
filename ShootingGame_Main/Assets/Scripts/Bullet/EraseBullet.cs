@@ -48,6 +48,14 @@ public class EraseBullet : MonoBehaviour
             {
                 ClearBullet(collision.gameObject);
             }
+            else if (gameObject.CompareTag("PLAYER"))
+            {
+                PlayerStatus playerStatus = gameObject.GetComponent<PlayerStatus>();
+                if (playerStatus.GetSpriteOff().Equals(false))
+                {
+                    ClearBullet(collision.gameObject);
+                }
+            }
         }
         else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")) && collision.CompareTag("BULLET_ENEMY"))
         {

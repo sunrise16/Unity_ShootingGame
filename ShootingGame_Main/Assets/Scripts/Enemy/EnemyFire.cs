@@ -21,6 +21,7 @@ public class EnemyFire : MonoBehaviour
     private bool isPatternRepeat;
     private int enemyFireCount;
     private float enemyAttackRepeatTime;
+    private int enemyCustomPatternNumber;
 
     private void Start()
     {
@@ -46,9 +47,10 @@ public class EnemyFire : MonoBehaviour
             case EnemyType.ENEMYTYPE_SMINION:
             case EnemyType.ENEMYTYPE_MMINION:
             case EnemyType.ENEMYTYPE_LMINION:
-                StartCoroutine(EnemyMinionAttack(enemyPatternNumber, enemyAttackWaitTime, enemyAttackDelayTime, isPatternRepeat, enemyFireCount, enemyAttackRepeatTime));
+                StartCoroutine(EnemyMinionAttack(enemyPatternNumber, enemyAttackWaitTime, enemyAttackDelayTime, isPatternRepeat, enemyFireCount, enemyAttackRepeatTime, enemyCustomPatternNumber));
                 break;
             case EnemyType.ENEMYTYPE_BOSS:
+                // 임시
                 StartCoroutine(EnemyBossAttack());
                 break;
             default:
@@ -60,7 +62,7 @@ public class EnemyFire : MonoBehaviour
 
     #region 미니언 패턴
 
-    public IEnumerator EnemyMinionAttack(int enemyPatternNumber, float waitTime, float delayTime, bool isPatternRepeat, int fireCount, float repeatTime)
+    public IEnumerator EnemyMinionAttack(int enemyPatternNumber, float waitTime, float delayTime, bool isPatternRepeat, int fireCount, float repeatTime, int customPatternNumber = 0)
     {
         int count = 0;
 
@@ -82,7 +84,8 @@ public class EnemyFire : MonoBehaviour
                     StartCoroutine(string.Format("Minion_Pattern{0}_Hard", enemyPatternNumber));
                     break;
                 case GameDifficulty.DIFFICULTY_LUNATIC:
-                    StartCoroutine(string.Format("Minion_Pattern{0}_Lunatic", enemyPatternNumber));
+                    // StartCoroutine(string.Format("Minion_Pattern{0}_Lunatic", enemyPatternNumber));
+                    MinionPattern_Lunatic(enemyPatternNumber, customPatternNumber);
                     break;
                 case GameDifficulty.DIFFICULTY_EXTRA:
                     StartCoroutine(string.Format("Minion_Pattern{0}_Extra", enemyPatternNumber));
@@ -114,8 +117,26 @@ public class EnemyFire : MonoBehaviour
 
     #region Lunatic
 
+    public void MinionPattern_Lunatic(int enemyPatternNumber, int customPatternNumber = 0)
+    {
+        switch (enemyPatternNumber)
+        {
+            case 1:
+                StartCoroutine(MinionPattern_Lunatic1(customPatternNumber));
+                break;
+            case 2:
+                StartCoroutine(MinionPattern_Lunatic2(customPatternNumber));
+                break;
+            case 3:
+                StartCoroutine(MinionPattern_Lunatic3(customPatternNumber));
+                break;
+            default:
+                break;
+        }
+    }
+
     // 패턴 1
-    public IEnumerator Minion_Pattern1_Lunatic()
+    public IEnumerator MinionPattern_Lunatic1(int customPatternNumber = 0)
     {
         Vector2 bulletFirePosition = transform.position;
 
@@ -133,11 +154,11 @@ public class EnemyFire : MonoBehaviour
             BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
             0.1f, 7.0f, 0.0f, 0.0f, false, false,
             BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-            3, player.transform.position, 0.0f);
+            3, player.transform.position, 0.0f, customPatternNumber);
     }
 
     // 패턴 2
-    public IEnumerator Minion_Pattern2_Lunatic()
+    public IEnumerator MinionPattern_Lunatic2(int customPatternNumber = 0)
     {
         Vector2 bulletFirePosition = transform.position;
 
@@ -157,12 +178,12 @@ public class EnemyFire : MonoBehaviour
                 BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 12.0f,
                 0.0f, 0.0f, 1.0f, 3.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-                3, player.transform.position, (6.0f * i) - 24.0f);
+                3, player.transform.position, (6.0f * i) - 24.0f, customPatternNumber);
         }
     }
 
     // 패턴 3
-    public IEnumerator Minion_Pattern3_Lunatic()
+    public IEnumerator MinionPattern_Lunatic3(int customPatternNumber = 0)
     {
         Vector2 bulletFirePosition = transform.position;
 
@@ -183,7 +204,7 @@ public class EnemyFire : MonoBehaviour
                 (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))) : 4.0f + (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))),
                 0.0f, 0.0f, 0.0f, 0.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-                3, player.transform.position, 10.0f * i);
+                3, player.transform.position, 10.0f * i, customPatternNumber);
         }
     }
 
@@ -240,6 +261,11 @@ public class EnemyFire : MonoBehaviour
         return enemyAttackRepeatTime;
     }
 
+    public int GetEnemyCustomPatternNumber()
+    {
+        return enemyCustomPatternNumber;
+    }
+    
     public void SetEnemyPatternNumber(int number)
     {
         enemyPatternNumber = number;
@@ -273,6 +299,11 @@ public class EnemyFire : MonoBehaviour
     public void SetEnemyAttackRepeatTime(float time)
     {
         enemyAttackRepeatTime = time;
+    }
+
+    public void SetEnemyCustomPatternNumber(int number)
+    {
+        enemyCustomPatternNumber = number;
     }
 
     #endregion

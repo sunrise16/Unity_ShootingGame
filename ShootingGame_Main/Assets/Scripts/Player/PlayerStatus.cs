@@ -9,6 +9,9 @@ public class PlayerStatus : MonoBehaviour
 
     private bool isSlowMode;
     private bool isInvincible;
+    private bool isSpriteOff;
+    private bool isRespawn;
+    private bool isBlinking;
 
     private void Start()
     {
@@ -35,6 +38,21 @@ public class PlayerStatus : MonoBehaviour
         return isInvincible;
     }
 
+    public bool GetSpriteOff()
+    {
+        return isSpriteOff;
+    }
+
+    public bool GetRespawn()
+    {
+        return isRespawn;
+    }
+
+    public bool GetBlinking()
+    {
+        return isBlinking;
+    }
+
     public void SetPlayerMoveSpeed(float speed)
     {
         playerMoveSpeed = speed;
@@ -48,6 +66,21 @@ public class PlayerStatus : MonoBehaviour
     public void SetInvincible(bool invincible)
     {
         isInvincible = invincible;
+    }
+
+    public void SetSpriteOff(bool spriteOff)
+    {
+        isSpriteOff = spriteOff;
+    }
+
+    public void SetRespawn(bool respawn)
+    {
+        isRespawn = respawn;
+    }
+
+    public void SetBlinking(bool blinking)
+    {
+        isBlinking = blinking;
     }
 
     #endregion

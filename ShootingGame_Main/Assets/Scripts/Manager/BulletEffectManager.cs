@@ -64,8 +64,8 @@ public class BulletEffectManager : MonoBehaviour
         BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
         float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
-        int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f,
-        bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
+        int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int customPatternNumber = 0, bool isSpriteRotate = false,
+        float spriteRotateSpeed = 0.0f, bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
     {
         obj.SetActive(true);
         // ClearChild(obj);
@@ -136,8 +136,8 @@ public class BulletEffectManager : MonoBehaviour
         float spriteAlpha, int spriteNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
         float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
-        int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f,
-        bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
+        int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int customPatternNumber = 0, bool isSpriteRotate = false,
+        float spriteRotateSpeed = 0.0f, bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
     {
         obj.SetActive(true);
         // ClearChild(obj);
@@ -209,8 +209,8 @@ public class BulletEffectManager : MonoBehaviour
         float spriteAlpha, int spriteNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
         float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
-        int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, bool isSpriteRotate = false, float spriteRotateSpeed = 0.0f,
-        bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
+        int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int customPatternNumber = 0, bool isSpriteRotate = false,
+        float spriteRotateSpeed = 0.0f, bool isGravity = false, float velocity = 0.0f, float gravityScale = 0.0f, bool isLookAt = false)
     {
         obj.SetActive(true);
         // ClearChild(obj);

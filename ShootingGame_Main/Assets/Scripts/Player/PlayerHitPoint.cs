@@ -20,21 +20,28 @@ public class PlayerHitPoint : MonoBehaviour
 
     private void Update()
     {
-        if (playerStatus.GetSlowMove().Equals(true))
+        if (playerStatus.GetSpriteOff().Equals(false))
         {
-            alphaValue += 0.1f;
-            if (alphaValue >= 1.0f)
+            if (playerStatus.GetSlowMove().Equals(true))
             {
-                alphaValue = 1.0f;
+                alphaValue += 0.1f;
+                if (alphaValue >= 1.0f)
+                {
+                    alphaValue = 1.0f;
+                }
+            }
+            else
+            {
+                alphaValue -= 0.1f;
+                if (alphaValue <= 0.0f)
+                {
+                    alphaValue = 0.0f;
+                }
             }
         }
         else
         {
-            alphaValue -= 0.1f;
-            if (alphaValue <= 0.0f)
-            {
-                alphaValue = 0.0f;
-            }
+            alphaValue = 0.0f;
         }
         hitPointSprite.color = new Color(hitPointSprite.color.r, hitPointSprite.color.g, hitPointSprite.color.b, alphaValue);
     }

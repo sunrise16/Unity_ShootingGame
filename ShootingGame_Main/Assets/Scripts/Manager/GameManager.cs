@@ -106,9 +106,9 @@ public class GameManager : MonoBehaviour
             Vector3[] paths2 = new Vector3[3];
 
             GameObject stage1MinionSmall1 = CreateMinion(wave1SpawnPosition1, "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                0.2f, 3, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 2.0f, 0.125f, false, true, 8, 0.5f, wave1Item, true, 9.0f);
+                0.2f, 3, EnemyType.ENEMYTYPE_SMINION, wave1Item, 10.0f, 1, 2.0f, 0.125f, false, true, 8, 0.5f, 0, true, 9.0f);
             GameObject stage1MinionSmall2 = CreateMinion(wave1SpawnPosition2, "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                0.2f, 3, EnemyType.ENEMYTYPE_SMINION, 15.0f, 1, 2.0f, 0.125f, false, true, 8, 0.5f, wave1Item, true, 9.0f);
+                0.2f, 3, EnemyType.ENEMYTYPE_SMINION, wave1Item, 10.0f, 1, 2.0f, 0.125f, false, true, 8, 0.5f, 0, true, 9.0f);
             EnemyMove enemyMove1 = stage1MinionSmall1.GetComponent<EnemyMove>();
             EnemyMove enemyMove2 = stage1MinionSmall2.GetComponent<EnemyMove>();
 
@@ -146,9 +146,9 @@ public class GameManager : MonoBehaviour
                 new Vector3(2.5f, 5.0f), new Vector3(0.0f, 5.0f), new Vector3(-1.5f, 5.0f), new Vector3(1.0f, 5.0f), new Vector3(-2.5f, 5.0f),
                 new Vector3(2.0f, 5.0f), new Vector3(-2.0f, 5.0f), new Vector3(0.5f, 5.0f), new Vector3(-1.0f, 5.0f)};
         
-        StartCoroutine(Stage1_Wave2Pattern2(wave2Item1, wave2Item2, wave2SpawnPosition));
+        StartCoroutine(Stage1_Wave2Pattern1(wave2Item1, wave2Item2, wave2SpawnPosition));
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(Stage1_Wave2Pattern1(wave2Item3));
+        StartCoroutine(Stage1_Wave2Pattern2(wave2Item3));
 
         #endregion
 
@@ -157,7 +157,10 @@ public class GameManager : MonoBehaviour
 
         #region Wave 3
 
-        StageTitleOutput(2);
+        int[] wave3Item1 = new int[11] { 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int[] wave3Item2 = new int[11] { 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+
 
         #endregion
 
@@ -267,27 +270,8 @@ public class GameManager : MonoBehaviour
     #region 스테이지 세부 적 생성 패턴
 
     #region 스테이지 1
-
-    public IEnumerator Stage1_Wave2Pattern1(int[] item)
-    {
-        Vector3 wave2TargetPosition;
-        Vector3[] wave2SpawnPosition = new Vector3[3] { new Vector3(0.0f, 5.0f, 0.0f), new Vector3(-2.25f, 5.0f, 0.0f), new Vector3(2.25f, 5.0f, 0.0f) };
-
-        for (int i = 0; i < 3; i++)
-        {
-            wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 2.0f, 0.0f);
-            
-            GameObject stage1MinionLarge = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                0.5f, 22, EnemyType.ENEMYTYPE_LMINION, 80.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, item, true, 16.0f);
-            EnemyMove enemyMove = stage1MinionLarge.GetComponent<EnemyMove>();
-
-            StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 10.0f));
-
-            yield return new WaitForSeconds(10.0f);
-        }
-    }
-
-    public IEnumerator Stage1_Wave2Pattern2(int[] item1, int[] item2, Vector3[] spawnPosition)
+    
+    public IEnumerator Stage1_Wave2Pattern1(int[] item1, int[] item2, Vector3[] spawnPosition)
     {
         Vector3 wave2TargetPosition;
 
@@ -296,12 +280,31 @@ public class GameManager : MonoBehaviour
             wave2TargetPosition = new Vector3(spawnPosition[i].x, spawnPosition[i].y - 3.0f, 0.0f);
 
             GameObject stage1MinionSmall = CreateMinion(spawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                0.2f, 4, EnemyType.ENEMYTYPE_SMINION, 15.0f, 2, 1.5f, 1.3f, true, true, 5, 0.0f, (i % 4 == 0) ? item2 : item1, true, 11.0f);
+                0.2f, 5, EnemyType.ENEMYTYPE_SMINION, (i % 4 == 0) ? item2 : item1, 10.0f, 2, 1.5f, 1.3f, true, true, 5, 0.0f, 0, true, 11.0f);
             EnemyMove enemyMove = stage1MinionSmall.GetComponent<EnemyMove>();
 
             StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, spawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 1.5f, 4.0f, 6.0f));
 
             yield return new WaitForSeconds(1.2f);
+        }
+    }
+
+    public IEnumerator Stage1_Wave2Pattern2(int[] item)
+    {
+        Vector3 wave2TargetPosition;
+        Vector3[] wave2SpawnPosition = new Vector3[3] { new Vector3(0.0f, 5.0f, 0.0f), new Vector3(-2.25f, 5.0f, 0.0f), new Vector3(2.25f, 5.0f, 0.0f) };
+
+        for (int i = 0; i < 3; i++)
+        {
+            wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 2.0f, 0.0f);
+
+            GameObject stage1MinionLarge = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
+                0.5f, 22, EnemyType.ENEMYTYPE_LMINION, item, 75.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, 0, true, 16.0f);
+            EnemyMove enemyMove = stage1MinionLarge.GetComponent<EnemyMove>();
+
+            StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 10.0f));
+
+            yield return new WaitForSeconds(10.0f);
         }
     }
 
@@ -312,8 +315,9 @@ public class GameManager : MonoBehaviour
     #region 적 미니언 생성
 
     private GameObject CreateMinion(Vector3 spawnPosition, string enemyTag, int enemyLayer, Vector3 enemyScale, float colliderRadius,
-        int animationNumber, EnemyType enemyType, float enemyHP, int enemyPatternNumber, float enemyAttackWaitTime, float enemyAttackDelayTime,
-        bool isPatternOnce, bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime, int[] enemyItem, bool isAutoDestroy = false, float waitTime = 0.0f)
+        int animationNumber, EnemyType enemyType, int[] enemyItem, float enemyHP, int enemyPatternNumber, float enemyAttackWaitTime,
+        float enemyAttackDelayTime, bool isPatternOnce, bool isPatternRepeat, int enemyFireCount, float enemyAttackRepeatTime,
+        int enemyCustomPatternNumber = 0, bool isAutoDestroy = false, float waitTime = 0.0f)
     {
         GameObject enemy = enemyPool.GetChild(0).gameObject;
         enemy.SetActive(true);
@@ -343,6 +347,7 @@ public class GameManager : MonoBehaviour
         enemyFire.SetEnemyPatternRepeat(isPatternRepeat);
         enemyFire.SetEnemyFireCount(enemyFireCount);
         enemyFire.SetEnemyAttackRepeatTime(enemyAttackRepeatTime);
+        enemyFire.SetEnemyCustomPatternNumber(enemyCustomPatternNumber);
 
         EnemyDestroy enemyDestroy = enemy.GetComponent<EnemyDestroy>();
         if (isAutoDestroy.Equals(true))

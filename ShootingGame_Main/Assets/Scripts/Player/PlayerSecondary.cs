@@ -32,24 +32,32 @@ public class PlayerSecondary : MonoBehaviour
         }
 
         // 보조무기 활성, 비활성
-        if (GameData.currentPower < 2.0f)
+        if (playerStatus.GetSpriteOff().Equals(true))
         {
+            // 플레이어 피탄 시 비활성
             spriteRenderer.enabled = false;
-        }
-        else if (GameData.currentPower >= 2.0f && GameData.currentPower < 4.0f)
-        {
-            if (gameObject.name.Equals("SecondaryPoint1") || gameObject.name.Equals("SecondaryPoint2"))
-            {
-                spriteRenderer.enabled = true;
-            }
-            else
-            {
-                spriteRenderer.enabled = false;
-            }
         }
         else
         {
-            spriteRenderer.enabled = true;
+            if (GameData.currentPower < 2.0f)
+            {
+                spriteRenderer.enabled = false;
+            }
+            else if (GameData.currentPower >= 2.0f && GameData.currentPower < 4.0f)
+            {
+                if (gameObject.name.Equals("SecondaryPoint1") || gameObject.name.Equals("SecondaryPoint2"))
+                {
+                    spriteRenderer.enabled = true;
+                }
+                else
+                {
+                    spriteRenderer.enabled = false;
+                }
+            }
+            else
+            {
+                spriteRenderer.enabled = true;
+            }
         }
     }
 }

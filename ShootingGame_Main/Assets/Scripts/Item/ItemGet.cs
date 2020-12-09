@@ -26,7 +26,7 @@ public class ItemGet : MonoBehaviour
         {
             ItemStatus itemStatus = collision.GetComponent<ItemStatus>();
 
-            if (gameObject.name.Equals("ItemCapsule"))
+            if (gameObject.name.Equals("ItemCapsule") && playerStatus.GetSpriteOff().Equals(false))
             {
                 if (itemStatus.GetItemSize().Equals(ItemSize.ITEMSIZE_SMALL))
                 {
@@ -187,7 +187,7 @@ public class ItemGet : MonoBehaviour
                 }
                 ClearItem(collision.gameObject);
             }
-            else if (gameObject.name.Equals("ItemCircle"))
+            else if (gameObject.name.Equals("ItemCircle") && playerStatus.GetSpriteOff().Equals(false))
             {
                 if (playerStatus.GetSlowMove().Equals(true))
                 {

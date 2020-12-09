@@ -12,12 +12,13 @@ public class PlayerAutoCollect : MonoBehaviour
 
 	private void Start()
     {
+        playerStatus = GetComponent<PlayerStatus>();
         itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.Equals("AUTOCOLLECTZONE"))
+        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
         {
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
@@ -31,7 +32,7 @@ public class PlayerAutoCollect : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name.Equals("AUTOCOLLECTZONE"))
+        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
         {
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
@@ -45,7 +46,7 @@ public class PlayerAutoCollect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name.Equals("AUTOCOLLECTZONE"))
+        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
         {
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
