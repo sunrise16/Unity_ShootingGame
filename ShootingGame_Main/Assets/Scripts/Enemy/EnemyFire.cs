@@ -75,20 +75,19 @@ public class EnemyFire : MonoBehaviour
             switch (GameData.gameDifficulty)
             {
                 case GameDifficulty.DIFFICULTY_EASY:
-                    StartCoroutine(string.Format("Minion_Pattern{0}_Easy", enemyPatternNumber));
+                    // StartCoroutine(string.Format("Minion_Pattern{0}_Easy", enemyPatternNumber));
                     break;
                 case GameDifficulty.DIFFICULTY_NORMAL:
-                    StartCoroutine(string.Format("Minion_Pattern{0}_Normal", enemyPatternNumber));
+                    // StartCoroutine(string.Format("Minion_Pattern{0}_Normal", enemyPatternNumber));
                     break;
                 case GameDifficulty.DIFFICULTY_HARD:
-                    StartCoroutine(string.Format("Minion_Pattern{0}_Hard", enemyPatternNumber));
+                    // StartCoroutine(string.Format("Minion_Pattern{0}_Hard", enemyPatternNumber));
                     break;
                 case GameDifficulty.DIFFICULTY_LUNATIC:
-                    // StartCoroutine(string.Format("Minion_Pattern{0}_Lunatic", enemyPatternNumber));
-                    MinionPattern_Lunatic(enemyPatternNumber, customPatternNumber);
+                    StartCoroutine(MinionPattern_Lunatic(enemyPatternNumber, customPatternNumber));
                     break;
                 case GameDifficulty.DIFFICULTY_EXTRA:
-                    StartCoroutine(string.Format("Minion_Pattern{0}_Extra", enemyPatternNumber));
+                    // StartCoroutine(string.Format("Minion_Pattern{0}_Extra", enemyPatternNumber));
                     break;
                 default:
                     break;
@@ -117,7 +116,7 @@ public class EnemyFire : MonoBehaviour
 
     #region Lunatic
 
-    public void MinionPattern_Lunatic(int enemyPatternNumber, int customPatternNumber = 0)
+    public IEnumerator MinionPattern_Lunatic(int enemyPatternNumber, int customPatternNumber = 0)
     {
         switch (enemyPatternNumber)
         {
@@ -128,7 +127,12 @@ public class EnemyFire : MonoBehaviour
                 StartCoroutine(MinionPattern_Lunatic2(customPatternNumber));
                 break;
             case 3:
-                StartCoroutine(MinionPattern_Lunatic3(customPatternNumber));
+                Vector3 playerPosition = player.transform.position;
+                for (int i = 0; i < 30; i++)
+                {
+                    StartCoroutine(MinionPattern_Lunatic3(i, playerPosition, customPatternNumber));
+                    yield return new WaitForSeconds(0.004f);
+                }
                 break;
             case 4:
                 StartCoroutine(MinionPattern_Lunatic4(customPatternNumber));
@@ -136,6 +140,8 @@ public class EnemyFire : MonoBehaviour
             default:
                 break;
         }
+
+        yield return null;
     }
 
     // 패턴 1
@@ -192,7 +198,7 @@ public class EnemyFire : MonoBehaviour
     }
 
     // 패턴 3
-    public IEnumerator MinionPattern_Lunatic3(int customPatternNumber = 0)
+    public IEnumerator MinionPattern_Lunatic3(int fireCount, Vector3 playerPosition, int customPatternNumber = 0)
     {
         Vector2 bulletFirePosition = transform.position;
 
@@ -206,17 +212,18 @@ public class EnemyFire : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         // 탄막 1 발사
-        for (int i = 0; i < 108; i++)
+        for (int i = 0; i < 4; i++)
         {
             GameObject bullet = bulletPool[1].GetChild(i).gameObject;
             bulletEffectManager.CapsuleBulletFire
                 (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
                 bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110,
                 BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL,
-                (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))) : 4.0f + (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))),
+                7.0f - (1.5f * (i % 2)),
                 0.0f, 0.0f, 0.0f, 0.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-                3, player.transform.position, 10.0f * i, customPatternNumber);
+                1, playerPosition, (enemyStatus.GetEnemyNumber().Equals(0) ? (6.0f * fireCount) : (-6.0f * fireCount)) + (i < 2 ? 0.0f : 180.0f),
+                customPatternNumber);
         }
     }
 
