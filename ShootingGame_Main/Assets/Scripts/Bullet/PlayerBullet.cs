@@ -11,7 +11,7 @@ public class PlayerBullet : MonoBehaviour
     private Transform playerPrimaryBulletParent;
     private Transform playerSecondaryBulletParent;
 
-    private float playerBulletSpeed;
+    private float playerBulletSpeed;                    // 플레이어 탄막 속도
 
 	private void Start()
     {
@@ -26,25 +26,31 @@ public class PlayerBullet : MonoBehaviour
 
     private void Update()
     {
+        // 주기적으로 위로 전진
         transform.Translate(Vector2.right * playerBulletSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 충돌 대상이 적 몸체일 경우
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("ENEMY_BODY")))
         {
+            // 탄막 제거와 동시에 적에게 데미지를 가하기
             EnemyStatus enemyStatus = collision.gameObject.GetComponent<EnemyStatus>();
             collision.gameObject.GetComponent<EnemyStatus>().SetEnemyCurrentHP
                 (collision.gameObject.GetComponent<EnemyStatus>().GetEnemyCurrentHP() -
                 (1.0f + GameData.currentPower) * (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1.0f : 0.5f));
             ClearPlayerBullet(gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1 : 2);
         }
+        // 충돌 대상이 화면 바깥의 플레이어 탄막 제거 영역일 경우
         else if (collision.gameObject.name.Equals("PLAYERBULLETDESTROYZONE"))
         {
+            // 플레이어 탄막 제거
             ClearPlayerBullet(gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1 : 2);
         }
     }
 
+    // 플레이어 탄막 제거 함수
     private void ClearPlayerBullet(int bulletType)
     {
         switch (bulletType)

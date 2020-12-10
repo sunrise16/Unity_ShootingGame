@@ -61,6 +61,7 @@ public sealed class GameData : MonoBehaviour
     public static long highScore_PracticeStage6C = 0;   // 최고 득점 (연습 모드 스테이지 6, 캐릭터 C)
     public static long highScore_PracticeStage6D = 0;   // 최고 득점 (연습 모드 스테이지 6, 캐릭터 D)
 
+    // 게임 데이터 초기화
     public static void InitGameData()
     {
         gameDifficulty = GameDifficulty.DIFFICULTY_NONE;

@@ -26,21 +26,25 @@ public class EnemyDestroy : MonoBehaviour
 
     private void Update()
     {
+        // 체력이 0 이하로 내려갔을 경우
         if (enemyStatus.GetEnemyCurrentHP() <= 0.0f)
         {
-            // 모든 적 코루틴 제거
+            // 돌아가고 있는 모든 적 코루틴 중지
             StopAllCoroutines();
             enemyFire.StopAllCoroutines();
             enemyMove.StopAllCoroutines();
             
+            // 적 제거 실행
             Destroy(false);
         }
     }
 
+    // 적 제거 함수
     public void Destroy(bool autoDestroy)
     {
         EnemyStatus enemyStatus = GetComponent<EnemyStatus>();
-        // 아이템 드랍
+
+        // 아이템 드랍 (적이 자동으로 제거되지 않고 플레이어의 탄에 죽은 경우)
         if (autoDestroy.Equals(false))
         {
             for (int i = 0; i < 11; i++)
@@ -51,10 +55,11 @@ public class EnemyDestroy : MonoBehaviour
                 }
             }
         }
+
+        // 적의 상태, 위치값 등의 정보 초기화
         enemyStatus.SetEnemyType(EnemyType.ENEMYTYPE_NONE);
         enemyStatus.SetEnemyMaxHP(1.0f);
         enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyMaxHP());
-
         transform.position = new Vector2(0.0f, 0.0f);
         gameObject.layer = LayerMask.NameToLayer("Default");
         transform.SetParent(enemyParent);
@@ -62,9 +67,11 @@ public class EnemyDestroy : MonoBehaviour
         GetComponent<CircleCollider2D>().radius = 0.5f;
         GetComponent<Animator>().runtimeAnimatorController = null;
 
+        // 비활성화
         gameObject.SetActive(false);
     }
 
+    // 일정 시간 경과 후 적 자동 제거 함수
     public IEnumerator EnemyAutoDestroy(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -72,6 +79,7 @@ public class EnemyDestroy : MonoBehaviour
         Destroy(true);
     }
 
+    // 아이템 드랍 함수
     private void ItemDrop(int itemNumber, int itemCount)
     {
         GameObject item;

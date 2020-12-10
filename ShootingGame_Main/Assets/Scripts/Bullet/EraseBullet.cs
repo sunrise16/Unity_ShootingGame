@@ -26,8 +26,10 @@ public class EraseBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 충돌 대상이 적 탄막일 경우
         if (collision.CompareTag("BULLET_ENEMY"))
         {
+            // 충돌당한 오브젝트가 탄막 제거 영역일 경우
             if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_INNER1")) &&
             collision.gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_ENEMY_INNER1")))
             {
@@ -48,6 +50,7 @@ public class EraseBullet : MonoBehaviour
             {
                 ClearBullet(collision.gameObject);
             }
+            // 충돌당한 오브젝트가 플레이어일 경우
             else if (gameObject.CompareTag("PLAYER"))
             {
                 PlayerStatus playerStatus = gameObject.GetComponent<PlayerStatus>();
@@ -57,12 +60,14 @@ public class EraseBullet : MonoBehaviour
                 }
             }
         }
+        // 충돌당한 오브젝트가 전체 제거 영역일 경우 화면 전체 탄 소거 실행
         else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")) && collision.CompareTag("BULLET_ENEMY"))
         {
             ClearBulletAll(collision.gameObject);
         }
     }
 
+    // 탄막 제거 함수
     private void ClearBullet(GameObject bullet)
     {
         if (bullet.GetComponent<CircleCollider2D>())
@@ -84,6 +89,7 @@ public class EraseBullet : MonoBehaviour
         bullet.SetActive(false);
     }
 
+    // 탄막 전체 제거 함수 (제작중)
     private void ClearBulletAll(GameObject bullet)
     {
 

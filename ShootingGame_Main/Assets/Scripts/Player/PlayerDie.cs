@@ -28,12 +28,15 @@ public class PlayerDie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 무적 상태가 아닌 상황에서 적 또는 적 탄막에 피격당했을 경우
         if ((collision.CompareTag("ENEMY") || collision.CompareTag("BULLET_ENEMY")) && playerStatus.GetInvincible().Equals(false))
         {
+            // 사망 처리
             StartCoroutine(PlayerDieStart());
         }
     }
 
+    // 플레이어 사망 처리 코루틴
     private IEnumerator PlayerDieStart()
     {
         playerStatus.SetInvincible(true);

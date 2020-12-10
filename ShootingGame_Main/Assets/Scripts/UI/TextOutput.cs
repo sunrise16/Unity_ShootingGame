@@ -17,6 +17,7 @@ public class TextOutput : MonoBehaviour
 
     private void Update()
     {
+        // 이 스크립트를 할당받은 게임 오브젝트의 이름 체크
         switch (gameObject.name)
         {
             case "Difficulty":
@@ -42,9 +43,11 @@ public class TextOutput : MonoBehaviour
                 }
                 break;
             case "CurrentGameScore":
+                // 게임 데이터에 저장된 현재 점수 따라잡기 (점수가 11111씩 오르는 연출)
                 if (score < GameData.currentScore)
                 {
                     score += 11111;
+                    // UI에 표시되는 점수가 게임 데이터에 저장된 현재 점수를 넘지 않도록 해주기
                     if (score >= GameData.currentScore)
                     {
                         score = GameData.currentScore;

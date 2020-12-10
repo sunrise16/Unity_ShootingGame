@@ -17,6 +17,7 @@ public class EnemyHpBar : MonoBehaviour
 	
 	private void Update()
     {
+        // HP바 이미지 = 적의 현재 체력 / 적의 최대 체력
         hpBarImage.fillAmount = enemyDatabase.GetEnemyCurrentHP() / enemyDatabase.GetEnemyMaxHP();
     }
 }

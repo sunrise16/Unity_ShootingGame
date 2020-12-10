@@ -16,6 +16,7 @@ public class PlayerAutoCollect : MonoBehaviour
         itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
 	}
 
+    // 화면 상단 자동 회수존에 진입했을 경우 아이템 전부 자동 회수
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
@@ -29,7 +30,6 @@ public class PlayerAutoCollect : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
@@ -43,7 +43,6 @@ public class PlayerAutoCollect : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))

@@ -10,7 +10,8 @@ public class ItemGet : MonoBehaviour
     private PlayerStatus playerStatus;
     private Transform itemParent;
 
-    private float scoreRatio;
+    private float scoreRatio;                   // 플레이어의 현재 y축 위치값에 따라 변하는 점수 비율
+                                                // (화면 상단으로 갈수록 높은 점수를 받게 하고, 아이템 자동 회수 시 최대치로 자동 설정)
     
     private void Start()
     {
@@ -22,10 +23,12 @@ public class ItemGet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 충돌한 오브젝트가 아이템인지 체크
         if (collision.CompareTag("ITEM"))
         {
             ItemStatus itemStatus = collision.GetComponent<ItemStatus>();
 
+            // 아이템 회수 담당 영역에 닿은 경우
             if (gameObject.name.Equals("ItemCapsule") && playerStatus.GetSpriteOff().Equals(false))
             {
                 if (itemStatus.GetItemSize().Equals(ItemSize.ITEMSIZE_SMALL))
@@ -37,6 +40,10 @@ public class ItemGet : MonoBehaviour
                             if (GameData.currentPower < 4.0f)
                             {
                                 GameData.currentPower += 0.01f;
+                                if (GameData.currentPower.Equals(4.0f))
+                                {
+                                    // 풀 파워 메세지
+                                }
                             }
                             break;
                         case ItemType.ITEMTYPE_SCORE:
@@ -86,6 +93,7 @@ public class ItemGet : MonoBehaviour
                                 if (GameData.currentPower >= 4.0f)
                                 {
                                     GameData.currentPower = 4.0f;
+                                    // 풀 파워 메세지
                                 }
                             }
                             break;
@@ -144,12 +152,13 @@ public class ItemGet : MonoBehaviour
                                 if (GameData.currentPower >= 4.0f)
                                 {
                                     GameData.currentPower = 4.0f;
+                                    // 풀 파워 메세지
                                 }
                             }
                             break;
                         case ItemType.ITEMTYPE_LIFE:
                             GameData.currentPlayerLife++;
-                            // 알림 메세지
+                            // 플레이어 잔기 추가 알림 메세지
                             break;
                         case ItemType.ITEMTYPE_LIFEFRAGMENT:
                             GameData.currentPlayerLifeFragment++;
@@ -157,12 +166,12 @@ public class ItemGet : MonoBehaviour
                             {
                                 GameData.currentPlayerLife++;
                                 GameData.currentPlayerLifeFragment = 0;
-                                // 알림 메세지
+                                // 플레이어 잔기 추가 알림 메세지
                             }
                             break;
                         case ItemType.ITEMTYPE_SPELL:
                             GameData.currentPlayerSpell++;
-                            // 알림 메세지
+                            // 플레이어 스펠 추가 알림 메세지
                             break;
                         case ItemType.ITEMTYPE_SPELLFRAGMENT:
                             GameData.currentPlayerSpellFragment++;
@@ -170,7 +179,7 @@ public class ItemGet : MonoBehaviour
                             {
                                 GameData.currentPlayerSpell++;
                                 GameData.currentPlayerSpellFragment = 0;
-                                // 알림 메세지
+                                // 플레이어 스펠 추가 알림 메세지
                             }
                             break;
                         case ItemType.ITEMTYPE_FULLPOWER:
@@ -187,6 +196,7 @@ public class ItemGet : MonoBehaviour
                 }
                 ClearItem(collision.gameObject);
             }
+            // 저속 이동 시에 활성화되는 플레이어 주변 아이템 자동 회수 영역에 닿은 경우
             else if (gameObject.name.Equals("ItemCircle") && playerStatus.GetSpriteOff().Equals(false))
             {
                 if (playerStatus.GetSlowMove().Equals(true))
@@ -194,6 +204,7 @@ public class ItemGet : MonoBehaviour
                     itemStatus.SetPlayerFind(true);
                 }
             }
+            // 아이템이 화면 밑으로 벗어났을 경우 아이템 자동 제거
             else if (gameObject.name.Equals("ITEMDESTROYZONE"))
             {
                 ClearItem(collision.gameObject);
@@ -201,6 +212,7 @@ public class ItemGet : MonoBehaviour
         }
     }
 
+    // 아이템 제거 함수
     private void ClearItem(GameObject obj)
     {
         obj.transform.SetParent(itemParent);

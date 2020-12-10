@@ -12,6 +12,7 @@ public class EffectAlpha : MonoBehaviour
         effectPool = GameObject.Find("EFFECT").transform.Find("Effect");
     }
 
+    // 이펙트 알파값 증가 코루틴
     public IEnumerator EffectAlphaUp(GameObject obj, float alphaUpSpeed)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
@@ -28,6 +29,7 @@ public class EffectAlpha : MonoBehaviour
         }
     }
 
+    // 이펙트 알파값 증가 후 감소 처리 실행 코루틴
     public IEnumerator EffectAlphaUp(GameObject obj, float alphaUpSpeed, float alphaDownSpeed, float alphaRemainTime)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
@@ -48,6 +50,7 @@ public class EffectAlpha : MonoBehaviour
         StartCoroutine(EffectAlphaDown(obj, alphaDownSpeed));
     }
 
+    // 이펙트 알파값 감소 후 제거 코루틴
     private IEnumerator EffectAlphaDown(GameObject obj, float alphaDownSpeed)
     {
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
@@ -66,6 +69,7 @@ public class EffectAlpha : MonoBehaviour
         ClearEffect(obj);
     }
 
+    // 이펙트 스케일값 증가 코루틴
     public IEnumerator EffectScaleUp(GameObject obj, float scaleUpSpeed, float scaleLimit)
     {
         obj.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
@@ -88,6 +92,7 @@ public class EffectAlpha : MonoBehaviour
         }
     }
 
+    // 이펙트 스케일값 감소 후 제거 코루틴
     public IEnumerator EffectScaleDown(GameObject obj, float scaleDownSpeed, float scaleDownTime)
     {
         float delay = 0.0f;
@@ -105,6 +110,7 @@ public class EffectAlpha : MonoBehaviour
         ClearEffect(obj);
     }
 
+    // 이펙트 제거 함수
     private void ClearEffect(GameObject obj)
     {
         obj.transform.SetParent(effectPool);

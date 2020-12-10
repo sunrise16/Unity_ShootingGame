@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class ItemStatus : MonoBehaviour
 {
-    private ItemSize itemSize;
-    private ItemType itemType;
+    private ItemSize itemSize;              // 아이템 사이즈
+    private ItemType itemType;              // 아이템 종류
 
-    private bool isPlayerFind;
+    private bool isPlayerFind;              // 아이템 자동 회수 체크
 
     #region GET, SET
 

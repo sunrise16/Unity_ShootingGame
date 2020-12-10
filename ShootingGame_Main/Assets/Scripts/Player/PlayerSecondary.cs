@@ -9,8 +9,8 @@ public class PlayerSecondary : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 vector;
 
-    public GameObject fastMoveModePoint;
-    public GameObject slowMoveModePoint;
+    public GameObject fastMoveModePoint;                // 고속 이동 시 보조무기 위치
+    public GameObject slowMoveModePoint;                // 저속 이동 시 보조무기 위치
 
     private void Start()
     {
@@ -39,6 +39,7 @@ public class PlayerSecondary : MonoBehaviour
         }
         else
         {
+            // 플레이어의 현재 파워에 따라 보조무기 출현 (2.0 단위)
             if (GameData.currentPower < 2.0f)
             {
                 spriteRenderer.enabled = false;

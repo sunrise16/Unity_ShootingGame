@@ -8,7 +8,7 @@ public class PlayerHitPoint : MonoBehaviour
     private PlayerStatus playerStatus;
     private SpriteRenderer hitPointSprite;
     
-    private float alphaValue;
+    private float alphaValue;                   // 피탄점 알파값 (투명도)
 
 	private void Start ()
     {
@@ -22,6 +22,7 @@ public class PlayerHitPoint : MonoBehaviour
     {
         if (playerStatus.GetSpriteOff().Equals(false))
         {
+            // 저속 이동 모드 여부에 따라 피탄점 스프라이트 출력
             if (playerStatus.GetSlowMove().Equals(true))
             {
                 alphaValue += 0.1f;

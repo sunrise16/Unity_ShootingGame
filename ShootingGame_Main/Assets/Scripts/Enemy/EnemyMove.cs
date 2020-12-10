@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     private Animator animator;
-    private Vector3 targetPosition;
+    private Vector3 targetPosition;                 // 적의 이동 목적지
 
     private void Start()
     {
@@ -15,7 +15,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Update()
     {
-        // 스프라이트 조절
+        // 적 스프라이트 애니메이션 조절
         SetAnimatorTrigger(targetPosition);
     }
 
@@ -70,9 +70,10 @@ public class EnemyMove : MonoBehaviour
 
     #region 애니메이터 트리거 설정
 
+    // 스프라이트 애미네이션 조절 함수
     public void SetAnimatorTrigger(Vector3 targetPosition)
     {
-        // 스프라이트 조절
+        // 적의 현재 위치와 목적지간의 좌표값 차이에 따라 스프라이트 조절
         if (transform.position.x > targetPosition.x)
         {
             animator.SetTrigger("isLeftMove");

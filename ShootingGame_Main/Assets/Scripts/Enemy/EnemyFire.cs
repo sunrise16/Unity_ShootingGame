@@ -130,6 +130,9 @@ public class EnemyFire : MonoBehaviour
             case 3:
                 StartCoroutine(MinionPattern_Lunatic3(customPatternNumber));
                 break;
+            case 4:
+                StartCoroutine(MinionPattern_Lunatic4(customPatternNumber));
+                break;
             default:
                 break;
         }
@@ -206,6 +209,12 @@ public class EnemyFire : MonoBehaviour
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
                 3, player.transform.position, 10.0f * i, customPatternNumber);
         }
+    }
+
+    // 패턴 4
+    public IEnumerator MinionPattern_Lunatic4(int customPatternNumber = 0)
+    {
+        yield return null;
     }
 
     #endregion

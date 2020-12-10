@@ -42,6 +42,7 @@ public class BulletState : MonoBehaviour
     [HideInInspector] public bool isSpriteChange;                         // 반사 시 스프라이트 변경 여부
     [HideInInspector] public bool isEffectOutput;                         // 반사 시 이펙트 출력 여부
 
+    // 탄막 정보 초기화
     public void InitBulletState()
     {
         bulletType = BulletType.BULLETTYPE_NONE;
@@ -75,7 +76,8 @@ public class BulletState : MonoBehaviour
         isSpriteChange = false;
         isEffectOutput = false;
     }
-
+    
+    // 현재 위치에서 목표 지점까지의 벡터값 산출 함수 (조준탄, 타겟 포지션을 인자로 받음)
     public Vector2 GetBulletDestination(Vector2 targetPosition)
     {
         bulletPosition = bulletObject.transform.position;
@@ -95,6 +97,7 @@ public class BulletState : MonoBehaviour
         }
     }
 
+    // 랜덤한 위치로의 벡터값 산출 함수 (랜덤 탄막)
     public Vector2 GetRandomAimedBulletDestination()
     {
         bulletPosition = bulletObject.transform.position;
@@ -115,6 +118,7 @@ public class BulletState : MonoBehaviour
         }
     }
 
+    // 현재 위치에서 목표 지점까지의 벡터값 산출 함수 (조준탄, 미리 설정된 타겟을 목표로 지정)
     public Vector2 GetAimedBulletDestination()
     {
         bulletPosition = bulletObject.transform.position;

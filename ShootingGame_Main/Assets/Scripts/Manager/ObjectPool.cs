@@ -12,6 +12,7 @@ public class ObjectPool : MonoBehaviour
     
     private void Start()
     {
+        // 생성할 오브젝트의 태그에 따라 생성하는 양 조절
         switch (poolObject.tag)
         {
             case "BULLET_PLAYER":
@@ -34,6 +35,7 @@ public class ObjectPool : MonoBehaviour
                 break;
         }
 
+        // 게임 시작 전 오브젝트 생성
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(poolObject);

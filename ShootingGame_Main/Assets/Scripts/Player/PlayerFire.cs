@@ -35,6 +35,7 @@ public class PlayerFire : MonoBehaviour
     {
         if (playerStatus.GetSpriteOff().Equals(false) && playerStatus.GetRespawn().Equals(false))
         {
+            // Z키 누르고 있을 때 플레이어 공격 (키버튼은 나중에 옵션 구현하면 바꿀수 있도록 할 예정)
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 fireDelay = 0.08f;

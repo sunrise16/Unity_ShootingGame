@@ -18,7 +18,7 @@ public class BulletMove : MonoBehaviour
     {
         bulletState.bulletRotateTime += Time.deltaTime;
 
-        // 탄속 변경
+        // 탄속 변경 (가속 탄막)
         if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING))
         {
             bulletState.bulletMoveSpeed += bulletState.bulletAccelerationMoveSpeed;
@@ -30,6 +30,7 @@ public class BulletMove : MonoBehaviour
                 }
             }
         }
+        // 탄속 변경 (감속 탄막)
         else if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_DECELERATING))
         {
             bulletState.bulletMoveSpeed -= bulletState.bulletDecelerationMoveSpeed;
@@ -48,6 +49,7 @@ public class BulletMove : MonoBehaviour
                 }
             }
         }
+        // 탄속 변경 (가속, 감속 반복 탄막)
         else if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOP))
         {
             if (bulletState.bulletMoveSpeedLoopBool.Equals(true))
@@ -67,6 +69,7 @@ public class BulletMove : MonoBehaviour
                 }
             }
         }
+        // 탄속 변경 (가속, 감속 1회 반복 탄막)
         else if (bulletState.bulletSpeedState.Equals(BulletSpeedState.BULLETSPEEDSTATE_LOOPONCE))
         {
             if (bulletState.bulletMoveSpeedLoopBool.Equals(true))
@@ -139,6 +142,7 @@ public class BulletMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 대상 바라보기가 설정되어 있을 경우 각도 변경
         if (bulletState.isLookAt.Equals(true))
         {
             float angle = Mathf.Atan2(rigidbody2D.velocity.y, rigidbody2D.velocity.x) * Mathf.Rad2Deg;

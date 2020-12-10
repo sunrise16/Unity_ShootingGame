@@ -9,6 +9,7 @@ public class ObjectRotate : MonoBehaviour
 
     private void Update()
     {
+        // 1초에 rotateSpeed 수치만큼 회전
         transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+// 게임 난이도 분류
 public enum GameDifficulty
 {
     DIFFICULTY_NONE,
@@ -13,6 +14,7 @@ public enum GameDifficulty
     DIFFICULTY_EXTRA,
 }
 
+// 게임 내 현재 씬 분류
 public enum GameMode
 {
     GAMEMODE_NONE,
@@ -25,6 +27,7 @@ public enum GameMode
     GAMEMODE_REPLAY,
 }
 
+// 연습 모드에서의 현재 스테이지 분류
 public enum GamePracticeStage
 {
     GAMEPRACTICESTAGE_NONE,
@@ -36,6 +39,7 @@ public enum GamePracticeStage
     GAMEPRACTICESTAGE_STAGE6,
 }
 
+// 게임 결과 등급 분류 (사용할 일이 있을지는 모르겠음)
 public enum GameGrade
 {
     GAMEGRADE_NONE,
@@ -47,6 +51,7 @@ public enum GameGrade
     GAMEGRADE_S,
 }
 
+// 적 종류 분류
 public enum EnemyType
 {
     ENEMYTYPE_NONE,
@@ -56,6 +61,7 @@ public enum EnemyType
     ENEMYTYPE_BOSS,
 }
 
+// 아이템 사이즈 분류
 public enum ItemSize
 {
     ITEMSIZE_NONE,
@@ -64,6 +70,7 @@ public enum ItemSize
     ITEMSIZE_LARGE,
 }
 
+// 아이템 종류 분류
 public enum ItemType
 {
     ITEMTYPE_NONE,
@@ -76,6 +83,7 @@ public enum ItemType
     ITEMTYPE_FULLPOWER,
 }
 
+// 탄막 종류 분류
 public enum BulletType
 {
     BULLETTYPE_NONE,
@@ -85,6 +93,7 @@ public enum BulletType
     BULLETTYPE_LASER_MOVE,
 }
 
+// 탄막 반사 성질 분류
 public enum BulletReflectState
 {
     BULLETREFLECTSTATE_NONE,
@@ -92,6 +101,7 @@ public enum BulletReflectState
     BULLETREFLECTSTATE_CONTAINBOTTOM,
 }
 
+// 탄막 속도 성질 분류
 public enum BulletSpeedState
 {
     BULLETSPEEDSTATE_NONE,
@@ -102,6 +112,7 @@ public enum BulletSpeedState
     BULLETSPEEDSTATE_LOOPONCE,
 }
 
+// 탄막 회전 성질 분류
 public enum BulletRotateState
 {
     BULLETROTATESTATE_NONE,

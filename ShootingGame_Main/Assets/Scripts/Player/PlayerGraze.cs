@@ -14,10 +14,12 @@ public class PlayerGraze : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 부딫힌 오브젝트가 적 탄환일 경우
         if (collision.CompareTag("BULLET_ENEMY") & playerStatus.GetSpriteOff().Equals(false))
         {
             BulletState bulletState = collision.GetComponent<BulletState>();
 
+            // 해당 탄이 아직 그레이즈 되지 않은 상태일 때에만 그레이즈 횟수 체크
             if (bulletState.isGrazed.Equals(false))
             {
                 bulletState.isGrazed = true;

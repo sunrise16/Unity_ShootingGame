@@ -57,7 +57,7 @@ public class BulletEffectManager : MonoBehaviour
 
     #region 탄막 관련
 
-    // 원형 판정 탄막 발사
+    // 원형 판정 탄막 발사 함수
     public void CircleBulletFire
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float circleColliderRadius, float spriteAlpha, int spriteNumber,
@@ -127,9 +127,18 @@ public class BulletEffectManager : MonoBehaviour
             rigidbody2D.gravityScale = gravityScale;
             bulletState.isLookAt = isLookAt;
         }
+
+        // 커스텀 패턴 스크립트 넣기 (제작하는 대로 넣을 것)
+        switch (customPatternNumber)
+        {
+            case 1:
+                break;
+            default:
+                break;
+        }
     }
 
-    // 캡슐형 판정 탄막 발사
+    // 캡슐형 판정 탄막 발사 함수
     public void CapsuleBulletFire
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float capsuleColliderSizeX, float capsuleColliderSizeY, float capsuleColliderOffsetX, float capsuleColliderOffsetY,
@@ -200,9 +209,18 @@ public class BulletEffectManager : MonoBehaviour
             rigidbody2D.gravityScale = gravityScale;
             bulletState.isLookAt = isLookAt;
         }
+
+        // 커스텀 패턴 스크립트 넣기 (제작하는 대로 넣을 것)
+        switch (customPatternNumber)
+        {
+            case 1:
+                break;
+            default:
+                break;
+        }
     }
 
-    // 사각형 판정 탄막 발사
+    // 사각형 판정 탄막 발사 함수
     public void BoxBulletFire
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float boxColliderSizeX, float boxColliderSizeY, float boxColliderOffsetX, float boxColliderOffsetY,
@@ -273,12 +291,22 @@ public class BulletEffectManager : MonoBehaviour
             rigidbody2D.gravityScale = gravityScale;
             bulletState.isLookAt = isLookAt;
         }
+
+        // 커스텀 패턴 스크립트 넣기 (제작하는 대로 넣을 것)
+        switch (customPatternNumber)
+        {
+            case 1:
+                break;
+            default:
+                break;
+        }
     }
 
     #endregion
 
     #region 이펙트 관련
 
+    // 일반적인 이펙트 생성 함수
     public void CreateBulletFireEffect(GameObject obj, int spriteNumber, float scaleDownSpeed, float scaleDownTime, float alphaUpSpeed,
         Vector2 effectPosition, float scaleX = 5.0f, float scaleY = 5.0f)
     {
@@ -295,6 +323,7 @@ public class BulletEffectManager : MonoBehaviour
         StartCoroutine(effectAlpha.EffectScaleDown(obj, scaleDownSpeed, scaleDownTime));
     }
 
+    // 점차 커졌다가 사라지는 방식의 이펙트 생성 함수
     public void CreateBulletFireEffect(GameObject obj, int spriteNumber, float scaleUpSpeed, float scaleLimit, float alphaUpSpeed, float alphaDownSpeed,
         float alphaRemainTime, Vector2 effectPosition, float scaleX = 5.0f, float scaleY = 5.0f)
     {

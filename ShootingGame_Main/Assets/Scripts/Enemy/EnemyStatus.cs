@@ -7,10 +7,10 @@ public class EnemyStatus : MonoBehaviour
 {
     private EnemyType enemyType;
 
-    private int[] enemyItem = new int[11];
+    private int[] enemyItem = new int[11];              // 적이 드랍하는 아이템 배열
 
-    private float enemyCurrentHP;
-    private float enemyMaxHP;
+    private float enemyCurrentHP;                       // 적의 현재 체력
+    private float enemyMaxHP;                           // 적의 최대 체력
     
     #region GET, SET
 

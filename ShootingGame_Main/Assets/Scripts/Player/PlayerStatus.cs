@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    private float playerMoveSpeed;
+    private float playerMoveSpeed;          // 플레이어 이동 속도
 
-    private bool isSlowMode;
-    private bool isInvincible;
-    private bool isSpriteOff;
-    private bool isRespawn;
-    private bool isBlinking;
+    private bool isSlowMode;                // 플레이어가 저속 이동 중인지 체크
+    private bool isInvincible;              // 플레이어가 무적 상태인지 체크
+    private bool isSpriteOff;               // 플레이어가 피탄된 후 리스폰 되기까지의 간격 체크
+    private bool isRespawn;                 // 플레이어가 리스폰된 후 조작 가능해지기까지의 간격 체크
+    private bool isBlinking;                // 플레이어 스프라이트 이미지 깜빡거리는 연출 체크
 
     private void Start()
     {

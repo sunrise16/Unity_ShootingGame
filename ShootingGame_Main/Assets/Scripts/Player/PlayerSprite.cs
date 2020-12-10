@@ -8,8 +8,8 @@ public class PlayerSprite : MonoBehaviour
     private PlayerStatus playerStatus;
     private SpriteRenderer spriteRenderer;
 
-    private float alphaValue;
-    private float blinkDelay;
+    private float alphaValue;                   // 스프라이트 이미지의 알파값 (투명도)
+    private float blinkDelay;                   // 깜빡거리는 시간 간격
 
 	private void Start()
     {
@@ -25,7 +25,7 @@ public class PlayerSprite : MonoBehaviour
 		if (playerStatus.GetBlinking().Equals(true))
         {
             blinkDelay += Time.deltaTime;
-            if (blinkDelay >= 0.05f)
+            if (blinkDelay >= 0.03f)
             {
                 blinkDelay = 0.0f;
                 if (alphaValue <= 0.4f)
