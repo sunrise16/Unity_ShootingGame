@@ -50,6 +50,9 @@ public class PlayerDie : MonoBehaviour
     // 플레이어 사망 처리 코루틴
     private IEnumerator PlayerDieStart()
     {
+        // 효과음 재생
+        SoundManager.instance.PlaySE(35);
+
         playerStatus.SetInvincible(true);
         playerStatus.SetSpriteOff(true);
         playerBodySprite.enabled = false;

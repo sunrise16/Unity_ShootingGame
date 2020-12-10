@@ -143,6 +143,9 @@ public class EnemyFire : MonoBehaviour
     {
         Vector2 bulletFirePosition = transform.position;
 
+        // 효과음 재생
+        SoundManager.instance.PlaySE(23);
+
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
         bulletEffectManager.CreateBulletFireEffect(effect, 3, 0.6f, 0.1f, 0.6f, bulletFirePosition, 4.0f, 4.0f);
@@ -164,6 +167,9 @@ public class EnemyFire : MonoBehaviour
     public IEnumerator MinionPattern_Lunatic2(int customPatternNumber = 0)
     {
         Vector2 bulletFirePosition = transform.position;
+
+        // 효과음 재생
+        SoundManager.instance.PlaySE(42);
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
@@ -190,9 +196,12 @@ public class EnemyFire : MonoBehaviour
     {
         Vector2 bulletFirePosition = transform.position;
 
+        // 효과음 재생
+        SoundManager.instance.PlaySE(23);
+
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 6, 0.5f, 0.18f, 0.5f, bulletFirePosition);
+        bulletEffectManager.CreateBulletFireEffect(effect, 6, 0.5f, 0.2f, 0.5f, bulletFirePosition);
 
         yield return new WaitForSeconds(0.2f);
 
@@ -214,7 +223,30 @@ public class EnemyFire : MonoBehaviour
     // 패턴 4
     public IEnumerator MinionPattern_Lunatic4(int customPatternNumber = 0)
     {
-        yield return null;
+        Vector2 bulletFirePosition = transform.position;
+
+        // 효과음 재생
+        SoundManager.instance.PlaySE(23);
+
+        // 탄막 1 이펙트
+        GameObject effect = effectPool.GetChild(0).gameObject;
+        bulletEffectManager.CreateBulletFireEffect(effect, 4, 0.5f, 0.25f, 0.5f, bulletFirePosition);
+
+        yield return new WaitForSeconds(0.25f);
+
+        // 탄막 1 발사
+        for (int i = 0; i < 16; i++)
+        {
+            GameObject bullet = bulletPool[1].GetChild(i).gameObject;
+            bulletEffectManager.CapsuleBulletFire
+                (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+                bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110,
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL,
+                (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))) : 4.0f + (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))),
+                0.0f, 0.0f, 0.0f, 0.0f, false, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                3, player.transform.position, 10.0f * i, customPatternNumber);
+        }
     }
 
     #endregion

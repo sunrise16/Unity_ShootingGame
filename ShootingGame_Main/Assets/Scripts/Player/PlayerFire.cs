@@ -45,6 +45,9 @@ public class PlayerFire : MonoBehaviour
                 fireDelay += Time.deltaTime;
                 if (fireDelay >= 0.08f)
                 {
+                    // 효과음 재생
+                    SoundManager.instance.PlaySE(36);
+
                     // 주무기 발사
                     for (int i = 0; i < 2; i++)
                     {

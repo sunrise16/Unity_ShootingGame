@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         GameData.gameMode = GameMode.GAMEMODE_MAINGAME;
         GameData.gameDifficulty = GameDifficulty.DIFFICULTY_LUNATIC;
         /// 테스트용 (메인 화면 구현하면 지울 것 !!!)
-
+        
         enemyPool = GameObject.Find("CHARACTER").transform.Find("Enemy");
         enemyParent = GameObject.Find("CHARACTER").transform.Find("Enemy_Temp");
 
@@ -91,6 +91,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Stage1()
     {
+        // 스테이지 1 BGM 재생
+        SoundManager.instance.PlayBGM(1);
+
         yield return new WaitForSeconds(1.0f);
 
         #region Wave 1
@@ -127,7 +130,7 @@ public class GameManager : MonoBehaviour
 
         #endregion
 
-        yield return new WaitForSeconds(6.0f);
+        yield return new WaitForSeconds(7.0f);
         // 스테이지 타이틀
         StageTitleOutput(1);
 

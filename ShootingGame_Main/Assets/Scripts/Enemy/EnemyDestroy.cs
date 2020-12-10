@@ -47,6 +47,9 @@ public class EnemyDestroy : MonoBehaviour
         // 아이템 드랍 (적이 자동으로 제거되지 않고 플레이어의 탄에 죽은 경우)
         if (autoDestroy.Equals(false))
         {
+            // 효과음 재생
+            SoundManager.instance.PlaySE(14);
+
             for (int i = 0; i < 11; i++)
             {
                 if (enemyStatus.GetEnemyItem(i) > 0)

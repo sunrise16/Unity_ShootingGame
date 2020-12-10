@@ -28,11 +28,14 @@ public class ItemGet : MonoBehaviour
         {
             ItemStatus itemStatus = collision.GetComponent<ItemStatus>();
 
-            // 아이템 회수 담당 영역에 닿은 경우
+            // 플레이어 아이템 회수 담당 영역에 닿은 경우
             if (gameObject.name.Equals("ItemCapsule") && playerStatus.GetSpriteOff().Equals(false))
             {
                 if (itemStatus.GetItemSize().Equals(ItemSize.ITEMSIZE_SMALL))
                 {
+                    // 효과음 재생
+                    SoundManager.instance.PlaySE(21);
+
                     switch (itemStatus.GetItemType())
                     {
                         case ItemType.ITEMTYPE_POWER:
@@ -42,6 +45,9 @@ public class ItemGet : MonoBehaviour
                                 GameData.currentPower += 0.01f;
                                 if (GameData.currentPower.Equals(4.0f))
                                 {
+                                    // 효과음 재생
+                                    SoundManager.instance.PlaySE(39);
+
                                     // 풀 파워 메세지
                                 }
                             }
@@ -83,6 +89,9 @@ public class ItemGet : MonoBehaviour
                 }
                 else if (itemStatus.GetItemSize().Equals(ItemSize.ITEMSIZE_MEDIUM))
                 {
+                    // 효과음 재생
+                    SoundManager.instance.PlaySE(21);
+
                     switch (itemStatus.GetItemType())
                     {
                         case ItemType.ITEMTYPE_POWER:
@@ -92,6 +101,9 @@ public class ItemGet : MonoBehaviour
                                 GameData.currentPower += 0.05f;
                                 if (GameData.currentPower >= 4.0f)
                                 {
+                                    // 효과음 재생
+                                    SoundManager.instance.PlaySE(39);
+
                                     GameData.currentPower = 4.0f;
                                     // 풀 파워 메세지
                                 }
@@ -132,6 +144,9 @@ public class ItemGet : MonoBehaviour
                             GameData.currentScore += 10000;
                             if (GameData.currentPower < 4.0f)
                             {
+                                // 효과음 재생
+                                SoundManager.instance.PlaySE(39);
+
                                 GameData.currentPower = 4.0f;
                                 // 풀 파워 메세지
                             }
@@ -145,47 +160,77 @@ public class ItemGet : MonoBehaviour
                     switch (itemStatus.GetItemType())
                     {
                         case ItemType.ITEMTYPE_POWER:
+                            // 효과음 재생
+                            SoundManager.instance.PlaySE(22);
+
                             GameData.currentScore += 150;
                             if (GameData.currentPower < 4.0f)
                             {
                                 GameData.currentPower += 0.15f;
                                 if (GameData.currentPower >= 4.0f)
                                 {
+                                    // 효과음 재생
+                                    SoundManager.instance.PlaySE(39);
+
                                     GameData.currentPower = 4.0f;
                                     // 풀 파워 메세지
                                 }
                             }
                             break;
                         case ItemType.ITEMTYPE_LIFE:
+                            // 효과음 재생
+                            SoundManager.instance.PlaySE(17);
+
                             GameData.currentPlayerLife++;
                             // 플레이어 잔기 추가 알림 메세지
                             break;
                         case ItemType.ITEMTYPE_LIFEFRAGMENT:
+                            // 효과음 재생
+                            SoundManager.instance.PlaySE(22);
+
                             GameData.currentPlayerLifeFragment++;
                             if (GameData.currentPlayerLifeFragment >= 8)
                             {
+                                // 효과음 재생
+                                SoundManager.instance.PlaySE(17);
+
                                 GameData.currentPlayerLife++;
                                 GameData.currentPlayerLifeFragment = 0;
                                 // 플레이어 잔기 추가 알림 메세지
                             }
                             break;
                         case ItemType.ITEMTYPE_SPELL:
+                            // 효과음 재생
+                            SoundManager.instance.PlaySE(6);
+
                             GameData.currentPlayerSpell++;
                             // 플레이어 스펠 추가 알림 메세지
                             break;
                         case ItemType.ITEMTYPE_SPELLFRAGMENT:
+                            // 효과음 재생
+                            SoundManager.instance.PlaySE(22);
+
                             GameData.currentPlayerSpellFragment++;
                             if (GameData.currentPlayerSpellFragment >= 8)
                             {
+                                // 효과음 재생
+                                SoundManager.instance.PlaySE(6);
+
                                 GameData.currentPlayerSpell++;
                                 GameData.currentPlayerSpellFragment = 0;
                                 // 플레이어 스펠 추가 알림 메세지
                             }
                             break;
                         case ItemType.ITEMTYPE_FULLPOWER:
+                            // 효과음 재생
+                            SoundManager.instance.PlaySE(22);
+
                             GameData.currentScore += 100000;
                             if (GameData.currentPower < 4.0f)
                             {
+                                // 효과음 재생
+                                SoundManager.instance.PlaySE(39);
+
                                 GameData.currentPower = 4.0f;
                                 // 풀 파워 메세지
                             }

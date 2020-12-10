@@ -37,9 +37,27 @@ public class PlayerBullet : MonoBehaviour
         {
             // 탄막 제거와 동시에 적에게 데미지를 가하기
             EnemyStatus enemyStatus = collision.gameObject.GetComponent<EnemyStatus>();
-            collision.gameObject.GetComponent<EnemyStatus>().SetEnemyCurrentHP
-                (collision.gameObject.GetComponent<EnemyStatus>().GetEnemyCurrentHP() -
-                (1.0f + GameData.currentPower) * (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1.0f : 0.5f));
+            enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyCurrentHP() -
+                ((1.0f + GameData.currentPower) * (gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1.0f : 0.5f)));
+
+            // 효과음 재생
+            if (enemyStatus.GetEnemyType().Equals(EnemyType.ENEMYTYPE_LMINION) || enemyStatus.GetEnemyType().Equals(EnemyType.ENEMYTYPE_BOSS))
+            {
+                if (enemyStatus.GetEnemyCurrentHPRate() < 0.1f)
+                {
+                    SoundManager.instance.PlaySE(12);
+                }
+                else
+                {
+                    SoundManager.instance.PlaySE(11);
+                }
+            }
+            else
+            {
+                SoundManager.instance.PlaySE(11);
+            }
+
+            // 플레이어 탄막 제거
             ClearPlayerBullet(gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1 : 2);
         }
         // 충돌 대상이 화면 바깥의 플레이어 탄막 제거 영역일 경우
