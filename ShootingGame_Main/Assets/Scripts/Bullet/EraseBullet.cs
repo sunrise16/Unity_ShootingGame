@@ -5,20 +5,12 @@ using UnityEngine;
 
 public class EraseBullet : MonoBehaviour
 {
-    private ObjectPool circleBullet;
-    private ObjectPool capsuleBullet;
-    private ObjectPool boxBullet;
-
     private Transform circleBulletParent;
     private Transform capsuleBulletParent;
     private Transform boxBulletParent;
 
     private void Start()
     {
-        circleBullet = GameObject.Find("BulletPool").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Circle").GetComponent<ObjectPool>();
-        capsuleBullet = GameObject.Find("BulletPool").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Capsule").GetComponent<ObjectPool>();
-        boxBullet = GameObject.Find("BulletPool").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Rectangle").GetComponent<ObjectPool>();
-
         circleBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Circle");
         capsuleBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Capsule");
         boxBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Rectangle");
@@ -50,15 +42,6 @@ public class EraseBullet : MonoBehaviour
             {
                 ClearBullet(collision.gameObject);
             }
-            // 충돌당한 오브젝트가 플레이어일 경우
-            else if (gameObject.CompareTag("PLAYER"))
-            {
-                PlayerStatus playerStatus = gameObject.GetComponent<PlayerStatus>();
-                if (playerStatus.GetSpriteOff().Equals(false))
-                {
-                    ClearBullet(collision.gameObject);
-                }
-            }
         }
         // 충돌당한 오브젝트가 전체 제거 영역일 경우 화면 전체 탄 소거 실행
         else if (gameObject.layer.Equals(LayerMask.NameToLayer("DESTROYZONE_ALL")) && collision.CompareTag("BULLET_ENEMY"))
@@ -68,7 +51,7 @@ public class EraseBullet : MonoBehaviour
     }
 
     // 탄막 제거 함수
-    private void ClearBullet(GameObject bullet)
+    public void ClearBullet(GameObject bullet)
     {
         if (bullet.GetComponent<CircleCollider2D>())
         {
@@ -90,7 +73,7 @@ public class EraseBullet : MonoBehaviour
     }
 
     // 탄막 전체 제거 함수 (제작중)
-    private void ClearBulletAll(GameObject bullet)
+    public void ClearBulletAll(GameObject bullet)
     {
 
     }

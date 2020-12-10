@@ -10,6 +10,10 @@ public class PlayerDie : MonoBehaviour
     private SpriteRenderer playerBodySprite;
     private SpriteRenderer playerHitPointSprite;
     private PlayerStatus playerStatus;
+
+    private Transform circleBulletParent;
+    private Transform capsuleBulletParent;
+    private Transform boxBulletParent;
     private Transform itemPool;
     private Transform itemParent;
 
@@ -22,6 +26,10 @@ public class PlayerDie : MonoBehaviour
         playerBodySprite = GetComponent<SpriteRenderer>();
         playerHitPointSprite = player.transform.Find("HitPoint").GetComponent<SpriteRenderer>();
         playerStatus = player.GetComponent<PlayerStatus>();
+
+        circleBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Circle");
+        capsuleBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Capsule");
+        boxBulletParent = GameObject.Find("BULLET").transform.Find("EnemyBullet").transform.Find("EnemyBullet_Rectangle");
         itemPool = GameObject.Find("ITEM").transform.Find("Item");
         itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
     }
@@ -31,6 +39,9 @@ public class PlayerDie : MonoBehaviour
         // 무적 상태가 아닌 상황에서 적 또는 적 탄막에 피격당했을 경우
         if ((collision.CompareTag("ENEMY") || collision.CompareTag("BULLET_ENEMY")) && playerStatus.GetInvincible().Equals(false))
         {
+            // 탄막 제거
+            ClearBullet(collision.gameObject);
+
             // 사망 처리
             StartCoroutine(PlayerDieStart());
         }
@@ -85,14 +96,16 @@ public class PlayerDie : MonoBehaviour
         playerStatus.SetBlinking(false);
     }
 
+    // 아이템 드랍 함수 (플레이어 피탄 시)
     private void ItemDrop()
     {
         GameObject item;
         Vector2 spawnPosition;
 
+        // 중 사이즈 파워 아이템 7개 드랍
         for (int i = 0; i < 7; i++)
         {
-            spawnPosition = new Vector2(transform.position.x + Random.Range(-0.4f, 0.4f), transform.position.y + Random.Range(0.0f, 0.4f));
+            spawnPosition = new Vector2(transform.position.x + Random.Range(-0.6f, 0.6f), transform.position.y + Random.Range(0.0f, 0.4f));
             item = itemPool.GetChild(0).gameObject;
             item.SetActive(true);
             item.transform.position = spawnPosition;
@@ -106,5 +119,27 @@ public class PlayerDie : MonoBehaviour
             boxCollider2D.size = new Vector2(0.15f, 0.15f);
             spriteRenderer.sprite = gameManager.itemSprite[2];
         }
+    }
+
+    // 탄막 제거 함수
+    public void ClearBullet(GameObject bullet)
+    {
+        if (bullet.GetComponent<CircleCollider2D>())
+        {
+            bullet.transform.SetParent(circleBulletParent);
+        }
+        else if (bullet.GetComponent<CapsuleCollider2D>())
+        {
+            bullet.transform.SetParent(capsuleBulletParent);
+        }
+        else if (bullet.GetComponent<BoxCollider2D>())
+        {
+            bullet.transform.SetParent(boxBulletParent);
+        }
+        bullet.transform.position = new Vector2(0.0f, 0.0f);
+        bullet.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        bullet.transform.localScale = new Vector3(1.8f, 1.8f, 1.0f);
+
+        bullet.SetActive(false);
     }
 }
