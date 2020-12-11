@@ -13,12 +13,6 @@ public class EnemyMove : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        // 적 스프라이트 애니메이션 조절
-        SetAnimatorTrigger(targetPosition);
-    }
-
     #region 적 이동
 
     // 지정 장소로 1회 이동
@@ -26,7 +20,9 @@ public class EnemyMove : MonoBehaviour
     {
         yield return null;
 
+        // 스프라이트 조절
         targetPosition = position;
+        SetAnimatorTrigger(targetPosition);
 
         // 이동 처리
         iTween.MoveTo(gameObject, iTween.Hash("position", position, "easetype", easeType, "time", moveTime));
@@ -38,7 +34,7 @@ public class EnemyMove : MonoBehaviour
         yield return null;
 
         // 스프라이트 조절
-        targetPosition = paths[paths.Length - 1];
+        StartCoroutine(SetAnimatorTrigger(paths));
 
         // 이동 처리
         iTween.MoveTo(gameObject, iTween.Hash("path", paths, "easetype", easeType, "time", moveTime));
@@ -49,7 +45,9 @@ public class EnemyMove : MonoBehaviour
     {
         yield return null;
         
+        // 스프라이트 조절
         targetPosition = positionFirst;
+        SetAnimatorTrigger(targetPosition);
 
         // 이동 1 처리
         iTween.MoveTo(gameObject, iTween.Hash("position", positionFirst, "easetype", easeType1, "time", moveTime1));
@@ -60,6 +58,7 @@ public class EnemyMove : MonoBehaviour
         {
             // 스프라이트 조절
             targetPosition = positionSecond;
+            SetAnimatorTrigger(targetPosition);
 
             // 이동 2 처리
             iTween.MoveTo(gameObject, iTween.Hash("position", positionSecond, "easetype", easeType2, "time", moveTime2));
@@ -70,21 +69,46 @@ public class EnemyMove : MonoBehaviour
 
     #region 애니메이터 트리거 설정
 
-    // 스프라이트 애미네이션 조절 함수
+    // 스프라이트 애니메이션 조절 함수 (패스 이동)
+    public IEnumerator SetAnimatorTrigger(Vector3[] paths)
+    {
+        int pathNumber = 1;
+        SetAnimatorTrigger(paths[pathNumber]);
+
+        while (transform.position.x == paths[paths.Length - 1].x && transform.position.y == paths[paths.Length - 1].y)
+        {
+            if (transform.position.x == paths[pathNumber].x && transform.position.y == paths[pathNumber].y)
+            {
+                SetAnimatorTrigger(paths[pathNumber]);
+                pathNumber++;
+            }
+            yield return null;
+        }
+    }
+    // 스프라이트 애니메이션 조절 함수 (단일 좌표 이동)
     public void SetAnimatorTrigger(Vector3 targetPosition)
     {
-        // 적의 현재 위치와 목적지간의 좌표값 차이에 따라 스프라이트 조절
+        // 적의 직전 위치와 현재 위치간의 좌표값 차이에 따라 스프라이트 조절
         if (transform.position.x > targetPosition.x)
         {
-            animator.SetTrigger("isLeftMove");
+            if (!animator.GetBool("isLeftMove").Equals(true))
+            {
+                animator.SetTrigger("isLeftMove");
+            }
         }
         else if (transform.position.x < targetPosition.x)
         {
-            animator.SetTrigger("isRightMove");
+            if (!animator.GetBool("isRightMove").Equals(true))
+            {
+                animator.SetTrigger("isRightMove");
+            }
         }
         else
         {
-            animator.SetTrigger("isIdle");
+            if (!animator.GetBool("isIdle").Equals(true))
+            {
+                animator.SetTrigger("isIdle");
+            }
         }
     }
 

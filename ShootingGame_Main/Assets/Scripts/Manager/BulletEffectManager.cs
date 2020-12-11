@@ -132,6 +132,7 @@ public class BulletEffectManager : MonoBehaviour
         switch (customPatternNumber)
         {
             case 1:
+                obj.AddComponent<BulletReaiming>();
                 break;
             default:
                 break;
@@ -214,6 +215,7 @@ public class BulletEffectManager : MonoBehaviour
         switch (customPatternNumber)
         {
             case 1:
+                obj.AddComponent<BulletReaiming>();
                 break;
             default:
                 break;
@@ -296,6 +298,7 @@ public class BulletEffectManager : MonoBehaviour
         switch (customPatternNumber)
         {
             case 1:
+                obj.AddComponent<BulletReaiming>();
                 break;
             default:
                 break;

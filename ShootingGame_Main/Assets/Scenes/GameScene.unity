@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 53951044}
   - component: {fileID: 53951043}
   - component: {fileID: 53951042}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: HitPoint
   m_TagString: PLAYER
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 169541925}
   - component: {fileID: 169541926}
   - component: {fileID: 169541927}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ITEMDESTROYZONE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4233,7 +4233,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -6057,9 +6057,9 @@ GameObject:
   - component: {fileID: 1173445013}
   - component: {fileID: 1173445015}
   - component: {fileID: 1173445014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ItemCircle
-  m_TagString: Untagged
+  m_TagString: PLAYER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6395,9 +6395,9 @@ GameObject:
   - component: {fileID: 1281519419}
   - component: {fileID: 1281519421}
   - component: {fileID: 1281519420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrazeCircle
-  m_TagString: Untagged
+  m_TagString: PLAYER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6636,7 +6636,7 @@ GameObject:
   - component: {fileID: 1309327074}
   - component: {fileID: 1309327076}
   - component: {fileID: 1309327078}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Body
   m_TagString: PLAYER
   m_Icon: {fileID: 0}
@@ -7271,7 +7271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1373285182}
   - component: {fileID: 1373285183}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: PLAYERBULLETDESTROYZONE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7285,7 +7285,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1373285181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.55, z: 0}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 589526824}
@@ -8256,7 +8256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645834042}
   - component: {fileID: 1645834041}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: AUTOCOLLECTZONE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8535,9 +8535,9 @@ GameObject:
   - component: {fileID: 1683560562}
   - component: {fileID: 1683560564}
   - component: {fileID: 1683560563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ItemCapsule
-  m_TagString: Untagged
+  m_TagString: PLAYER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11085,6 +11085,15 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 2a0a21a22f897414aa53edab276253d8, type: 2}
   - {fileID: 9100000, guid: ca7a1e380a7c6924580983ba7eacc9d2, type: 2}
   - {fileID: 9100000, guid: b00f8a5eb7f8c9c40afa266b129e01e6, type: 2}
+  - {fileID: 9100000, guid: 142fe3d6bd336474c83f6956a8920130, type: 2}
+  - {fileID: 9100000, guid: e7c6eba753b0bc545ba22709a778ad8c, type: 2}
+  - {fileID: 9100000, guid: e25bd7fa1cb6d8247be079548729860e, type: 2}
+  - {fileID: 9100000, guid: f7dbfb9bdb069744eba4b4e91cc3f0ea, type: 2}
+  - {fileID: 9100000, guid: 812ee069d040658438a9052f3486d41f, type: 2}
+  - {fileID: 9100000, guid: ed8b83f184da42549b339749ff86ff99, type: 2}
+  - {fileID: 9100000, guid: c68ff5061569c8e418352ef68b50e13b, type: 2}
+  - {fileID: 9100000, guid: 0d2acadd972482e4aa256bea65cf7014, type: 2}
+  - {fileID: 9100000, guid: a0ea49c22eb06bd4bbe11971be2547e2, type: 2}
 --- !u!1 &1923838438
 GameObject:
   m_ObjectHideFlags: 0

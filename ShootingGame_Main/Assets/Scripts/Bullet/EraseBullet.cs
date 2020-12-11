@@ -69,6 +69,10 @@ public class EraseBullet : MonoBehaviour
         bullet.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         bullet.transform.localScale = new Vector3(1.8f, 1.8f, 1.0f);
 
+        /// 커스텀 스크립트 추가 시 반드시 제거할 것 !!
+        Destroy(GetComponent<BulletReaiming>());
+        /// 커스텀 스크립트 추가 시 반드시 제거할 것 !!
+
         bullet.SetActive(false);
     }
 

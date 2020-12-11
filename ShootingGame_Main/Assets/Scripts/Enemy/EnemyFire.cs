@@ -7,7 +7,6 @@ public class EnemyFire : MonoBehaviour
 {
     private BulletEffectManager bulletEffectManager;
     private EnemyStatus enemyStatus;
-
     private GameObject player;
     private Transform[] bulletPool;
     private Transform[] bulletParent;
@@ -27,7 +26,6 @@ public class EnemyFire : MonoBehaviour
     {
         bulletEffectManager = GameObject.Find("MANAGER").transform.Find("BulletEffectManager").GetComponent<BulletEffectManager>();
         enemyStatus = GetComponent<EnemyStatus>();
-
         player = GameObject.Find("CHARACTER").transform.Find("Player").gameObject;
         bulletPool = new Transform[3];
         for (int i = 0; i < 3; i++)
@@ -66,48 +64,60 @@ public class EnemyFire : MonoBehaviour
     {
         int count = 0;
 
+        // 패턴 시작 전 최초 대기 시간
         yield return new WaitForSeconds(waitTime);
 
         while (true)
         {
             yield return null;
 
-            switch (GameData.gameDifficulty)
+            // 적이 카메라 영역 안에 있을 경우 (화면 바깥으로 벗어나지 않았을 때)
+            if (enemyStatus.GetScreenOut().Equals(false))
             {
-                case GameDifficulty.DIFFICULTY_EASY:
-                    // StartCoroutine(string.Format("Minion_Pattern{0}_Easy", enemyPatternNumber));
-                    break;
-                case GameDifficulty.DIFFICULTY_NORMAL:
-                    // StartCoroutine(string.Format("Minion_Pattern{0}_Normal", enemyPatternNumber));
-                    break;
-                case GameDifficulty.DIFFICULTY_HARD:
-                    // StartCoroutine(string.Format("Minion_Pattern{0}_Hard", enemyPatternNumber));
-                    break;
-                case GameDifficulty.DIFFICULTY_LUNATIC:
-                    StartCoroutine(MinionPattern_Lunatic(enemyPatternNumber, customPatternNumber));
-                    break;
-                case GameDifficulty.DIFFICULTY_EXTRA:
-                    // StartCoroutine(string.Format("Minion_Pattern{0}_Extra", enemyPatternNumber));
-                    break;
-                default:
-                    break;
+                // 난이도에 따라 패턴 코루틴 시작
+                switch (GameData.gameDifficulty)
+                {
+                    case GameDifficulty.DIFFICULTY_EASY:
+                        // StartCoroutine(string.Format("Minion_Pattern{0}_Easy", enemyPatternNumber));
+                        break;
+                    case GameDifficulty.DIFFICULTY_NORMAL:
+                        // StartCoroutine(string.Format("Minion_Pattern{0}_Normal", enemyPatternNumber));
+                        break;
+                    case GameDifficulty.DIFFICULTY_HARD:
+                        // StartCoroutine(string.Format("Minion_Pattern{0}_Hard", enemyPatternNumber));
+                        break;
+                    case GameDifficulty.DIFFICULTY_LUNATIC:
+                        StartCoroutine(MinionPattern_Lunatic(enemyPatternNumber, customPatternNumber));
+                        break;
+                    case GameDifficulty.DIFFICULTY_EXTRA:
+                        // StartCoroutine(string.Format("Minion_Pattern{0}_Extra", enemyPatternNumber));
+                        break;
+                    default:
+                        break;
+                }
             }
 
+            // 다음 탄막 발사 간 대기 시간
             yield return new WaitForSeconds(delayTime);
 
+            // 일정 시간 대기 후 패턴 반복 체크되어 있을 경우
             if (isPatternRepeat.Equals(true))
             {
+                // 탄막 발사 횟수 증가
                 count++;
 
+                // 탄막 발사 횟수가 특정 횟수에 도달했을 경우
                 if (count >= fireCount)
                 {
                     count = 0;
 
+                    // 패턴 1회만 반복 체크되어 있을 경우 패턴 종료
                     if (isPatternOnce.Equals(true))
                     {
                         break;
                     }
 
+                    // 다음 패턴 반복까지의 대기 시간
                     yield return new WaitForSeconds(repeatTime);
                 }
             }
@@ -136,6 +146,9 @@ public class EnemyFire : MonoBehaviour
                 break;
             case 4:
                 StartCoroutine(MinionPattern_Lunatic4(customPatternNumber));
+                break;
+            case 5:
+                // StartCoroutine(MinionPattern_Lunatic5(customPatternNumber));
                 break;
             default:
                 break;
@@ -226,9 +239,9 @@ public class EnemyFire : MonoBehaviour
                 customPatternNumber);
         }
     }
-
-    // 패턴 4
-    public IEnumerator MinionPattern_Lunatic4(int customPatternNumber = 0)
+    
+    // 패턴 4 (커스텀 스크립트 有)
+    public IEnumerator MinionPattern_Lunatic4(int customPatternNumber)
     {
         Vector2 bulletFirePosition = transform.position;
 
@@ -237,22 +250,23 @@ public class EnemyFire : MonoBehaviour
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
-        bulletEffectManager.CreateBulletFireEffect(effect, 4, 0.5f, 0.25f, 0.5f, bulletFirePosition);
+        bulletEffectManager.CreateBulletFireEffect(effect, 4, 0.6f, 0.18f, 0.6f, bulletFirePosition);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.18f);
 
         // 탄막 1 발사
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 8; i++)
         {
             GameObject bullet = bulletPool[1].GetChild(i).gameObject;
             bulletEffectManager.CapsuleBulletFire
                 (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-                bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110,
-                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL,
-                (i % 6 < 3) ? 7.0f - (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))) : 4.0f + (1.0f * (i % 3)) - ((0.8f * (i / 36)) - (0.2f * (i / 36))),
-                0.0f, 0.0f, 0.0f, 0.0f, false, false,
+                bulletParent[0], 0.02f, 0.055f, 0.0f, 0.0f, 1.0f, 88,
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 6.0f,
+                0.0f, 0.0f, 0.1f, 0.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
-                3, player.transform.position, 10.0f * i, customPatternNumber);
+                3, player.transform.position, 45.0f * i, customPatternNumber);
+
+            BulletReaimingSetting(bullet, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 3.0f, BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f, true, false, true, false);
         }
     }
 
@@ -269,6 +283,26 @@ public class EnemyFire : MonoBehaviour
     }
 
     #endregion
+
+    #endregion
+
+    #region 커스텀 스크립트 변수 설정
+
+    private void BulletReaimingSetting(GameObject bullet, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
+        BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
+        bool isPlayerAimed, bool isRandomAimed, bool isSpeedDown, bool isTimer)
+    {
+        BulletReaiming bulletReaiming = bullet.GetComponent<BulletReaiming>();
+        bulletReaiming.bulletSpeedState = bulletSpeedState;
+        bulletReaiming.bulletMoveSpeed = bulletMoveSpeed;
+        bulletReaiming.bulletRotateState = bulletRotateState;
+        bulletReaiming.bulletRotateSpeed = bulletRotateSpeed;
+        bulletReaiming.bulletRotateLimit = bulletRotateLimit;
+        bulletReaiming.isPlayerAimed = isPlayerAimed;
+        bulletReaiming.isRandomAimed = isRandomAimed;
+        bulletReaiming.isSpeedDown = isSpeedDown;
+        bulletReaiming.isTimer = isTimer;
+    }
 
     #endregion
 

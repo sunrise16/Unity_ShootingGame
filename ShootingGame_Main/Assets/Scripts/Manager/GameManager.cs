@@ -142,26 +142,25 @@ public class GameManager : MonoBehaviour
         int[] wave2Item1 = new int[11]{ 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         int[] wave2Item2 = new int[11] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         int[] wave2Item3 = new int[11] { 0, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
-        Vector3[] wave2SpawnPosition = new Vector3[12]
-            { new Vector3(0.0f, 5.0f), new Vector3(1.5f, 5.0f), new Vector3(-0.5f, 5.0f), new Vector3(2.5f, 5.0f), new Vector3(0.0f, 5.0f),
-                new Vector3(-1.5f, 5.0f), new Vector3(1.0f, 5.0f), new Vector3(-2.5f, 5.0f), new Vector3(2.0f, 5.0f), new Vector3(-2.0f, 5.0f),
-                new Vector3(0.5f, 5.0f), new Vector3(-1.0f, 5.0f)};
+        Vector3[] wave2SpawnPosition = new Vector3[10]
+            { new Vector3(-0.25f, 5.0f), new Vector3(0.25f, 5.0f), new Vector3(-0.75f, 5.0f), new Vector3(0.75f, 5.0f), new Vector3(-1.25f, 5.0f),
+                new Vector3(1.25f, 5.0f), new Vector3(-1.75f, 5.0f), new Vector3(1.75f, 5.0f), new Vector3(-2.25f, 5.0f), new Vector3(2.25f, 5.0f) };
         
-        StartCoroutine(Stage1_Wave2Pattern2(wave2Item3));
+        StartCoroutine(Stage1_Wave2Pattern1(wave2Item3));
         yield return new WaitForSeconds(3.0f);
-        StartCoroutine(Stage1_Wave2Pattern1(wave2Item1, wave2Item2, wave2SpawnPosition));
+        StartCoroutine(Stage1_Wave2Pattern2(wave2Item1, wave2Item2, wave2SpawnPosition));
 
         #endregion
 
-        yield return new WaitForSeconds(38.0f);
+        yield return new WaitForSeconds(14.5f);
         GameData.currentChapter++;
 
         #region Wave 3
 
         int[] wave3Item1 = new int[11] { 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         int[] wave3Item2 = new int[11] { 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-
+        
+        
 
         #endregion
 
@@ -271,42 +270,45 @@ public class GameManager : MonoBehaviour
     #region 스테이지 세부 적 생성 패턴
 
     #region 스테이지 1
-    
-    public IEnumerator Stage1_Wave2Pattern1(int[] item1, int[] item2, Vector3[] spawnPosition)
+
+    public IEnumerator Stage1_Wave2Pattern1(int[] item)
     {
         Vector3 wave2TargetPosition;
-
-        for (int i = 0; i < 12; i++)
-        {
-            wave2TargetPosition = new Vector3(spawnPosition[i].x, spawnPosition[i].y - 3.0f, 0.0f);
-
-            GameObject stage1MinionSmall = CreateMinion(spawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                0.2f, 5, EnemyType.ENEMYTYPE_SMINION, (i % 4 == 0) ? item2 : item1, 1, 10.0f, 2, 1.5f, 1.3f, true, true, 5, 0.0f, 0, true, 11.0f);
-            EnemyMove enemyMove = stage1MinionSmall.GetComponent<EnemyMove>();
-
-            StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, spawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 1.5f, 4.0f, 6.0f));
-
-            yield return new WaitForSeconds(1.2f);
-        }
-    }
-
-    public IEnumerator Stage1_Wave2Pattern2(int[] item)
-    {
-        Vector3 wave2TargetPosition;
-        Vector3[] wave2SpawnPosition = new Vector3[2] { new Vector3(-2.25f, 5.0f, 0.0f), new Vector3(2.25f, 5.0f, 0.0f) };
+        Vector3[] wave2SpawnPosition = new Vector3[2] { new Vector3(-2.125f, 5.0f, 0.0f), new Vector3(2.125f, 5.0f, 0.0f) };
 
         for (int i = 0; i < 2; i++)
         {
             wave2TargetPosition = new Vector3(wave2SpawnPosition[i].x, wave2SpawnPosition[i].y - 2.0f, 0.0f);
 
             GameObject stage1MinionLarge = CreateMinion(wave2SpawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
-                0.5f, 22, EnemyType.ENEMYTYPE_LMINION, item, i, 75.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, 0, true, 16.0f);
+                0.5f, 24, EnemyType.ENEMYTYPE_LMINION, item, i, 75.0f, 3, 2.0f, 1.25f, false, false, 0, 0.0f, 0, true, 14.0f);
             EnemyMove enemyMove = stage1MinionLarge.GetComponent<EnemyMove>();
 
-            StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 10.0f));
+            StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, wave2SpawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 2.0f, 4.0f, 8.0f));
         }
 
         yield return null;
+    }
+
+    public IEnumerator Stage1_Wave2Pattern2(int[] item1, int[] item2, Vector3[] spawnPosition)
+    {
+        Vector3 wave2TargetPosition;
+
+        for (int i = 0; i < 10; i++)
+        {
+            wave2TargetPosition = new Vector3(spawnPosition[i].x, spawnPosition[i].y - 3.0f, 0.0f);
+
+            GameObject stage1MinionSmall = CreateMinion(spawnPosition[i], "ENEMY", LayerMask.NameToLayer("ENEMY_BODY"), new Vector3(1.5f, 1.5f, 1.0f),
+                0.2f, 5, EnemyType.ENEMYTYPE_SMINION, (i % 4 == 0) ? item2 : item1, 1, 10.0f, 2, 1.5f, 1.3f, true, true, 5, 0.0f, 0, true, 9.0f);
+            EnemyMove enemyMove = stage1MinionSmall.GetComponent<EnemyMove>();
+
+            StartCoroutine(enemyMove.EnemyMoveTwice(wave2TargetPosition, spawnPosition[i], iTween.EaseType.easeOutQuart, iTween.EaseType.easeInQuad, 1.5f, 3.0f, 4.5f));
+
+            if ((i % 2).Equals(1))
+            {
+                yield return new WaitForSeconds(1.2f);
+            }
+        }
     }
 
     #endregion
