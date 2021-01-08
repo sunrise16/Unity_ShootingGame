@@ -10,12 +10,14 @@ public class EnemyStatus : MonoBehaviour
     private EnemyType enemyType;
 
     private int[] enemyItem = new int[11];              // 적이 드랍하는 아이템 배열
-    private int enemyNumber;                            // 적 분류 번호
+    private int enemyNumber;                            // 적 분류 번호 (일반)
+    private int enemyBossNumber;                        // 적 분류 번호 (보스)
 
     private float enemyCurrentHP;                       // 적의 현재 체력
     private float enemyMaxHP;                           // 적의 최대 체력
 
-    public bool isScreenOut;                           // 적이 화면 밖으로 벗어났는지 체크
+    private bool isCounter;                             // 사망 시 반격탄 발사 체크
+    private bool isScreenOut;                           // 적이 화면 밖으로 벗어났는지 체크
 
     private void Start()
     {
@@ -64,6 +66,11 @@ public class EnemyStatus : MonoBehaviour
         return enemyNumber;
     }
 
+    public int GetEnemyBossNumber()
+    {
+        return enemyBossNumber;
+    }
+
     public float GetEnemyCurrentHP()
     {
         return enemyCurrentHP;
@@ -72,6 +79,11 @@ public class EnemyStatus : MonoBehaviour
     public float GetEnemyMaxHP()
     {
         return enemyMaxHP;
+    }
+
+    public bool GetCounter()
+    {
+        return isCounter;
     }
 
     public bool GetScreenOut()
@@ -87,6 +99,11 @@ public class EnemyStatus : MonoBehaviour
     public void SetEnemyNumber(int number)
     {
         enemyNumber = number;
+    }
+
+    public void SetEnemyBossNumber(int number)
+    {
+        enemyBossNumber = number;
     }
 
     public void SetEnemyItem(int[] itemArray)
@@ -105,6 +122,11 @@ public class EnemyStatus : MonoBehaviour
     public void SetEnemyMaxHP(float targetHP)
     {
         enemyMaxHP = targetHP;
+    }
+
+    public void SetCounter(bool counter)
+    {
+        isCounter = counter;
     }
 
     public void SetScreenOut(bool screenOut)

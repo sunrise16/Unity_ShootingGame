@@ -41,6 +41,7 @@ using UnityEngine;
 //  * (Index 414 ~ 429) 무빙 레이저탄 (꼬리 1) : Box Collider 2D, Size X 0.56, Y 0.04
 //  * (Index 430 ~ 445) 무빙 레이저탄 (꼬리 2) : Box Collider 2D, Size X 0.52, Y 0.04, Offset X -0.02, Y 0
 //  * (Index 446 ~ 461) 무빙 레이저탄 (전체)   : Box Collider 2D, Size X 2.3, Y 0.04
+//  * (Index 462 ~ 477) 도깨비불탄             : Circle Collider 2D, Radius 0.05, Offset X 0, Y 0.03
 
 #endregion
 
@@ -57,10 +58,10 @@ public class BulletEffectManager : MonoBehaviour
 
     #region 탄막 관련
 
-    // 원형 판정 탄막 발사 함수
+    // 원형 판정 탄막 발사 함수 (스프라이트 회전 X)
     public void CircleBulletFire
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
-        Transform bulletParent, float circleColliderRadius, float spriteAlpha, int spriteNumber,
+        Transform bulletParent, float circleColliderRadius, float circleColliderOffsetX, float circleColliderOffsetY, float spriteAlpha, int spriteNumber, bool isAnimation, int animatorNumber,
         BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
         float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
@@ -74,6 +75,7 @@ public class BulletEffectManager : MonoBehaviour
         ObjectRotate objectRotate = obj.GetComponent<ObjectRotate>();
         CircleCollider2D circleCollider2D = obj.GetComponent<CircleCollider2D>();
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        Animator animator = obj.GetComponent<Animator>();
         Rigidbody2D rigidbody2D = obj.GetComponent<Rigidbody2D>();
         bulletState.bulletObject = obj;
         bulletState.bulletNumber = bulletNumber;
@@ -82,8 +84,17 @@ public class BulletEffectManager : MonoBehaviour
         obj.transform.localScale = bulletScale;
         obj.transform.SetParent(bulletParent);
         circleCollider2D.radius = circleColliderRadius;
+        circleCollider2D.offset = new Vector2(circleColliderOffsetX, circleColliderOffsetY);
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, spriteAlpha);
         spriteRenderer.sprite = gameManager.bulletSprite[spriteNumber];
+        if (isAnimation.Equals(true))
+        {
+            animator.runtimeAnimatorController = gameManager.bulletAnimatorController[animatorNumber];
+        }
+        else
+        {
+            animator.runtimeAnimatorController = null;
+        }
         bulletState.bulletType = bulletType;
         bulletState.targetObject = targetObject;
         bulletState.isGrazed = false;
@@ -139,11 +150,11 @@ public class BulletEffectManager : MonoBehaviour
         }
     }
 
-    // 캡슐형 판정 탄막 발사 함수
+    // 캡슐형 판정 탄막 발사 함수 (스프라이트 회전 X)
     public void CapsuleBulletFire
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float capsuleColliderSizeX, float capsuleColliderSizeY, float capsuleColliderOffsetX, float capsuleColliderOffsetY,
-        float spriteAlpha, int spriteNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
+        float spriteAlpha, int spriteNumber, bool isAnimation, int animatorNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
         float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int customPatternNumber = 0, bool isSpriteRotate = false,
@@ -156,6 +167,7 @@ public class BulletEffectManager : MonoBehaviour
         ObjectRotate objectRotate = obj.GetComponent<ObjectRotate>();
         CapsuleCollider2D capsuleCollider2D = obj.GetComponent<CapsuleCollider2D>();
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        Animator animator = obj.GetComponent<Animator>();
         Rigidbody2D rigidbody2D = obj.GetComponent<Rigidbody2D>();
         bulletState.bulletObject = obj;
         bulletState.bulletNumber = bulletNumber;
@@ -167,6 +179,14 @@ public class BulletEffectManager : MonoBehaviour
         capsuleCollider2D.offset = new Vector2(capsuleColliderOffsetX, capsuleColliderOffsetY);
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, spriteAlpha);
         spriteRenderer.sprite = gameManager.bulletSprite[spriteNumber];
+        if (isAnimation.Equals(true))
+        {
+            animator.runtimeAnimatorController = gameManager.bulletAnimatorController[animatorNumber];
+        }
+        else
+        {
+            animator.runtimeAnimatorController = null;
+        }
         bulletState.bulletType = bulletType;
         bulletState.targetObject = targetObject;
         bulletState.isGrazed = false;
@@ -222,11 +242,11 @@ public class BulletEffectManager : MonoBehaviour
         }
     }
 
-    // 사각형 판정 탄막 발사 함수
+    // 사각형 판정 탄막 발사 함수 (스프라이트 회전 X)
     public void BoxBulletFire
         (GameObject obj, int bulletNumber, int bulletLayer, Vector2 bulletFirePosition, Vector3 bulletScale,
         Transform bulletParent, float boxColliderSizeX, float boxColliderSizeY, float boxColliderOffsetX, float boxColliderOffsetY,
-        float spriteAlpha, int spriteNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
+        float spriteAlpha, int spriteNumber, bool isAnimation, int animatorNumber, BulletType bulletType, GameObject targetObject, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
         float bulletAccelerationMoveSpeed, float bulletAccelerationMoveSpeedMax, float bulletDecelerationMoveSpeed, float bulletDecelerationMoveSpeedMin, bool bulletMoveSpeedLoopBool, bool bulletMoveSpeedLoopOnceBool,
         BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         int bulletDestinationType, Vector2 targetPosition, float addRotateAngle, int customPatternNumber = 0, bool isSpriteRotate = false,
@@ -239,6 +259,7 @@ public class BulletEffectManager : MonoBehaviour
         ObjectRotate objectRotate = obj.GetComponent<ObjectRotate>();
         BoxCollider2D boxCollider2D = obj.GetComponent<BoxCollider2D>();
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        Animator animator = obj.GetComponent<Animator>();
         Rigidbody2D rigidbody2D = obj.GetComponent<Rigidbody2D>();
         bulletState.bulletObject = obj;
         bulletState.bulletNumber = bulletNumber;
@@ -250,6 +271,14 @@ public class BulletEffectManager : MonoBehaviour
         boxCollider2D.offset = new Vector2(boxColliderOffsetX, boxColliderOffsetY);
         spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, spriteAlpha);
         spriteRenderer.sprite = gameManager.bulletSprite[spriteNumber];
+        if (isAnimation.Equals(true))
+        {
+            animator.runtimeAnimatorController = gameManager.bulletAnimatorController[animatorNumber];
+        }
+        else
+        {
+            animator.runtimeAnimatorController = null;
+        }
         bulletState.bulletType = bulletType;
         bulletState.targetObject = targetObject;
         bulletState.isGrazed = false;

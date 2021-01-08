@@ -17,6 +17,7 @@ public class BulletReaiming : MonoBehaviour
     [HideInInspector] public BulletRotateState bulletRotateState;   // 재조준 시의 탄막 회전 속성 변화값
 
     [HideInInspector] public int repeatCount;                       // 재조준 반복 횟수
+    [HideInInspector] public int soundNumber;                       // 재조준 시 출력할 탄막 발사 사운드
 
     [HideInInspector] public float waitTime;                        // 탄막 변화 대기 시간
     [HideInInspector] public float bulletMoveSpeed;                 // 재조준 시의 탄막 속도
@@ -49,6 +50,9 @@ public class BulletReaiming : MonoBehaviour
 
                 if (bulletState.bulletMoveSpeed <= 0.0f)
                 {
+                    // 효과음 재생
+                    SoundManager.instance.PlaySE(soundNumber);
+
                     if (isPlayerAimed.Equals(true))
                     {
                         targetPosition = playerPosition.position;

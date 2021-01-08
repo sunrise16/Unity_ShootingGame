@@ -57,6 +57,9 @@ public class PlayerBullet : MonoBehaviour
                 SoundManager.instance.PlaySE(11);
             }
 
+            // 점수 증가
+            GameData.currentScore += 10;
+
             // 플레이어 탄막 제거
             ClearPlayerBullet(gameObject.layer.Equals(LayerMask.NameToLayer("BULLET_PLAYER_PRIMARY")) ? 1 : 2);
         }

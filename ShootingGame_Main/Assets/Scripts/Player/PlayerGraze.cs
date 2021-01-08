@@ -27,7 +27,7 @@ public class PlayerGraze : MonoBehaviour
 
                 bulletState.isGrazed = true;
                 GameData.currentGraze++;
-                GameData.currentScore += (10 * GameData.currentGraze);
+                GameData.currentScore += 10;
             }
         }
     }

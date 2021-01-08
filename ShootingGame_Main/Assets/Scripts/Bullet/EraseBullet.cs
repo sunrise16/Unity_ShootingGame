@@ -53,6 +53,7 @@ public class EraseBullet : MonoBehaviour
     // 탄막 제거 함수
     public void ClearBullet(GameObject bullet)
     {
+        Animator animator = bullet.GetComponent<Animator>();
         if (bullet.GetComponent<CircleCollider2D>())
         {
             bullet.transform.SetParent(circleBulletParent);
@@ -68,6 +69,7 @@ public class EraseBullet : MonoBehaviour
         bullet.transform.position = new Vector2(0.0f, 0.0f);
         bullet.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         bullet.transform.localScale = new Vector3(1.8f, 1.8f, 1.0f);
+        animator.runtimeAnimatorController = null;
 
         /// 커스텀 스크립트 추가 시 반드시 제거할 것 !!
         Destroy(GetComponent<BulletReaiming>());

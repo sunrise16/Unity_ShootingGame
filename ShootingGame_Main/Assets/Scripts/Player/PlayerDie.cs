@@ -55,6 +55,7 @@ public class PlayerDie : MonoBehaviour
 
         playerStatus.SetInvincible(true);
         playerStatus.SetSpriteOff(true);
+        playerStatus.SetRespawn(true);
         playerBodySprite.enabled = false;
         playerHitPointSprite.enabled = false;
         GameData.currentPower -= 1.0f;
@@ -70,7 +71,6 @@ public class PlayerDie : MonoBehaviour
             itemStatus.SetPlayerFind(false);
         }
         ItemDrop();
-        player.transform.position = new Vector3(0.0f, -5.0f, 0.0f);
 
         yield return new WaitForSeconds(1.0f);
 
@@ -82,11 +82,11 @@ public class PlayerDie : MonoBehaviour
         {
             GameData.currentPlayerLife--;
         }
+        player.transform.position = new Vector3(0.0f, -5.0f, 0.0f);
         playerBodySprite.enabled = true;
         playerHitPointSprite.enabled = true;
         iTween.MoveTo(player.gameObject, iTween.Hash("position", new Vector3(0.0f, -3.5f, 0.0f), "easetype", iTween.EaseType.linear, "time", 1.0f));
         playerStatus.SetSpriteOff(false);
-        playerStatus.SetRespawn(true);
         playerStatus.SetBlinking(true);
 
         yield return new WaitForSeconds(1.0f);
@@ -125,7 +125,7 @@ public class PlayerDie : MonoBehaviour
     }
 
     // 탄막 제거 함수
-    public void ClearBullet(GameObject bullet)
+    private void ClearBullet(GameObject bullet)
     {
         if (bullet.GetComponent<CircleCollider2D>())
         {

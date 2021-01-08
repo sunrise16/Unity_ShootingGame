@@ -14,6 +14,7 @@ public class EnemyFire : MonoBehaviour
     private Transform effectParent;
 
     private int enemyPatternNumber;
+    private int enemyCounterPatternNumber;
     private float enemyAttackWaitTime;
     private float enemyAttackDelayTime;
     private bool isPatternOnce;
@@ -39,7 +40,7 @@ public class EnemyFire : MonoBehaviour
         }
         effectPool = GameObject.Find("EFFECT").transform.Find("Effect");
         effectParent = GameObject.Find("EFFECT").transform.Find("Effect_Temp");
-
+        
         switch (enemyStatus.GetEnemyType())
         {
             case EnemyType.ENEMYTYPE_SMINION:
@@ -49,7 +50,7 @@ public class EnemyFire : MonoBehaviour
                 break;
             case EnemyType.ENEMYTYPE_BOSS:
                 // 임시
-                StartCoroutine(EnemyBossAttack());
+                StartCoroutine(EnemyBossAttack(enemyPatternNumber, enemyAttackWaitTime, enemyAttackDelayTime, isPatternRepeat, enemyFireCount, enemyAttackRepeatTime, enemyCustomPatternNumber));
                 break;
             default:
                 break;
@@ -87,7 +88,7 @@ public class EnemyFire : MonoBehaviour
                         // StartCoroutine(string.Format("Minion_Pattern{0}_Hard", enemyPatternNumber));
                         break;
                     case GameDifficulty.DIFFICULTY_LUNATIC:
-                        StartCoroutine(MinionPattern_Lunatic(enemyPatternNumber, customPatternNumber));
+                        StartCoroutine(MinionPattern_Lunatic(enemyPatternNumber, count, customPatternNumber));
                         break;
                     case GameDifficulty.DIFFICULTY_EXTRA:
                         // StartCoroutine(string.Format("Minion_Pattern{0}_Extra", enemyPatternNumber));
@@ -126,7 +127,7 @@ public class EnemyFire : MonoBehaviour
 
     #region Lunatic
 
-    public IEnumerator MinionPattern_Lunatic(int enemyPatternNumber, int customPatternNumber = 0)
+    public IEnumerator MinionPattern_Lunatic(int enemyPatternNumber, int fireCount = 0, int customPatternNumber = 0)
     {
         switch (enemyPatternNumber)
         {
@@ -175,7 +176,7 @@ public class EnemyFire : MonoBehaviour
         GameObject bullet = bulletPool[0].GetChild(0).gameObject;
         bulletEffectManager.CircleBulletFire
             (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-            bulletParent[0], 0.04f, 1.0f, 20,
+            bulletParent[0], 0.04f, 0.0f, 0.0f, 1.0f, 20, false, 0,
             BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_ACCELERATING, 4.0f,
             0.1f, 7.0f, 0.0f, 0.0f, false, false,
             BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
@@ -202,7 +203,7 @@ public class EnemyFire : MonoBehaviour
             GameObject bullet = bulletPool[0].GetChild(i).gameObject;
             bulletEffectManager.CircleBulletFire
                 (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-                bulletParent[0], 0.03f, 1.0f, 35,
+                bulletParent[0], 0.03f, 0.0f, 0.0f, 1.0f, 35, false, 0,
                 BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 12.0f,
                 0.0f, 0.0f, 1.0f, 3.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
@@ -230,7 +231,7 @@ public class EnemyFire : MonoBehaviour
             GameObject bullet = bulletPool[1].GetChild(i).gameObject;
             bulletEffectManager.CapsuleBulletFire
                 (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-                bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110,
+                bulletParent[1], 0.04f, 0.06f, 0.0f, 0.0f, 1.0f, 110, false, 0,
                 BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL,
                 7.0f - (1.5f * (i % 2)),
                 0.0f, 0.0f, 0.0f, 0.0f, false, false,
@@ -246,7 +247,7 @@ public class EnemyFire : MonoBehaviour
         Vector2 bulletFirePosition = transform.position;
 
         // 효과음 재생
-        SoundManager.instance.PlaySE(23);
+        SoundManager.instance.PlaySE(42);
 
         // 탄막 1 이펙트
         GameObject effect = effectPool.GetChild(0).gameObject;
@@ -260,13 +261,14 @@ public class EnemyFire : MonoBehaviour
             GameObject bullet = bulletPool[1].GetChild(i).gameObject;
             bulletEffectManager.CapsuleBulletFire
                 (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
-                bulletParent[0], 0.02f, 0.055f, 0.0f, 0.0f, 1.0f, 88,
+                bulletParent[0], 0.02f, 0.055f, 0.0f, 0.0f, 1.0f, 88, false, 0,
                 BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_DECELERATING, 6.0f,
-                0.0f, 0.0f, 0.1f, 0.0f, false, false,
+                0.0f, 0.0f, 0.2f, 0.0f, false, false,
                 BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
                 3, player.transform.position, 45.0f * i, customPatternNumber);
 
-            BulletReaimingSetting(bullet, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 3.0f, BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f, true, false, true, false);
+            BulletReaimingSetting(bullet, 0, 23, 0.0f, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 3.0f, BulletRotateState.BULLETROTATESTATE_NONE,
+                0.0f, 0.0f, true, false, true, false);
         }
     }
 
@@ -276,10 +278,190 @@ public class EnemyFire : MonoBehaviour
 
     #region 보스 패턴
 
-    public IEnumerator EnemyBossAttack()
+    public IEnumerator EnemyBossAttack(int enemyPatternNumber, float waitTime, float delayTime, bool isPatternRepeat, int fireCount, float repeatTime, int customPatternNumber)
     {
-        // 임시
-        return null;
+        int count = 0;
+
+        // 패턴 시작 전 최초 대기 시간
+        yield return new WaitForSeconds(waitTime);
+
+        while (true)
+        {
+            yield return null;
+
+            // 적이 카메라 영역 안에 있을 경우 (화면 바깥으로 벗어나지 않았을 때)
+            if (enemyStatus.GetScreenOut().Equals(false))
+            {
+                // 난이도에 따라 패턴 코루틴 시작
+                switch (GameData.gameDifficulty)
+                {
+                    case GameDifficulty.DIFFICULTY_EASY:
+                        break;
+                    case GameDifficulty.DIFFICULTY_NORMAL:
+                        break;
+                    case GameDifficulty.DIFFICULTY_HARD:
+                        break;
+                    case GameDifficulty.DIFFICULTY_LUNATIC:
+                        StartCoroutine(BossPattern_Lunatic(enemyPatternNumber, count, customPatternNumber));
+                        break;
+                    case GameDifficulty.DIFFICULTY_EXTRA:
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // 다음 탄막 발사 간 대기 시간
+            yield return new WaitForSeconds(delayTime);
+
+            // 일정 시간 대기 후 패턴 반복 체크되어 있을 경우
+            if (isPatternRepeat.Equals(true))
+            {
+                // 탄막 발사 횟수 증가
+                count++;
+
+                // 탄막 발사 횟수 제한이 -1로 설정되어 있을 경우 count 증가 무한 반복
+                if (!fireCount.Equals(-1))
+                {
+                    // 탄막 발사 횟수가 특정 횟수에 도달했을 경우
+                    if (count >= fireCount)
+                    {
+                        count = 0;
+
+                        // 패턴 1회만 반복 체크되어 있을 경우 패턴 종료
+                        if (isPatternOnce.Equals(true))
+                        {
+                            break;
+                        }
+
+                        // 다음 패턴 반복까지의 대기 시간
+                        yield return new WaitForSeconds(repeatTime);
+                    }
+                }
+            }
+        }
+    }
+
+    #region Lunatic
+
+    public IEnumerator BossPattern_Lunatic(int enemyPatternNumber, int fireCount = 0, int customPatternNumber = 0)
+    {
+        switch (enemyPatternNumber)
+        {
+            case 1:
+                StartCoroutine(BossPattern_Lunatic1(fireCount, customPatternNumber));
+                break;
+            default:
+                break;
+        }
+
+        yield return null;
+    }
+
+    // 패턴 1
+    public IEnumerator BossPattern_Lunatic1(int fireCount, int customPatternNumber = 0)
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 효과음 재생
+        SoundManager.instance.PlaySE(23);
+
+        // 탄막 1 이펙트
+        GameObject effect = effectPool.GetChild(0).gameObject;
+        bulletEffectManager.CreateBulletFireEffect(effect, 1, 0.45f, 0.15f, 0.45f, bulletFirePosition, 4.0f, 4.0f);
+
+        yield return new WaitForSeconds(0.15f);
+
+        // 탄막 1 발사
+        for (int i = 0; i < 8; i++)
+        {
+            GameObject bullet = bulletPool[0].GetChild(0).gameObject;
+            bulletEffectManager.CircleBulletFire
+                (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER2"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+                bulletParent[0], 0.04f, 0.0f, 0.03f, 1.0f, 462, true, 0,
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, 3.0f + (1.0f * (i % 4)),
+                0.0f, 0.0f, 0.0f, 0.0f, false, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                1, new Vector2(transform.position.x, transform.position.y - 5.0f), i < 4 ? 2.0f + (7.0f * fireCount) : -2.0f + (-7.0f * fireCount), customPatternNumber);
+        }
+
+        if ((fireCount % 6).Equals(0))
+        {
+            // 탄막 2 발사
+            for (int i = 0; i < 32; i++)
+            {
+                GameObject bullet = bulletPool[0].GetChild(0).gameObject;
+                bulletEffectManager.CircleBulletFire
+                    (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+                    bulletParent[1], 0.02f, 0.0f, 0.0f, 1.0f, 267, false, 0,
+                    BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, i < 16 ? 6.5f : 5.0f,
+                    0.0f, 0.0f, 0.0f, 0.0f, false, false,
+                    BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                    3, player.transform.position, 22.5f * (i % 16) + (11.25f * (i / 16)), customPatternNumber);
+            }
+        }
+    }
+
+    #endregion
+
+    #endregion
+
+    #region 반격탄 패턴
+
+    public void EnemyCounter(int counterPatternNumber)
+    {
+        switch (counterPatternNumber)
+        {
+            case 1:
+                switch (GameData.gameDifficulty)
+                {
+                    case GameDifficulty.DIFFICULTY_EASY:
+                        break;
+                    case GameDifficulty.DIFFICULTY_NORMAL:
+                        break;
+                    case GameDifficulty.DIFFICULTY_HARD:
+                        break;
+                    case GameDifficulty.DIFFICULTY_LUNATIC:
+                        StartCoroutine(EnemyCounter_Pattern1_Lunatic());
+                        break;
+                    case GameDifficulty.DIFFICULTY_EXTRA:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    #region Lunatic
+
+    private IEnumerator EnemyCounter_Pattern1_Lunatic()
+    {
+        Vector2 bulletFirePosition = transform.position;
+
+        // 효과음 재생
+        SoundManager.instance.PlaySE(42);
+
+        // 탄막 1 이펙트
+        GameObject effect = effectPool.GetChild(0).gameObject;
+        bulletEffectManager.CreateBulletFireEffect(effect, 5, 0.65f, 0.15f, 0.65f, bulletFirePosition);
+
+        yield return new WaitForSeconds(0.15f);
+
+        // 탄막 1 발사
+        for (int i = 0; i < 28; i++)
+        {
+            GameObject bullet = bulletPool[0].GetChild(i).gameObject;
+            bulletEffectManager.CircleBulletFire
+                (bullet, 0, LayerMask.NameToLayer("BULLET_ENEMY_INNER1"), bulletFirePosition, new Vector3(1.8f, 1.8f, 1.0f),
+                bulletParent[1], 0.02f, 0.0f, 0.0f, 1.0f, (i % 4) + 6, false, 0,
+                BulletType.BULLETTYPE_NORMAL, player, BulletSpeedState.BULLETSPEEDSTATE_NORMAL, Random.Range(4.0f, 8.0f),
+                0.0f, 0.0f, 0.0f, 0.0f, false, false,
+                BulletRotateState.BULLETROTATESTATE_NONE, 0.0f, 0.0f,
+                2, player.transform.position, 0.0f);
+        }
     }
 
     #endregion
@@ -288,11 +470,14 @@ public class EnemyFire : MonoBehaviour
 
     #region 커스텀 스크립트 변수 설정
 
-    private void BulletReaimingSetting(GameObject bullet, BulletSpeedState bulletSpeedState, float bulletMoveSpeed,
-        BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
+    private void BulletReaimingSetting(GameObject bullet, int repeatCount, int soundNumber, float waitTime,
+        BulletSpeedState bulletSpeedState, float bulletMoveSpeed, BulletRotateState bulletRotateState, float bulletRotateSpeed, float bulletRotateLimit,
         bool isPlayerAimed, bool isRandomAimed, bool isSpeedDown, bool isTimer)
     {
         BulletReaiming bulletReaiming = bullet.GetComponent<BulletReaiming>();
+        bulletReaiming.repeatCount = repeatCount;
+        bulletReaiming.soundNumber = soundNumber;
+        bulletReaiming.waitTime = waitTime;
         bulletReaiming.bulletSpeedState = bulletSpeedState;
         bulletReaiming.bulletMoveSpeed = bulletMoveSpeed;
         bulletReaiming.bulletRotateState = bulletRotateState;
@@ -306,11 +491,18 @@ public class EnemyFire : MonoBehaviour
 
     #endregion
 
+    #endregion
+
     #region GET, SET
 
     public int GetEnemyPatternNumber()
     {
         return enemyPatternNumber;
+    }
+
+    public int GetEnemyCounterPatternNumber()
+    {
+        return enemyCounterPatternNumber;
     }
 
     public float GetEnemyAttackWaitTime()
@@ -351,6 +543,11 @@ public class EnemyFire : MonoBehaviour
     public void SetEnemyPatternNumber(int number)
     {
         enemyPatternNumber = number;
+    }
+
+    public void SetEnemyCounterPatternNumber(int number)
+    {
+        enemyCounterPatternNumber = number;
     }
 
     public void SetEnemyAttackWaitTime(float time)

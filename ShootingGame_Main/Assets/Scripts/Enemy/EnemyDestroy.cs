@@ -9,6 +9,8 @@ public class EnemyDestroy : MonoBehaviour
     private EnemyStatus enemyStatus;
     private EnemyFire enemyFire;
     private EnemyMove enemyMove;
+    private CircleCollider2D circleCollider2D;
+    private Animator animator;
     private Transform enemyParent;
     private Transform itemPool;
     private Transform itemParent;
@@ -19,6 +21,8 @@ public class EnemyDestroy : MonoBehaviour
         enemyStatus = GetComponent<EnemyStatus>();
         enemyFire = GetComponent<EnemyFire>();
         enemyMove = GetComponent<EnemyMove>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
+        animator = GetComponent<Animator>();
         enemyParent = GameObject.Find("CHARACTER").transform.Find("Enemy");
         itemPool = GameObject.Find("ITEM").transform.Find("Item");
         itemParent = GameObject.Find("ITEM").transform.Find("Item_Temp");
@@ -33,17 +37,22 @@ public class EnemyDestroy : MonoBehaviour
             StopAllCoroutines();
             enemyFire.StopAllCoroutines();
             enemyMove.StopAllCoroutines();
-            
+
+            // 반격탄 발사 설정이 되어있을 경우
+            if (enemyStatus.GetCounter().Equals(true))
+            {
+                enemyFire.EnemyCounter(enemyFire.GetEnemyCounterPatternNumber());
+            }
+
             // 적 제거 실행
-            Destroy(false);
+            StartCoroutine(Destroy(false));
+            enemyStatus.SetEnemyCurrentHP(1.0f);
         }
     }
 
     // 적 제거 함수
-    public void Destroy(bool autoDestroy)
+    public IEnumerator Destroy(bool autoDestroy)
     {
-        EnemyStatus enemyStatus = GetComponent<EnemyStatus>();
-
         // 아이템 드랍 (적이 자동으로 제거되지 않고 플레이어의 탄에 죽은 경우)
         if (autoDestroy.Equals(false))
         {
@@ -59,16 +68,15 @@ public class EnemyDestroy : MonoBehaviour
             }
         }
 
+        // 충돌 판정 및 스프라이트 애니메이션 비활성화
+        circleCollider2D.radius = 0.5f;
+        circleCollider2D.enabled = false;
+        animator.runtimeAnimatorController = null;
+
+        yield return new WaitForSeconds(1.5f);
+
         // 적의 상태, 위치값 등의 정보 초기화
-        enemyStatus.SetEnemyType(EnemyType.ENEMYTYPE_NONE);
-        enemyStatus.SetEnemyMaxHP(1.0f);
-        enemyStatus.SetEnemyCurrentHP(enemyStatus.GetEnemyMaxHP());
-        transform.position = new Vector2(0.0f, 0.0f);
-        gameObject.layer = LayerMask.NameToLayer("Default");
-        transform.SetParent(enemyParent);
-        transform.localScale = new Vector3(1.5f, 1.5f, 1.0f);
-        GetComponent<CircleCollider2D>().radius = 0.5f;
-        GetComponent<Animator>().runtimeAnimatorController = null;
+        InitEnemyState();
 
         // 비활성화
         gameObject.SetActive(false);
@@ -79,7 +87,36 @@ public class EnemyDestroy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        Destroy(true);
+        if (gameObject.activeSelf.Equals(true))
+        {
+            StartCoroutine(Destroy(true));
+        }
+    }
+
+    // 적 정보 초기화 함수
+    private void InitEnemyState()
+    {
+        enemyStatus.SetEnemyType(EnemyType.ENEMYTYPE_NONE);
+        enemyStatus.SetEnemyNumber(0);
+        enemyStatus.SetEnemyCurrentHP(1.0f);
+        enemyStatus.SetEnemyMaxHP(1.0f);
+        enemyStatus.SetCounter(false);
+        enemyStatus.SetScreenOut(false);
+
+        enemyFire.SetEnemyPatternNumber(0);
+        enemyFire.SetEnemyCounterPatternNumber(0);
+        enemyFire.SetEnemyAttackWaitTime(0.0f);
+        enemyFire.SetEnemyAttackDelayTime(0.0f);
+        enemyFire.SetEnemyPatternOnce(false);
+        enemyFire.SetEnemyPatternRepeat(false);
+        enemyFire.SetEnemyFireCount(0);
+        enemyFire.SetEnemyAttackRepeatTime(0.0f);
+        enemyFire.SetEnemyCustomPatternNumber(0);
+
+        transform.SetParent(enemyParent);
+        transform.position = new Vector2(0.0f, 0.0f);
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
     // 아이템 드랍 함수

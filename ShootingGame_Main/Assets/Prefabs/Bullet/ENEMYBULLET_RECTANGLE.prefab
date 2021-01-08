@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114803365494627038}
   - component: {fileID: 114453984817892346}
   - component: {fileID: 114748641119001634}
+  - component: {fileID: 95444140705577398}
   m_Layer: 0
   m_Name: EnemyBullet_Rectangle
   m_TagString: BULLET_ENEMY
@@ -90,6 +91,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!95 &95444140705577398
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833312469455828}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114453984817892346
 MonoBehaviour:
   m_ObjectHideFlags: 1

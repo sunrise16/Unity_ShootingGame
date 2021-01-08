@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114224164008300128}
   - component: {fileID: 114261026094427328}
   - component: {fileID: 114868543682565508}
+  - component: {fileID: 95980355846064626}
   m_Layer: 0
   m_Name: EnemyBullet_Circle
   m_TagString: BULLET_ENEMY
@@ -80,6 +81,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &95980355846064626
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833312469455828}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114224164008300128
 MonoBehaviour:
   m_ObjectHideFlags: 1

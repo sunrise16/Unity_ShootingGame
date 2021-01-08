@@ -19,7 +19,7 @@ public class PlayerAutoCollect : MonoBehaviour
     // 화면 상단 자동 회수존에 진입했을 경우 아이템 전부 자동 회수
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
+        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetRespawn().Equals(false))
         {
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
@@ -32,7 +32,7 @@ public class PlayerAutoCollect : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
+        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetRespawn().Equals(false))
         {
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
@@ -45,7 +45,7 @@ public class PlayerAutoCollect : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetSpriteOff().Equals(false))
+        if (collision.name.Equals("AUTOCOLLECTZONE") && playerStatus.GetRespawn().Equals(false))
         {
             itemCount = itemParent.childCount;
             for (int i = 0; i < itemCount; i++)
