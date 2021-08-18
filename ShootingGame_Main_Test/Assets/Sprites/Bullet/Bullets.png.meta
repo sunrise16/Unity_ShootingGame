@@ -1,0 +1,7916 @@
+fileFormatVersion: 2
+guid: eca1e617b9cf8bc49a295f78bba95b3a
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bullets_252
+    21300002: Bullets_600
+    21300004: Bullets_120
+    21300006: Bullets_601
+    21300008: Bullets_602
+    21300010: Bullets_603
+    21300012: Bullets_60
+    21300014: Bullets_61
+    21300016: Bullets_62
+    21300018: Bullets_63
+    21300020: Bullets_64
+    21300022: Bullets_65
+    21300024: Bullets_66
+    21300026: Bullets_67
+    21300028: Bullets_68
+    21300030: Bullets_69
+    21300032: Bullets_70
+    21300034: Bullets_71
+    21300036: Bullets_72
+    21300038: Bullets_73
+    21300040: Bullets_74
+    21300042: Bullets_75
+    21300044: Bullets_604
+    21300046: Bullets_700
+    21300048: Bullets_605
+    21300050: Bullets_606
+    21300052: Bullets_607
+    21300054: Bullets_608
+    21300056: Bullets_609
+    21300058: Bullets_610
+    21300060: Bullets_611
+    21300062: Bullets_612
+    21300064: Bullets_380
+    21300066: Bullets_381
+    21300068: Bullets_382
+    21300070: Bullets_383
+    21300072: Bullets_384
+    21300074: Bullets_385
+    21300076: Bullets_386
+    21300078: Bullets_330
+    21300080: Bullets_613
+    21300082: Bullets_614
+    21300084: Bullets_340
+    21300086: Bullets_320
+    21300088: Bullets_321
+    21300090: Bullets_322
+    21300092: Bullets_323
+    21300094: Bullets_324
+    21300096: Bullets_325
+    21300098: Bullets_326
+    21300100: Bullets_327
+    21300102: Bullets_328
+    21300104: Bullets_329
+    21300106: Bullets_615
+    21300108: Bullets_54
+    21300110: Bullets_341
+    21300112: Bullets_640
+    21300114: Bullets_641
+    21300116: Bullets_701
+    21300118: Bullets_642
+    21300120: Bullets_702
+    21300122: Bullets_703
+    21300124: Bullets_704
+    21300126: Bullets_705
+    21300128: Bullets_706
+    21300130: Bullets_707
+    21300132: Bullets_708
+    21300134: Bullets_0
+    21300136: Bullets_643
+    21300138: Bullets_370
+    21300140: Bullets_371
+    21300142: Bullets_1016
+    21300144: Bullets_72
+    21300146: Bullets_1020
+    21300148: Bullets_1021
+    21300150: Bullets_1018
+    21300152: Bullets_1019
+    21300154: Bullets_1022
+    21300156: Bullets_1023
+    21300158: Bullets_79
+    21300160: Bullets_80
+    21300162: Bullets_81
+    21300164: Bullets_82
+    21300166: Bullets_83
+    21300168: Bullets_84
+    21300170: Bullets_85
+    21300172: Bullets_86
+    21300174: Bullets_1024
+    21300176: Bullets_1025
+    21300178: Bullets_1026
+    21300180: Bullets_1027
+    21300182: Bullets_100
+    21300184: Bullets_101
+    21300186: Bullets_102
+    21300188: Bullets_103
+    21300190: Bullets_95
+    21300192: Bullets_96
+    21300194: Bullets_97
+    21300196: Bullets_98
+    21300198: Bullets_99
+    21300200: Bullets_100
+    21300202: Bullets_101
+    21300204: Bullets_102
+    21300206: Bullets_103
+    21300208: Bullets_104
+    21300210: Bullets_105
+    21300212: Bullets_106
+    21300214: Bullets_107
+    21300216: Bullets_108
+    21300218: Bullets_400
+    21300220: Bullets_401
+    21300222: Bullets_402
+    21300224: Bullets_403
+    21300226: Bullets_404
+    21300228: Bullets_405
+    21300230: Bullets_406
+    21300232: Bullets_407
+    21300234: Bullets_117
+    21300236: Bullets_118
+    21300238: Bullets_119
+    21300240: Bullets_120
+    21300242: Bullets_121
+    21300244: Bullets_122
+    21300246: Bullets_420
+    21300248: Bullets_421
+    21300250: Bullets_422
+    21300252: Bullets_423
+    21300254: Bullets_424
+    21300256: Bullets_425
+    21300258: Bullets_426
+    21300260: Bullets_427
+    21300262: Bullets_131
+    21300264: Bullets_132
+    21300266: Bullets_133
+    21300268: Bullets_415
+    21300270: Bullets_416
+    21300272: Bullets_417
+    21300274: Bullets_142
+    21300276: Bullets_143
+    21300278: Bullets_144
+    21300280: Bullets_145
+    21300282: Bullets_146
+    21300284: Bullets_142
+    21300286: Bullets_143
+    21300288: Bullets_144
+    21300290: Bullets_1000
+    21300292: Bullets_1001
+    21300294: Bullets_1002
+    21300296: Bullets_1008
+    21300298: Bullets_1009
+    21300300: Bullets_1010
+    21300302: Bullets_1011
+    21300304: Bullets_1012
+    21300306: Bullets_1013
+    21300308: Bullets_1014
+    21300310: Bullets_1015
+    21300312: Bullets_156
+    21300314: Bullets_372
+    21300316: Bullets_158
+    21300318: Bullets_159
+    21300320: Bullets_334
+    21300322: Bullets_161
+    21300324: Bullets_162
+    21300326: Bullets_163
+    21300328: Bullets_164
+    21300330: Bullets_333
+    21300332: Bullets_335
+    21300334: Bullets_336
+    21300336: Bullets_337
+    21300338: Bullets_395
+    21300340: Bullets_396
+    21300342: Bullets_787
+    21300344: Bullets_172
+    21300346: Bullets_173
+    21300348: Bullets_174
+    21300350: Bullets_175
+    21300352: Bullets_176
+    21300354: Bullets_177
+    21300356: Bullets_280
+    21300358: Bullets_281
+    21300360: Bullets_282
+    21300362: Bullets_283
+    21300364: Bullets_284
+    21300366: Bullets_285
+    21300368: Bullets_286
+    21300370: Bullets_287
+    21300372: Bullets_288
+    21300374: Bullets_289
+    21300376: Bullets_290
+    21300378: Bullets_291
+    21300380: Bullets_292
+    21300382: Bullets_293
+    21300384: Bullets_294
+    21300386: Bullets_295
+    21300388: Bullets_194
+    21300390: Bullets_195
+    21300392: Bullets_196
+    21300394: Bullets_197
+    21300396: Bullets_198
+    21300398: Bullets_251
+    21300400: Bullets_200
+    21300402: Bullets_201
+    21300404: Bullets_202
+    21300406: Bullets_252
+    21300408: Bullets_204
+    21300410: Bullets_205
+    21300412: Bullets_206
+    21300414: Bullets_207
+    21300416: Bullets_430
+    21300418: Bullets_431
+    21300420: Bullets_432
+    21300422: Bullets_433
+    21300424: Bullets_434
+    21300426: Bullets_435
+    21300428: Bullets_214
+    21300430: Bullets_215
+    21300432: Bullets_216
+    21300434: Bullets_436
+    21300436: Bullets_437
+    21300438: Bullets_438
+    21300440: Bullets_439
+    21300442: Bullets_440
+    21300444: Bullets_441
+    21300446: Bullets_223
+    21300448: Bullets_224
+    21300450: Bullets_470
+    21300452: Bullets_471
+    21300454: Bullets_472
+    21300456: Bullets_473
+    21300458: Bullets_474
+    21300460: Bullets_475
+    21300462: Bullets_476
+    21300464: Bullets_477
+    21300466: Bullets_233
+    21300468: Bullets_234
+    21300470: Bullets_235
+    21300472: Bullets_236
+    21300474: Bullets_237
+    21300476: Bullets_238
+    21300478: Bullets_239
+    21300480: Bullets_240
+    21300482: Bullets_241
+    21300484: Bullets_242
+    21300486: Bullets_243
+    21300488: Bullets_244
+    21300490: Bullets_245
+    21300492: Bullets_246
+    21300494: Bullets_247
+    21300496: Bullets_248
+    21300498: Bullets_249
+    21300500: Bullets_250
+    21300502: Bullets_251
+    21300504: Bullets_252
+    21300506: Bullets_253
+    21300508: Bullets_254
+    21300510: Bullets_255
+    21300512: Bullets_256
+    21300514: Bullets_257
+    21300516: Bullets_258
+    21300518: Bullets_259
+    21300520: Bullets_260
+    21300522: Bullets_261
+    21300524: Bullets_262
+    21300526: Bullets_263
+    21300528: Bullets_264
+    21300530: Bullets_265
+    21300532: Bullets_266
+    21300534: Bullets_267
+    21300536: Bullets_268
+    21300538: Bullets_269
+    21300540: Bullets_270
+    21300542: Bullets_271
+    21300544: Bullets_272
+    21300546: Bullets_273
+    21300548: Bullets_274
+    21300550: Bullets_275
+    21300552: Bullets_276
+    21300554: Bullets_277
+    21300556: Bullets_278
+    21300558: Bullets_279
+    21300560: Bullets_280
+    21300562: Bullets_281
+    21300564: Bullets_282
+    21300566: Bullets_283
+    21300568: Bullets_284
+    21300570: Bullets_285
+    21300572: Bullets_286
+    21300574: Bullets_287
+    21300576: Bullets_288
+    21300578: Bullets_289
+    21300580: Bullets_290
+    21300582: Bullets_291
+    21300584: Bullets_292
+    21300586: Bullets_293
+    21300588: Bullets_294
+    21300590: Bullets_295
+    21300592: Bullets_296
+    21300594: Bullets_297
+    21300596: Bullets_298
+    21300598: Bullets_299
+    21300600: Bullets_300
+    21300602: Bullets_301
+    21300604: Bullets_302
+    21300606: Bullets_303
+    21300608: Bullets_304
+    21300610: Bullets_305
+    21300612: Bullets_306
+    21300614: Bullets_307
+    21300616: Bullets_308
+    21300618: Bullets_309
+    21300620: Bullets_310
+    21300622: Bullets_311
+    21300624: Bullets_312
+    21300626: Bullets_313
+    21300628: Bullets_314
+    21300630: Bullets_315
+    21300632: Bullets_316
+    21300634: Bullets_317
+    21300636: Bullets_318
+    21300638: Bullets_319
+    21300640: Bullets_320
+    21300642: Bullets_321
+    21300644: Bullets_322
+    21300646: Bullets_323
+    21300648: Bullets_324
+    21300650: Bullets_325
+    21300652: Bullets_326
+    21300654: Bullets_327
+    21300656: Bullets_328
+    21300658: Bullets_329
+    21300660: Bullets_330
+    21300662: Bullets_331
+    21300664: Bullets_332
+    21300666: Bullets_333
+    21300668: Bullets_251
+    21300670: Bullets_253
+    21300672: Bullets_254
+    21300674: Bullets_251
+    21300676: Bullets_252
+    21300678: Bullets_253
+    21300680: Bullets_254
+    21300682: Bullets_251
+    21300684: Bullets_252
+    21300686: Bullets_253
+    21300688: Bullets_254
+    21300690: Bullets_251
+    21300692: Bullets_252
+    21300694: Bullets_253
+    21300696: Bullets_254
+    21300698: Bullets_121
+    21300700: Bullets_122
+    21300702: Bullets_420
+    21300704: Bullets_421
+    21300706: Bullets_422
+    21300708: Bullets_423
+    21300710: Bullets_424
+    21300712: Bullets_425
+    21300714: Bullets_426
+    21300716: Bullets_427
+    21300718: Bullets_131
+    21300720: Bullets_132
+    21300722: Bullets_133
+    21300724: Bullets_410
+    21300726: Bullets_411
+    21300728: Bullets_709
+    21300730: Bullets_710
+    21300732: Bullets_711
+    21300734: Bullets_712
+    21300736: Bullets_713
+    21300738: Bullets_714
+    21300740: Bullets_715
+    21300742: Bullets_74
+    21300744: Bullets_75
+    21300746: Bullets_22
+    21300748: Bullets_700
+    21300750: Bullets_24
+    21300752: Bullets_25
+    21300754: Bullets_26
+    21300756: Bullets_27
+    21300758: Bullets_28
+    21300760: Bullets_29
+    21300762: Bullets_30
+    21300764: Bullets_31
+    21300766: Bullets_380
+    21300768: Bullets_381
+    21300770: Bullets_382
+    21300772: Bullets_383
+    21300774: Bullets_330
+    21300776: Bullets_331
+    21300778: Bullets_332
+    21300780: Bullets_333
+    21300782: Bullets_334
+    21300784: Bullets_335
+    21300786: Bullets_336
+    21300788: Bullets_337
+    21300790: Bullets_342
+    21300792: Bullets_343
+    21300794: Bullets_344
+    21300796: Bullets_345
+    21300798: Bullets_346
+    21300800: Bullets_347
+    21300802: Bullets_373
+    21300804: Bullets_374
+    21300806: Bullets_375
+    21300808: Bullets_376
+    21300810: Bullets_377
+    21300812: Bullets_100
+    21300814: Bullets_101
+    21300816: Bullets_102
+    21300818: Bullets_103
+    21300820: Bullets_104
+    21300822: Bullets_105
+    21300824: Bullets_106
+    21300826: Bullets_107
+    21300828: Bullets_108
+    21300830: Bullets_109
+    21300832: Bullets_110
+    21300834: Bullets_111
+    21300836: Bullets_112
+    21300838: Bullets_113
+    21300840: Bullets_114
+    21300842: Bullets_80
+    21300844: Bullets_81
+    21300846: Bullets_82
+    21300848: Bullets_83
+    21300850: Bullets_84
+    21300852: Bullets_85
+    21300854: Bullets_86
+    21300856: Bullets_87
+    21300858: Bullets_88
+    21300860: Bullets_89
+    21300862: Bullets_90
+    21300864: Bullets_300
+    21300866: Bullets_301
+    21300868: Bullets_302
+    21300870: Bullets_303
+    21300872: Bullets_95
+    21300874: Bullets_140
+    21300876: Bullets_141
+    21300878: Bullets_142
+    21300880: Bullets_143
+    21300882: Bullets_144
+    21300884: Bullets_145
+    21300886: Bullets_146
+    21300888: Bullets_147
+    21300890: Bullets_148
+    21300892: Bullets_149
+    21300894: Bullets_150
+    21300896: Bullets_151
+    21300898: Bullets_152
+    21300900: Bullets_153
+    21300902: Bullets_154
+    21300904: Bullets_155
+    21300906: Bullets_160
+    21300908: Bullets_161
+    21300910: Bullets_162
+    21300912: Bullets_163
+    21300914: Bullets_164
+    21300916: Bullets_165
+    21300918: Bullets_166
+    21300920: Bullets_167
+    21300922: Bullets_168
+    21300924: Bullets_169
+    21300926: Bullets_170
+    21300928: Bullets_171
+    21300930: Bullets_172
+    21300932: Bullets_173
+    21300934: Bullets_174
+    21300936: Bullets_175
+    21300938: Bullets_180
+    21300940: Bullets_181
+    21300942: Bullets_182
+    21300944: Bullets_183
+    21300946: Bullets_184
+    21300948: Bullets_185
+    21300950: Bullets_186
+    21300952: Bullets_187
+    21300954: Bullets_188
+    21300956: Bullets_189
+    21300958: Bullets_190
+    21300960: Bullets_191
+    21300962: Bullets_192
+    21300964: Bullets_193
+    21300966: Bullets_194
+    21300968: Bullets_195
+    21300970: Bullets_200
+    21300972: Bullets_201
+    21300974: Bullets_202
+    21300976: Bullets_203
+    21300978: Bullets_204
+    21300980: Bullets_205
+    21300982: Bullets_206
+    21300984: Bullets_207
+    21300986: Bullets_208
+    21300988: Bullets_209
+    21300990: Bullets_210
+    21300992: Bullets_211
+    21300994: Bullets_212
+    21300996: Bullets_213
+    21300998: Bullets_214
+    21301000: Bullets_215
+    21301002: Bullets_240
+    21301004: Bullets_241
+    21301006: Bullets_242
+    21301008: Bullets_243
+    21301010: Bullets_244
+    21301012: Bullets_245
+    21301014: Bullets_246
+    21301016: Bullets_247
+    21301018: Bullets_248
+    21301020: Bullets_249
+    21301022: Bullets_250
+    21301024: Bullets_251
+    21301026: Bullets_252
+    21301028: Bullets_253
+    21301030: Bullets_254
+    21301032: Bullets_255
+    21301034: Bullets_260
+    21301036: Bullets_268
+    21301038: Bullets_261
+    21301040: Bullets_269
+    21301042: Bullets_262
+    21301044: Bullets_270
+    21301046: Bullets_263
+    21301048: Bullets_271
+    21301050: Bullets_264
+    21301052: Bullets_272
+    21301054: Bullets_265
+    21301056: Bullets_273
+    21301058: Bullets_266
+    21301060: Bullets_274
+    21301062: Bullets_267
+    21301064: Bullets_275
+    21301066: Bullets_1
+    21301068: Bullets_2
+    21301070: Bullets_3
+    21301072: Bullets_4
+    21301074: Bullets_5
+    21301076: Bullets_6
+    21301078: Bullets_7
+    21301080: Bullets_8
+    21301082: Bullets_9
+    21301084: Bullets_10
+    21301086: Bullets_11
+    21301088: Bullets_12
+    21301090: Bullets_13
+    21301092: Bullets_14
+    21301094: Bullets_15
+    21301096: Bullets_350
+    21301098: Bullets_351
+    21301100: Bullets_352
+    21301102: Bullets_353
+    21301104: Bullets_354
+    21301106: Bullets_355
+    21301108: Bullets_356
+    21301110: Bullets_357
+    21301112: Bullets_360
+    21301114: Bullets_361
+    21301116: Bullets_362
+    21301118: Bullets_363
+    21301120: Bullets_364
+    21301122: Bullets_365
+    21301124: Bullets_366
+    21301126: Bullets_367
+    21301128: Bullets_253
+    21301130: Bullets_254
+    21301132: Bullets_636
+    21301134: Bullets_637
+    21301136: Bullets_638
+    21301138: Bullets_639
+    21301140: Bullets_640
+    21301142: Bullets_641
+    21301144: Bullets_642
+    21301146: Bullets_643
+    21301148: Bullets_644
+    21301150: Bullets_645
+    21301152: Bullets_646
+    21301154: Bullets_647
+    21301156: Bullets_251
+    21301158: Bullets_252
+    21301160: Bullets_253
+    21301162: Bullets_254
+    21301164: Bullets_251
+    21301166: Bullets_252
+    21301168: Bullets_253
+    21301170: Bullets_254
+    21301172: Bullets_251
+    21301174: Bullets_252
+    21301176: Bullets_253
+    21301178: Bullets_254
+    21301180: Bullets_251
+    21301182: Bullets_252
+    21301184: Bullets_253
+    21301186: Bullets_254
+    21301188: Bullets_215
+    21301190: Bullets_240
+    21301192: Bullets_241
+    21301194: Bullets_242
+    21301196: Bullets_243
+    21301198: Bullets_244
+    21301200: Bullets_245
+    21301202: Bullets_246
+    21301204: Bullets_247
+    21301206: Bullets_248
+    21301208: Bullets_249
+    21301210: Bullets_250
+    21301212: Bullets_40
+    21301214: Bullets_41
+    21301216: Bullets_42
+    21301218: Bullets_43
+    21301220: Bullets_44
+    21301222: Bullets_45
+    21301224: Bullets_46
+    21301226: Bullets_47
+    21301228: Bullets_48
+    21301230: Bullets_49
+    21301232: Bullets_50
+    21301234: Bullets_51
+    21301236: Bullets_52
+    21301238: Bullets_53
+    21301240: Bullets_55
+    21301242: Bullets_20
+    21301244: Bullets_21
+    21301246: Bullets_23
+    21301248: Bullets_32
+    21301250: Bullets_33
+    21301252: Bullets_34
+    21301254: Bullets_35
+    21301256: Bullets_1003
+    21301258: Bullets_1004
+    21301260: Bullets_1005
+    21301262: Bullets_1006
+    21301264: Bullets_1007
+    21301266: Bullets_91
+    21301268: Bullets_92
+    21301270: Bullets_93
+    21301272: Bullets_94
+    21301274: Bullets_412
+    21301276: Bullets_413
+    21301278: Bullets_414
+    21301280: Bullets_123
+    21301282: Bullets_124
+    21301284: Bullets_125
+    21301286: Bullets_126
+    21301288: Bullets_127
+    21301290: Bullets_128
+    21301292: Bullets_129
+    21301294: Bullets_130
+    21301296: Bullets_134
+    21301298: Bullets_135
+    21301300: Bullets_115
+    21301302: Bullets_387
+    21301304: Bullets_500
+    21301306: Bullets_501
+    21301308: Bullets_502
+    21301310: Bullets_503
+    21301312: Bullets_504
+    21301314: Bullets_505
+    21301316: Bullets_506
+    21301318: Bullets_507
+    21301320: Bullets_508
+    21301322: Bullets_509
+    21301324: Bullets_510
+    21301326: Bullets_511
+    21301328: Bullets_512
+    21301330: Bullets_513
+    21301332: Bullets_514
+    21301334: Bullets_515
+    21301336: Bullets_391
+    21301338: Bullets_390
+    21301340: Bullets_392
+    21301342: Bullets_393
+    21301344: Bullets_394
+    21301346: Bullets_220
+    21301348: Bullets_221
+    21301350: Bullets_222
+    21301352: Bullets_225
+    21301354: Bullets_226
+    21301356: Bullets_227
+    21301358: Bullets_228
+    21301360: Bullets_229
+    21301362: Bullets_230
+    21301364: Bullets_231
+    21301366: Bullets_232
+    21301368: Bullets_397
+    21301370: Bullets_Empty
+    21301372: Bullets_632
+    21301374: Bullets_633
+    21301376: Bullets_634
+    21301378: Bullets_616
+    21301380: Bullets_617
+    21301382: Bullets_618
+    21301384: Bullets_619
+    21301386: Bullets_620
+    21301388: Bullets_621
+    21301390: Bullets_622
+    21301392: Bullets_623
+    21301394: Bullets_624
+    21301396: Bullets_625
+    21301398: Bullets_626
+    21301400: Bullets_627
+    21301402: Bullets_628
+    21301404: Bullets_629
+    21301406: Bullets_630
+    21301408: Bullets_631
+    21301410: Bullets_635
+    21301412: Bullets_648
+    21301414: Bullets_649
+    21301416: Bullets_650
+    21301418: Bullets_651
+    21301420: Bullets_652
+    21301422: Bullets_653
+    21301424: Bullets_654
+    21301426: Bullets_655
+    21301428: Bullets_656
+    21301430: Bullets_657
+    21301432: Bullets_658
+    21301434: Bullets_659
+    21301436: Bullets_660
+    21301438: Bullets_661
+    21301440: Bullets_662
+    21301442: Bullets_663
+    21301444: Bullets_664
+    21301446: Bullets_665
+    21301448: Bullets_666
+    21301450: Bullets_667
+    21301452: Bullets_668
+    21301454: Bullets_669
+    21301456: Bullets_670
+    21301458: Bullets_671
+    21301460: Bullets_672
+    21301462: Bullets_673
+    21301464: Bullets_674
+    21301466: Bullets_675
+    21301468: Bullets_676
+    21301470: Bullets_677
+    21301472: Bullets_678
+    21301474: Bullets_679
+    21301476: Bullets_800
+    21301478: Bullets_801
+    21301480: Bullets_802
+    21301482: Bullets_803
+    21301484: Bullets_804
+    21301486: Bullets_805
+    21301488: Bullets_806
+    21301490: Bullets_807
+    21301492: Bullets_808
+    21301494: Bullets_809
+    21301496: Bullets_810
+    21301498: Bullets_811
+    21301500: Bullets_812
+    21301502: Bullets_813
+    21301504: Bullets_480
+    21301506: Bullets_481
+    21301508: Bullets_482
+    21301510: Bullets_483
+    21301512: Bullets_484
+    21301514: Bullets_485
+    21301516: Bullets_486
+    21301518: Bullets_487
+    21301520: Bullets_488
+    21301522: Bullets_489
+    21301524: Bullets_490
+    21301526: Bullets_491
+    21301528: Bullets_492
+    21301530: Bullets_493
+    21301532: Bullets_494
+    21301534: Bullets_495
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bullets_600
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1533
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_601
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1517
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_602
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1501
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_603
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1485
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_60
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_61
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_62
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_63
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_64
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_65
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_66
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_67
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_68
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_69
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_70
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_71
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_72
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_73
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_74
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_75
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1462
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_604
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1469
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_605
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1453
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_606
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1437
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_607
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1421
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_608
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1405
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_609
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1389
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_610
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1373
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_611
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1357
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_612
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1341
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_380
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_381
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_382
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_383
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_384
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_385
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_386
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_387
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1302
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_613
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1325
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_614
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1309
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_320
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_321
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_322
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_323
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_324
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_325
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_326
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_327
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_328
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_329
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1287
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_615
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1293
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_300
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1020
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_301
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1020
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_302
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1021
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_303
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1021
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_400
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_401
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_402
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_403
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_404
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_405
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_406
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_407
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 981
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_420
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_421
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 949
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_422
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_423
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_424
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_425
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_426
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_427
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 948
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_410
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_411
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_412
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_413
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_414
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_415
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_416
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_417
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 922
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_280
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_281
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_282
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_283
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_284
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_285
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_286
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_287
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_288
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_289
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_290
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_291
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_292
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_293
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_294
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_295
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 806
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_430
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 575
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_431
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 575
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_432
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 575
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_433
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 575
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_434
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 575
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_435
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 575
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_436
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 543
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_437
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 543
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_438
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 543
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_439
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 543
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_440
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 543
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_441
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 543
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_470
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_471
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_472
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_473
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_474
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_475
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_476
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_477
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 512
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_500
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_501
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_502
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_503
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_504
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_505
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_506
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_507
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_508
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_509
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_510
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_511
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_512
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_513
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_514
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_515
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1526
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_120
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_121
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_122
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_123
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_124
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_125
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_126
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_127
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_128
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_129
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_130
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_131
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_132
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_133
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_134
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1509
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_135
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 1510
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_40
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_41
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_42
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_43
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_44
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_45
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_46
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_47
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_48
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_49
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_50
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_51
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_52
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_53
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_54
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_55
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1493
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_20
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_21
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_22
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_23
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_24
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_25
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_26
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_27
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_28
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_29
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_30
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_31
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_32
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_33
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_34
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_35
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1477
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_330
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_331
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_332
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_333
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_334
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_335
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_336
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1213
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_337
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1214
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_340
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_341
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_342
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_343
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_344
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_345
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_346
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_347
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1184
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_370
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_371
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_372
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_373
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_374
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_375
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_376
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_377
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1245
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_100
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_101
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_102
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_103
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_104
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_105
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_106
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_107
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_108
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_109
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_110
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_111
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_112
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_113
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_114
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_80
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_81
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_82
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_83
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_84
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_85
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_86
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_87
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_88
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_89
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_90
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_91
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_92
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_93
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_94
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_95
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1429
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_140
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_141
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_142
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_143
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_144
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_145
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_146
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_147
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_148
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_149
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_150
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_151
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_152
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_153
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_154
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_155
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 1414
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_160
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_161
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_162
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_163
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_164
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_165
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_166
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_167
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_168
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_169
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_170
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_171
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_172
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_173
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_174
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_175
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1397
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_180
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_181
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_182
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_183
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_184
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_185
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_186
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_187
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_188
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_189
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_190
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_191
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_192
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_193
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_194
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_195
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1381
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_200
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_201
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_202
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_203
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_204
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_205
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_206
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_207
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_208
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_209
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_210
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_211
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_212
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_213
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_214
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_215
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1365
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_240
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_241
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_242
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_243
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_244
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_245
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_246
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_247
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_248
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_249
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_250
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_251
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_252
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_253
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_254
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_255
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_260
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_268
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_261
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_269
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_262
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_270
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_263
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_271
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_264
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_272
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_265
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1342
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_273
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_266
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_274
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_267
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 1341
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_275
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 1333
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_4
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_5
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_7
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1293
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_10
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_11
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_12
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_13
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_14
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_15
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1285
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_350
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_351
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_352
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_353
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_354
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_355
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_356
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_357
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1148
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_360
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_361
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_362
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_363
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_364
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_365
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_366
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_367
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1117
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_391
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 683
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_390
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 683
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_392
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 683
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_393
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 683
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_394
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 619
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_395
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 619
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_396
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 619
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_115
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1445
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_220
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_221
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_222
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_223
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_224
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_225
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_226
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_227
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_228
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_229
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_230
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_231
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_232
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_233
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_234
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_235
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1349
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_310
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1333
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_311
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1333
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_312
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1333
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_397
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 619
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_Empty
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1283
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_1000
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 154
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_1001
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 154
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_632
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1533
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_633
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1517
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_634
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1501
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_616
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1533
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_617
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1517
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_618
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1501
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_619
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1485
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_620
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1469
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_621
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1453
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_622
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1437
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_623
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1421
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_624
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1405
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_625
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1389
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_626
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1373
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_627
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1357
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_628
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1341
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_629
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1325
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_630
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1309
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_631
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1293
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_635
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1485
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_636
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1469
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_637
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1453
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_638
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1437
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_639
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1421
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_640
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1405
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_641
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1389
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_642
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1373
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_643
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1357
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_644
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1341
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_645
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1325
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_646
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1309
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_647
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1293
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_648
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1533
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_649
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1517
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_650
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1501
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_651
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1485
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_652
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1469
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_653
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1453
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_654
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1437
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_655
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1421
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_656
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1405
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_657
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1389
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_658
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1373
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_659
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1357
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_660
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1341
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_661
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1325
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_662
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1309
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_663
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1293
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_664
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1533
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_665
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1517
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_666
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1501
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_667
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1485
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_668
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1469
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_669
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1453
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_670
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1437
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_671
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1421
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_672
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1405
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_673
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1389
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_674
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1373
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_675
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1357
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_676
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1341
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_677
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1325
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_678
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1309
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_679
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1293
+        width: 56
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_1002
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 20
+        width: 130
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_700
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1533
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_701
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1517
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_702
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1501
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_703
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1485
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_704
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1469
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_705
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1453
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_706
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1437
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_707
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1421
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_708
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1405
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_709
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1389
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_710
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1373
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_711
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1357
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_712
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1341
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_713
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1325
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_714
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1309
+        width: 248
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_715
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1293
+        width: 248
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_800
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 902
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_801
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 902
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_802
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 900
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_803
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 900
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_804
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 901
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_805
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 901
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_806
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 901
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_807
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 900
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_808
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1116
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_809
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1116
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_810
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1116
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_811
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1117
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_812
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1117
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_813
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1116
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_480
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_481
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_482
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_483
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_484
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_485
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_486
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_487
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 852
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_488
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_489
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_490
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_491
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_492
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_493
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_494
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bullets_495
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 819
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

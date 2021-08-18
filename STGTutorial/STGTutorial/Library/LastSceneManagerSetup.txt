@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/ND_VariaBULLET/Demo/Scenes/Misc/LaserSaws.unity
+  isLoaded: 1
+  isActive: 1
